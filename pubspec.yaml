@@ -1,0 +1,12 @@
+name: _
+publish_to: none
+environment:
+  sdk: ^3.9.2
+workspace:
+  - invictus_api
+  - invictus_android
+  - invictus_android/example
+  - invictus_darwin
+  - invictus_darwin/example
+  - invictus
+  - invictus/example

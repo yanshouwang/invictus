@@ -1,5 +1,5 @@
 name: invictus_api
-description: "A new Flutter plugin project."
+description: "A common platform interface for the invictus plugin."
 version: 0.0.1
 repository: https://github.com/yanshouwang/invictus
 issue_tracker: https://github.com/yanshouwang/invictus/issues

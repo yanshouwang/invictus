@@ -1,0 +1,68 @@
+{
+    // 使用 IntelliSense 了解相关属性。 
+    // 悬停以查看现有属性的描述。
+    // 欲了解更多信息，请访问: https://go.microsoft.com/fwlink/?linkid=830387
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "invictus/example",
+            "cwd": "invictus/example",
+            "request": "launch",
+            "type": "dart"
+        },
+        {
+            "name": "invictus/example (profile mode)",
+            "cwd": "invictus/example",
+            "request": "launch",
+            "type": "dart",
+            "flutterMode": "profile"
+        },
+        {
+            "name": "invictus/example (release mode)",
+            "cwd": "invictus/example",
+            "request": "launch",
+            "type": "dart",
+            "flutterMode": "release"
+        },
+        {
+            "name": "invictus_android/example",
+            "cwd": "invictus_android/example",
+            "request": "launch",
+            "type": "dart"
+        },
+        {
+            "name": "invictus_android/example (profile mode)",
+            "cwd": "invictus_android/example",
+            "request": "launch",
+            "type": "dart",
+            "flutterMode": "profile"
+        },
+        {
+            "name": "invictus_android/example (release mode)",
+            "cwd": "invictus_android/example",
+            "request": "launch",
+            "type": "dart",
+            "flutterMode": "release"
+        },
+        {
+            "name": "invictus_darwin/example",
+            "cwd": "invictus_darwin/example",
+            "request": "launch",
+            "type": "dart"
+        },
+        {
+            "name": "invictus_darwin/example (profile mode)",
+            "cwd": "invictus_darwin/example",
+            "request": "launch",
+            "type": "dart",
+            "flutterMode": "profile"
+        },
+        {
+            "name": "invictus_darwin/example (release mode)",
+            "cwd": "invictus_darwin/example",
+            "request": "launch",
+            "type": "dart",
+            "flutterMode": "release"
+        }
+    ]
+}

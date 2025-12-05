@@ -1,0 +1,1 @@
+-keep class dev.zeekr.invictus_android.os.** { *; }

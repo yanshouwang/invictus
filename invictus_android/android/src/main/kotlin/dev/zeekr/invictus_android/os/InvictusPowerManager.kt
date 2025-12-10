@@ -2,7 +2,7 @@ package dev.zeekr.invictus_android.os
 
 import android.os.PowerManager
 
-class InvictusPowerManager(val instance: PowerManager) {
+class InvictusPowerManager(val obj: PowerManager) {
     companion object {
         val clazz: Class<PowerManager> get() = PowerManager::class.java
 
@@ -86,7 +86,7 @@ class InvictusPowerManager(val instance: PowerManager) {
      * @param wait If true, this call waits for the shutdown to complete and does not return.
      */
     fun shutdown(confirm: Boolean, reason: String?, wait: Boolean) {
-        val method = clazz.getMethod("shutdown", Boolean::class.java, String::class.java, Boolean::class.java)
-        method.invoke(instance, confirm, reason, wait)
+        clazz.getMethod("shutdown", Boolean::class.java, String::class.java, Boolean::class.java)
+            .invoke(this.obj, confirm, reason, wait)
     }
 }

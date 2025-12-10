@@ -1,0 +1,18 @@
+import 'package:invictus_android/src/api.dart';
+import 'package:invictus_android/src/jni.dart' as jni;
+
+final class IpSecManager$UdpEncapsulationSocketImpl
+    implements IpSecManager$UdpEncapsulationSocket {
+  final jni.IpSecManager$UdpEncapsulationSocket api;
+
+  IpSecManager$UdpEncapsulationSocketImpl.internal(this.api);
+}
+
+extension Invictus$IpSecManager$UdpEncapsulationSocketX
+    on IpSecManager$UdpEncapsulationSocket {
+  jni.IpSecManager$UdpEncapsulationSocket get api {
+    final impl = this;
+    if (impl is! IpSecManager$UdpEncapsulationSocketImpl) throw TypeError();
+    return impl.api;
+  }
+}

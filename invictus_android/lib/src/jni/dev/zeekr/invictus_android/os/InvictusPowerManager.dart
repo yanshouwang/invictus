@@ -571,12 +571,12 @@ class InvictusPowerManager extends jni$_.JObject {
     );
   }
 
-  static final _id_getInstance = _class.instanceMethodId(
-    r'getInstance',
+  static final _id_getObj = _class.instanceMethodId(
+    r'getObj',
     r'()Landroid/os/PowerManager;',
   );
 
-  static final _getInstance =
+  static final _getObj =
       jni$_.ProtectedJniExtensions.lookup<
             jni$_.NativeFunction<
               jni$_.JniResult Function(
@@ -592,12 +592,12 @@ class InvictusPowerManager extends jni$_.JObject {
             )
           >();
 
-  /// from: `public final android.os.PowerManager getInstance()`
+  /// from: `public final android.os.PowerManager getObj()`
   /// The returned object must be released after use, by calling the [release] method.
-  powermanager$_.PowerManager getInstance() {
-    return _getInstance(
+  powermanager$_.PowerManager getObj() {
+    return _getObj(
       reference.pointer,
-      _id_getInstance as jni$_.JMethodIDPtr,
+      _id_getObj as jni$_.JMethodIDPtr,
     ).object<powermanager$_.PowerManager>(
       const powermanager$_.$PowerManager$Type$(),
     );

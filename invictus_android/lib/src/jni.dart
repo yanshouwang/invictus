@@ -1,6 +1,6 @@
-import 'package:jni/jni.dart';
+import 'dart:typed_data';
 
-import 'jni/android/content/_package.dart';
+import 'package:invictus_android/src/jni.dart';
 
 export 'package:jni/jni.dart';
 
@@ -11,11 +11,48 @@ export 'jni/android/net/wifi/_package.dart';
 export 'jni/android/net/wifi/aware/_package.dart';
 export 'jni/android/os/_package.dart';
 export 'jni/androidx/core/content/_package.dart';
+export 'jni/dev/zeekr/invictus_android/content/_package.dart';
+export 'jni/dev/zeekr/invictus_android/net/_package.dart';
+export 'jni/dev/zeekr/invictus_android/net/ethernet/_package.dart';
+export 'jni/dev/zeekr/invictus_android/net/util/_package.dart';
 export 'jni/dev/zeekr/invictus_android/os/_package.dart';
 export 'jni/java/io/_package.dart';
+export 'jni/java/lang/_package.dart';
 export 'jni/java/net/_package.dart';
 export 'jni/java/util/_package.dart';
 export 'jni/java/util/concurrent/_package.dart';
 export 'jni/javax/net/_package.dart';
 
 Context get context => Jni.androidApplicationContext.as(Context.type);
+
+extension Invictus$intX on int {
+  JInteger get api => toJInteger();
+}
+
+extension Invictus$JIntegerX on JInteger {
+  int get impl => intValue();
+}
+
+extension Invictus$StringX on String {
+  JString get api => toJString();
+}
+
+extension Invictus$JStringX on JString {
+  String get impl => toDartString();
+}
+
+extension Invictus$Uint8ListX on Uint8List {
+  JByteArray get api => toJByteBuffer().array;
+}
+
+extension Invictus$JByteArrayX on JByteArray {
+  Uint8List get impl => JByteBuffer.wrap(this).asUint8List();
+}
+
+extension InvictusJContextX on Context {
+  Executor get mainExecutor => ContextCompat.getMainExecutor(this);
+  Handler get mainHandler => getMainHandler();
+  Looper get mainLooper => getMainLooper()!;
+
+  Handler getMainHandler() => Handler.new$2(mainLooper);
+}

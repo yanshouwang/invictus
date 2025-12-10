@@ -695,6 +695,39 @@ class Collection<$E extends jni$_.JObject?> extends jni$_.JObject {
     );
   }
 
+  static final _id_forEach = _class.instanceMethodId(
+    r'forEach',
+    r'(Ljava/util/function/Consumer;)V',
+  );
+
+  static final _forEach =
+      jni$_.ProtectedJniExtensions.lookup<
+            jni$_.NativeFunction<
+              jni$_.JThrowablePtr Function(
+                jni$_.Pointer<jni$_.Void>,
+                jni$_.JMethodIDPtr,
+                jni$_.VarArgs<(jni$_.Pointer<jni$_.Void>,)>,
+              )
+            >
+          >('globalEnv_CallVoidMethod')
+          .asFunction<
+            jni$_.JThrowablePtr Function(
+              jni$_.Pointer<jni$_.Void>,
+              jni$_.JMethodIDPtr,
+              jni$_.Pointer<jni$_.Void>,
+            )
+          >();
+
+  /// from: `public void forEach(java.util.function.Consumer<? super T> consumer)`
+  void forEach(jni$_.JObject? consumer) {
+    final _$consumer = consumer?.reference ?? jni$_.jNullReference;
+    _forEach(
+      reference.pointer,
+      _id_forEach as jni$_.JMethodIDPtr,
+      _$consumer.pointer,
+    ).check();
+  }
+
   /// Maps a specific port to the implemented interface.
   static final core$_.Map<int, $Collection> _$impls = {};
   static jni$_.JObjectPtr _$invoke(
@@ -878,6 +911,12 @@ class Collection<$E extends jni$_.JObject?> extends jni$_.JObject {
                 .toPointer() ??
             jni$_.nullptr;
       }
+      if ($d == r'forEach(Ljava/util/function/Consumer;)V') {
+        _$impls[$p]!.forEach(
+          $a![0]?.as(const jni$_.$JObject$Type$(), releaseOriginal: true),
+        );
+        return jni$_.nullptr;
+      }
     } catch (e) {
       return jni$_.ProtectedJniExtensions.newDartException(e);
     }
@@ -901,6 +940,7 @@ class Collection<$E extends jni$_.JObject?> extends jni$_.JObject {
     });
     implementer.add(r'java.util.Collection', $p, _$invokePointer, [
       if ($impl.clear$async) r'clear()V',
+      if ($impl.forEach$async) r'forEach(Ljava/util/function/Consumer;)V',
     ]);
     final $a = $p.sendPort.nativePort;
     _$impls[$a] = $impl;
@@ -941,6 +981,8 @@ abstract base mixin class $Collection<$E extends jni$_.JObject?> {
       jni$_.JArray<jni$_.JObject?>? objects,
     )
     toArray$2,
+    required void Function(jni$_.JObject? consumer) forEach,
+    bool forEach$async,
   }) = _$Collection<$E>;
 
   jni$_.JType<$E> get E;
@@ -968,6 +1010,8 @@ abstract base mixin class $Collection<$E extends jni$_.JObject?> {
   jni$_.JArray<jni$_.JObject?>? toArray$2(
     jni$_.JArray<jni$_.JObject?>? objects,
   );
+  void forEach(jni$_.JObject? consumer);
+  bool get forEach$async => false;
 }
 
 final class _$Collection<$E extends jni$_.JObject?> with $Collection<$E> {
@@ -998,6 +1042,8 @@ final class _$Collection<$E extends jni$_.JObject?> with $Collection<$E> {
       jni$_.JArray<jni$_.JObject?>? objects,
     )
     toArray$2,
+    required void Function(jni$_.JObject? consumer) forEach,
+    this.forEach$async = false,
   }) : _add = add,
        _addAll = addAll,
        _clear = clear,
@@ -1017,7 +1063,8 @@ final class _$Collection<$E extends jni$_.JObject?> with $Collection<$E> {
        _stream = stream,
        _toArray = toArray,
        _toArray$1 = toArray$1,
-       _toArray$2 = toArray$2;
+       _toArray$2 = toArray$2,
+       _forEach = forEach;
 
   @core$_.override
   final jni$_.JType<$E> E;
@@ -1047,6 +1094,8 @@ final class _$Collection<$E extends jni$_.JObject?> with $Collection<$E> {
     jni$_.JArray<jni$_.JObject?>? objects,
   )
   _toArray$2;
+  final void Function(jni$_.JObject? consumer) _forEach;
+  final bool forEach$async;
 
   bool add($E? object) {
     return _add(object);
@@ -1128,6 +1177,10 @@ final class _$Collection<$E extends jni$_.JObject?> with $Collection<$E> {
     jni$_.JArray<jni$_.JObject?>? objects,
   ) {
     return _toArray$2(objects);
+  }
+
+  void forEach(jni$_.JObject? consumer) {
+    return _forEach(consumer);
   }
 }
 

@@ -1,0 +1,24 @@
+import 'package:invictus_android/src/api.dart';
+import 'package:invictus_android/src/jni.dart' as jni;
+
+final class NetworkInfo$DetailedStateImpl implements NetworkInfo$DetailedState {
+  final jni.NetworkInfo$DetailedState api;
+
+  NetworkInfo$DetailedStateImpl.internal(this.api);
+}
+
+final class NetworkInfoImpl implements NetworkInfo {
+  final jni.NetworkInfo api;
+
+  NetworkInfoImpl.internal(this.api);
+}
+
+extension Invictus$JNetworkInfo$DetailedStateX
+    on jni.NetworkInfo$DetailedState {
+  NetworkInfo$DetailedState get impl =>
+      NetworkInfo$DetailedStateImpl.internal(this);
+}
+
+extension Invictus$JNetworkInfoX on jni.NetworkInfo {
+  NetworkInfo get impl => NetworkInfoImpl.internal(this);
+}

@@ -38,6 +38,8 @@ import 'package:jni/jni.dart' as jni$_;
 
 import 'InetAddress.dart' as inetaddress$_;
 
+import 'InterfaceAddress.dart' as interfaceaddress$_;
+
 /// from: `java.net.NetworkInterface`
 class NetworkInterface extends jni$_.JObject {
   @jni$_.internal
@@ -332,13 +334,13 @@ class NetworkInterface extends jni$_.JObject {
 
   /// from: `public java.util.List<java.net.InterfaceAddress> getInterfaceAddresses()`
   /// The returned object must be released after use, by calling the [release] method.
-  jni$_.JList<jni$_.JObject?>? getInterfaceAddresses() {
+  jni$_.JList<interfaceaddress$_.InterfaceAddress?>? getInterfaceAddresses() {
     return _getInterfaceAddresses(
       reference.pointer,
       _id_getInterfaceAddresses as jni$_.JMethodIDPtr,
-    ).object<jni$_.JList<jni$_.JObject?>?>(
-      const jni$_.$JList$NullableType$<jni$_.JObject?>(
-        jni$_.$JObject$NullableType$(),
+    ).object<jni$_.JList<interfaceaddress$_.InterfaceAddress?>?>(
+      const jni$_.$JList$NullableType$<interfaceaddress$_.InterfaceAddress?>(
+        interfaceaddress$_.$InterfaceAddress$NullableType$(),
       ),
     );
   }

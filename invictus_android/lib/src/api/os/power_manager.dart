@@ -1,6 +1,6 @@
 import 'package:invictus_android/src/impl.dart';
 
-enum PowerManagerReboot {
+enum PowerManager$Reboot {
   recovery,
   recoveryUpdate,
   requestedByDeviceOwner,
@@ -9,7 +9,7 @@ enum PowerManagerReboot {
   quiescent,
 }
 
-enum PowerManagerShutdown {
+enum PowerManager$Shutdown {
   userRequested,
   batteryThermalState,
   thermalState,
@@ -17,9 +17,7 @@ enum PowerManagerShutdown {
 }
 
 /// This class lets you query and request control of aspects of the device's power state.
-abstract base class PowerManager {
-  PowerManager.impl();
-
+abstract interface class PowerManager {
   factory PowerManager() => PowerManagerImpl();
 
   /// Returns true if this device supports rebooting userspace.
@@ -34,7 +32,7 @@ abstract base class PowerManager {
   /// devices launched on Android 11 (API level 30) or higher.
   ///
   /// [reason] code to pass to the kernel (e.g., "recovery") to request special boot modes, or null.
-  void reboot({PowerManagerReboot? reason});
+  void reboot({PowerManager$Reboot? reason});
 
   /// Turn off the device.
   ///
@@ -45,7 +43,7 @@ abstract base class PowerManager {
   /// [wait] If true, this call waits for the shutdown to complete and does not return.
   void shutdown({
     bool confirm = true,
-    PowerManagerShutdown? reason,
+    PowerManager$Shutdown? reason,
     bool wait = false,
   });
 }

@@ -4,6 +4,7 @@ export 'InetAddress.dart';
 export 'Inet4Address.dart';
 export 'Inet6Address.dart';
 export 'InetSocketAddress.dart';
+export 'InterfaceAddress.dart';
 export 'NetworkInterface.dart';
 export 'Proxy.dart';
 export 'Socket.dart';

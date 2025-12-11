@@ -36,6 +36,8 @@ import 'dart:core' show Object, String, bool, double, int;
 import 'package:jni/_internal.dart' as jni$_;
 import 'package:jni/jni.dart' as jni$_;
 
+import '../../java/lang/CharSequence.dart' as charsequence$_;
+
 import '../../java/util/Collection.dart' as collection$_;
 
 import '../../java/util/concurrent/Executor.dart' as executor$_;
@@ -4542,12 +4544,14 @@ class Context extends jni$_.JObject {
 
   /// from: `public final java.lang.CharSequence getText(int i)`
   /// The returned object must be released after use, by calling the [release] method.
-  jni$_.JObject getText(int i) {
+  charsequence$_.CharSequence getText(int i) {
     return _getText(
       reference.pointer,
       _id_getText as jni$_.JMethodIDPtr,
       i,
-    ).object<jni$_.JObject>(const jni$_.$JObject$Type$());
+    ).object<charsequence$_.CharSequence>(
+      const charsequence$_.$CharSequence$Type$(),
+    );
   }
 
   static final _id_getTheme = _class.instanceMethodId(

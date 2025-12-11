@@ -1,13 +1,18 @@
 import 'package:invictus_android/src/api.dart';
+import 'package:invictus_android/src/impl.dart';
 import 'package:invictus_android/src/jni.dart' as jni;
 
-final class SocketKeepalive$CallbackImpl implements SocketKeepalive$Callback {
+final class SocketKeepalive$CallbackImpl extends InvictusObjectImpl
+    implements SocketKeepalive$Callback {
+  @override
   jni.SocketKeepalive$Callback api;
 
   SocketKeepalive$CallbackImpl.internal(this.api);
 }
 
-final class SocketKeepaliveImpl implements SocketKeepalive {
+final class SocketKeepaliveImpl extends InvictusObjectImpl
+    implements SocketKeepalive {
+  @override
   final jni.SocketKeepalive api;
 
   SocketKeepaliveImpl.internal(this.api);

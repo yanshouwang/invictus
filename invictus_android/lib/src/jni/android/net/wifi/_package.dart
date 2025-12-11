@@ -5,3 +5,4 @@ export 'SupplicantState.dart';
 export 'WifiConfiguration.dart';
 export 'WifiInfo.dart';
 export 'WifiManager.dart';
+export 'WifiSsid.dart';

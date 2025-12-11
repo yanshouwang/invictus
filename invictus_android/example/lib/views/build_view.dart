@@ -28,13 +28,13 @@ class BuildView extends StatelessWidget {
       'SKU': viewModel.sku,
       'SOC_MANUFACTURER': viewModel.socManufacturer,
       'SOC_MODEL': viewModel.socModel,
-      'TAGS': viewModel.tags,
-      'TYPE': viewModel.type,
-      'USER': viewModel.user,
       'SUPPORTED_32BIT_ABIS': viewModel.supported32BitAbis,
       'SUPPORTED_64BIT_ABIS': viewModel.supported64BitAbis,
       'SUPPORTED_ABIS': viewModel.supportedAbis,
+      'TAGS': viewModel.tags,
       'TIME': viewModel.time,
+      'TYPE': viewModel.type,
+      'USER': viewModel.user,
     };
     return Scaffold(
       appBar: AppBar(title: Text('Build')),

@@ -21,13 +21,13 @@ class BuildViewModel extends ViewModel {
   final String sku;
   final String socManufacturer;
   final String socModel;
-  final String tags;
-  final String type;
-  final String user;
   final List<String> supported32BitAbis;
   final List<String> supported64BitAbis;
   final List<String> supportedAbis;
+  final String tags;
   final int time;
+  final String type;
+  final String user;
 
   BuildViewModel()
     : board = Build.board,
@@ -50,11 +50,11 @@ class BuildViewModel extends ViewModel {
       sku = Build.sku,
       socManufacturer = Build.socManufacturer,
       socModel = Build.socModel,
-      tags = Build.tags,
-      type = Build.type,
-      user = Build.user,
       supported32BitAbis = Build.supported32BitAbis,
       supported64BitAbis = Build.supported64BitAbis,
       supportedAbis = Build.supportedAbis,
-      time = Build.time;
+      tags = Build.tags,
+      time = Build.time,
+      type = Build.type,
+      user = Build.user;
 }

@@ -36,6 +36,8 @@ import 'dart:core' show Object, String, bool, double, int;
 import 'package:jni/_internal.dart' as jni$_;
 import 'package:jni/jni.dart' as jni$_;
 
+import '../../java/lang/CharSequence.dart' as charsequence$_;
+
 import 'Context.dart' as context$_;
 
 /// from: `android.content.Intent$FilterComparison`
@@ -4281,7 +4283,10 @@ class Intent extends jni$_.JObject {
 
   /// from: `static public android.content.Intent createChooser(android.content.Intent intent, java.lang.CharSequence charSequence)`
   /// The returned object must be released after use, by calling the [release] method.
-  static Intent? createChooser(Intent? intent, jni$_.JObject? charSequence) {
+  static Intent? createChooser(
+    Intent? intent,
+    charsequence$_.CharSequence? charSequence,
+  ) {
     final _$intent = intent?.reference ?? jni$_.jNullReference;
     final _$charSequence = charSequence?.reference ?? jni$_.jNullReference;
     return _createChooser(
@@ -4327,7 +4332,7 @@ class Intent extends jni$_.JObject {
   /// The returned object must be released after use, by calling the [release] method.
   static Intent? createChooser$1(
     Intent? intent,
-    jni$_.JObject? charSequence,
+    charsequence$_.CharSequence? charSequence,
     jni$_.JObject? intentSender,
   ) {
     final _$intent = intent?.reference ?? jni$_.jNullReference;
@@ -4798,7 +4803,7 @@ class Intent extends jni$_.JObject {
 
   /// from: `public java.lang.CharSequence[] getCharSequenceArrayExtra(java.lang.String string)`
   /// The returned object must be released after use, by calling the [release] method.
-  jni$_.JArray<jni$_.JObject?>? getCharSequenceArrayExtra(
+  jni$_.JArray<charsequence$_.CharSequence?>? getCharSequenceArrayExtra(
     jni$_.JString? string,
   ) {
     final _$string = string?.reference ?? jni$_.jNullReference;
@@ -4806,9 +4811,9 @@ class Intent extends jni$_.JObject {
       reference.pointer,
       _id_getCharSequenceArrayExtra as jni$_.JMethodIDPtr,
       _$string.pointer,
-    ).object<jni$_.JArray<jni$_.JObject?>?>(
-      const jni$_.$JArray$NullableType$<jni$_.JObject?>(
-        jni$_.$JObject$NullableType$(),
+    ).object<jni$_.JArray<charsequence$_.CharSequence?>?>(
+      const jni$_.$JArray$NullableType$<charsequence$_.CharSequence?>(
+        charsequence$_.$CharSequence$NullableType$(),
       ),
     );
   }
@@ -4872,13 +4877,15 @@ class Intent extends jni$_.JObject {
 
   /// from: `public java.lang.CharSequence getCharSequenceExtra(java.lang.String string)`
   /// The returned object must be released after use, by calling the [release] method.
-  jni$_.JObject? getCharSequenceExtra(jni$_.JString? string) {
+  charsequence$_.CharSequence? getCharSequenceExtra(jni$_.JString? string) {
     final _$string = string?.reference ?? jni$_.jNullReference;
     return _getCharSequenceExtra(
       reference.pointer,
       _id_getCharSequenceExtra as jni$_.JMethodIDPtr,
       _$string.pointer,
-    ).object<jni$_.JObject?>(const jni$_.$JObject$NullableType$());
+    ).object<charsequence$_.CharSequence?>(
+      const charsequence$_.$CharSequence$NullableType$(),
+    );
   }
 
   static final _id_getClipData = _class.instanceMethodId(
@@ -7143,7 +7150,10 @@ class Intent extends jni$_.JObject {
 
   /// from: `public android.content.Intent putExtra(java.lang.String string, java.lang.CharSequence charSequence)`
   /// The returned object must be released after use, by calling the [release] method.
-  Intent putExtra$16(jni$_.JString? string, jni$_.JObject? charSequence) {
+  Intent putExtra$16(
+    jni$_.JString? string,
+    charsequence$_.CharSequence? charSequence,
+  ) {
     final _$string = string?.reference ?? jni$_.jNullReference;
     final _$charSequence = charSequence?.reference ?? jni$_.jNullReference;
     return _putExtra$16(
@@ -7184,7 +7194,7 @@ class Intent extends jni$_.JObject {
   /// The returned object must be released after use, by calling the [release] method.
   Intent putExtra$17(
     jni$_.JString? string,
-    jni$_.JArray<jni$_.JObject?>? charSequences,
+    jni$_.JArray<charsequence$_.CharSequence?>? charSequences,
   ) {
     final _$string = string?.reference ?? jni$_.jNullReference;
     final _$charSequences = charSequences?.reference ?? jni$_.jNullReference;

@@ -15,6 +15,7 @@ export 'jni/dev/zeekr/invictus_android/content/_package.dart';
 export 'jni/dev/zeekr/invictus_android/net/_package.dart';
 export 'jni/dev/zeekr/invictus_android/net/ethernet/_package.dart';
 export 'jni/dev/zeekr/invictus_android/net/util/_package.dart';
+export 'jni/dev/zeekr/invictus_android/net/wifi/_package.dart';
 export 'jni/dev/zeekr/invictus_android/os/_package.dart';
 export 'jni/java/io/_package.dart';
 export 'jni/java/lang/_package.dart';
@@ -30,7 +31,7 @@ extension Invictus$intX on int {
 }
 
 extension Invictus$JIntegerX on JInteger {
-  int get impl => intValue();
+  int get impl => intValue(releaseOriginal: true);
 }
 
 extension Invictus$StringX on String {
@@ -38,7 +39,7 @@ extension Invictus$StringX on String {
 }
 
 extension Invictus$JStringX on JString {
-  String get impl => toDartString();
+  String get impl => toDartString(releaseOriginal: true);
 }
 
 extension Invictus$Uint8ListX on Uint8List {
@@ -46,7 +47,11 @@ extension Invictus$Uint8ListX on Uint8List {
 }
 
 extension Invictus$JByteArrayX on JByteArray {
-  Uint8List get impl => JByteBuffer.wrap(this).asUint8List();
+  Uint8List get impl => JByteBuffer.wrap(this).impl;
+}
+
+extension Invictus$JByteBufferX on JByteBuffer {
+  Uint8List get impl => asUint8List();
 }
 
 extension InvictusJContextX on Context {

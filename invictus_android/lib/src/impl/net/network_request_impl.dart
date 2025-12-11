@@ -2,7 +2,9 @@ import 'package:invictus_android/src/api.dart';
 import 'package:invictus_android/src/impl.dart';
 import 'package:invictus_android/src/jni.dart' as jni;
 
-final class NetworkRequestImpl implements NetworkRequest {
+final class NetworkRequestImpl extends InvictusObjectImpl
+    implements NetworkRequest {
+  @override
   final jni.NetworkRequest api;
 
   NetworkRequestImpl.internal(this.api);

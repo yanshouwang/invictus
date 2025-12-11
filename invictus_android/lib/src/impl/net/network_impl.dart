@@ -2,7 +2,8 @@ import 'package:invictus_android/src/api.dart';
 import 'package:invictus_android/src/impl.dart';
 import 'package:invictus_android/src/jni.dart' as jni;
 
-final class NetworkImpl implements Network {
+final class NetworkImpl extends InvictusObjectImpl implements Network {
+  @override
   final jni.Network api;
 
   NetworkImpl.internal(this.api);

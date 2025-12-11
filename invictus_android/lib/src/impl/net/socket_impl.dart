@@ -1,7 +1,9 @@
 import 'package:invictus_android/src/api.dart';
+import 'package:invictus_android/src/impl.dart';
 import 'package:invictus_android/src/jni.dart' as jni;
 
-final class SocketImpl implements Socket {
+final class SocketImpl extends InvictusObjectImpl implements Socket {
+  @override
   final jni.Socket api;
 
   SocketImpl.internal(this.api);

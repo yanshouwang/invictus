@@ -36,9 +36,13 @@ import 'dart:core' show Object, String, bool, double, int;
 import 'package:jni/_internal.dart' as jni$_;
 import 'package:jni/jni.dart' as jni$_;
 
+import '../../../java/lang/CharSequence.dart' as charsequence$_;
+
 import '../MacAddress.dart' as macaddress$_;
 
 import 'MloLink.dart' as mlolink$_;
+
+import 'WifiSsid.dart' as wifissid$_;
 
 /// from: `android.net.wifi.ScanResult$InformationElement`
 class ScanResult$InformationElement extends jni$_.JObject {
@@ -620,13 +624,20 @@ class ScanResult extends jni$_.JObject {
 
   /// from: `public java.lang.CharSequence operatorFriendlyName`
   /// The returned object must be released after use, by calling the [release] method.
-  jni$_.JObject? get operatorFriendlyName =>
-      _id_operatorFriendlyName.get(this, const jni$_.$JObject$NullableType$());
+  charsequence$_.CharSequence? get operatorFriendlyName =>
+      _id_operatorFriendlyName.get(
+        this,
+        const charsequence$_.$CharSequence$NullableType$(),
+      );
 
   /// from: `public java.lang.CharSequence operatorFriendlyName`
   /// The returned object must be released after use, by calling the [release] method.
-  set operatorFriendlyName(jni$_.JObject? value) => _id_operatorFriendlyName
-      .set(this, const jni$_.$JObject$NullableType$(), value);
+  set operatorFriendlyName(charsequence$_.CharSequence? value) =>
+      _id_operatorFriendlyName.set(
+        this,
+        const charsequence$_.$CharSequence$NullableType$(),
+        value,
+      );
 
   static final _id_timestamp = _class.instanceFieldId(r'timestamp', r'J');
 
@@ -644,13 +655,18 @@ class ScanResult extends jni$_.JObject {
 
   /// from: `public java.lang.CharSequence venueName`
   /// The returned object must be released after use, by calling the [release] method.
-  jni$_.JObject? get venueName =>
-      _id_venueName.get(this, const jni$_.$JObject$NullableType$());
+  charsequence$_.CharSequence? get venueName => _id_venueName.get(
+    this,
+    const charsequence$_.$CharSequence$NullableType$(),
+  );
 
   /// from: `public java.lang.CharSequence venueName`
   /// The returned object must be released after use, by calling the [release] method.
-  set venueName(jni$_.JObject? value) =>
-      _id_venueName.set(this, const jni$_.$JObject$NullableType$(), value);
+  set venueName(charsequence$_.CharSequence? value) => _id_venueName.set(
+    this,
+    const charsequence$_.$CharSequence$NullableType$(),
+    value,
+  );
 
   static final _id_new$ = _class.constructorId(r'()V');
 
@@ -986,11 +1002,11 @@ class ScanResult extends jni$_.JObject {
 
   /// from: `public android.net.wifi.WifiSsid getWifiSsid()`
   /// The returned object must be released after use, by calling the [release] method.
-  jni$_.JObject? getWifiSsid() {
+  wifissid$_.WifiSsid? getWifiSsid() {
     return _getWifiSsid(
       reference.pointer,
       _id_getWifiSsid as jni$_.JMethodIDPtr,
-    ).object<jni$_.JObject?>(const jni$_.$JObject$NullableType$());
+    ).object<wifissid$_.WifiSsid?>(const wifissid$_.$WifiSsid$NullableType$());
   }
 
   static final _id_getWifiStandard = _class.instanceMethodId(

@@ -16,25 +16,21 @@ class ConnectivityView extends StatelessWidget {
       body: CustomScrollView(
         slivers: [
           SliverList.separated(
-            itemCount: wifiModels.length,
             itemBuilder: (context, i) {
               final model = wifiModels.values.elementAt(i);
               return _buildNetworkModel(context, model);
             },
-            separatorBuilder: (context, i) {
-              return Divider();
-            },
+            separatorBuilder: (context, i) => Divider(),
+            itemCount: wifiModels.length,
           ),
           SliverToBoxAdapter(child: Divider()),
           SliverList.separated(
-            itemCount: ethernetModels.length,
             itemBuilder: (context, i) {
               final model = ethernetModels.values.elementAt(i);
               return _buildNetworkModel(context, model);
             },
-            separatorBuilder: (context, i) {
-              return Divider();
-            },
+            separatorBuilder: (context, i) => Divider(),
+            itemCount: ethernetModels.length,
           ),
         ],
       ),

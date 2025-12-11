@@ -38,6 +38,8 @@ import 'package:jni/jni.dart' as jni$_;
 
 import '../../java/io/FileDescriptor.dart' as filedescriptor$_;
 
+import '../../java/lang/CharSequence.dart' as charsequence$_;
+
 import '../../java/util/concurrent/Executor.dart' as executor$_;
 
 import '../content/Context.dart' as context$_;
@@ -2157,11 +2159,13 @@ class Activity extends jni$_.JObject {
 
   /// from: `public final java.lang.CharSequence getTitle()`
   /// The returned object must be released after use, by calling the [release] method.
-  jni$_.JObject? getTitle() {
+  charsequence$_.CharSequence? getTitle() {
     return _getTitle(
       reference.pointer,
       _id_getTitle as jni$_.JMethodIDPtr,
-    ).object<jni$_.JObject?>(const jni$_.$JObject$NullableType$());
+    ).object<charsequence$_.CharSequence?>(
+      const charsequence$_.$CharSequence$NullableType$(),
+    );
   }
 
   static final _id_getTitleColor = _class.instanceMethodId(
@@ -3388,11 +3392,13 @@ class Activity extends jni$_.JObject {
 
   /// from: `public java.lang.CharSequence onCreateDescription()`
   /// The returned object must be released after use, by calling the [release] method.
-  jni$_.JObject? onCreateDescription() {
+  charsequence$_.CharSequence? onCreateDescription() {
     return _onCreateDescription(
       reference.pointer,
       _id_onCreateDescription as jni$_.JMethodIDPtr,
-    ).object<jni$_.JObject?>(const jni$_.$JObject$NullableType$());
+    ).object<charsequence$_.CharSequence?>(
+      const charsequence$_.$CharSequence$NullableType$(),
+    );
   }
 
   static final _id_onCreateNavigateUpTaskStack = _class.instanceMethodId(
@@ -7514,7 +7520,7 @@ class Activity extends jni$_.JObject {
           >();
 
   /// from: `public void setTitle(java.lang.CharSequence charSequence)`
-  void setTitle$1(jni$_.JObject? charSequence) {
+  void setTitle$1(charsequence$_.CharSequence? charSequence) {
     final _$charSequence = charSequence?.reference ?? jni$_.jNullReference;
     _setTitle$1(
       reference.pointer,

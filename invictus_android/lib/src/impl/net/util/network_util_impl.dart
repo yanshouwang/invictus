@@ -2,7 +2,7 @@ import 'package:invictus_android/src/api.dart';
 import 'package:invictus_android/src/impl.dart';
 import 'package:invictus_android/src/jni.dart' as jni;
 
-final class NetworkUtilImpl implements NetworkUtil {
+final class NetworkUtilImpl extends InvictusObjectImpl implements NetworkUtil {
   static Inet4Address intToInetAddress(int hostAddress) =>
       jni.InvictusNetworkUtil.INSTANCE.intToInetAddress(hostAddress).impl;
 
@@ -18,6 +18,7 @@ final class NetworkUtilImpl implements NetworkUtil {
   static int netmaskToPrefixLength(Inet4Address netmask) =>
       jni.InvictusNetworkUtil.INSTANCE.netmaskToPrefixLength(netmask.api);
 
+  @override
   final jni.InvictusNetworkUtil api;
 
   NetworkUtilImpl.internal(this.api);

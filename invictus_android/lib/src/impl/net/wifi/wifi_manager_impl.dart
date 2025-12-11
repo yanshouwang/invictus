@@ -6,6 +6,7 @@ import 'package:logging/logging.dart';
 Logger get _logger => Logger('WifiManager');
 
 abstract base class WifiManager$WifiStateChangedListenerImpl
+    extends InvictusObjectImpl
     implements WifiManager$WifiStateChangedListener {
   WifiManager$WifiStateChangedListenerImpl.impl();
 
@@ -24,6 +25,7 @@ abstract base class WifiManager$WifiStateChangedListenerImpl
 
 final class WifiManager$WifiStateChangedListenerImpl0
     extends WifiManager$WifiStateChangedListenerImpl {
+  @override
   final jni.BroadcastReceiver api;
 
   WifiManager$WifiStateChangedListenerImpl0.internal(this.api) : super.impl();
@@ -52,6 +54,7 @@ final class WifiManager$WifiStateChangedListenerImpl0
 
 final class WifiManager$WifiStateChangedListenerImpl36
     extends WifiManager$WifiStateChangedListenerImpl {
+  @override
   final jni.WifiManager$WifiStateChangedListener api;
 
   WifiManager$WifiStateChangedListenerImpl36.internal(this.api) : super.impl();
@@ -68,7 +71,31 @@ final class WifiManager$WifiStateChangedListenerImpl36
   }
 }
 
-final class WifiManagerImpl implements WifiManager {
+final class WifiManager$ScanResultsCallbackImpl extends InvictusObjectImpl
+    implements WifiManager$ScanResultsCallback {
+  @override
+  final jni.WifiManager$ScanResultsCallback api;
+
+  WifiManager$ScanResultsCallbackImpl.internal(this.api);
+
+  factory WifiManager$ScanResultsCallbackImpl({
+    required void Function() onScanResultsAvailable,
+  }) {
+    final invictusApi =
+        jni.InvictusWifiManager$InvictusScanResultsCallback.implement(
+          jni.$InvictusWifiManager$InvictusScanResultsCallback(
+            onScanResultsAvailable: onScanResultsAvailable,
+          ),
+        );
+    final api = jni.InvictusWifiManager$InvictusScanResultsCallbackImpl(
+      invictusApi,
+    );
+    return WifiManager$ScanResultsCallbackImpl.internal(api);
+  }
+}
+
+final class WifiManagerImpl extends InvictusObjectImpl implements WifiManager {
+  @override
   final jni.WifiManager api;
 
   WifiManagerImpl.internal(this.api);
@@ -117,6 +144,16 @@ final class WifiManagerImpl implements WifiManager {
   bool get isWifiEnabled => api.isWifiEnabled();
 
   @override
+  List<ScanResult> get scanResults {
+    final scanResultsApiOrNull = api.getScanResults();
+    final scanResultsApi = ArgumentError.checkNotNull(
+      scanResultsApiOrNull,
+      'scanResultsApi',
+    );
+    return scanResultsApi.nonNulls.map((e) => e.impl).toList();
+  }
+
+  @override
   WifiManager$WifiState get wifiState =>
       api.getWifiState().wifiManager$WifiStateImpl;
 
@@ -139,6 +176,9 @@ final class WifiManagerImpl implements WifiManager {
         );
 
   @override
+  int calculateSignalLevel(int rssi) => api.calculateSignalLevel(rssi);
+
+  @override
   bool disableNetwork(int netId) => api.disableNetwork(netId);
 
   @override
@@ -153,6 +193,10 @@ final class WifiManagerImpl implements WifiManager {
 
   @override
   bool reconnect() => api.reconnect();
+
+  @override
+  void registerScanResultsCallback(WifiManager$ScanResultsCallback callback) =>
+      api.registerScanResultsCallback(jni.context.mainExecutor, callback.api);
 
   @override
   bool removeNetwork(int netId) => api.removeNetwork(netId);
@@ -173,6 +217,14 @@ final class WifiManagerImpl implements WifiManager {
 
   @override
   bool setWifiEnabled(bool enabled) => api.setWifiEnabled(enabled);
+
+  @override
+  bool startScan() => api.startScan();
+
+  @override
+  void unregisterScanResultsCallback(
+    WifiManager$ScanResultsCallback callback,
+  ) => api.unregisterScanResultsCallback(callback.api);
 
   @override
   int updateNetwork(WifiConfiguration config) => api.updateNetwork(config.api);
@@ -209,6 +261,15 @@ extension Invictus$WifiManager$WifiStateChangedListenerX
   jni.WifiManager$WifiStateChangedListener get api36 {
     final impl = this;
     if (impl is! WifiManager$WifiStateChangedListenerImpl36) throw TypeError();
+    return impl.api;
+  }
+}
+
+extension Invictus$WifiManager$ScanResultsCallbackX
+    on WifiManager$ScanResultsCallback {
+  jni.WifiManager$ScanResultsCallback get api {
+    final impl = this;
+    if (impl is! WifiManager$ScanResultsCallbackImpl) throw TypeError();
     return impl.api;
   }
 }

@@ -2,7 +2,8 @@ import 'package:invictus_android/src/api.dart';
 import 'package:invictus_android/src/impl.dart';
 import 'package:invictus_android/src/jni.dart' as jni;
 
-final class Inet4AddressUtilImpl implements Inet4AddressUtil {
+final class Inet4AddressUtilImpl extends InvictusObjectImpl
+    implements Inet4AddressUtil {
   static Inet4Address intToInet4AddressHTL(int hostAddress) => jni
       .InvictusInet4AddressUtil
       .INSTANCE
@@ -53,6 +54,7 @@ final class Inet4AddressUtilImpl implements Inet4AddressUtil {
   static String? trimAddressZeros(String? addr) =>
       jni.InvictusInet4AddressUtil.INSTANCE.trimAddressZeros(addr?.api)?.impl;
 
+  @override
   final jni.InvictusInet4AddressUtil api;
 
   Inet4AddressUtilImpl.internal(this.api);

@@ -2,8 +2,10 @@ import 'package:invictus_android/src/api.dart';
 import 'package:invictus_android/src/impl.dart';
 import 'package:invictus_android/src/jni.dart' as jni;
 
-abstract base class TransportInfoImpl implements TransportInfo {
+abstract base class TransportInfoImpl extends InvictusObjectImpl
+    implements TransportInfo {
   // jni.TransportInfo get api;
+  @override
   jni.JObject get api;
 }
 

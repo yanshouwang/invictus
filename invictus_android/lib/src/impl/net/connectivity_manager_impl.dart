@@ -4,8 +4,9 @@ import 'package:invictus_android/src/api.dart';
 import 'package:invictus_android/src/impl.dart';
 import 'package:invictus_android/src/jni.dart' as jni;
 
-final class ConnectivityManager$NetworkCallbackImpl
+final class ConnectivityManager$NetworkCallbackImpl extends InvictusObjectImpl
     implements ConnectivityManager$NetworkCallback {
+  @override
   final jni.ConnectivityManager$NetworkCallback api;
 
   ConnectivityManager$NetworkCallbackImpl.internal(this.api);
@@ -52,7 +53,9 @@ final class ConnectivityManager$NetworkCallbackImpl
 }
 
 final class ConnectivityManager$OnNetworkActiveListenerImpl
+    extends InvictusObjectImpl
     implements ConnectivityManager$OnNetworkActiveListener {
+  @override
   final jni.ConnectivityManager$OnNetworkActiveListener api;
 
   ConnectivityManager$OnNetworkActiveListenerImpl.internal(this.api);
@@ -69,7 +72,8 @@ final class ConnectivityManager$OnNetworkActiveListenerImpl
   }
 }
 
-final class ConnectivityManagerImpl implements ConnectivityManager {
+final class ConnectivityManagerImpl extends InvictusObjectImpl
+    implements ConnectivityManager {
   static bool isNetworkTypeValid(ConnectivityManager$Type networkType) =>
       jni.ConnectivityManager.isNetworkTypeValid(networkType.api);
 
@@ -79,6 +83,7 @@ final class ConnectivityManagerImpl implements ConnectivityManager {
   static bool setProcessDefaultNetwork(Network? network) =>
       jni.ConnectivityManager.setProcessDefaultNetwork(network?.api);
 
+  @override
   final jni.ConnectivityManager api;
 
   ConnectivityManagerImpl.internal(this.api);

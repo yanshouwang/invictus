@@ -6,3 +6,4 @@ export 'wifi/supplicant_state.dart';
 export 'wifi/wifi_configuration.dart';
 export 'wifi/wifi_info.dart';
 export 'wifi/wifi_manager.dart';
+export 'wifi/wifi_ssid.dart';

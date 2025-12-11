@@ -50,6 +50,8 @@ import 'WifiConfiguration.dart' as wificonfiguration$_;
 
 import 'WifiInfo.dart' as wifiinfo$_;
 
+import 'WifiSsid.dart' as wifissid$_;
+
 /// from: `android.net.wifi.WifiManager$AddNetworkResult`
 class WifiManager$AddNetworkResult extends jni$_.JObject {
   @jni$_.internal
@@ -6508,7 +6510,7 @@ class WifiManager extends jni$_.JObject {
           >();
 
   /// from: `public void removePerSsidRoamingMode(android.net.wifi.WifiSsid wifiSsid)`
-  void removePerSsidRoamingMode(jni$_.JObject wifiSsid) {
+  void removePerSsidRoamingMode(wifissid$_.WifiSsid wifiSsid) {
     final _$wifiSsid = wifiSsid.reference;
     _removePerSsidRoamingMode(
       reference.pointer,
@@ -6734,7 +6736,7 @@ class WifiManager extends jni$_.JObject {
           >();
 
   /// from: `public void setPerSsidRoamingMode(android.net.wifi.WifiSsid wifiSsid, int i)`
-  void setPerSsidRoamingMode(jni$_.JObject wifiSsid, int i) {
+  void setPerSsidRoamingMode(wifissid$_.WifiSsid wifiSsid, int i) {
     final _$wifiSsid = wifiSsid.reference;
     _setPerSsidRoamingMode(
       reference.pointer,

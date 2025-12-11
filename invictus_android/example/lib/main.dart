@@ -65,17 +65,17 @@ class _MyAppState extends State<MyApp> {
               ),
             ),
             GoRoute(
-              path: 'connectivity',
-              builder: (context, state) => ViewModelBinding(
-                viewBuilder: () => ConnectivityView(),
-                viewModelBuilder: () => ConnectivityViewModel(),
-              ),
-            ),
-            GoRoute(
               path: 'ethernet',
               builder: (context, state) => ViewModelBinding(
                 viewBuilder: () => EthernetView(),
                 viewModelBuilder: () => EthernetViewModel(),
+              ),
+            ),
+            GoRoute(
+              path: 'wifi',
+              builder: (context, state) => ViewModelBinding(
+                viewBuilder: () => WifiView(),
+                viewModelBuilder: () => WifiViewModel(),
               ),
             ),
           ],

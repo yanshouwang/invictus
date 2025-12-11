@@ -1,12 +1,15 @@
 import 'package:invictus_android/src/api.dart';
+import 'package:invictus_android/src/impl.dart';
 import 'package:invictus_android/src/jni.dart' as jni;
 
-final class Build$PartitionImpl implements Build$Partition {
+final class Build$PartitionImpl extends InvictusObjectImpl
+    implements Build$Partition {
   static String get partitionNameSystem => ArgumentError.checkNotNull(
     jni.Build$Partition.PARTITION_NAME_SYSTEM,
     'PARTITION_NAME_SYSTEM',
   ).impl;
 
+  @override
   final jni.Build$Partition api;
 
   Build$PartitionImpl.internal(this.api);
@@ -21,7 +24,8 @@ final class Build$PartitionImpl implements Build$Partition {
   String get name => api.getName().impl;
 }
 
-final class Build$VersionImpl implements Build$Version {
+final class Build$VersionImpl extends InvictusObjectImpl
+    implements Build$Version {
   static String get baseOs =>
       ArgumentError.checkNotNull(jni.Build$VERSION.BASE_OS, 'BASE_OS').impl;
 
@@ -47,7 +51,6 @@ final class Build$VersionImpl implements Build$Version {
   static String get releaseOrPreviewDisplay =>
       jni.Build$VERSION.RELEASE_OR_PREVIEW_DISPLAY.impl;
 
-  @Deprecated('Use SDK_INT to easily get this as an integer.')
   static String get sdk =>
       ArgumentError.checkNotNull(jni.Build$VERSION.SDK, 'SDK').impl;
 
@@ -60,12 +63,14 @@ final class Build$VersionImpl implements Build$Version {
     'SECURITY_PATCH',
   ).impl;
 
+  @override
   final jni.Build$VERSION api;
 
   Build$VersionImpl.internal(this.api);
 }
 
-final class Build$VersionCodesImpl implements Build$VersionCodes {
+final class Build$VersionCodesImpl extends InvictusObjectImpl
+    implements Build$VersionCodes {
   static int get baklava => jni.Build$VERSION_CODES.BAKLAVA;
 
   static int get base => jni.Build$VERSION_CODES.BASE;
@@ -141,12 +146,14 @@ final class Build$VersionCodesImpl implements Build$VersionCodes {
 
   static int get vanillaIceCream => jni.Build$VERSION_CODES.VANILLA_ICE_CREAM;
 
+  @override
   final jni.Build$VERSION_CODES api;
 
   Build$VersionCodesImpl.internal(this.api);
 }
 
-final class Build$VersionCodesFullImpl implements Build$VersionCodesFull {
+final class Build$VersionCodesFullImpl extends InvictusObjectImpl
+    implements Build$VersionCodesFull {
   static int get baklava => jni.Build$VERSION_CODES_FULL.BAKLAVA;
 
   // TODO: baklava_1
@@ -226,12 +233,13 @@ final class Build$VersionCodesFullImpl implements Build$VersionCodesFull {
   static int get vanillaIceCream =>
       jni.Build$VERSION_CODES_FULL.VANILLA_ICE_CREAM;
 
+  @override
   final jni.Build$VERSION_CODES_FULL api;
 
   Build$VersionCodesFullImpl.internal(this.api);
 }
 
-final class BuildImpl implements Build {
+final class BuildImpl extends InvictusObjectImpl implements Build {
   static String get board =>
       ArgumentError.checkNotNull(jni.Build.BOARD, 'BOARD').impl;
 
@@ -241,11 +249,9 @@ final class BuildImpl implements Build {
   static String get brand =>
       ArgumentError.checkNotNull(jni.Build.BRAND, 'BRAND').impl;
 
-  @Deprecated('Use SUPPORTED_ABIS instead.')
   static String get cpuAbi =>
       ArgumentError.checkNotNull(jni.Build.CPU_ABI, 'CPU_ABI').impl;
 
-  @Deprecated('Use SUPPORTED_ABIS instead.')
   static String get cpuAbi2 =>
       ArgumentError.checkNotNull(jni.Build.CPU_ABI2, 'CPU_ABI2').impl;
 
@@ -282,9 +288,6 @@ final class BuildImpl implements Build {
   static String get product =>
       ArgumentError.checkNotNull(jni.Build.PRODUCT, 'PRODUCT').impl;
 
-  @Deprecated(
-    'The radio firmware version is frequently not available when this class is initialized, leading to a blank or "unknown" value for this string. Use getRadioVersion instead.',
-  )
   static String get radio =>
       ArgumentError.checkNotNull(jni.Build.RADIO, 'RADIO').impl;
 
@@ -341,6 +344,7 @@ final class BuildImpl implements Build {
   static int getMinorSdkVersion(int sdkIntFull) =>
       jni.Build.getMinorSdkVersion(sdkIntFull);
 
+  @override
   final jni.Build api;
 
   BuildImpl.internal(this.api);

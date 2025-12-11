@@ -4,7 +4,8 @@ import 'package:invictus_android/src/api.dart';
 import 'package:invictus_android/src/impl.dart';
 import 'package:invictus_android/src/jni.dart' as jni;
 
-abstract base class InetAddressImpl implements InetAddress {
+abstract base class InetAddressImpl extends InvictusObjectImpl
+    implements InetAddress {
   static List<InetAddress> getAllByName(String? host) {
     final allApiOrNull = jni.InetAddress.getAllByName(host?.api);
     final allApi = ArgumentError.checkNotNull(allApiOrNull, 'allApi');
@@ -37,6 +38,7 @@ abstract base class InetAddressImpl implements InetAddress {
     return api.impl;
   }
 
+  @override
   jni.InetAddress get api;
 
   @override

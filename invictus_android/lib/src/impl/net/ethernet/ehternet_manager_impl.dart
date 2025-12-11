@@ -2,7 +2,9 @@ import 'package:invictus_android/src/api.dart';
 import 'package:invictus_android/src/impl.dart';
 import 'package:invictus_android/src/jni.dart' as jni;
 
-final class EthernetManager$ListenerImpl implements EthernetManager$Listener {
+final class EthernetManager$ListenerImpl extends InvictusObjectImpl
+    implements EthernetManager$Listener {
+  @override
   final jni.EthernetManager$Listener api;
 
   EthernetManager$ListenerImpl.internal(this.api);
@@ -23,7 +25,9 @@ final class EthernetManager$ListenerImpl implements EthernetManager$Listener {
   }
 }
 
-final class EthernetManagerImpl implements EthernetManager {
+final class EthernetManagerImpl extends InvictusObjectImpl
+    implements EthernetManager {
+  @override
   final jni.EthernetManager api;
 
   EthernetManagerImpl.internal(this.api);

@@ -2,7 +2,8 @@ import 'package:invictus_android/src/api.dart';
 import 'package:invictus_android/src/impl.dart';
 import 'package:invictus_android/src/jni.dart' as jni;
 
-final class RouteInfoImpl implements RouteInfo {
+final class RouteInfoImpl extends InvictusObjectImpl implements RouteInfo {
+  @override
   final jni.RouteInfo api;
 
   RouteInfoImpl.internal(this.api);
@@ -34,11 +35,11 @@ extension Invictus$JRouteInfo$intX on int {
     final api = this;
     switch (api) {
       case jni.RouteInfo.RTN_UNICAST:
-        return RouteInfo$RTN.rtnUnicast;
+        return RouteInfo$RTN.unicast;
       case jni.RouteInfo.RTN_UNREACHABLE:
-        return RouteInfo$RTN.rtnUnreachable;
+        return RouteInfo$RTN.unreachable;
       case jni.RouteInfo.RTN_THROW:
-        return RouteInfo$RTN.rtnThrow;
+        return RouteInfo$RTN.$throw;
       default:
         throw ArgumentError.value(api, 'api');
     }

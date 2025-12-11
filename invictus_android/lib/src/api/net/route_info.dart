@@ -1,6 +1,6 @@
 import 'package:invictus_android/src/api.dart';
 
-enum RouteInfo$RTN { rtnUnicast, rtnUnreachable, rtnThrow }
+enum RouteInfo$RTN { unicast, unreachable, $throw }
 
 abstract interface class RouteInfo {
   IpPrefix get destination;

@@ -1,25 +1,22 @@
 import 'package:clover/clover.dart';
 import 'package:invictus_android/invictus_android.dart';
-import 'package:logging/logging.dart';
-
-Logger get _logger => Logger('WifiViewModel');
 
 class WifiViewModel extends ViewModel {
   final WifiManager _wifiManager;
-  WifiManager$WifiState _wifiState;
-  WifiInfo? _connectionInfo;
-  DhcpInfo? _dhcpInfo;
+  late WifiManager$WifiState _wifiState;
+  late WifiInfo _connectionInfo;
+  late DhcpInfo _dhcpInfo;
+  late List<ScanResult> _scanResults;
 
   late final WifiManager$WifiStateChangedListener _wifiStateChangedListener;
   late final WifiManager$ScanResultsCallback _scanResultsCallback;
 
   WifiManager$WifiState get wifiState => _wifiState;
-  WifiInfo? get connectionInfo => _connectionInfo;
-  DhcpInfo? get dhcpInfo => _dhcpInfo;
+  WifiInfo get connectionInfo => _connectionInfo;
+  DhcpInfo get dhcpInfo => _dhcpInfo;
+  List<ScanResult> get scanResults => _scanResults;
 
-  WifiViewModel()
-    : _wifiManager = WifiManager(),
-      _wifiState = WifiManager$WifiState.unknown {
+  WifiViewModel() : _wifiManager = WifiManager() {
     _initialize();
   }
 
@@ -27,6 +24,7 @@ class WifiViewModel extends ViewModel {
     _wifiState = _wifiManager.wifiState;
     _connectionInfo = _wifiManager.connectionInfo;
     _dhcpInfo = _wifiManager.dhcpInfo;
+    _scanResults = _wifiManager.scanResults;
     notifyListeners();
     _wifiStateChangedListener = WifiManager$WifiStateChangedListener(
       onWifiStateChanged: () {
@@ -37,17 +35,11 @@ class WifiViewModel extends ViewModel {
     _wifiManager.addWifiStateChangedListener(_wifiStateChangedListener);
     _scanResultsCallback = WifiManager$ScanResultsCallback(
       onScanResultsAvailable: () {
-        final scanResults = _wifiManager.scanResults;
-        _logger.info('scanResults: $scanResults');
-        final first = scanResults.firstOrNull;
-        if (first == null) return;
-        _logger.info(
-          'first: ${first.wifiSsid}, ${first.ssid} ${first.operatorFriendlyName}, ${first.venueName}',
-        );
+        _scanResults = _wifiManager.scanResults;
+        notifyListeners();
       },
     );
     _wifiManager.registerScanResultsCallback(_scanResultsCallback);
-    startScan();
   }
 
   void startScan() {

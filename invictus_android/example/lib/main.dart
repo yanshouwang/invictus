@@ -4,6 +4,7 @@ import 'dart:developer';
 import 'package:clover/clover.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:invictus_android_example/view_models.dart';
 import 'package:invictus_android_example/views.dart';
 import 'package:logging/logging.dart';
@@ -89,6 +90,8 @@ class _MyAppState extends State<MyApp> {
     return MaterialApp.router(
       routerConfig: _routerConfig,
       theme: ThemeData.light().copyWith(
+        textTheme: GoogleFonts.josefinSansTextTheme(),
+        dividerTheme: DividerThemeData(space: 1.0, thickness: 1.0),
         inputDecorationTheme: InputDecorationThemeData(
           border: OutlineInputBorder(),
         ),

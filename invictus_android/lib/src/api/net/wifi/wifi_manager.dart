@@ -32,12 +32,10 @@ abstract interface class WifiManager {
     'a) See WifiNetworkSpecifier.Builder.build() for new mechanism to trigger connection to a Wi-Fi network. b) See addNetworkSuggestions(java.util.List), removeNetworkSuggestions(java.util.List) for new API to add Wi-Fi networks for consideration when auto-connecting to wifi. Compatibility Note: For applications targeting android.os.Build.VERSION_CODES#Q or above, this API will always fail and return an empty list.',
   )
   List<WifiConfiguration> get configuredNetworks;
-  // TODO: Nullable?
   @Deprecated(
     'Starting with Build.VERSION_CODES.S, WifiInfo retrieval is moved to ConnectivityManager API surface. WifiInfo is attached in NetworkCapabilities.getTransportInfo() which is available via callback in NetworkCallback.onCapabilitiesChanged(Network, NetworkCapabilities) or on-demand from ConnectivityManager.getNetworkCapabilities(Network).',
   )
   WifiInfo get connectionInfo;
-  // TODO: Nullable?
   @Deprecated(
     'Use the methods on android.net.LinkProperties which can be obtained either via NetworkCallback.onLinkPropertiesChanged(Network, LinkProperties) or ConnectivityManager.getLinkProperties(Network).',
   )

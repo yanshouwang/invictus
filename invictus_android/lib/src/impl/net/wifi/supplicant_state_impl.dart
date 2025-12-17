@@ -1,8 +1,9 @@
-import 'package:invictus_android/src/api.dart';
 import 'package:invictus_android/src/jni.dart' as jni;
+import 'package:invictus_api/invictus_api.dart';
 
-final class SupplicantStateImpl {
-  static bool isValidState(SupplicantState state) =>
+final class SupplicantStateChannelImpl extends SupplicantStateChannel {
+  @override
+  bool isValidState(SupplicantState state) =>
       jni.SupplicantState.isValidState(state.api);
 }
 

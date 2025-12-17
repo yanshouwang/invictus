@@ -1,8 +1,8 @@
 import 'dart:typed_data';
 
-import 'package:invictus_android/src/api.dart';
 import 'package:invictus_android/src/impl.dart';
 import 'package:invictus_android/src/jni.dart' as jni;
+import 'package:invictus_api/invictus_api.dart';
 
 final class WifiSsidImpl extends InvictusObjectImpl implements WifiSsid {
   @override
@@ -10,13 +10,16 @@ final class WifiSsidImpl extends InvictusObjectImpl implements WifiSsid {
 
   WifiSsidImpl.internal(this.api);
 
-  factory WifiSsidImpl.fromBytes(Uint8List bytes) {
+  @override
+  Uint8List get bytes => api.getBytes().impl;
+}
+
+final class WifiSsidChannelImpl extends WifiSsidChannel {
+  @override
+  WifiSsid createFromBytes(Uint8List bytes) {
     final api = jni.WifiSsid.fromBytes(bytes.api);
     return WifiSsidImpl.internal(api);
   }
-
-  @override
-  Uint8List get bytes => api.getBytes().impl;
 }
 
 extension Invictus$JWifiSsidX on jni.WifiSsid {

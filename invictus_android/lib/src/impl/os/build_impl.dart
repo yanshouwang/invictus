@@ -1,14 +1,9 @@
-import 'package:invictus_android/src/api.dart';
-import 'package:invictus_android/src/impl.dart';
+import 'package:invictus_android/src/impl/invictus_object_impl.dart';
 import 'package:invictus_android/src/jni.dart' as jni;
+import 'package:invictus_api/invictus_api.dart';
 
 final class Build$PartitionImpl extends InvictusObjectImpl
     implements Build$Partition {
-  static String get partitionNameSystem => ArgumentError.checkNotNull(
-    jni.Build$Partition.PARTITION_NAME_SYSTEM,
-    'PARTITION_NAME_SYSTEM',
-  ).impl;
-
   @override
   final jni.Build$Partition api;
 
@@ -24,276 +19,361 @@ final class Build$PartitionImpl extends InvictusObjectImpl
   String get name => api.getName().impl;
 }
 
-final class Build$VersionImpl extends InvictusObjectImpl
-    implements Build$Version {
-  static String get baseOs =>
+final class Build$PartitionChannelImpl extends Build$PartitionChannel {
+  @override
+  String get partitionNameSystem => ArgumentError.checkNotNull(
+    jni.Build$Partition.PARTITION_NAME_SYSTEM,
+    'PARTITION_NAME_SYSTEM',
+  ).impl;
+}
+
+final class Build$VersionChannelImpl extends Build$VersionChannel {
+  @override
+  String get baseOs =>
       ArgumentError.checkNotNull(jni.Build$VERSION.BASE_OS, 'BASE_OS').impl;
 
-  static String get codename =>
+  @override
+  String get codename =>
       ArgumentError.checkNotNull(jni.Build$VERSION.CODENAME, 'CODENAME').impl;
 
-  static String get incremental => ArgumentError.checkNotNull(
+  @override
+  String get incremental => ArgumentError.checkNotNull(
     jni.Build$VERSION.INCREMENTAL,
     'INCREMENTAL',
   ).impl;
 
-  static int get mediaPerformanceClass =>
-      jni.Build$VERSION.MEDIA_PERFORMANCE_CLASS;
+  @override
+  int get mediaPerformanceClass => jni.Build$VERSION.MEDIA_PERFORMANCE_CLASS;
 
-  static int get previewSdkInt => jni.Build$VERSION.PREVIEW_SDK_INT;
+  @override
+  int get previewSdkInt => jni.Build$VERSION.PREVIEW_SDK_INT;
 
-  static String get release =>
+  @override
+  String get release =>
       ArgumentError.checkNotNull(jni.Build$VERSION.RELEASE, 'RELEASE').impl;
 
-  static String get releaseOrCodename =>
-      jni.Build$VERSION.RELEASE_OR_CODENAME.impl;
+  @override
+  String get releaseOrCodename => jni.Build$VERSION.RELEASE_OR_CODENAME.impl;
 
-  static String get releaseOrPreviewDisplay =>
+  @override
+  String get releaseOrPreviewDisplay =>
       jni.Build$VERSION.RELEASE_OR_PREVIEW_DISPLAY.impl;
 
-  static String get sdk =>
+  @override
+  String get sdk =>
       ArgumentError.checkNotNull(jni.Build$VERSION.SDK, 'SDK').impl;
 
-  static int get sdkInt => jni.Build$VERSION.SDK_INT;
+  @override
+  int get sdkInt => jni.Build$VERSION.SDK_INT;
 
-  static int get sdkIntFull => jni.Build$VERSION.SDK_INT_FULL;
+  @override
+  int get sdkIntFull => jni.Build$VERSION.SDK_INT_FULL;
 
-  static String get securityPatch => ArgumentError.checkNotNull(
+  @override
+  String get securityPatch => ArgumentError.checkNotNull(
     jni.Build$VERSION.SECURITY_PATCH,
     'SECURITY_PATCH',
   ).impl;
-
-  @override
-  final jni.Build$VERSION api;
-
-  Build$VersionImpl.internal(this.api);
 }
 
-final class Build$VersionCodesImpl extends InvictusObjectImpl
-    implements Build$VersionCodes {
-  static int get baklava => jni.Build$VERSION_CODES.BAKLAVA;
-
-  static int get base => jni.Build$VERSION_CODES.BASE;
-
-  static int get base_1_1 => jni.Build$VERSION_CODES.BASE_1_1;
-
-  static int get cupcake => jni.Build$VERSION_CODES.CUPCAKE;
-
-  static int get curDevelopment => jni.Build$VERSION_CODES.CUR_DEVELOPMENT;
-
-  static int get donut => jni.Build$VERSION_CODES.DONUT;
-
-  static int get eclair => jni.Build$VERSION_CODES.ECLAIR;
-
-  static int get eclair_0_1 => jni.Build$VERSION_CODES.ECLAIR_0_1;
-
-  static int get eclairMr1 => jni.Build$VERSION_CODES.ECLAIR_MR1;
-
-  static int get froyo => jni.Build$VERSION_CODES.FROYO;
-
-  static int get gingerbread => jni.Build$VERSION_CODES.GINGERBREAD;
-
-  static int get gingerbreadMr1 => jni.Build$VERSION_CODES.GINGERBREAD_MR1;
-
-  static int get honeycomb => jni.Build$VERSION_CODES.HONEYCOMB;
-
-  static int get honeycombMr1 => jni.Build$VERSION_CODES.HONEYCOMB_MR1;
-
-  static int get honeycombMr2 => jni.Build$VERSION_CODES.HONEYCOMB_MR2;
-
-  static int get iceCreamSandwich => jni.Build$VERSION_CODES.ICE_CREAM_SANDWICH;
-
-  static int get iceCreamSandwichMr1 =>
-      jni.Build$VERSION_CODES.ICE_CREAM_SANDWICH_MR1;
-
-  static int get jellyBean => jni.Build$VERSION_CODES.JELLY_BEAN;
-
-  static int get jellyBeanMr1 => jni.Build$VERSION_CODES.JELLY_BEAN_MR1;
-
-  static int get jellyBeanMr2 => jni.Build$VERSION_CODES.JELLY_BEAN_MR2;
-
-  static int get kitkat => jni.Build$VERSION_CODES.KITKAT;
-
-  static int get kitkatWatch => jni.Build$VERSION_CODES.KITKAT_WATCH;
-
-  static int get lollipop => jni.Build$VERSION_CODES.LOLLIPOP;
-
-  static int get lollipopMr1 => jni.Build$VERSION_CODES.LOLLIPOP_MR1;
-
-  static int get m => jni.Build$VERSION_CODES.M;
-
-  static int get n => jni.Build$VERSION_CODES.N;
-
-  static int get nMr1 => jni.Build$VERSION_CODES.N_MR1;
-
-  static int get o => jni.Build$VERSION_CODES.O;
-
-  static int get oMr1 => jni.Build$VERSION_CODES.O_MR1;
-
-  static int get p => jni.Build$VERSION_CODES.P;
-
-  static int get q => jni.Build$VERSION_CODES.Q;
-
-  static int get r => jni.Build$VERSION_CODES.R;
-
-  static int get s => jni.Build$VERSION_CODES.S;
-
-  static int get sV2 => jni.Build$VERSION_CODES.S_V2;
-
-  static int get tiramisu => jni.Build$VERSION_CODES.TIRAMISU;
-
-  static int get upsideDownCake => jni.Build$VERSION_CODES.UPSIDE_DOWN_CAKE;
-
-  static int get vanillaIceCream => jni.Build$VERSION_CODES.VANILLA_ICE_CREAM;
+final class Build$VersionCodesChannelImpl extends Build$VersionCodesChannel {
+  @override
+  int get baklava => jni.Build$VERSION_CODES.BAKLAVA;
 
   @override
-  final jni.Build$VERSION_CODES api;
+  int get base => jni.Build$VERSION_CODES.BASE;
 
-  Build$VersionCodesImpl.internal(this.api);
+  @override
+  int get base_1_1 => jni.Build$VERSION_CODES.BASE_1_1;
+
+  @override
+  int get cupcake => jni.Build$VERSION_CODES.CUPCAKE;
+
+  @override
+  int get curDevelopment => jni.Build$VERSION_CODES.CUR_DEVELOPMENT;
+
+  @override
+  int get donut => jni.Build$VERSION_CODES.DONUT;
+
+  @override
+  int get eclair => jni.Build$VERSION_CODES.ECLAIR;
+
+  @override
+  int get eclair_0_1 => jni.Build$VERSION_CODES.ECLAIR_0_1;
+
+  @override
+  int get eclairMr1 => jni.Build$VERSION_CODES.ECLAIR_MR1;
+
+  @override
+  int get froyo => jni.Build$VERSION_CODES.FROYO;
+
+  @override
+  int get gingerbread => jni.Build$VERSION_CODES.GINGERBREAD;
+
+  @override
+  int get gingerbreadMr1 => jni.Build$VERSION_CODES.GINGERBREAD_MR1;
+
+  @override
+  int get honeycomb => jni.Build$VERSION_CODES.HONEYCOMB;
+
+  @override
+  int get honeycombMr1 => jni.Build$VERSION_CODES.HONEYCOMB_MR1;
+
+  @override
+  int get honeycombMr2 => jni.Build$VERSION_CODES.HONEYCOMB_MR2;
+
+  @override
+  int get iceCreamSandwich => jni.Build$VERSION_CODES.ICE_CREAM_SANDWICH;
+
+  @override
+  int get iceCreamSandwichMr1 => jni.Build$VERSION_CODES.ICE_CREAM_SANDWICH_MR1;
+
+  @override
+  int get jellyBean => jni.Build$VERSION_CODES.JELLY_BEAN;
+
+  @override
+  int get jellyBeanMr1 => jni.Build$VERSION_CODES.JELLY_BEAN_MR1;
+
+  @override
+  int get jellyBeanMr2 => jni.Build$VERSION_CODES.JELLY_BEAN_MR2;
+
+  @override
+  int get kitkat => jni.Build$VERSION_CODES.KITKAT;
+
+  @override
+  int get kitkatWatch => jni.Build$VERSION_CODES.KITKAT_WATCH;
+
+  @override
+  int get lollipop => jni.Build$VERSION_CODES.LOLLIPOP;
+
+  @override
+  int get lollipopMr1 => jni.Build$VERSION_CODES.LOLLIPOP_MR1;
+
+  @override
+  int get m => jni.Build$VERSION_CODES.M;
+
+  @override
+  int get n => jni.Build$VERSION_CODES.N;
+
+  @override
+  int get nMr1 => jni.Build$VERSION_CODES.N_MR1;
+
+  @override
+  int get o => jni.Build$VERSION_CODES.O;
+
+  @override
+  int get oMr1 => jni.Build$VERSION_CODES.O_MR1;
+
+  @override
+  int get p => jni.Build$VERSION_CODES.P;
+
+  @override
+  int get q => jni.Build$VERSION_CODES.Q;
+
+  @override
+  int get r => jni.Build$VERSION_CODES.R;
+
+  @override
+  int get s => jni.Build$VERSION_CODES.S;
+
+  @override
+  int get sV2 => jni.Build$VERSION_CODES.S_V2;
+
+  @override
+  int get tiramisu => jni.Build$VERSION_CODES.TIRAMISU;
+
+  @override
+  int get upsideDownCake => jni.Build$VERSION_CODES.UPSIDE_DOWN_CAKE;
+
+  @override
+  int get vanillaIceCream => jni.Build$VERSION_CODES.VANILLA_ICE_CREAM;
 }
 
-final class Build$VersionCodesFullImpl extends InvictusObjectImpl
-    implements Build$VersionCodesFull {
-  static int get baklava => jni.Build$VERSION_CODES_FULL.BAKLAVA;
+final class Build$VersionCodesFullChannelImpl
+    extends Build$VersionCodesFullChannel {
+  @override
+  int get baklava => jni.Build$VERSION_CODES_FULL.BAKLAVA;
 
   // TODO: baklava_1
-  static int get baklava_1 => throw UnimplementedError();
-
-  static int get base => jni.Build$VERSION_CODES_FULL.BASE;
-
-  static int get base_1_1 => jni.Build$VERSION_CODES_FULL.BASE_1_1;
-
-  static int get cupcake => jni.Build$VERSION_CODES_FULL.CUPCAKE;
-
-  static int get donut => jni.Build$VERSION_CODES_FULL.DONUT;
-
-  static int get eclair => jni.Build$VERSION_CODES_FULL.ECLAIR;
-
-  static int get eclair_0_1 => jni.Build$VERSION_CODES_FULL.ECLAIR_0_1;
-
-  static int get eclairMr1 => jni.Build$VERSION_CODES_FULL.ECLAIR_MR1;
-
-  static int get froyo => jni.Build$VERSION_CODES_FULL.FROYO;
-
-  static int get gingerbread => jni.Build$VERSION_CODES_FULL.GINGERBREAD;
-
-  static int get gingerbreadMr1 => jni.Build$VERSION_CODES_FULL.GINGERBREAD_MR1;
-
-  static int get honeycomb => jni.Build$VERSION_CODES_FULL.HONEYCOMB;
-
-  static int get honeycombMr1 => jni.Build$VERSION_CODES_FULL.HONEYCOMB_MR1;
-
-  static int get honeycombMr2 => jni.Build$VERSION_CODES_FULL.HONEYCOMB_MR2;
-
-  static int get iceCreamSandwich =>
-      jni.Build$VERSION_CODES_FULL.ICE_CREAM_SANDWICH;
-
-  static int get iceCreamSandwichMr1 =>
-      jni.Build$VERSION_CODES_FULL.ICE_CREAM_SANDWICH_MR1;
-
-  static int get jellyBean => jni.Build$VERSION_CODES_FULL.JELLY_BEAN;
-
-  static int get jellyBeanMr1 => jni.Build$VERSION_CODES_FULL.JELLY_BEAN_MR1;
-
-  static int get jellyBeanMr2 => jni.Build$VERSION_CODES_FULL.JELLY_BEAN_MR2;
-
-  static int get kitkat => jni.Build$VERSION_CODES_FULL.KITKAT;
-
-  static int get kitkatWatch => jni.Build$VERSION_CODES_FULL.KITKAT_WATCH;
-
-  static int get lollipop => jni.Build$VERSION_CODES_FULL.LOLLIPOP;
-
-  static int get lollipopMr1 => jni.Build$VERSION_CODES_FULL.LOLLIPOP_MR1;
-
-  static int get m => jni.Build$VERSION_CODES_FULL.M;
-
-  static int get n => jni.Build$VERSION_CODES_FULL.N;
-
-  static int get nMr1 => jni.Build$VERSION_CODES_FULL.N_MR1;
-
-  static int get o => jni.Build$VERSION_CODES_FULL.O;
-
-  static int get oMr1 => jni.Build$VERSION_CODES_FULL.O_MR1;
-
-  static int get p => jni.Build$VERSION_CODES_FULL.P;
-
-  static int get q => jni.Build$VERSION_CODES_FULL.Q;
-
-  static int get r => jni.Build$VERSION_CODES_FULL.R;
-
-  static int get s => jni.Build$VERSION_CODES_FULL.S;
-
-  static int get sV2 => jni.Build$VERSION_CODES_FULL.S_V2;
-
-  static int get tiramisu => jni.Build$VERSION_CODES_FULL.TIRAMISU;
-
-  static int get upsideDownCake =>
-      jni.Build$VERSION_CODES_FULL.UPSIDE_DOWN_CAKE;
-
-  static int get vanillaIceCream =>
-      jni.Build$VERSION_CODES_FULL.VANILLA_ICE_CREAM;
+  @override
+  int get baklava_1 => throw UnimplementedError();
 
   @override
-  final jni.Build$VERSION_CODES_FULL api;
+  int get base => jni.Build$VERSION_CODES_FULL.BASE;
 
-  Build$VersionCodesFullImpl.internal(this.api);
+  @override
+  int get base_1_1 => jni.Build$VERSION_CODES_FULL.BASE_1_1;
+
+  @override
+  int get cupcake => jni.Build$VERSION_CODES_FULL.CUPCAKE;
+
+  @override
+  int get donut => jni.Build$VERSION_CODES_FULL.DONUT;
+
+  @override
+  int get eclair => jni.Build$VERSION_CODES_FULL.ECLAIR;
+
+  @override
+  int get eclair_0_1 => jni.Build$VERSION_CODES_FULL.ECLAIR_0_1;
+
+  @override
+  int get eclairMr1 => jni.Build$VERSION_CODES_FULL.ECLAIR_MR1;
+
+  @override
+  int get froyo => jni.Build$VERSION_CODES_FULL.FROYO;
+
+  @override
+  int get gingerbread => jni.Build$VERSION_CODES_FULL.GINGERBREAD;
+
+  @override
+  int get gingerbreadMr1 => jni.Build$VERSION_CODES_FULL.GINGERBREAD_MR1;
+
+  @override
+  int get honeycomb => jni.Build$VERSION_CODES_FULL.HONEYCOMB;
+
+  @override
+  int get honeycombMr1 => jni.Build$VERSION_CODES_FULL.HONEYCOMB_MR1;
+
+  @override
+  int get honeycombMr2 => jni.Build$VERSION_CODES_FULL.HONEYCOMB_MR2;
+
+  @override
+  int get iceCreamSandwich => jni.Build$VERSION_CODES_FULL.ICE_CREAM_SANDWICH;
+
+  @override
+  int get iceCreamSandwichMr1 =>
+      jni.Build$VERSION_CODES_FULL.ICE_CREAM_SANDWICH_MR1;
+
+  @override
+  int get jellyBean => jni.Build$VERSION_CODES_FULL.JELLY_BEAN;
+
+  @override
+  int get jellyBeanMr1 => jni.Build$VERSION_CODES_FULL.JELLY_BEAN_MR1;
+
+  @override
+  int get jellyBeanMr2 => jni.Build$VERSION_CODES_FULL.JELLY_BEAN_MR2;
+
+  @override
+  int get kitkat => jni.Build$VERSION_CODES_FULL.KITKAT;
+
+  @override
+  int get kitkatWatch => jni.Build$VERSION_CODES_FULL.KITKAT_WATCH;
+
+  @override
+  int get lollipop => jni.Build$VERSION_CODES_FULL.LOLLIPOP;
+
+  @override
+  int get lollipopMr1 => jni.Build$VERSION_CODES_FULL.LOLLIPOP_MR1;
+
+  @override
+  int get m => jni.Build$VERSION_CODES_FULL.M;
+
+  @override
+  int get n => jni.Build$VERSION_CODES_FULL.N;
+
+  @override
+  int get nMr1 => jni.Build$VERSION_CODES_FULL.N_MR1;
+
+  @override
+  int get o => jni.Build$VERSION_CODES_FULL.O;
+
+  @override
+  int get oMr1 => jni.Build$VERSION_CODES_FULL.O_MR1;
+
+  @override
+  int get p => jni.Build$VERSION_CODES_FULL.P;
+
+  @override
+  int get q => jni.Build$VERSION_CODES_FULL.Q;
+
+  @override
+  int get r => jni.Build$VERSION_CODES_FULL.R;
+
+  @override
+  int get s => jni.Build$VERSION_CODES_FULL.S;
+
+  @override
+  int get sV2 => jni.Build$VERSION_CODES_FULL.S_V2;
+
+  @override
+  int get tiramisu => jni.Build$VERSION_CODES_FULL.TIRAMISU;
+
+  @override
+  int get upsideDownCake => jni.Build$VERSION_CODES_FULL.UPSIDE_DOWN_CAKE;
+
+  @override
+  int get vanillaIceCream => jni.Build$VERSION_CODES_FULL.VANILLA_ICE_CREAM;
 }
 
-final class BuildImpl extends InvictusObjectImpl implements Build {
-  static String get board =>
-      ArgumentError.checkNotNull(jni.Build.BOARD, 'BOARD').impl;
+final class BuildChannelImpl extends BuildChannel {
+  @override
+  String get board => ArgumentError.checkNotNull(jni.Build.BOARD, 'BOARD').impl;
 
-  static String get bootloader =>
+  @override
+  String get bootloader =>
       ArgumentError.checkNotNull(jni.Build.BOOTLOADER, 'BOOTLOADER').impl;
 
-  static String get brand =>
-      ArgumentError.checkNotNull(jni.Build.BRAND, 'BRAND').impl;
+  @override
+  String get brand => ArgumentError.checkNotNull(jni.Build.BRAND, 'BRAND').impl;
 
-  static String get cpuAbi =>
+  @override
+  String get cpuAbi =>
       ArgumentError.checkNotNull(jni.Build.CPU_ABI, 'CPU_ABI').impl;
 
-  static String get cpuAbi2 =>
+  @override
+  String get cpuAbi2 =>
       ArgumentError.checkNotNull(jni.Build.CPU_ABI2, 'CPU_ABI2').impl;
 
-  static String get device =>
+  @override
+  String get device =>
       ArgumentError.checkNotNull(jni.Build.DEVICE, 'DEVICE').impl;
 
-  static String get display =>
+  @override
+  String get display =>
       ArgumentError.checkNotNull(jni.Build.DISPLAY, 'DISPLAY').impl;
 
-  static String get fingerprint =>
+  @override
+  String get fingerprint =>
       ArgumentError.checkNotNull(jni.Build.FINGERPRINT, 'FINGERPRINT').impl;
 
-  static List<Build$Partition> get fingerprintedPartitions =>
+  @override
+  List<Build$Partition> get fingerprintedPartitions =>
       jni.Build.getFingerprintedPartitions().nonNulls
           .map((e) => e.impl)
           .toList();
 
-  static String get hardware =>
+  @override
+  String get hardware =>
       ArgumentError.checkNotNull(jni.Build.HARDWARE, 'HARDWARE').impl;
 
-  static String get host =>
-      ArgumentError.checkNotNull(jni.Build.HOST, 'HOST').impl;
+  @override
+  String get host => ArgumentError.checkNotNull(jni.Build.HOST, 'HOST').impl;
 
-  static String get id => ArgumentError.checkNotNull(jni.Build.ID, 'ID').impl;
+  @override
+  String get id => ArgumentError.checkNotNull(jni.Build.ID, 'ID').impl;
 
-  static String get manufacturer =>
+  @override
+  String get manufacturer =>
       ArgumentError.checkNotNull(jni.Build.MANUFACTURER, 'MANUFACTURER').impl;
 
-  static String get model =>
-      ArgumentError.checkNotNull(jni.Build.MODEL, 'MODEL').impl;
+  @override
+  String get model => ArgumentError.checkNotNull(jni.Build.MODEL, 'MODEL').impl;
 
-  static String get odmSku => jni.Build.ODM_SKU.impl;
+  @override
+  String get odmSku => jni.Build.ODM_SKU.impl;
 
-  static String get product =>
+  @override
+  String get product =>
       ArgumentError.checkNotNull(jni.Build.PRODUCT, 'PRODUCT').impl;
 
-  static String get radio =>
-      ArgumentError.checkNotNull(jni.Build.RADIO, 'RADIO').impl;
+  @override
+  String get radio => ArgumentError.checkNotNull(jni.Build.RADIO, 'RADIO').impl;
 
-  static String? get radioVersion => jni.Build.getRadioVersion()?.impl;
+  @override
+  String? get radioVersion => jni.Build.getRadioVersion()?.impl;
 
-  static String get serial {
+  @override
+  String get serial {
     final serialApiOrNull =
         jni.Build$VERSION.SDK_INT >= jni.Build$VERSION_CODES.O
         ? jni.Build.getSerial()
@@ -302,52 +382,57 @@ final class BuildImpl extends InvictusObjectImpl implements Build {
     return serialApi.impl;
   }
 
-  static String get sku => jni.Build.SKU.impl;
+  @override
+  String get sku => jni.Build.SKU.impl;
 
-  static String get socManufacturer => jni.Build.SOC_MANUFACTURER.impl;
+  @override
+  String get socManufacturer => jni.Build.SOC_MANUFACTURER.impl;
 
-  static String get socModel => jni.Build.SOC_MODEL.impl;
+  @override
+  String get socModel => jni.Build.SOC_MODEL.impl;
 
-  static List<String> get supported32BitAbis => ArgumentError.checkNotNull(
+  @override
+  List<String> get supported32BitAbis => ArgumentError.checkNotNull(
     jni.Build.SUPPORTED_32_BIT_ABIS,
     'SUPPORTED_32_BIT_ABIS',
   ).nonNulls.map((e) => e.impl).toList();
 
-  static List<String> get supported64BitAbis => ArgumentError.checkNotNull(
+  @override
+  List<String> get supported64BitAbis => ArgumentError.checkNotNull(
     jni.Build.SUPPORTED_64_BIT_ABIS,
     'SUPPORTED_64_BIT_ABIS',
   ).nonNulls.map((e) => e.impl).toList();
 
-  static List<String> get supportedAbis => ArgumentError.checkNotNull(
+  @override
+  List<String> get supportedAbis => ArgumentError.checkNotNull(
     jni.Build.SUPPORTED_ABIS,
     'SUPPORTED_ABIS',
   ).nonNulls.map((e) => e.impl).toList();
 
-  static String get tags =>
-      ArgumentError.checkNotNull(jni.Build.TAGS, 'TAGS').impl;
-
-  static int get time => jni.Build.TIME;
-
-  static String get type =>
-      ArgumentError.checkNotNull(jni.Build.TYPE, 'TYPE').impl;
-
-  static String get user =>
-      ArgumentError.checkNotNull(jni.Build.USER, 'USER').impl;
-
-  // TODO: getBackportedFixStatus
-  static Build$BackportedFixStatus getBackportedFixStatus(int id) =>
-      throw UnimplementedError();
-
-  static int getMajorSdkVersion(int sdkIntFull) =>
-      jni.Build.getMajorSdkVersion(sdkIntFull);
-
-  static int getMinorSdkVersion(int sdkIntFull) =>
-      jni.Build.getMinorSdkVersion(sdkIntFull);
+  @override
+  String get tags => ArgumentError.checkNotNull(jni.Build.TAGS, 'TAGS').impl;
 
   @override
-  final jni.Build api;
+  int get time => jni.Build.TIME;
 
-  BuildImpl.internal(this.api);
+  @override
+  String get type => ArgumentError.checkNotNull(jni.Build.TYPE, 'TYPE').impl;
+
+  @override
+  String get user => ArgumentError.checkNotNull(jni.Build.USER, 'USER').impl;
+
+  // TODO: getBackportedFixStatus
+  @override
+  Build$BackportedFixStatus getBackportedFixStatus(int id) =>
+      throw UnimplementedError();
+
+  @override
+  int getMajorSdkVersion(int sdkIntFull) =>
+      jni.Build.getMajorSdkVersion(sdkIntFull);
+
+  @override
+  int getMinorSdkVersion(int sdkIntFull) =>
+      jni.Build.getMinorSdkVersion(sdkIntFull);
 }
 
 extension Invictus$JBuild$PartitionX on jni.Build$Partition {

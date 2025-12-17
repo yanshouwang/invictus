@@ -5,8 +5,6 @@ environment:
 workspace:
   - invictus_api
   - invictus_android
-  - invictus_android/example
   - invictus_darwin
-  - invictus_darwin/example
   - invictus
   - invictus/example

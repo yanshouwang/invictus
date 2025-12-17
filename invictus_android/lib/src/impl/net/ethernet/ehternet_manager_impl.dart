@@ -1,6 +1,6 @@
-import 'package:invictus_android/src/api.dart';
 import 'package:invictus_android/src/impl.dart';
 import 'package:invictus_android/src/jni.dart' as jni;
+import 'package:invictus_api/invictus_api.dart';
 
 final class EthernetManager$ListenerImpl extends InvictusObjectImpl
     implements EthernetManager$Listener {
@@ -8,21 +8,6 @@ final class EthernetManager$ListenerImpl extends InvictusObjectImpl
   final jni.EthernetManager$Listener api;
 
   EthernetManager$ListenerImpl.internal(this.api);
-
-  factory EthernetManager$ListenerImpl({
-    required void Function(String iface, bool isAvailable)
-    onAvailabilityChanged,
-  }) {
-    final api = jni.InvictusEthernetManager$InvictusListenerImpl(
-      jni.context,
-      jni.InvictusEthernetManager$InvictusListener.implement(
-        jni.$InvictusEthernetManager$InvictusListener(
-          onAvailabilityChanged: (e1, e2) => onAvailabilityChanged(e1.impl, e2),
-        ),
-      ),
-    );
-    return EthernetManager$ListenerImpl.internal(api);
-  }
 }
 
 final class EthernetManagerImpl extends InvictusObjectImpl
@@ -31,11 +16,6 @@ final class EthernetManagerImpl extends InvictusObjectImpl
   final jni.EthernetManager api;
 
   EthernetManagerImpl.internal(this.api);
-
-  factory EthernetManagerImpl() {
-    final api = jni.EthernetManager(jni.context);
-    return EthernetManagerImpl.internal(api);
-  }
 
   @override
   List<String> get availableInterfaces =>
@@ -60,6 +40,33 @@ final class EthernetManagerImpl extends InvictusObjectImpl
   @override
   void setConfiguration(String iface, IpConfiguration config) =>
       api.setConfiguration(iface.api, config.api);
+}
+
+final class EthernetManager$ListenerChannelImpl
+    extends EthernetManager$ListenerChannel {
+  @override
+  EthernetManager$Listener create({
+    required void Function(String iface, bool isAvailable)
+    onAvailabilityChanged,
+  }) {
+    final api = jni.InvictusEthernetManager$InvictusListenerImpl(
+      jni.context,
+      jni.InvictusEthernetManager$InvictusListener.implement(
+        jni.$InvictusEthernetManager$InvictusListener(
+          onAvailabilityChanged: (e1, e2) => onAvailabilityChanged(e1.impl, e2),
+        ),
+      ),
+    );
+    return EthernetManager$ListenerImpl.internal(api);
+  }
+}
+
+final class EthernetManagerChannelImpl extends EthernetManagerChannel {
+  @override
+  EthernetManager create() {
+    final api = jni.EthernetManager(jni.context);
+    return EthernetManagerImpl.internal(api);
+  }
 }
 
 extension Invictus$EthernetManager$ListenerX on EthernetManager$Listener {

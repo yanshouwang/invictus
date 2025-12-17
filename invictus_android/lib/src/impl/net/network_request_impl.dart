@@ -1,6 +1,6 @@
-import 'package:invictus_android/src/api.dart';
 import 'package:invictus_android/src/impl.dart';
 import 'package:invictus_android/src/jni.dart' as jni;
+import 'package:invictus_api/invictus_api.dart';
 
 final class NetworkRequestImpl extends InvictusObjectImpl
     implements NetworkRequest {
@@ -9,7 +9,40 @@ final class NetworkRequestImpl extends InvictusObjectImpl
 
   NetworkRequestImpl.internal(this.api);
 
-  factory NetworkRequestImpl({
+  @override
+  List<NetworkCapabilities$NetCapability> get capabilities => api
+      .getCapabilities()
+      .map((e) => e.networkCapabilities$NetCapabilityImpl)
+      .toList();
+
+  @override
+  NetworkSpecifier? get networkSpecifier => api.getNetworkSpecifier()?.impl;
+
+  @override
+  Set<int> get subscriptionIds =>
+      api.getSubscriptionIds().nonNulls.map((e) => e.impl).toSet();
+
+  @override
+  List<NetworkCapabilities$Transport> get transportTypes => api
+      .getTransportTypes()
+      .map((e) => e.networkCapabilities$TransportImpl)
+      .toList();
+
+  @override
+  bool canBeSatisfiedBy(NetworkCapabilities nc) => api.canBeSatisfiedBy(nc.api);
+
+  @override
+  bool hasCapability(NetworkCapabilities$NetCapability capability) =>
+      api.hasCapability(capability.api);
+
+  @override
+  bool hasTransport(NetworkCapabilities$Transport transportType) =>
+      api.hasTransport(transportType.api);
+}
+
+final class NetworkRequestChannelImpl extends NetworkRequestChannel {
+  @override
+  NetworkRequest create({
     List<NetworkCapabilities$NetCapability>? capabilities,
     List<NetworkCapabilities$Transport>? transportTypes,
     bool? includeOtherUidNetworks,
@@ -42,36 +75,6 @@ final class NetworkRequestImpl extends InvictusObjectImpl
     final api = ArgumentError.checkNotNull(apiOrNull, 'api');
     return NetworkRequestImpl.internal(api);
   }
-
-  @override
-  List<NetworkCapabilities$NetCapability> get capabilities => api
-      .getCapabilities()
-      .map((e) => e.networkCapabilities$NetCapabilityImpl)
-      .toList();
-
-  @override
-  NetworkSpecifier? get networkSpecifier => api.getNetworkSpecifier()?.impl;
-
-  @override
-  Set<int> get subscriptionIds =>
-      api.getSubscriptionIds().nonNulls.map((e) => e.impl).toSet();
-
-  @override
-  List<NetworkCapabilities$Transport> get transportTypes => api
-      .getTransportTypes()
-      .map((e) => e.networkCapabilities$TransportImpl)
-      .toList();
-
-  @override
-  bool canBeSatisfiedBy(NetworkCapabilities nc) => api.canBeSatisfiedBy(nc.api);
-
-  @override
-  bool hasCapability(NetworkCapabilities$NetCapability capability) =>
-      api.hasCapability(capability.api);
-
-  @override
-  bool hasTransport(NetworkCapabilities$Transport transportType) =>
-      api.hasTransport(transportType.api);
 }
 
 extension Invictus$NetworkRequestX on NetworkRequest {

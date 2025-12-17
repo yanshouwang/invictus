@@ -1,8 +1,8 @@
 import 'dart:typed_data';
 
-import 'package:invictus_android/src/api.dart';
 import 'package:invictus_android/src/impl.dart';
 import 'package:invictus_android/src/jni.dart' as jni;
+import 'package:invictus_api/invictus_api.dart';
 
 final class ScanResult$InformationElementImpl extends InvictusObjectImpl
     implements ScanResult$InformationElement {
@@ -22,15 +22,6 @@ final class ScanResult$InformationElementImpl extends InvictusObjectImpl
 }
 
 final class ScanResultImpl extends InvictusObjectImpl implements ScanResult {
-  static int convertChannelToFrequencyMhzIfSuppported(
-    int channel,
-    ScanResult$WifiBand band,
-  ) =>
-      jni.ScanResult.convertChannelToFrequencyMhzIfSupported(channel, band.api);
-
-  static int convertFrequencyMhzToChannelIfSupported(int freqMhz) =>
-      jni.ScanResult.convertFrequencyMhzToChannelIfSupported(freqMhz);
-
   @override
   final jni.ScanResult api;
 
@@ -118,6 +109,19 @@ final class ScanResultImpl extends InvictusObjectImpl implements ScanResult {
   @override
   ScanResult$WifiStandard get wifiStandard =>
       api.getWifiStandard().scanResult$WifiStandardImpl;
+}
+
+final class ScanResultChannelImpl extends ScanResultChannel {
+  @override
+  int convertChannelToFrequencyMhzIfSuppported(
+    int channel,
+    ScanResult$WifiBand band,
+  ) =>
+      jni.ScanResult.convertChannelToFrequencyMhzIfSupported(channel, band.api);
+
+  @override
+  int convertFrequencyMhzToChannelIfSupported(int freqMhz) =>
+      jni.ScanResult.convertFrequencyMhzToChannelIfSupported(freqMhz);
 }
 
 extension Invictus$JScanResult$intX on int {

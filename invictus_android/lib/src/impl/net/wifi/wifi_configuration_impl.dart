@@ -1,6 +1,6 @@
-import 'package:invictus_android/src/api.dart';
 import 'package:invictus_android/src/impl.dart';
 import 'package:invictus_android/src/jni.dart' as jni;
+import 'package:invictus_api/invictus_api.dart';
 
 final class WifiConfigurationImpl extends InvictusObjectImpl
     implements WifiConfiguration {
@@ -8,11 +8,6 @@ final class WifiConfigurationImpl extends InvictusObjectImpl
   final jni.WifiConfiguration api;
 
   WifiConfigurationImpl.internal(this.api);
-
-  factory WifiConfigurationImpl() {
-    final api = jni.WifiConfiguration();
-    return WifiConfigurationImpl.internal(api);
-  }
 
   @override
   String get bssid {
@@ -44,6 +39,14 @@ final class WifiConfigurationImpl extends InvictusObjectImpl
   @override
   WifiConfiguration$Status get status =>
       api.status.wifiConfiguration$StatusImpl;
+}
+
+final class WifiConfigurationChannelImpl extends WifiConfigurationChannel {
+  @override
+  WifiConfiguration create() {
+    final api = jni.WifiConfiguration();
+    return WifiConfigurationImpl.internal(api);
+  }
 }
 
 extension Invictus$JWifiConfiguration$intX on int {

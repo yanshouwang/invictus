@@ -1,1 +1,1 @@
-export 'src/api.dart';
+export 'src/invictus_android_plugin.dart';

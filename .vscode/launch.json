@@ -5,61 +5,21 @@
     "version": "0.2.0",
     "configurations": [
         {
-            "name": "invictus/example",
+            "name": "example",
             "cwd": "invictus/example",
             "request": "launch",
             "type": "dart"
         },
         {
-            "name": "invictus/example (profile mode)",
+            "name": "example (profile mode)",
             "cwd": "invictus/example",
             "request": "launch",
             "type": "dart",
             "flutterMode": "profile"
         },
         {
-            "name": "invictus/example (release mode)",
+            "name": "example (release mode)",
             "cwd": "invictus/example",
-            "request": "launch",
-            "type": "dart",
-            "flutterMode": "release"
-        },
-        {
-            "name": "invictus_android/example",
-            "cwd": "invictus_android/example",
-            "request": "launch",
-            "type": "dart"
-        },
-        {
-            "name": "invictus_android/example (profile mode)",
-            "cwd": "invictus_android/example",
-            "request": "launch",
-            "type": "dart",
-            "flutterMode": "profile"
-        },
-        {
-            "name": "invictus_android/example (release mode)",
-            "cwd": "invictus_android/example",
-            "request": "launch",
-            "type": "dart",
-            "flutterMode": "release"
-        },
-        {
-            "name": "invictus_darwin/example",
-            "cwd": "invictus_darwin/example",
-            "request": "launch",
-            "type": "dart"
-        },
-        {
-            "name": "invictus_darwin/example (profile mode)",
-            "cwd": "invictus_darwin/example",
-            "request": "launch",
-            "type": "dart",
-            "flutterMode": "profile"
-        },
-        {
-            "name": "invictus_darwin/example (release mode)",
-            "cwd": "invictus_darwin/example",
             "request": "launch",
             "type": "dart",
             "flutterMode": "release"

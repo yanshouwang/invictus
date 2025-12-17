@@ -1,11 +1,29 @@
 import 'dart:typed_data';
 
-import 'package:invictus_android/src/api.dart';
 import 'package:invictus_android/src/impl.dart';
 import 'package:invictus_android/src/jni.dart' as jni;
+import 'package:invictus_api/invictus_api.dart';
 
 final class Inet6AddressImpl extends InetAddressImpl implements Inet6Address {
-  static Inet6Address getByAddressScopeId(
+  @override
+  final jni.Inet6Address api;
+
+  Inet6AddressImpl.internal(this.api);
+
+  @override
+  bool get isIPv4CompatibleAddress => api.isIPv4CompatibleAddress();
+}
+
+final class Inet6AddressChannelImpl extends Inet6AddressChannel {
+  @override
+  Inet6Address create() {
+    final invictusApi = jni.InvictusInet6Address.new$1();
+    final api = invictusApi.getObj();
+    return Inet6AddressImpl.internal(api);
+  }
+
+  @override
+  Inet6Address createByAddressScopeId(
     String host,
     Uint8List addr,
     int scopeId,
@@ -19,7 +37,8 @@ final class Inet6AddressImpl extends InetAddressImpl implements Inet6Address {
     return api.impl;
   }
 
-  static Inet6Address getByAddressNetwork(
+  @override
+  Inet6Address createByAddressNetwork(
     String host,
     Uint8List addr,
     NetworkInterface nif,
@@ -32,20 +51,6 @@ final class Inet6AddressImpl extends InetAddressImpl implements Inet6Address {
     final api = ArgumentError.checkNotNull(apiOrNull, 'api');
     return api.impl;
   }
-
-  @override
-  final jni.Inet6Address api;
-
-  Inet6AddressImpl.internal(this.api);
-
-  factory Inet6AddressImpl() {
-    final invictusApi = jni.InvictusInet6Address.new$1();
-    final api = invictusApi.getObj();
-    return Inet6AddressImpl.internal(api);
-  }
-
-  @override
-  bool get isIPv4CompatibleAddress => api.isIPv4CompatibleAddress();
 }
 
 extension Invictus$Inet6AdressX on Inet6Address {

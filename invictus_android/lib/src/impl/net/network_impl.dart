@@ -1,18 +1,12 @@
-import 'package:invictus_android/src/api.dart';
 import 'package:invictus_android/src/impl.dart';
 import 'package:invictus_android/src/jni.dart' as jni;
+import 'package:invictus_api/invictus_api.dart';
 
 final class NetworkImpl extends InvictusObjectImpl implements Network {
   @override
   final jni.Network api;
 
   NetworkImpl.internal(this.api);
-
-  factory NetworkImpl.fromNetworkHandle(int networkHandle) {
-    final apiOrNull = jni.Network.fromNetworkHandle(networkHandle);
-    final api = ArgumentError.checkNotNull(apiOrNull, 'api');
-    return NetworkImpl.internal(api);
-  }
 
   @override
   int get networkHandle => api.getNetworkHandle();
@@ -64,6 +58,15 @@ final class NetworkImpl extends InvictusObjectImpl implements Network {
       'connectionApi',
     );
     return connectionApi.impl;
+  }
+}
+
+final class NetworkChannelImpl extends NetworkChannel {
+  @override
+  Network createFromNetworkHandle(int networkHandle) {
+    final apiOrNull = jni.Network.fromNetworkHandle(networkHandle);
+    final api = ArgumentError.checkNotNull(apiOrNull, 'api');
+    return NetworkImpl.internal(api);
   }
 }
 

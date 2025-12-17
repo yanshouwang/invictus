@@ -1,48 +1,14 @@
 import 'dart:typed_data';
 
-import 'package:invictus_android/src/api.dart';
 import 'package:invictus_android/src/impl.dart';
 import 'package:invictus_android/src/jni.dart' as jni;
+import 'package:invictus_api/invictus_api.dart';
 
 final class WifiInfoImpl extends TransportInfoImpl implements WifiInfo {
-  static NetworkInfo$DetailedState getDetailedStateOf(
-    SupplicantState suppState,
-  ) {
-    final detailedStateApiOrNull = jni.WifiInfo.getDetailedStateOf(
-      suppState.api,
-    );
-    final detailedStateApi = ArgumentError.checkNotNull(
-      detailedStateApiOrNull,
-      'detailedStateApi',
-    );
-    return detailedStateApi.impl;
-  }
-
   @override
   final jni.WifiInfo api;
 
   WifiInfoImpl.internal(this.api);
-
-  factory WifiInfoImpl({
-    String? bssid,
-    WifiInfo$SecurityType? currentSecurityType,
-    int? neworkId,
-    int? rssi,
-    Uint8List? ssid,
-    int? subId,
-  }) {
-    final builder = jni.WifiInfo$Builder();
-    if (bssid != null) builder.setBssid(bssid.api);
-    if (currentSecurityType != null) {
-      builder.setCurrentSecurityType(currentSecurityType.api);
-    }
-    if (neworkId != null) builder.setNetworkId(neworkId);
-    if (rssi != null) builder.setRssi(rssi);
-    if (ssid != null) builder.setSsid(ssid.api);
-    if (subId != null) builder.setSubscriptionId(subId);
-    final api = builder.build();
-    return WifiInfoImpl.internal(api);
-  }
 
   @override
   List<MloLink> get affiliatedMloLinks =>
@@ -154,6 +120,42 @@ final class WifiInfoImpl extends TransportInfoImpl implements WifiInfo {
 
   @override
   int get wifiStandard => api.getWifiStandard();
+}
+
+final class WifiInfoChannelImpl extends WifiInfoChannel {
+  @override
+  NetworkInfo$DetailedState getDetailedStateOf(SupplicantState suppState) {
+    final detailedStateApiOrNull = jni.WifiInfo.getDetailedStateOf(
+      suppState.api,
+    );
+    final detailedStateApi = ArgumentError.checkNotNull(
+      detailedStateApiOrNull,
+      'detailedStateApi',
+    );
+    return detailedStateApi.impl;
+  }
+
+  @override
+  WifiInfo create({
+    String? bssid,
+    WifiInfo$SecurityType? currentSecurityType,
+    int? neworkId,
+    int? rssi,
+    Uint8List? ssid,
+    int? subId,
+  }) {
+    final builder = jni.WifiInfo$Builder();
+    if (bssid != null) builder.setBssid(bssid.api);
+    if (currentSecurityType != null) {
+      builder.setCurrentSecurityType(currentSecurityType.api);
+    }
+    if (neworkId != null) builder.setNetworkId(neworkId);
+    if (rssi != null) builder.setRssi(rssi);
+    if (ssid != null) builder.setSsid(ssid.api);
+    if (subId != null) builder.setSubscriptionId(subId);
+    final api = builder.build();
+    return WifiInfoImpl.internal(api);
+  }
 }
 
 extension Invictus$WifiInfo$SecurityTypeX on WifiInfo$SecurityType {

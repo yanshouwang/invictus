@@ -1,6 +1,6 @@
-import 'package:invictus_android/src/api.dart';
 import 'package:invictus_android/src/impl.dart';
 import 'package:invictus_android/src/jni.dart' as jni;
+import 'package:invictus_api/invictus_api.dart';
 
 final class IpConfigurationImpl extends InvictusObjectImpl
     implements IpConfiguration {
@@ -8,13 +8,6 @@ final class IpConfigurationImpl extends InvictusObjectImpl
   final jni.IpConfiguration api;
 
   IpConfigurationImpl.internal(this.api);
-
-  factory IpConfigurationImpl({StaticIpConfiguration? config}) {
-    final builder = jni.IpConfiguration$Builder.new$1();
-    builder.setStaticIpConfiguration(config?.api);
-    final api = builder.build();
-    return IpConfigurationImpl.internal(api);
-  }
 
   @override
   IpConfiguration$IpAssignment get ipAssignment => api.getIpAssignment().impl;
@@ -30,6 +23,16 @@ final class IpConfigurationImpl extends InvictusObjectImpl
   @override
   set staticIpConfiguration(StaticIpConfiguration? value) =>
       api.setStaticIpConfiguration(value?.api);
+}
+
+final class IpConfigurationChannelImpl extends IpConfigurationChannel {
+  @override
+  IpConfiguration create({StaticIpConfiguration? config}) {
+    final builder = jni.IpConfiguration$Builder.new$1();
+    builder.setStaticIpConfiguration(config?.api);
+    final api = builder.build();
+    return IpConfigurationImpl.internal(api);
+  }
 }
 
 extension Invictus$IpConfiguration$IpAssignmentX

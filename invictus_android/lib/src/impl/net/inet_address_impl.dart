@@ -1,43 +1,11 @@
 import 'dart:typed_data';
 
-import 'package:invictus_android/src/api.dart';
 import 'package:invictus_android/src/impl.dart';
 import 'package:invictus_android/src/jni.dart' as jni;
+import 'package:invictus_api/invictus_api.dart';
 
 abstract base class InetAddressImpl extends InvictusObjectImpl
     implements InetAddress {
-  static List<InetAddress> getAllByName(String? host) {
-    final allApiOrNull = jni.InetAddress.getAllByName(host?.api);
-    final allApi = ArgumentError.checkNotNull(allApiOrNull, 'allApi');
-    return allApi.nonNulls.map((e) => e.impl).toList();
-  }
-
-  static InetAddress getByAddress({String? host, required Uint8List addr}) {
-    final apiOrNull = host == null
-        ? jni.InetAddress.getByAddress(addr.api)
-        : jni.InetAddress.getByAddress$1(host.api, addr.api);
-    final api = ArgumentError.checkNotNull(apiOrNull, 'api');
-    return api.impl;
-  }
-
-  static InetAddress getByName(String? host) {
-    final apiOrNull = jni.InetAddress.getByName(host?.api);
-    final api = ArgumentError.checkNotNull(apiOrNull, 'api');
-    return api.impl;
-  }
-
-  static InetAddress getLocalHost() {
-    final apiOrNull = jni.InetAddress.getLocalHost();
-    final api = ArgumentError.checkNotNull(apiOrNull, 'api');
-    return api.impl;
-  }
-
-  static InetAddress getLoopbackAddress() {
-    final apiOrNull = jni.InetAddress.getLoopbackAddress();
-    final api = ArgumentError.checkNotNull(apiOrNull, 'api');
-    return api.impl;
-  }
-
   @override
   jni.InetAddress get api;
 
@@ -113,6 +81,45 @@ abstract base class InetAddressImpl extends InvictusObjectImpl
     required int ttl,
     required int timetout,
   }) => api.isReachable$1(netif?.api, ttl, timetout);
+}
+
+final class InetAddressChannelImpl extends InetAddressChannel {
+  @override
+  List<InetAddress> getAllByName(String? host) {
+    final allApiOrNull = jni.InetAddress.getAllByName(host?.api);
+    final allApi = ArgumentError.checkNotNull(allApiOrNull, 'allApi');
+    return allApi.nonNulls.map((e) => e.impl).toList();
+  }
+
+  @override
+  InetAddress createByAddress({String? host, required Uint8List addr}) {
+    final apiOrNull = host == null
+        ? jni.InetAddress.getByAddress(addr.api)
+        : jni.InetAddress.getByAddress$1(host.api, addr.api);
+    final api = ArgumentError.checkNotNull(apiOrNull, 'api');
+    return api.impl;
+  }
+
+  @override
+  InetAddress createByName(String? host) {
+    final apiOrNull = jni.InetAddress.getByName(host?.api);
+    final api = ArgumentError.checkNotNull(apiOrNull, 'api');
+    return api.impl;
+  }
+
+  @override
+  InetAddress createLocalHost() {
+    final apiOrNull = jni.InetAddress.getLocalHost();
+    final api = ArgumentError.checkNotNull(apiOrNull, 'api');
+    return api.impl;
+  }
+
+  @override
+  InetAddress createLoopbackAddress() {
+    final apiOrNull = jni.InetAddress.getLoopbackAddress();
+    final api = ArgumentError.checkNotNull(apiOrNull, 'api');
+    return api.impl;
+  }
 }
 
 extension Invictus$InetAddressX on InetAddress {

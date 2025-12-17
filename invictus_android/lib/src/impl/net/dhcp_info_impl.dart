@@ -1,17 +1,12 @@
-import 'package:invictus_android/src/api.dart';
 import 'package:invictus_android/src/impl.dart';
 import 'package:invictus_android/src/jni.dart' as jni;
+import 'package:invictus_api/invictus_api.dart';
 
 final class DhcpInfoImpl extends InvictusObjectImpl implements DhcpInfo {
   @override
   final jni.DhcpInfo api;
 
   DhcpInfoImpl.internal(this.api);
-
-  factory DhcpInfoImpl() {
-    final api = jni.DhcpInfo();
-    return DhcpInfoImpl.internal(api);
-  }
 
   @override
   int get dns1 => api.dns1;
@@ -33,6 +28,14 @@ final class DhcpInfoImpl extends InvictusObjectImpl implements DhcpInfo {
 
   @override
   int get serverAddress => api.serverAddress;
+}
+
+final class DhcpInfoChannelImpl extends DhcpInfoChannel {
+  @override
+  DhcpInfo create() {
+    final api = jni.DhcpInfo();
+    return DhcpInfoImpl.internal(api);
+  }
 }
 
 extension Invictus$JDhcpInfoX on jni.DhcpInfo {

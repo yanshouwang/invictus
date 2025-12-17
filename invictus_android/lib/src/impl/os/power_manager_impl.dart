@@ -1,6 +1,6 @@
-import 'package:invictus_android/src/api.dart';
-import 'package:invictus_android/src/impl.dart';
+import 'package:invictus_android/src/impl/invictus_object_impl.dart';
 import 'package:invictus_android/src/jni.dart' as jni;
+import 'package:invictus_api/invictus_api.dart';
 
 final class PowerManagerImpl extends InvictusObjectImpl
     implements PowerManager {
@@ -10,16 +10,6 @@ final class PowerManagerImpl extends InvictusObjectImpl
 
   PowerManagerImpl.internal(this.api)
     : invictusApi = jni.InvictusPowerManager(api);
-
-  factory PowerManagerImpl() {
-    final apiOrNull = jni.ContextCompat.getSystemService(
-      jni.context,
-      jni.PowerManager.type.jClass,
-      T: jni.PowerManager.type,
-    );
-    final api = ArgumentError.checkNotNull(apiOrNull, 'api');
-    return PowerManagerImpl.internal(api);
-  }
 
   @override
   bool get isRebootingUserspaceSupported => api.isRebootingUserspaceSupported();
@@ -33,6 +23,19 @@ final class PowerManagerImpl extends InvictusObjectImpl
     PowerManager$Shutdown? reason,
     bool wait = false,
   }) => invictusApi.shutdown(confirm, reason?.api, wait);
+}
+
+final class PowerManagerChannelImpl extends PowerManagerChannel {
+  @override
+  PowerManager create() {
+    final apiOrNull = jni.ContextCompat.getSystemService(
+      jni.context,
+      jni.PowerManager.type.jClass,
+      T: jni.PowerManager.type,
+    );
+    final api = ArgumentError.checkNotNull(apiOrNull, 'api');
+    return PowerManagerImpl.internal(api);
+  }
 }
 
 extension PowerManager$RebootX on PowerManager$Reboot {

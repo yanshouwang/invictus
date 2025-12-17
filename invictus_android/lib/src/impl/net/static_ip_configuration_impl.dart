@@ -1,6 +1,6 @@
-import 'package:invictus_android/src/api.dart';
 import 'package:invictus_android/src/impl.dart';
 import 'package:invictus_android/src/jni.dart' as jni;
+import 'package:invictus_api/invictus_api.dart';
 
 final class StaticIpConfigurationImpl extends InvictusObjectImpl
     implements StaticIpConfiguration {
@@ -8,28 +8,6 @@ final class StaticIpConfigurationImpl extends InvictusObjectImpl
   final jni.StaticIpConfiguration api;
 
   StaticIpConfigurationImpl.internal(this.api);
-
-  factory StaticIpConfigurationImpl({
-    LinkAddress? ipAddress,
-    InetAddress? gateway,
-    Iterable<InetAddress>? dnsServers,
-    String? domains,
-  }) {
-    final builder = jni.StaticIpConfiguration$Builder.new$1();
-    if (ipAddress != null) builder.setIpAddress(ipAddress.api);
-    builder.setGateway(gateway?.api);
-    if (dnsServers != null) {
-      builder.setDnsServers(
-        dnsServers
-            .map((e) => e.api)
-            .toJList(jni.InetAddress.type)
-            .as(jni.Iterable.type(jni.InetAddress.type)),
-      );
-    }
-    builder.setDomains(domains?.api);
-    final api = builder.build();
-    return StaticIpConfigurationImpl.internal(api);
-  }
 
   @override
   LinkAddress get ipAddress => api.getIpAddress().impl;
@@ -57,6 +35,32 @@ final class StaticIpConfigurationImpl extends InvictusObjectImpl
   @override
   LinkProperties toLinkProperties([String? iface]) =>
       api.toLinkProperties(iface?.api).impl;
+}
+
+final class StaticIpConfigurationChannelImpl
+    extends StaticIpConfigurationChannel {
+  @override
+  StaticIpConfiguration create({
+    LinkAddress? ipAddress,
+    InetAddress? gateway,
+    Iterable<InetAddress>? dnsServers,
+    String? domains,
+  }) {
+    final builder = jni.StaticIpConfiguration$Builder.new$1();
+    if (ipAddress != null) builder.setIpAddress(ipAddress.api);
+    builder.setGateway(gateway?.api);
+    if (dnsServers != null) {
+      builder.setDnsServers(
+        dnsServers
+            .map((e) => e.api)
+            .toJList(jni.InetAddress.type)
+            .as(jni.Iterable.type(jni.InetAddress.type)),
+      );
+    }
+    builder.setDomains(domains?.api);
+    final api = builder.build();
+    return StaticIpConfigurationImpl.internal(api);
+  }
 }
 
 extension Invictus$StaticIpConfigurationX on StaticIpConfiguration {

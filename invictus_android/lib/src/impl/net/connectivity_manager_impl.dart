@@ -1,8 +1,8 @@
 import 'dart:typed_data';
 
-import 'package:invictus_android/src/api.dart';
 import 'package:invictus_android/src/impl.dart';
 import 'package:invictus_android/src/jni.dart' as jni;
+import 'package:invictus_api/invictus_api.dart';
 
 final class ConnectivityManager$NetworkCallbackImpl extends InvictusObjectImpl
     implements ConnectivityManager$NetworkCallback {
@@ -10,46 +10,6 @@ final class ConnectivityManager$NetworkCallbackImpl extends InvictusObjectImpl
   final jni.ConnectivityManager$NetworkCallback api;
 
   ConnectivityManager$NetworkCallbackImpl.internal(this.api);
-
-  factory ConnectivityManager$NetworkCallbackImpl({
-    bool includeLocationInfo = false,
-    void Function(Network network)? onAvailable,
-    void Function(Network network, bool blocked)? onBlockedStatusChanged,
-    void Function(Network network, NetworkCapabilities networkCapabilities)?
-    onCapabilitiesChanged,
-    void Function(Network network, LinkProperties linkProperties)?
-    onLinkPropertiesChanged,
-    void Function(Network network, int maxMsToLive)? onLosing,
-    void Function(Network network)? onLost,
-    void Function(NetworkCapabilities networkCapabilities)? onReserved,
-    void Function()? onUnavailable,
-  }) {
-    final invictusApi =
-        jni.InvictusConnectivityManager$InvictusNetworkCallback.implement(
-          jni.$InvictusConnectivityManager$InvictusNetworkCallback(
-            onAvailable: (e) => onAvailable?.call(e.impl),
-            onBlockedStatusChanged: (e1, e2) =>
-                onBlockedStatusChanged?.call(e1.impl, e2),
-            onCapabilitiesChanged: (e1, e2) =>
-                onCapabilitiesChanged?.call(e1.impl, e2.impl),
-            onLinkPropertiesChanged: (e1, e2) =>
-                onLinkPropertiesChanged?.call(e1.impl, e2.impl),
-            onLosing: (e1, e2) => onLosing?.call(e1.impl, e2),
-            onLost: (e) => onLost?.call(e.impl),
-            onReserved: (e) => onReserved?.call(e.impl),
-            onUnavailable: () => onUnavailable?.call(),
-          ),
-        );
-    final api = includeLocationInfo
-        ? jni.InvictusConnectivityManager$InvictusNetworkCallbackImpl.new$3(
-            invictusApi,
-            jni.ConnectivityManager$NetworkCallback.FLAG_INCLUDE_LOCATION_INFO,
-          )
-        : jni.InvictusConnectivityManager$InvictusNetworkCallbackImpl.new$2(
-            invictusApi,
-          );
-    return ConnectivityManager$NetworkCallbackImpl.internal(api);
-  }
 }
 
 final class ConnectivityManager$OnNetworkActiveListenerImpl
@@ -59,44 +19,14 @@ final class ConnectivityManager$OnNetworkActiveListenerImpl
   final jni.ConnectivityManager$OnNetworkActiveListener api;
 
   ConnectivityManager$OnNetworkActiveListenerImpl.internal(this.api);
-
-  factory ConnectivityManager$OnNetworkActiveListenerImpl({
-    required void Function() onNetworkActive,
-  }) {
-    final api = jni.ConnectivityManager$OnNetworkActiveListener.implement(
-      jni.$ConnectivityManager$OnNetworkActiveListener(
-        onNetworkActive: onNetworkActive,
-      ),
-    );
-    return ConnectivityManager$OnNetworkActiveListenerImpl.internal(api);
-  }
 }
 
 final class ConnectivityManagerImpl extends InvictusObjectImpl
     implements ConnectivityManager {
-  static bool isNetworkTypeValid(ConnectivityManager$Type networkType) =>
-      jni.ConnectivityManager.isNetworkTypeValid(networkType.api);
-
-  static Network? getProcessDefaultNetwork() =>
-      jni.ConnectivityManager.getProcessDefaultNetwork()?.impl;
-
-  static bool setProcessDefaultNetwork(Network? network) =>
-      jni.ConnectivityManager.setProcessDefaultNetwork(network?.api);
-
   @override
   final jni.ConnectivityManager api;
 
   ConnectivityManagerImpl.internal(this.api);
-
-  factory ConnectivityManagerImpl() {
-    final apiOrNull = jni.ContextCompat.getSystemService(
-      jni.context,
-      jni.ConnectivityManager.type.jClass,
-      T: jni.ConnectivityManager.type,
-    );
-    final api = ArgumentError.checkNotNull(apiOrNull);
-    return ConnectivityManagerImpl.internal(api);
-  }
 
   @override
   Network? get activeNetwork => api.getActiveNetwork()?.impl;
@@ -257,6 +187,90 @@ final class ConnectivityManagerImpl extends InvictusObjectImpl
   void unregisterNetworkCallback(
     ConnectivityManager$NetworkCallback networkCallback,
   ) => api.unregisterNetworkCallback$1(networkCallback.api);
+}
+
+final class ConnectivityManager$NetworkCallbackChannelImpl
+    extends ConnectivityManager$NetworkCallbackChannel {
+  @override
+  ConnectivityManager$NetworkCallback create({
+    bool includeLocationInfo = false,
+    void Function(Network network)? onAvailable,
+    void Function(Network network, bool blocked)? onBlockedStatusChanged,
+    void Function(Network network, NetworkCapabilities networkCapabilities)?
+    onCapabilitiesChanged,
+    void Function(Network network, LinkProperties linkProperties)?
+    onLinkPropertiesChanged,
+    void Function(Network network, int maxMsToLive)? onLosing,
+    void Function(Network network)? onLost,
+    void Function(NetworkCapabilities networkCapabilities)? onReserved,
+    void Function()? onUnavailable,
+  }) {
+    final invictusApi =
+        jni.InvictusConnectivityManager$InvictusNetworkCallback.implement(
+          jni.$InvictusConnectivityManager$InvictusNetworkCallback(
+            onAvailable: (e) => onAvailable?.call(e.impl),
+            onBlockedStatusChanged: (e1, e2) =>
+                onBlockedStatusChanged?.call(e1.impl, e2),
+            onCapabilitiesChanged: (e1, e2) =>
+                onCapabilitiesChanged?.call(e1.impl, e2.impl),
+            onLinkPropertiesChanged: (e1, e2) =>
+                onLinkPropertiesChanged?.call(e1.impl, e2.impl),
+            onLosing: (e1, e2) => onLosing?.call(e1.impl, e2),
+            onLost: (e) => onLost?.call(e.impl),
+            onReserved: (e) => onReserved?.call(e.impl),
+            onUnavailable: () => onUnavailable?.call(),
+          ),
+        );
+    final api = includeLocationInfo
+        ? jni.InvictusConnectivityManager$InvictusNetworkCallbackImpl.new$3(
+            invictusApi,
+            jni.ConnectivityManager$NetworkCallback.FLAG_INCLUDE_LOCATION_INFO,
+          )
+        : jni.InvictusConnectivityManager$InvictusNetworkCallbackImpl.new$2(
+            invictusApi,
+          );
+    return ConnectivityManager$NetworkCallbackImpl.internal(api);
+  }
+}
+
+final class ConnectivityManager$OnNetworkActiveListenerChannelImpl
+    extends ConnectivityManager$OnNetworkActiveListenerChannel {
+  @override
+  ConnectivityManager$OnNetworkActiveListener create({
+    required void Function() onNetworkActive,
+  }) {
+    final api = jni.ConnectivityManager$OnNetworkActiveListener.implement(
+      jni.$ConnectivityManager$OnNetworkActiveListener(
+        onNetworkActive: onNetworkActive,
+      ),
+    );
+    return ConnectivityManager$OnNetworkActiveListenerImpl.internal(api);
+  }
+}
+
+final class ConnectivityManagerChannelImpl extends ConnectivityManagerChannel {
+  @override
+  bool isNetworkTypeValid(ConnectivityManager$Type networkType) =>
+      jni.ConnectivityManager.isNetworkTypeValid(networkType.api);
+
+  @override
+  Network? getProcessDefaultNetwork() =>
+      jni.ConnectivityManager.getProcessDefaultNetwork()?.impl;
+
+  @override
+  bool setProcessDefaultNetwork(Network? network) =>
+      jni.ConnectivityManager.setProcessDefaultNetwork(network?.api);
+
+  @override
+  ConnectivityManager create() {
+    final apiOrNull = jni.ContextCompat.getSystemService(
+      jni.context,
+      jni.ConnectivityManager.type.jClass,
+      T: jni.ConnectivityManager.type,
+    );
+    final api = ArgumentError.checkNotNull(apiOrNull);
+    return ConnectivityManagerImpl.internal(api);
+  }
 }
 
 extension ConnectivityManagerTypeX on ConnectivityManager$Type {

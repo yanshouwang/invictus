@@ -1,8 +1,1 @@
-
-import 'invictus_platform_interface.dart';
-
-class Invictus {
-  Future<String?> getPlatformVersion() {
-    return InvictusPlatform.instance.getPlatformVersion();
-  }
-}
+export 'package:invictus_api/invictus_api.dart';

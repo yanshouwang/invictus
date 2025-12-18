@@ -1,0 +1,14 @@
+import 'package:invictus_android/src/impl.dart';
+import 'package:invictus_android/src/jni.dart' as jni;
+import 'package:invictus_api/invictus_api.dart';
+
+final class MacAddressImpl extends ObjectImpl implements MacAddress {
+  @override
+  final jni.MacAddress api;
+
+  MacAddressImpl.internal(this.api);
+}
+
+extension Invictus$JMacAddressX on jni.MacAddress {
+  MacAddress get impl => MacAddressImpl.internal(this);
+}

@@ -36,6 +36,8 @@ import 'dart:core' show Object, String, bool, double, int;
 import 'package:jni/_internal.dart' as jni$_;
 import 'package:jni/jni.dart' as jni$_;
 
+import '../../java/io/InputStream.dart' as inputstream$_;
+
 import '../../java/lang/CharSequence.dart' as charsequence$_;
 
 import '../../java/util/Collection.dart' as collection$_;
@@ -6707,7 +6709,7 @@ class Context extends jni$_.JObject {
           >();
 
   /// from: `public abstract void setWallpaper(java.io.InputStream inputStream)`
-  void setWallpaper$1(jni$_.JObject? inputStream) {
+  void setWallpaper$1(inputstream$_.InputStream? inputStream) {
     final _$inputStream = inputStream?.reference ?? jni$_.jNullReference;
     _setWallpaper$1(
       reference.pointer,

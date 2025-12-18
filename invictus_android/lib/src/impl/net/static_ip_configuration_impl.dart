@@ -2,7 +2,7 @@ import 'package:invictus_android/src/impl.dart';
 import 'package:invictus_android/src/jni.dart' as jni;
 import 'package:invictus_api/invictus_api.dart';
 
-final class StaticIpConfigurationImpl extends InvictusObjectImpl
+final class StaticIpConfigurationImpl extends ObjectImpl
     implements StaticIpConfiguration {
   @override
   final jni.StaticIpConfiguration api;

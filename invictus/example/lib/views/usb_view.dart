@@ -8,32 +8,36 @@ class UsbView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final viewModel = ViewModel.of<UsbViewModel>(context);
-    final usbAccessories = viewModel.usbAccessories;
-    final usbDevices = viewModel.usbDevices;
+    final accessories = viewModel.usbAccessories;
+    final devices = viewModel.usbDevices;
     return Scaffold(
       appBar: AppBar(title: const Text('Usb')),
       body: CustomScrollView(
         slivers: [
           SliverList.separated(
             itemBuilder: (context, i) {
-              final usbAccessory = usbAccessories[i];
-              return ListTile(title: Text('$usbAccessory'));
-            },
-            separatorBuilder: (context, i) => Divider(),
-            itemCount: usbAccessories.length,
-          ),
-          SliverList.separated(
-            itemBuilder: (context, i) {
-              final entry = usbDevices.entries.elementAt(i);
-              final usbDeviceName = entry.key;
-              final usbDevice = entry.value;
+              final accessory = accessories[i];
               return ListTile(
-                title: Text(usbDeviceName),
-                subtitle: Text('$usbDevice'.split(',').join('\n')),
+                onTap: () => viewModel.requestAccessoryPermission(accessory),
+                title: Text('$accessory'),
               );
             },
             separatorBuilder: (context, i) => Divider(),
-            itemCount: usbDevices.length,
+            itemCount: accessories.length,
+          ),
+          SliverList.separated(
+            itemBuilder: (context, i) {
+              final entry = devices.entries.elementAt(i);
+              final deviceName = entry.key;
+              final device = entry.value;
+              return ListTile(
+                onTap: () => viewModel.requestDevicePermission(device),
+                title: Text(deviceName),
+                subtitle: Text('$device'.split(',').join('\n')),
+              );
+            },
+            separatorBuilder: (context, i) => Divider(),
+            itemCount: devices.length,
           ),
         ],
       ),

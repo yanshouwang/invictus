@@ -2,8 +2,7 @@ import 'package:invictus_android/src/impl.dart';
 import 'package:invictus_android/src/jni.dart' as jni;
 import 'package:invictus_api/invictus_api.dart';
 
-final class IpConfigurationImpl extends InvictusObjectImpl
-    implements IpConfiguration {
+final class IpConfigurationImpl extends ObjectImpl implements IpConfiguration {
   @override
   final jni.IpConfiguration api;
 

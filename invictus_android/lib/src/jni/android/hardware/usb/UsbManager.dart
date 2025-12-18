@@ -36,9 +36,15 @@ import 'dart:core' show Object, String, bool, double, int;
 import 'package:jni/_internal.dart' as jni$_;
 import 'package:jni/jni.dart' as jni$_;
 
+import '../../../java/io/InputStream.dart' as inputstream$_;
+
+import '../../../java/io/OutputStream.dart' as outputstream$_;
+
 import '../../../java/util/HashMap.dart' as hashmap$_;
 
 import '../../app/PendingIntent.dart' as pendingintent$_;
+
+import '../../os/ParcelFileDescriptor.dart' as parcelfiledescriptor$_;
 
 import 'UsbAccessory.dart' as usbaccessory$_;
 
@@ -312,13 +318,17 @@ class UsbManager extends jni$_.JObject {
 
   /// from: `public android.os.ParcelFileDescriptor openAccessory(android.hardware.usb.UsbAccessory usbAccessory)`
   /// The returned object must be released after use, by calling the [release] method.
-  jni$_.JObject? openAccessory(usbaccessory$_.UsbAccessory? usbAccessory) {
+  parcelfiledescriptor$_.ParcelFileDescriptor? openAccessory(
+    usbaccessory$_.UsbAccessory? usbAccessory,
+  ) {
     final _$usbAccessory = usbAccessory?.reference ?? jni$_.jNullReference;
     return _openAccessory(
       reference.pointer,
       _id_openAccessory as jni$_.JMethodIDPtr,
       _$usbAccessory.pointer,
-    ).object<jni$_.JObject?>(const jni$_.$JObject$NullableType$());
+    ).object<parcelfiledescriptor$_.ParcelFileDescriptor?>(
+      const parcelfiledescriptor$_.$ParcelFileDescriptor$NullableType$(),
+    );
   }
 
   static final _id_openAccessoryInputStream = _class.instanceMethodId(
@@ -346,7 +356,7 @@ class UsbManager extends jni$_.JObject {
 
   /// from: `public java.io.InputStream openAccessoryInputStream(android.hardware.usb.UsbAccessory usbAccessory)`
   /// The returned object must be released after use, by calling the [release] method.
-  jni$_.JObject openAccessoryInputStream(
+  inputstream$_.InputStream openAccessoryInputStream(
     usbaccessory$_.UsbAccessory usbAccessory,
   ) {
     final _$usbAccessory = usbAccessory.reference;
@@ -354,7 +364,9 @@ class UsbManager extends jni$_.JObject {
       reference.pointer,
       _id_openAccessoryInputStream as jni$_.JMethodIDPtr,
       _$usbAccessory.pointer,
-    ).object<jni$_.JObject>(const jni$_.$JObject$Type$());
+    ).object<inputstream$_.InputStream>(
+      const inputstream$_.$InputStream$Type$(),
+    );
   }
 
   static final _id_openAccessoryOutputStream = _class.instanceMethodId(
@@ -382,7 +394,7 @@ class UsbManager extends jni$_.JObject {
 
   /// from: `public java.io.OutputStream openAccessoryOutputStream(android.hardware.usb.UsbAccessory usbAccessory)`
   /// The returned object must be released after use, by calling the [release] method.
-  jni$_.JObject openAccessoryOutputStream(
+  outputstream$_.OutputStream openAccessoryOutputStream(
     usbaccessory$_.UsbAccessory usbAccessory,
   ) {
     final _$usbAccessory = usbAccessory.reference;
@@ -390,7 +402,9 @@ class UsbManager extends jni$_.JObject {
       reference.pointer,
       _id_openAccessoryOutputStream as jni$_.JMethodIDPtr,
       _$usbAccessory.pointer,
-    ).object<jni$_.JObject>(const jni$_.$JObject$Type$());
+    ).object<outputstream$_.OutputStream>(
+      const outputstream$_.$OutputStream$Type$(),
+    );
   }
 
   static final _id_openDevice = _class.instanceMethodId(

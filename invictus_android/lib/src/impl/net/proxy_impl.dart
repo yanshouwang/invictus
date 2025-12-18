@@ -2,7 +2,7 @@ import 'package:invictus_android/src/impl.dart';
 import 'package:invictus_android/src/jni.dart' as jni;
 import 'package:invictus_api/invictus_api.dart';
 
-final class ProxyImpl extends InvictusObjectImpl implements Proxy {
+final class ProxyImpl extends ObjectImpl implements Proxy {
   @override
   final jni.Proxy api;
 

@@ -2,7 +2,7 @@ import 'package:invictus_android/src/impl.dart';
 import 'package:invictus_android/src/jni.dart' as jni;
 import 'package:invictus_api/invictus_api.dart';
 
-final class NetworkInfo$DetailedStateImpl extends InvictusObjectImpl
+final class NetworkInfo$DetailedStateImpl extends ObjectImpl
     implements NetworkInfo$DetailedState {
   @override
   final jni.NetworkInfo$DetailedState api;
@@ -10,7 +10,7 @@ final class NetworkInfo$DetailedStateImpl extends InvictusObjectImpl
   NetworkInfo$DetailedStateImpl.internal(this.api);
 }
 
-final class NetworkInfoImpl extends InvictusObjectImpl implements NetworkInfo {
+final class NetworkInfoImpl extends ObjectImpl implements NetworkInfo {
   @override
   final jni.NetworkInfo api;
 

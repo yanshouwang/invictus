@@ -2,7 +2,7 @@ import 'package:invictus_android/src/impl.dart';
 import 'package:invictus_android/src/jni.dart' as jni;
 import 'package:invictus_api/invictus_api.dart';
 
-final class UrlImpl extends InvictusObjectImpl implements Url {
+final class UrlImpl extends ObjectImpl implements Url {
   @override
   final jni.URL api;
 

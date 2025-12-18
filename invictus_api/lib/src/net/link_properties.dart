@@ -1,4 +1,4 @@
-import 'package:invictus_api/invictus_api.dart';
+import 'package:invictus_api/src/net.dart';
 
 abstract interface class LinkProperties {
   Inet4Address? get dhcpServerAddress;

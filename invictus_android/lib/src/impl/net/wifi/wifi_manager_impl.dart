@@ -5,7 +5,7 @@ import 'package:logging/logging.dart';
 
 Logger get _logger => Logger('WifiManager');
 
-final class WifiManager$WifiStateChangedListenerImpl extends InvictusObjectImpl
+final class WifiManager$WifiStateChangedListenerImpl extends ObjectImpl
     implements WifiManager$WifiStateChangedListener {
   @override
   final jni.BroadcastReceiver api;
@@ -13,8 +13,7 @@ final class WifiManager$WifiStateChangedListenerImpl extends InvictusObjectImpl
   WifiManager$WifiStateChangedListenerImpl.internal(this.api);
 }
 
-final class WifiManager$WifiStateChangedListenerImpl36
-    extends InvictusObjectImpl
+final class WifiManager$WifiStateChangedListenerImpl36 extends ObjectImpl
     implements WifiManager$WifiStateChangedListener {
   @override
   final jni.WifiManager$WifiStateChangedListener api;
@@ -22,7 +21,7 @@ final class WifiManager$WifiStateChangedListenerImpl36
   WifiManager$WifiStateChangedListenerImpl36.internal(this.api);
 }
 
-final class WifiManager$ScanResultsCallbackImpl extends InvictusObjectImpl
+final class WifiManager$ScanResultsCallbackImpl extends ObjectImpl
     implements WifiManager$ScanResultsCallback {
   @override
   final jni.WifiManager$ScanResultsCallback api;
@@ -30,7 +29,7 @@ final class WifiManager$ScanResultsCallbackImpl extends InvictusObjectImpl
   WifiManager$ScanResultsCallbackImpl.internal(this.api);
 }
 
-final class WifiManagerImpl extends InvictusObjectImpl implements WifiManager {
+final class WifiManagerImpl extends ObjectImpl implements WifiManager {
   @override
   final jni.WifiManager api;
 
@@ -156,10 +155,20 @@ final class WifiManagerImpl extends InvictusObjectImpl implements WifiManager {
   int updateNetwork(WifiConfiguration config) => api.updateNetwork(config.api);
 }
 
-final class WifiManager$WifiStateChangedListenerChannelImpl
-    extends WifiManager$WifiStateChangedListenerChannel {
+final class WifiManagerChannelImpl extends WifiManagerChannel {
   @override
-  WifiManager$WifiStateChangedListener create({
+  WifiManager create() {
+    final apiOrNull = jni.ContextCompat.getSystemService(
+      jni.context,
+      jni.WifiManager.type.jClass,
+      T: jni.WifiManager.type,
+    );
+    final api = ArgumentError.checkNotNull(apiOrNull, 'api');
+    return WifiManagerImpl.internal(api);
+  }
+
+  @override
+  WifiManager$WifiStateChangedListener createWifiStateChangedListener({
     required void Function() onWifiStateChanged,
   }) {
     if (jni.Build$VERSION.SDK_INT >= jni.Build$VERSION_CODES.BAKLAVA) {
@@ -178,7 +187,7 @@ final class WifiManager$WifiStateChangedListenerChannelImpl
                 _logger.warning('intent is null');
                 return;
               }
-              final action = intent.getAction();
+              final action = intent.action;
               if (action != jni.WifiManager.WIFI_STATE_CHANGED_ACTION) return;
               onWifiStateChanged();
             },
@@ -188,12 +197,9 @@ final class WifiManager$WifiStateChangedListenerChannelImpl
       return WifiManager$WifiStateChangedListenerImpl.internal(api);
     }
   }
-}
 
-final class WifiManager$ScanResultsCallbackChannelImpl
-    extends WifiManager$ScanResultsCallbackChannel {
   @override
-  WifiManager$ScanResultsCallback create({
+  WifiManager$ScanResultsCallback createScanResultsCallback({
     required void Function() onScanResultsAvailable,
   }) {
     final invictusApi =
@@ -206,19 +212,6 @@ final class WifiManager$ScanResultsCallbackChannelImpl
       invictusApi,
     );
     return WifiManager$ScanResultsCallbackImpl.internal(api);
-  }
-}
-
-final class WifiManagerChannelImpl extends WifiManagerChannel {
-  @override
-  WifiManager create() {
-    final apiOrNull = jni.ContextCompat.getSystemService(
-      jni.context,
-      jni.WifiManager.type.jClass,
-      T: jni.WifiManager.type,
-    );
-    final api = ArgumentError.checkNotNull(apiOrNull, 'api');
-    return WifiManagerImpl.internal(api);
   }
 }
 

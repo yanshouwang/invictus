@@ -44,7 +44,9 @@ extension Invictus$JStringX on JString {
 }
 
 extension Invictus$Uint8ListX on Uint8List {
-  JByteArray get api => toJByteBuffer().array;
+  JByteBuffer get byteBufferApi => toJByteBuffer();
+
+  JByteArray get byteArrayApi => toJByteBuffer().array;
 }
 
 extension Invictus$JByteArrayX on JByteArray {
@@ -55,10 +57,22 @@ extension Invictus$JByteBufferX on JByteBuffer {
   Uint8List get impl => asUint8List();
 }
 
-extension InvictusJContextX on Context {
+extension Invictus$JContextX on Context {
+  JString get packageName {
+    final packageNameOrNull = getPackageName();
+    return ArgumentError.checkNotNull(packageNameOrNull, 'packageName');
+  }
+
   Executor get mainExecutor => ContextCompat.getMainExecutor(this);
   Handler get mainHandler => getMainHandler();
-  Looper get mainLooper => getMainLooper()!;
+  Looper get mainLooper {
+    final mainLooperOrNull = getMainLooper();
+    return ArgumentError.checkNotNull(mainLooperOrNull, 'mainLooper');
+  }
 
   Handler getMainHandler() => Handler.new$2(mainLooper);
+}
+
+extension Invictus$JIntentX on Intent {
+  JString? get action => getAction();
 }

@@ -1,4 +1,4 @@
-import 'package:invictus_api/invictus_api.dart';
+import 'package:invictus_api/src/hardware.dart';
 import 'package:plugin_platform_interface/plugin_platform_interface.dart';
 
 abstract interface class UsbDevice {
@@ -8,14 +8,12 @@ abstract interface class UsbDevice {
   static String getDeviceName(int id) =>
       UsbDeviceChannel.instance.getDeviceName(id);
 
-  UsbConfiguration getConfiguration(int index);
   int get configurationCount;
   int get deviceClass;
   int get deviceId;
   String get deviceName;
   int get deviceProtocol;
   int get deviceSubclass;
-  UsbInterface getInterface(int index);
   int get interfaceCount;
   String? get manufacturerName;
   int get productId;
@@ -23,6 +21,9 @@ abstract interface class UsbDevice {
   String? get serialNumber;
   int get vendorId;
   String get version;
+
+  UsbConfiguration getConfiguration(int index);
+  UsbInterface getInterface(int index);
 }
 
 abstract base class UsbDeviceChannel extends PlatformInterface {

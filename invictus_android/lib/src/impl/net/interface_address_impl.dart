@@ -2,7 +2,7 @@ import 'package:invictus_android/src/impl.dart';
 import 'package:invictus_android/src/jni.dart' as jni;
 import 'package:invictus_api/invictus_api.dart';
 
-final class InterfaceAddressImpl extends InvictusObjectImpl
+final class InterfaceAddressImpl extends ObjectImpl
     implements InterfaceAddress {
   @override
   jni.InterfaceAddress api;

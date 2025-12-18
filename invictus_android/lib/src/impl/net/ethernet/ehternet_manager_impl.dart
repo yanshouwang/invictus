@@ -2,7 +2,7 @@ import 'package:invictus_android/src/impl.dart';
 import 'package:invictus_android/src/jni.dart' as jni;
 import 'package:invictus_api/invictus_api.dart';
 
-final class EthernetManager$ListenerImpl extends InvictusObjectImpl
+final class EthernetManager$ListenerImpl extends ObjectImpl
     implements EthernetManager$Listener {
   @override
   final jni.EthernetManager$Listener api;
@@ -10,8 +10,7 @@ final class EthernetManager$ListenerImpl extends InvictusObjectImpl
   EthernetManager$ListenerImpl.internal(this.api);
 }
 
-final class EthernetManagerImpl extends InvictusObjectImpl
-    implements EthernetManager {
+final class EthernetManagerImpl extends ObjectImpl implements EthernetManager {
   @override
   final jni.EthernetManager api;
 
@@ -42,10 +41,15 @@ final class EthernetManagerImpl extends InvictusObjectImpl
       api.setConfiguration(iface.api, config.api);
 }
 
-final class EthernetManager$ListenerChannelImpl
-    extends EthernetManager$ListenerChannel {
+final class EthernetManagerChannelImpl extends EthernetManagerChannel {
   @override
-  EthernetManager$Listener create({
+  EthernetManager create() {
+    final api = jni.EthernetManager(jni.context);
+    return EthernetManagerImpl.internal(api);
+  }
+
+  @override
+  EthernetManager$Listener createListener({
     required void Function(String iface, bool isAvailable)
     onAvailabilityChanged,
   }) {
@@ -58,14 +62,6 @@ final class EthernetManager$ListenerChannelImpl
       ),
     );
     return EthernetManager$ListenerImpl.internal(api);
-  }
-}
-
-final class EthernetManagerChannelImpl extends EthernetManagerChannel {
-  @override
-  EthernetManager create() {
-    final api = jni.EthernetManager(jni.context);
-    return EthernetManagerImpl.internal(api);
   }
 }
 

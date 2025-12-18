@@ -1,6 +1,6 @@
 import 'package:invictus_android/src/jni.dart' as jni;
 
-abstract base class InvictusObjectImpl {
+abstract base class ObjectImpl {
   jni.JObject get api;
 
   @override
@@ -8,7 +8,7 @@ abstract base class InvictusObjectImpl {
 
   @override
   bool operator ==(Object other) {
-    return other is InvictusObjectImpl && other.api == api;
+    return other is ObjectImpl && other.api == api;
   }
 
   @override

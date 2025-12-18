@@ -4,7 +4,7 @@ import 'package:invictus_android/src/impl.dart';
 import 'package:invictus_android/src/jni.dart' as jni;
 import 'package:invictus_api/invictus_api.dart';
 
-final class IpPrefixImpl extends InvictusObjectImpl implements IpPrefix {
+final class IpPrefixImpl extends ObjectImpl implements IpPrefix {
   @override
   final jni.IpPrefix api;
 

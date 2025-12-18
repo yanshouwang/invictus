@@ -2,4 +2,5 @@
 export 'Build.dart';
 export 'Handler.dart';
 export 'Looper.dart';
+export 'ParcelFileDescriptor.dart';
 export 'PowerManager.dart';

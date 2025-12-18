@@ -1,4 +1,4 @@
-import 'package:invictus_api/invictus_api.dart';
+import 'package:invictus_api/src/net.dart';
 import 'package:plugin_platform_interface/plugin_platform_interface.dart';
 
 enum WifiManager$WifiState {
@@ -12,7 +12,7 @@ enum WifiManager$WifiState {
 abstract interface class WifiManager$WifiStateChangedListener {
   factory WifiManager$WifiStateChangedListener({
     required void Function() onWifiStateChanged,
-  }) => WifiManager$WifiStateChangedListenerChannel.instance.create(
+  }) => WifiManagerChannel.instance.createWifiStateChangedListener(
     onWifiStateChanged: onWifiStateChanged,
   );
 }
@@ -20,7 +20,7 @@ abstract interface class WifiManager$WifiStateChangedListener {
 abstract interface class WifiManager$ScanResultsCallback {
   factory WifiManager$ScanResultsCallback({
     required void Function() onScanResultsAvailable,
-  }) => WifiManager$ScanResultsCallbackChannel.instance.create(
+  }) => WifiManagerChannel.instance.createScanResultsCallback(
     onScanResultsAvailable: onScanResultsAvailable,
   );
 }
@@ -245,58 +245,6 @@ abstract interface class WifiManager {
   // bool validateSoftApConfiguration(SoftApConfiguration config);
 }
 
-abstract base class WifiManager$WifiStateChangedListenerChannel
-    extends PlatformInterface {
-  /// Constructs a [WifiManager$WifiStateChangedListenerChannel].
-  WifiManager$WifiStateChangedListenerChannel() : super(token: _token);
-
-  static final Object _token = Object();
-
-  static WifiManager$WifiStateChangedListenerChannel? _instance;
-
-  /// The default instance of [WifiManager$WifiStateChangedListenerChannel] to use.
-  static WifiManager$WifiStateChangedListenerChannel get instance =>
-      ArgumentError.checkNotNull(_instance, 'instance');
-
-  /// Platform-specific implementations should set this with their own
-  /// platform-specific class that extends [WifiManager$WifiStateChangedListenerChannel] when
-  /// they register themselves.
-  static set instance(WifiManager$WifiStateChangedListenerChannel instance) {
-    PlatformInterface.verifyToken(instance, _token);
-    _instance = instance;
-  }
-
-  WifiManager$WifiStateChangedListener create({
-    required void Function() onWifiStateChanged,
-  });
-}
-
-abstract base class WifiManager$ScanResultsCallbackChannel
-    extends PlatformInterface {
-  /// Constructs a [WifiManager$ScanResultsCallbackChannel].
-  WifiManager$ScanResultsCallbackChannel() : super(token: _token);
-
-  static final Object _token = Object();
-
-  static WifiManager$ScanResultsCallbackChannel? _instance;
-
-  /// The default instance of [WifiManager$ScanResultsCallbackChannel] to use.
-  static WifiManager$ScanResultsCallbackChannel get instance =>
-      ArgumentError.checkNotNull(_instance, 'instance');
-
-  /// Platform-specific implementations should set this with their own
-  /// platform-specific class that extends [WifiManager$ScanResultsCallbackChannel] when
-  /// they register themselves.
-  static set instance(WifiManager$ScanResultsCallbackChannel instance) {
-    PlatformInterface.verifyToken(instance, _token);
-    _instance = instance;
-  }
-
-  WifiManager$ScanResultsCallback create({
-    required void Function() onScanResultsAvailable,
-  });
-}
-
 abstract base class WifiManagerChannel extends PlatformInterface {
   /// Constructs a [WifiManagerChannel].
   WifiManagerChannel() : super(token: _token);
@@ -318,4 +266,10 @@ abstract base class WifiManagerChannel extends PlatformInterface {
   }
 
   WifiManager create();
+  WifiManager$WifiStateChangedListener createWifiStateChangedListener({
+    required void Function() onWifiStateChanged,
+  });
+  WifiManager$ScanResultsCallback createScanResultsCallback({
+    required void Function() onScanResultsAvailable,
+  });
 }

@@ -2,8 +2,7 @@ import 'package:invictus_android/src/impl.dart';
 import 'package:invictus_android/src/jni.dart' as jni;
 import 'package:invictus_api/invictus_api.dart';
 
-final class DatagramSocketImpl extends InvictusObjectImpl
-    implements DatagramSocket {
+final class DatagramSocketImpl extends ObjectImpl implements DatagramSocket {
   @override
   final jni.DatagramSocket api;
 

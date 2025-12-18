@@ -36,6 +36,8 @@ import 'dart:core' show Object, String, bool, double, int;
 import 'package:jni/_internal.dart' as jni$_;
 import 'package:jni/jni.dart' as jni$_;
 
+import '../io/InputStream.dart' as inputstream$_;
+
 import 'Proxy.dart' as proxy$_;
 
 import 'URLConnection.dart' as urlconnection$_;
@@ -859,11 +861,13 @@ class URL extends jni$_.JObject {
 
   /// from: `public java.io.InputStream openStream()`
   /// The returned object must be released after use, by calling the [release] method.
-  jni$_.JObject? openStream() {
+  inputstream$_.InputStream? openStream() {
     return _openStream(
       reference.pointer,
       _id_openStream as jni$_.JMethodIDPtr,
-    ).object<jni$_.JObject?>(const jni$_.$JObject$NullableType$());
+    ).object<inputstream$_.InputStream?>(
+      const inputstream$_.$InputStream$NullableType$(),
+    );
   }
 
   static final _id_sameFile = _class.instanceMethodId(

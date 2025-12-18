@@ -3,4 +3,5 @@ export 'impl/io.dart';
 export 'impl/net.dart';
 export 'impl/os.dart';
 
-export 'impl/invictus_object_impl.dart';
+export 'impl/auto_closeable_impl.dart';
+export 'impl/object_impl.dart';

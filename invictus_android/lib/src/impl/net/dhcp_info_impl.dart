@@ -2,7 +2,7 @@ import 'package:invictus_android/src/impl.dart';
 import 'package:invictus_android/src/jni.dart' as jni;
 import 'package:invictus_api/invictus_api.dart';
 
-final class DhcpInfoImpl extends InvictusObjectImpl implements DhcpInfo {
+final class DhcpInfoImpl extends ObjectImpl implements DhcpInfo {
   @override
   final jni.DhcpInfo api;
 

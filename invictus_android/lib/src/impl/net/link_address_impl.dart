@@ -2,7 +2,7 @@ import 'package:invictus_android/src/impl.dart';
 import 'package:invictus_android/src/jni.dart' as jni;
 import 'package:invictus_api/invictus_api.dart';
 
-final class LinkAddressImpl extends InvictusObjectImpl implements LinkAddress {
+final class LinkAddressImpl extends ObjectImpl implements LinkAddress {
   @override
   final jni.LinkAddress api;
 

@@ -30,7 +30,7 @@ final class Inet6AddressChannelImpl extends Inet6AddressChannel {
   ) {
     final apiOrNull = jni.Inet6Address.getByAddress$2(
       host.api,
-      addr.api,
+      addr.byteArrayApi,
       scopeId,
     );
     final api = ArgumentError.checkNotNull(apiOrNull, 'api');
@@ -45,7 +45,7 @@ final class Inet6AddressChannelImpl extends Inet6AddressChannel {
   ) {
     final apiOrNull = jni.Inet6Address.getByAddress$3(
       host.api,
-      addr.api,
+      addr.byteArrayApi,
       nif.api,
     );
     final api = ArgumentError.checkNotNull(apiOrNull, 'api');

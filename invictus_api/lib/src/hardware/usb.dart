@@ -1,5 +1,6 @@
 export 'usb/usb_accessory.dart';
 export 'usb/usb_configuration.dart';
+export 'usb/usb_constants.dart';
 export 'usb/usb_device_connection.dart';
 export 'usb/usb_device.dart';
 export 'usb/usb_endpoint.dart';

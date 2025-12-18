@@ -2,7 +2,7 @@ import 'package:invictus_android/src/impl.dart';
 import 'package:invictus_android/src/jni.dart' as jni;
 import 'package:invictus_api/invictus_api.dart';
 
-final class IpSecManager$UdpEncapsulationSocketImpl extends InvictusObjectImpl
+final class IpSecManager$UdpEncapsulationSocketImpl extends ObjectImpl
     implements IpSecManager$UdpEncapsulationSocket {
   @override
   final jni.IpSecManager$UdpEncapsulationSocket api;

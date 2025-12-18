@@ -1,6 +1,6 @@
 import 'dart:typed_data';
 
-import 'package:invictus_api/invictus_api.dart';
+import 'package:invictus_api/src/net.dart';
 import 'package:plugin_platform_interface/plugin_platform_interface.dart';
 
 enum ConnectivityManager$Type {
@@ -36,7 +36,7 @@ abstract interface class ConnectivityManager$NetworkCallback {
     void Function(Network network)? onLost,
     void Function(NetworkCapabilities networkCapabilities)? onReserved,
     void Function()? onUnavailable,
-  }) => ConnectivityManager$NetworkCallbackChannel.instance.create(
+  }) => ConnectivityManagerChannel.instance.createNetworkCallback(
     includeLocationInfo: includeLocationInfo,
     onAvailable: onAvailable,
     onBlockedStatusChanged: onBlockedStatusChanged,
@@ -52,7 +52,7 @@ abstract interface class ConnectivityManager$NetworkCallback {
 abstract interface class ConnectivityManager$OnNetworkActiveListener {
   factory ConnectivityManager$OnNetworkActiveListener({
     required void Function() onNetworkActive,
-  }) => ConnectivityManager$OnNetworkActiveListenerChannel.instance.create(
+  }) => ConnectivityManagerChannel.instance.createOnNetworkActiveListener(
     onNetworkActive: onNetworkActive,
   );
 }
@@ -135,70 +135,6 @@ abstract interface class ConnectivityManager {
   );
 }
 
-abstract base class ConnectivityManager$NetworkCallbackChannel
-    extends PlatformInterface {
-  /// Constructs a [ConnectivityManager$NetworkCallbackChannel].
-  ConnectivityManager$NetworkCallbackChannel() : super(token: _token);
-
-  static final Object _token = Object();
-
-  static ConnectivityManager$NetworkCallbackChannel? _instance;
-
-  /// The default instance of [ConnectivityManager$NetworkCallbackChannel] to use.
-  static ConnectivityManager$NetworkCallbackChannel get instance =>
-      ArgumentError.checkNotNull(_instance, 'instance');
-
-  /// Platform-specific implementations should set this with their own
-  /// platform-specific class that extends [ConnectivityManager$NetworkCallbackChannel] when
-  /// they register themselves.
-  static set instance(ConnectivityManager$NetworkCallbackChannel instance) {
-    PlatformInterface.verifyToken(instance, _token);
-    _instance = instance;
-  }
-
-  ConnectivityManager$NetworkCallback create({
-    bool includeLocationInfo = false,
-    void Function(Network network)? onAvailable,
-    void Function(Network network, bool blocked)? onBlockedStatusChanged,
-    void Function(Network network, NetworkCapabilities networkCapabilities)?
-    onCapabilitiesChanged,
-    void Function(Network network, LinkProperties linkProperties)?
-    onLinkPropertiesChanged,
-    void Function(Network network, int maxMsToLive)? onLosing,
-    void Function(Network network)? onLost,
-    void Function(NetworkCapabilities networkCapabilities)? onReserved,
-    void Function()? onUnavailable,
-  });
-}
-
-abstract base class ConnectivityManager$OnNetworkActiveListenerChannel
-    extends PlatformInterface {
-  /// Constructs a [ConnectivityManager$OnNetworkActiveListenerChannel].
-  ConnectivityManager$OnNetworkActiveListenerChannel() : super(token: _token);
-
-  static final Object _token = Object();
-
-  static ConnectivityManager$OnNetworkActiveListenerChannel? _instance;
-
-  /// The default instance of [ConnectivityManager$OnNetworkActiveListenerChannel] to use.
-  static ConnectivityManager$OnNetworkActiveListenerChannel get instance =>
-      ArgumentError.checkNotNull(_instance, 'instance');
-
-  /// Platform-specific implementations should set this with their own
-  /// platform-specific class that extends [ConnectivityManager$OnNetworkActiveListenerChannel] when
-  /// they register themselves.
-  static set instance(
-    ConnectivityManager$OnNetworkActiveListenerChannel instance,
-  ) {
-    PlatformInterface.verifyToken(instance, _token);
-    _instance = instance;
-  }
-
-  ConnectivityManager$OnNetworkActiveListener create({
-    required void Function() onNetworkActive,
-  });
-}
-
 abstract base class ConnectivityManagerChannel extends PlatformInterface {
   /// Constructs a [ConnectivityManagerChannel].
   ConnectivityManagerChannel() : super(token: _token);
@@ -224,4 +160,20 @@ abstract base class ConnectivityManagerChannel extends PlatformInterface {
   bool setProcessDefaultNetwork(Network? network);
 
   ConnectivityManager create();
+  ConnectivityManager$NetworkCallback createNetworkCallback({
+    bool includeLocationInfo = false,
+    void Function(Network network)? onAvailable,
+    void Function(Network network, bool blocked)? onBlockedStatusChanged,
+    void Function(Network network, NetworkCapabilities networkCapabilities)?
+    onCapabilitiesChanged,
+    void Function(Network network, LinkProperties linkProperties)?
+    onLinkPropertiesChanged,
+    void Function(Network network, int maxMsToLive)? onLosing,
+    void Function(Network network)? onLost,
+    void Function(NetworkCapabilities networkCapabilities)? onReserved,
+    void Function()? onUnavailable,
+  });
+  ConnectivityManager$OnNetworkActiveListener createOnNetworkActiveListener({
+    required void Function() onNetworkActive,
+  });
 }

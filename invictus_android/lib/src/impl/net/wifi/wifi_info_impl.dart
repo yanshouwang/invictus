@@ -151,7 +151,7 @@ final class WifiInfoChannelImpl extends WifiInfoChannel {
     }
     if (neworkId != null) builder.setNetworkId(neworkId);
     if (rssi != null) builder.setRssi(rssi);
-    if (ssid != null) builder.setSsid(ssid.api);
+    if (ssid != null) builder.setSsid(ssid.byteArrayApi);
     if (subId != null) builder.setSubscriptionId(subId);
     final api = builder.build();
     return WifiInfoImpl.internal(api);

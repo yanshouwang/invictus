@@ -3,10 +3,10 @@ import 'package:invictus_api/invictus_api.dart';
 
 final class InvictusAndroidPlugin {
   static void registerWith() {
+    UsbConstantsChannel.instance = UsbConstantsChannelImpl();
     UsbDeviceChannel.instance = UsbDeviceChannelImpl();
     UsbManagerChannel.instance = UsbManagerChannelImpl();
-    EthernetManager$ListenerChannel.instance =
-        EthernetManager$ListenerChannelImpl();
+    UsbRequestChannel.instance = UsbRequestChannelImpl();
     EthernetManagerChannel.instance = EthernetManagerChannelImpl();
     Inet4AddressUtilChannel.instance = Inet4AddressUtilChannelImpl();
     NetworkUtilChannel.instance = NetworkUtilChannelImpl();
@@ -14,16 +14,8 @@ final class InvictusAndroidPlugin {
     SupplicantStateChannel.instance = SupplicantStateChannelImpl();
     WifiConfigurationChannel.instance = WifiConfigurationChannelImpl();
     WifiInfoChannel.instance = WifiInfoChannelImpl();
-    WifiManager$WifiStateChangedListenerChannel.instance =
-        WifiManager$WifiStateChangedListenerChannelImpl();
-    WifiManager$ScanResultsCallbackChannel.instance =
-        WifiManager$ScanResultsCallbackChannelImpl();
     WifiManagerChannel.instance = WifiManagerChannelImpl();
     WifiSsidChannel.instance = WifiSsidChannelImpl();
-    ConnectivityManager$NetworkCallbackChannel.instance =
-        ConnectivityManager$NetworkCallbackChannelImpl();
-    ConnectivityManager$OnNetworkActiveListenerChannel.instance =
-        ConnectivityManager$OnNetworkActiveListenerChannelImpl();
     ConnectivityManagerChannel.instance = ConnectivityManagerChannelImpl();
     DhcpInfoChannel.instance = DhcpInfoChannelImpl();
     InetAddressChannel.instance = InetAddressChannelImpl();

@@ -1,6 +1,6 @@
 name: invictus_android
 description: "Android implementation of the invictus plugin."
-version: 0.0.1
+version: 1.0.0-dev.0
 repository: https://github.com/yanshouwang/invictus
 issue_tracker: https://github.com/yanshouwang/invictus/issues
 
@@ -13,7 +13,7 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
-  invictus_api: ^0.0.1
+  invictus_api: ^1.0.0-dev.0
   jni: ^0.15.2
   logging: ^1.3.0
 

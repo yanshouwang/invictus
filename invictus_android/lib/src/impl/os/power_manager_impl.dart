@@ -1,9 +1,8 @@
-import 'package:invictus_android/src/impl/invictus_object_impl.dart';
+import 'package:invictus_android/src/impl/object_impl.dart';
 import 'package:invictus_android/src/jni.dart' as jni;
 import 'package:invictus_api/invictus_api.dart';
 
-final class PowerManagerImpl extends InvictusObjectImpl
-    implements PowerManager {
+final class PowerManagerImpl extends ObjectImpl implements PowerManager {
   @override
   final jni.PowerManager api;
   final jni.InvictusPowerManager invictusApi;

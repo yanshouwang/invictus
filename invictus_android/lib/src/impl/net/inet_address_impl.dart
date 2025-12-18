@@ -4,8 +4,7 @@ import 'package:invictus_android/src/impl.dart';
 import 'package:invictus_android/src/jni.dart' as jni;
 import 'package:invictus_api/invictus_api.dart';
 
-abstract base class InetAddressImpl extends InvictusObjectImpl
-    implements InetAddress {
+abstract base class InetAddressImpl extends ObjectImpl implements InetAddress {
   @override
   jni.InetAddress get api;
 
@@ -94,8 +93,8 @@ final class InetAddressChannelImpl extends InetAddressChannel {
   @override
   InetAddress createByAddress({String? host, required Uint8List addr}) {
     final apiOrNull = host == null
-        ? jni.InetAddress.getByAddress(addr.api)
-        : jni.InetAddress.getByAddress$1(host.api, addr.api);
+        ? jni.InetAddress.getByAddress(addr.byteArrayApi)
+        : jni.InetAddress.getByAddress$1(host.api, addr.byteArrayApi);
     final api = ArgumentError.checkNotNull(apiOrNull, 'api');
     return api.impl;
   }

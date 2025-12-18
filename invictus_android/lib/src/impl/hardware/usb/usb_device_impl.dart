@@ -2,15 +2,11 @@ import 'package:invictus_android/src/impl.dart';
 import 'package:invictus_android/src/jni.dart' as jni;
 import 'package:invictus_api/invictus_api.dart';
 
-final class UsbDeviceImpl extends InvictusObjectImpl implements UsbDevice {
+final class UsbDeviceImpl extends ObjectImpl implements UsbDevice {
   @override
   final jni.UsbDevice api;
 
   UsbDeviceImpl.internal(this.api);
-
-  @override
-  UsbConfiguration getConfiguration(int index) =>
-      api.getConfiguration(index).impl;
 
   @override
   int get configurationCount => api.getConfigurationCount();
@@ -29,9 +25,6 @@ final class UsbDeviceImpl extends InvictusObjectImpl implements UsbDevice {
 
   @override
   int get deviceSubclass => api.getDeviceSubclass();
-
-  @override
-  UsbInterface getInterface(int index) => api.getInterface(index).impl;
 
   @override
   int get interfaceCount => api.getInterfaceCount();
@@ -53,6 +46,13 @@ final class UsbDeviceImpl extends InvictusObjectImpl implements UsbDevice {
 
   @override
   String get version => api.getVersion().impl;
+
+  @override
+  UsbConfiguration getConfiguration(int index) =>
+      api.getConfiguration(index).impl;
+
+  @override
+  UsbInterface getInterface(int index) => api.getInterface(index).impl;
 }
 
 final class UsbDeviceChannelImpl extends UsbDeviceChannel {

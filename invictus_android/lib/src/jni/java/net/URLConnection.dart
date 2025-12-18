@@ -36,6 +36,10 @@ import 'dart:core' show Object, String, bool, double, int;
 import 'package:jni/_internal.dart' as jni$_;
 import 'package:jni/jni.dart' as jni$_;
 
+import '../io/InputStream.dart' as inputstream$_;
+
+import '../io/OutputStream.dart' as outputstream$_;
+
 import 'URL.dart' as url$_;
 
 /// from: `java.net.URLConnection`
@@ -884,11 +888,13 @@ class URLConnection extends jni$_.JObject {
 
   /// from: `public java.io.InputStream getInputStream()`
   /// The returned object must be released after use, by calling the [release] method.
-  jni$_.JObject? getInputStream() {
+  inputstream$_.InputStream? getInputStream() {
     return _getInputStream(
       reference.pointer,
       _id_getInputStream as jni$_.JMethodIDPtr,
-    ).object<jni$_.JObject?>(const jni$_.$JObject$NullableType$());
+    ).object<inputstream$_.InputStream?>(
+      const inputstream$_.$InputStream$NullableType$(),
+    );
   }
 
   static final _id_getLastModified = _class.instanceMethodId(
@@ -943,11 +949,13 @@ class URLConnection extends jni$_.JObject {
 
   /// from: `public java.io.OutputStream getOutputStream()`
   /// The returned object must be released after use, by calling the [release] method.
-  jni$_.JObject? getOutputStream() {
+  outputstream$_.OutputStream? getOutputStream() {
     return _getOutputStream(
       reference.pointer,
       _id_getOutputStream as jni$_.JMethodIDPtr,
-    ).object<jni$_.JObject?>(const jni$_.$JObject$NullableType$());
+    ).object<outputstream$_.OutputStream?>(
+      const outputstream$_.$OutputStream$NullableType$(),
+    );
   }
 
   static final _id_getPermission = _class.instanceMethodId(
@@ -1202,7 +1210,9 @@ class URLConnection extends jni$_.JObject {
 
   /// from: `static public java.lang.String guessContentTypeFromStream(java.io.InputStream inputStream)`
   /// The returned object must be released after use, by calling the [release] method.
-  static jni$_.JString? guessContentTypeFromStream(jni$_.JObject? inputStream) {
+  static jni$_.JString? guessContentTypeFromStream(
+    inputstream$_.InputStream? inputStream,
+  ) {
     final _$inputStream = inputStream?.reference ?? jni$_.jNullReference;
     return _guessContentTypeFromStream(
       _class.reference.pointer,

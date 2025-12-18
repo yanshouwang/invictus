@@ -2,8 +2,7 @@ import 'package:invictus_android/src/impl.dart';
 import 'package:invictus_android/src/jni.dart' as jni;
 import 'package:invictus_api/invictus_api.dart';
 
-final class InetAddressesImpl extends InvictusObjectImpl
-    implements InetAddresses {
+final class InetAddressesImpl extends ObjectImpl implements InetAddresses {
   @override
   final jni.InetAddresses api;
 

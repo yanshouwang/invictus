@@ -1,9 +1,8 @@
-import 'package:invictus_android/src/impl/invictus_object_impl.dart';
+import 'package:invictus_android/src/impl/object_impl.dart';
 import 'package:invictus_android/src/jni.dart' as jni;
 import 'package:invictus_api/invictus_api.dart';
 
-final class Build$PartitionImpl extends InvictusObjectImpl
-    implements Build$Partition {
+final class Build$PartitionImpl extends ObjectImpl implements Build$Partition {
   @override
   final jni.Build$Partition api;
 

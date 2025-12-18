@@ -1,4 +1,4 @@
-import 'package:invictus_api/invictus_api.dart';
+import 'package:invictus_api/src/net.dart';
 import 'package:plugin_platform_interface/plugin_platform_interface.dart';
 
 abstract interface class Inet4AddressUtil {

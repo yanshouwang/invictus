@@ -36,6 +36,10 @@ import 'dart:core' show Object, String, bool, double, int;
 import 'package:jni/_internal.dart' as jni$_;
 import 'package:jni/jni.dart' as jni$_;
 
+import '../io/InputStream.dart' as inputstream$_;
+
+import '../io/OutputStream.dart' as outputstream$_;
+
 import 'InetAddress.dart' as inetaddress$_;
 
 import 'Proxy.dart' as proxy$_;
@@ -582,11 +586,13 @@ class Socket extends jni$_.JObject {
 
   /// from: `public java.io.InputStream getInputStream()`
   /// The returned object must be released after use, by calling the [release] method.
-  jni$_.JObject? getInputStream() {
+  inputstream$_.InputStream? getInputStream() {
     return _getInputStream(
       reference.pointer,
       _id_getInputStream as jni$_.JMethodIDPtr,
-    ).object<jni$_.JObject?>(const jni$_.$JObject$NullableType$());
+    ).object<inputstream$_.InputStream?>(
+      const inputstream$_.$InputStream$NullableType$(),
+    );
   }
 
   static final _id_getKeepAlive = _class.instanceMethodId(
@@ -798,11 +804,13 @@ class Socket extends jni$_.JObject {
 
   /// from: `public java.io.OutputStream getOutputStream()`
   /// The returned object must be released after use, by calling the [release] method.
-  jni$_.JObject? getOutputStream() {
+  outputstream$_.OutputStream? getOutputStream() {
     return _getOutputStream(
       reference.pointer,
       _id_getOutputStream as jni$_.JMethodIDPtr,
-    ).object<jni$_.JObject?>(const jni$_.$JObject$NullableType$());
+    ).object<outputstream$_.OutputStream?>(
+      const outputstream$_.$OutputStream$NullableType$(),
+    );
   }
 
   static final _id_getPort = _class.instanceMethodId(r'getPort', r'()I');

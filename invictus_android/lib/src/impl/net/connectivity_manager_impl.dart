@@ -4,7 +4,7 @@ import 'package:invictus_android/src/impl.dart';
 import 'package:invictus_android/src/jni.dart' as jni;
 import 'package:invictus_api/invictus_api.dart';
 
-final class ConnectivityManager$NetworkCallbackImpl extends InvictusObjectImpl
+final class ConnectivityManager$NetworkCallbackImpl extends ObjectImpl
     implements ConnectivityManager$NetworkCallback {
   @override
   final jni.ConnectivityManager$NetworkCallback api;
@@ -12,8 +12,7 @@ final class ConnectivityManager$NetworkCallbackImpl extends InvictusObjectImpl
   ConnectivityManager$NetworkCallbackImpl.internal(this.api);
 }
 
-final class ConnectivityManager$OnNetworkActiveListenerImpl
-    extends InvictusObjectImpl
+final class ConnectivityManager$OnNetworkActiveListenerImpl extends ObjectImpl
     implements ConnectivityManager$OnNetworkActiveListener {
   @override
   final jni.ConnectivityManager$OnNetworkActiveListener api;
@@ -21,7 +20,7 @@ final class ConnectivityManager$OnNetworkActiveListenerImpl
   ConnectivityManager$OnNetworkActiveListenerImpl.internal(this.api);
 }
 
-final class ConnectivityManagerImpl extends InvictusObjectImpl
+final class ConnectivityManagerImpl extends ObjectImpl
     implements ConnectivityManager {
   @override
   final jni.ConnectivityManager api;
@@ -189,10 +188,32 @@ final class ConnectivityManagerImpl extends InvictusObjectImpl
   ) => api.unregisterNetworkCallback$1(networkCallback.api);
 }
 
-final class ConnectivityManager$NetworkCallbackChannelImpl
-    extends ConnectivityManager$NetworkCallbackChannel {
+final class ConnectivityManagerChannelImpl extends ConnectivityManagerChannel {
   @override
-  ConnectivityManager$NetworkCallback create({
+  bool isNetworkTypeValid(ConnectivityManager$Type networkType) =>
+      jni.ConnectivityManager.isNetworkTypeValid(networkType.api);
+
+  @override
+  Network? getProcessDefaultNetwork() =>
+      jni.ConnectivityManager.getProcessDefaultNetwork()?.impl;
+
+  @override
+  bool setProcessDefaultNetwork(Network? network) =>
+      jni.ConnectivityManager.setProcessDefaultNetwork(network?.api);
+
+  @override
+  ConnectivityManager create() {
+    final apiOrNull = jni.ContextCompat.getSystemService(
+      jni.context,
+      jni.ConnectivityManager.type.jClass,
+      T: jni.ConnectivityManager.type,
+    );
+    final api = ArgumentError.checkNotNull(apiOrNull);
+    return ConnectivityManagerImpl.internal(api);
+  }
+
+  @override
+  ConnectivityManager$NetworkCallback createNetworkCallback({
     bool includeLocationInfo = false,
     void Function(Network network)? onAvailable,
     void Function(Network network, bool blocked)? onBlockedStatusChanged,
@@ -231,12 +252,9 @@ final class ConnectivityManager$NetworkCallbackChannelImpl
           );
     return ConnectivityManager$NetworkCallbackImpl.internal(api);
   }
-}
 
-final class ConnectivityManager$OnNetworkActiveListenerChannelImpl
-    extends ConnectivityManager$OnNetworkActiveListenerChannel {
   @override
-  ConnectivityManager$OnNetworkActiveListener create({
+  ConnectivityManager$OnNetworkActiveListener createOnNetworkActiveListener({
     required void Function() onNetworkActive,
   }) {
     final api = jni.ConnectivityManager$OnNetworkActiveListener.implement(
@@ -245,31 +263,6 @@ final class ConnectivityManager$OnNetworkActiveListenerChannelImpl
       ),
     );
     return ConnectivityManager$OnNetworkActiveListenerImpl.internal(api);
-  }
-}
-
-final class ConnectivityManagerChannelImpl extends ConnectivityManagerChannel {
-  @override
-  bool isNetworkTypeValid(ConnectivityManager$Type networkType) =>
-      jni.ConnectivityManager.isNetworkTypeValid(networkType.api);
-
-  @override
-  Network? getProcessDefaultNetwork() =>
-      jni.ConnectivityManager.getProcessDefaultNetwork()?.impl;
-
-  @override
-  bool setProcessDefaultNetwork(Network? network) =>
-      jni.ConnectivityManager.setProcessDefaultNetwork(network?.api);
-
-  @override
-  ConnectivityManager create() {
-    final apiOrNull = jni.ContextCompat.getSystemService(
-      jni.context,
-      jni.ConnectivityManager.type.jClass,
-      T: jni.ConnectivityManager.type,
-    );
-    final api = ArgumentError.checkNotNull(apiOrNull);
-    return ConnectivityManagerImpl.internal(api);
   }
 }
 

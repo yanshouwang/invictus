@@ -9,20 +9,39 @@ targets=(
   "invictus"
 )
 
+DRY_RUN=false
+TARGET=""
+
+while [[ $# -gt 0 ]]; do
+  case $1 in
+    --dry-run)
+      DRY_RUN=true
+      shift
+      ;;
+    *)
+      TARGET="$1"
+      shift
+      ;;
+  esac
+done
+
 publish() {
   local target=$1
-  local version=$(sed -n 's/^version:[[:space:]]*["'\'']*\([^[:space:]''"''\'']*\).*/\1/p' "$target/pubspec.yaml")
-  local tag="$target-$version"
+  local dry_run=$2
 
-  echo "Publishing $target version $version..."
-  git tag "$tag"
-  git push origin "$tag"
+  if [ "$dry_run" = true ]; then
+    echo "Validating $target..."
+    flutter pub publish --dry-run --directory="$target"
+  else
+    echo "Publishing $target..."
+    flutter pub publish --directory="$target"
+  fi
 }
 
-if [ -n "$1" ]; then
-  publish "$1"
+if [ -n "$TARGET" ]; then
+  publish "$TARGET" "$DRY_RUN"
 else
   for target in "${targets[@]}"; do
-    publish "$target"
+    publish "$target" "$DRY_RUN"
   done
 fi

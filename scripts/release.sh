@@ -11,8 +11,12 @@ targets=(
 
 publish() {
   local target=$1
+  local version=$(sed -n 's/^version:[[:space:]]*["'\'']*\([^[:space:]''"''\'']*\).*/\1/p' "$target/pubspec.yaml")
+  local tag="$target-$version"
 
-  flutter pub publish --dry-run --directory=$target
+  echo "Publishing $target version $version..."
+  git tag "$tag"
+  git push origin "$tag"
 }
 
 if [ -n "$1" ]; then

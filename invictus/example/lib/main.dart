@@ -86,6 +86,13 @@ class _MyAppState extends State<MyApp> {
                 viewModelBuilder: () => UsbViewModel(),
               ),
             ),
+            GoRoute(
+              path: 'locale',
+              builder: (context, state) => ViewModelBinding(
+                viewBuilder: () => LocaleView(),
+                viewModelBuilder: () => LocaleViewModel(),
+              ),
+            ),
           ],
         ),
       ],

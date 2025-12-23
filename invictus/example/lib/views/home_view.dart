@@ -42,6 +42,10 @@ class HomeView extends StatelessWidget {
               child: Text('Wifi'),
             ),
             TextButton(onPressed: () => router.go('./usb'), child: Text('Usb')),
+            TextButton(
+              onPressed: () => router.go('./locale'),
+              child: Text('Locale'),
+            ),
           ],
         ),
       ),

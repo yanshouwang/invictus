@@ -2,3 +2,4 @@
 export 'AbstractMap.dart';
 export 'Collection.dart';
 export 'HashMap.dart';
+export 'Locale.dart';

@@ -3,19 +3,28 @@ import 'package:invictus_api/invictus_api.dart';
 
 final class InvictusAndroidPlugin {
   static void registerWith() {
+    // app
+    ActivityManagerChannel.instance = ActivityManagerChannelImpl();
+    // hardware.usb
     UsbConstantsChannel.instance = UsbConstantsChannelImpl();
     UsbDeviceChannel.instance = UsbDeviceChannelImpl();
     UsbManagerChannel.instance = UsbManagerChannelImpl();
     UsbRequestChannel.instance = UsbRequestChannelImpl();
+    // internal.app
+    LocalePickerChannel.instance = LocalePickerChannelImpl();
+    // net.ethernet
     EthernetManagerChannel.instance = EthernetManagerChannelImpl();
+    // net.util
     Inet4AddressUtilChannel.instance = Inet4AddressUtilChannelImpl();
     NetworkUtilChannel.instance = NetworkUtilChannelImpl();
+    // net.wifi
     ScanResultChannel.instance = ScanResultChannelImpl();
     SupplicantStateChannel.instance = SupplicantStateChannelImpl();
     WifiConfigurationChannel.instance = WifiConfigurationChannelImpl();
     WifiInfoChannel.instance = WifiInfoChannelImpl();
     WifiManagerChannel.instance = WifiManagerChannelImpl();
     WifiSsidChannel.instance = WifiSsidChannelImpl();
+    // net
     ConnectivityManagerChannel.instance = ConnectivityManagerChannelImpl();
     DhcpInfoChannel.instance = DhcpInfoChannelImpl();
     InetAddressChannel.instance = InetAddressChannelImpl();
@@ -27,12 +36,16 @@ final class InvictusAndroidPlugin {
     NetworkRequestChannel.instance = NetworkRequestChannelImpl();
     NetworkChannel.instance = NetworkChannelImpl();
     StaticIpConfigurationChannel.instance = StaticIpConfigurationChannelImpl();
+    // os
     Build$PartitionChannel.instance = Build$PartitionChannelImpl();
     Build$VersionChannel.instance = Build$VersionChannelImpl();
     Build$VersionCodesChannel.instance = Build$VersionCodesChannelImpl();
     Build$VersionCodesFullChannel.instance =
         Build$VersionCodesFullChannelImpl();
     BuildChannel.instance = BuildChannelImpl();
+    LocaleListChannel.instance = LocaleListChannelImpl();
     PowerManagerChannel.instance = PowerManagerChannelImpl();
+    // util
+    LocaleChannel.instance = LocaleChannelImpl();
   }
 }

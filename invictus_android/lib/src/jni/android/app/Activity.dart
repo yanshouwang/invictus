@@ -46,6 +46,8 @@ import '../content/Context.dart' as context$_;
 
 import '../content/Intent.dart' as intent$_;
 
+import 'ActivityManager.dart' as activitymanager$_;
+
 import 'PendingIntent.dart' as pendingintent$_;
 
 /// from: `android.app.Activity$ScreenCaptureCallback`
@@ -7436,7 +7438,9 @@ class Activity extends jni$_.JObject {
           >();
 
   /// from: `public void setTaskDescription(android.app.ActivityManager$TaskDescription taskDescription)`
-  void setTaskDescription(jni$_.JObject? taskDescription) {
+  void setTaskDescription(
+    activitymanager$_.ActivityManager$TaskDescription? taskDescription,
+  ) {
     final _$taskDescription =
         taskDescription?.reference ?? jni$_.jNullReference;
     _setTaskDescription(

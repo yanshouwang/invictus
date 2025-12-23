@@ -1,3 +1,7 @@
+## 1.0.0-dev.1
+
+* Add locale Apis.
+
 ## 1.0.0-dev.0
 
 * Android hardware Apis.

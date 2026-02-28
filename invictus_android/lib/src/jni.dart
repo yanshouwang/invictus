@@ -38,6 +38,10 @@ extension Invictus$JIntegerX on JInteger {
   int get impl => intValue(releaseOriginal: true);
 }
 
+extension Invictus$JCharacterX on JCharacter {
+  int get impl => charValue(releaseOriginal: true);
+}
+
 extension Invictus$StringX on String {
   JString get api => toJString();
 }

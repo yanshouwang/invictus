@@ -60,15 +60,23 @@ class WifiView extends StatelessWidget {
       ListTile(
         tileColor: theme.colorScheme.surfaceContainer,
         shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.vertical(
-            top: Radius.circular(r2),
-            bottom: Radius.circular(r1),
-          ),
+          borderRadius: BorderRadius.all(Radius.circular(r2)),
         ),
         title: Text('DNS 2'),
         trailing: Text(
           '${NetworkUtil.intToInetAddress(dhcpInfo.dns2).hostAddress}',
         ),
+      ),
+      ListTile(
+        tileColor: theme.colorScheme.surfaceContainer,
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.vertical(
+            top: Radius.circular(r2),
+            bottom: Radius.circular(r1),
+          ),
+        ),
+        title: Text('MAC'),
+        trailing: Text(connectionInfo.macAddress),
       ),
     ];
     return Scaffold(

@@ -17,3 +17,7 @@ extension Invictus$InterfaceAddressX on InterfaceAddress {
     return impl.api;
   }
 }
+
+extension Invictus$JInterfaceAddressX on jni.InterfaceAddress {
+  InterfaceAddress get impl => InterfaceAddressImpl.internal(this);
+}

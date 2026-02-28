@@ -1,4 +1,5 @@
 import 'package:clover/clover.dart';
+import 'package:convert/convert.dart';
 import 'package:invictus/invictus.dart';
 import 'package:invictus_example/models.dart';
 import 'package:logging/logging.dart';
@@ -25,6 +26,31 @@ class ConnectivityViewModel extends ViewModel {
   }
 
   void _initialize() async {
+    final nifs = NetworkInterface.getNetworkInterfaces();
+    for (var nif in nifs) {
+      final index = nif.index;
+      // TODO: Always returns null.
+      final hardwareAddress = nif.hardwareAddress;
+      final macAddress = hardwareAddress == null
+          ? null
+          : hex.encode(hardwareAddress);
+      final name = nif.name;
+      final displayName = nif.displayName;
+      final inetAddresses = nif.inetAddresses;
+      final interfaceAddresses = nif.interfaceAddresses;
+      final mtu = nif.mtu;
+      final parent = nif.parent;
+      final subInterfaces = nif.subInterfaces;
+      final isLoopback = nif.isLoopback;
+      final isPointToPoint = nif.isPointToPoint;
+      final isUp = nif.isUp;
+      final isVirtual = nif.isVirtual;
+      final supportsMulticast = nif.supportsMulticast;
+      _logger.info(
+        'nif[$index]: $macAddress, $name, $displayName, $inetAddresses, $interfaceAddresses, $mtu, $parent, $subInterfaces, $isLoopback, $isPointToPoint, $isUp, $isVirtual, $supportsMulticast',
+      );
+    }
+
     final isGranted = await Permission.locationWhenInUse.isGranted;
     if (!isGranted) {
       final status = await Permission.locationWhenInUse.request();

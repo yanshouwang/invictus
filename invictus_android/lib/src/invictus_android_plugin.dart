@@ -33,6 +33,7 @@ final class InvictusAndroidPlugin {
     Inet6AddressChannel.instance = Inet6AddressChannelImpl();
     IpConfigurationChannel.instance = IpConfigurationChannelImpl();
     LinkAddressChannel.instance = LinkAddressChannelImpl();
+    NetworkInterfaceChannel.instance = NetworkInterfaceChannelImpl();
     NetworkRequestChannel.instance = NetworkRequestChannelImpl();
     NetworkChannel.instance = NetworkChannelImpl();
     StaticIpConfigurationChannel.instance = StaticIpConfigurationChannelImpl();
@@ -46,6 +47,7 @@ final class InvictusAndroidPlugin {
     LocaleListChannel.instance = LocaleListChannelImpl();
     PowerManagerChannel.instance = PowerManagerChannelImpl();
     // util
+    Locale$LanguageRangeChannel.instance = Locale$LanguageRangeChannelImpl();
     LocaleChannel.instance = LocaleChannelImpl();
   }
 }

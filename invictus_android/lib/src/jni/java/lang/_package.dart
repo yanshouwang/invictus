@@ -3,3 +3,4 @@ export 'AutoCloseable.dart';
 export 'CharSequence.dart';
 export 'Comparable.dart';
 export 'Iterable.dart';
+export 'Runnable.dart';

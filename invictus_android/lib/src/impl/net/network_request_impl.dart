@@ -67,7 +67,7 @@ final class NetworkRequestChannelImpl extends NetworkRequestChannel {
     }
     if (subIds != null) {
       builder.setSubscriptionIds(
-        subIds.map((e) => e.api).toJSet(jni.JInteger.type),
+        subIds.map((e) => e.int32Api).toJSet(jni.JInteger.type),
       );
     }
     final apiOrNull = builder.build();

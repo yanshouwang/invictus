@@ -36,6 +36,8 @@ import 'dart:core' show Object, String, bool, double, int;
 import 'package:jni/_internal.dart' as jni$_;
 import 'package:jni/jni.dart' as jni$_;
 
+import '../../java/lang/Runnable.dart' as runnable$_;
+
 import 'Looper.dart' as looper$_;
 
 /// from: `android.os.Handler$Callback`
@@ -666,7 +668,7 @@ class Handler extends jni$_.JObject {
           >();
 
   /// from: `public final boolean hasCallbacks(java.lang.Runnable runnable)`
-  bool hasCallbacks(jni$_.JObject runnable) {
+  bool hasCallbacks(runnable$_.Runnable runnable) {
     final _$runnable = runnable.reference;
     return _hasCallbacks(
       reference.pointer,
@@ -949,7 +951,7 @@ class Handler extends jni$_.JObject {
           >();
 
   /// from: `public final boolean post(java.lang.Runnable runnable)`
-  bool post(jni$_.JObject runnable) {
+  bool post(runnable$_.Runnable runnable) {
     final _$runnable = runnable.reference;
     return _post(
       reference.pointer,
@@ -982,7 +984,7 @@ class Handler extends jni$_.JObject {
           >();
 
   /// from: `public final boolean postAtFrontOfQueue(java.lang.Runnable runnable)`
-  bool postAtFrontOfQueue(jni$_.JObject runnable) {
+  bool postAtFrontOfQueue(runnable$_.Runnable runnable) {
     final _$runnable = runnable.reference;
     return _postAtFrontOfQueue(
       reference.pointer,
@@ -1023,7 +1025,7 @@ class Handler extends jni$_.JObject {
           >();
 
   /// from: `public final boolean postAtTime(java.lang.Runnable runnable, java.lang.Object object, long j)`
-  bool postAtTime(jni$_.JObject runnable, jni$_.JObject? object, int j) {
+  bool postAtTime(runnable$_.Runnable runnable, jni$_.JObject? object, int j) {
     final _$runnable = runnable.reference;
     final _$object = object?.reference ?? jni$_.jNullReference;
     return _postAtTime(
@@ -1060,7 +1062,7 @@ class Handler extends jni$_.JObject {
           >();
 
   /// from: `public final boolean postAtTime(java.lang.Runnable runnable, long j)`
-  bool postAtTime$1(jni$_.JObject runnable, int j) {
+  bool postAtTime$1(runnable$_.Runnable runnable, int j) {
     final _$runnable = runnable.reference;
     return _postAtTime$1(
       reference.pointer,
@@ -1102,7 +1104,7 @@ class Handler extends jni$_.JObject {
           >();
 
   /// from: `public final boolean postDelayed(java.lang.Runnable runnable, java.lang.Object object, long j)`
-  bool postDelayed(jni$_.JObject runnable, jni$_.JObject? object, int j) {
+  bool postDelayed(runnable$_.Runnable runnable, jni$_.JObject? object, int j) {
     final _$runnable = runnable.reference;
     final _$object = object?.reference ?? jni$_.jNullReference;
     return _postDelayed(
@@ -1139,7 +1141,7 @@ class Handler extends jni$_.JObject {
           >();
 
   /// from: `public final boolean postDelayed(java.lang.Runnable runnable, long j)`
-  bool postDelayed$1(jni$_.JObject runnable, int j) {
+  bool postDelayed$1(runnable$_.Runnable runnable, int j) {
     final _$runnable = runnable.reference;
     return _postDelayed$1(
       reference.pointer,
@@ -1173,7 +1175,7 @@ class Handler extends jni$_.JObject {
           >();
 
   /// from: `public final void removeCallbacks(java.lang.Runnable runnable)`
-  void removeCallbacks(jni$_.JObject runnable) {
+  void removeCallbacks(runnable$_.Runnable runnable) {
     final _$runnable = runnable.reference;
     _removeCallbacks(
       reference.pointer,
@@ -1209,7 +1211,7 @@ class Handler extends jni$_.JObject {
           >();
 
   /// from: `public final void removeCallbacks(java.lang.Runnable runnable, java.lang.Object object)`
-  void removeCallbacks$1(jni$_.JObject runnable, jni$_.JObject? object) {
+  void removeCallbacks$1(runnable$_.Runnable runnable, jni$_.JObject? object) {
     final _$runnable = runnable.reference;
     final _$object = object?.reference ?? jni$_.jNullReference;
     _removeCallbacks$1(

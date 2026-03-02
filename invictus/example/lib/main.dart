@@ -2,7 +2,9 @@ import 'dart:async';
 import 'dart:developer';
 
 import 'package:clover/clover.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:go_router/go_router.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:invictus_example/view_models.dart';
@@ -23,10 +25,19 @@ void main() {
       stackTrace: event.stackTrace,
     );
   });
-  runZonedGuarded(
-    () => runApp(const MyApp()),
-    (error, stackTrace) => Logger.root.shout(error, stackTrace),
-  );
+  runZonedGuarded(() {
+    LicenseRegistry.addLicense(() async* {
+      final packages = ['google_fonts'];
+      final fonts = ['Josefin_Sans'];
+      for (var font in fonts) {
+        final license = await rootBundle.loadString(
+          'google_fonts/$font/OFL.txt',
+        );
+        yield LicenseEntryWithLineBreaks(packages, license);
+      }
+    });
+    runApp(const MyApp());
+  }, (error, stackTrace) => Logger.root.shout(error, stackTrace));
 }
 
 class MyApp extends StatefulWidget {
@@ -91,6 +102,13 @@ class _MyAppState extends State<MyApp> {
               builder: (context, state) => ViewModelBinding(
                 viewBuilder: () => LocaleView(),
                 viewModelBuilder: () => LocaleViewModel(),
+              ),
+            ),
+            GoRoute(
+              path: 'system-properties',
+              builder: (context, state) => ViewModelBinding(
+                viewBuilder: () => SystemPropertiesView(),
+                viewModelBuilder: () => SystemPropertiesViewModel(),
               ),
             ),
           ],

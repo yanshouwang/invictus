@@ -5,29 +5,24 @@ import 'package:logging/logging.dart';
 Logger get _logger => Logger('LocaleViewModel');
 
 class LocaleViewModel extends ViewModel {
-  final ActivityManager _activityManager;
+  // final ActivityManager _activityManager;
 
-  late final List<Locale> _supportedLocales;
-  late LocaleList _locales;
-
-  List<Locale> get supportedLocales => List.unmodifiable(_supportedLocales);
+  LocaleList _locales;
 
   List<Locale> get locales =>
-      List.generate(_locales.size, (i) => _locales.get(i), growable: false);
+      List.generate(_locales.size, (i) => _locales.get(i));
   set locales(List<Locale> value) {
     final locales = LocaleList(value);
-    _activityManager.deviceLocales = locales;
-    // LocalePicker.updateLocales(locales);
-    _locales = LocaleList.getAdjustedDefault();
+    // _activityManager.deviceLocales = locales;
+    // _locales = LocaleList.getAdjustedDefault();
+    LocalePicker.updateLocales(locales);
+    _locales = LocalePicker.getLocales();
     notifyListeners();
   }
 
-  LocaleViewModel() : _activityManager = ActivityManager() {
-    _supportedLocales = _activityManager.supportedLocales;
-    _locales = LocaleList.getAdjustedDefault();
-    notifyListeners();
-    final locales = LocalePicker.getLocales();
-    _logger.info('getLocales: $locales');
+  LocaleViewModel() : _locales = LocalePicker.getLocales() {
+    // _supportedLocales = _activityManager.supportedLocales;
+    // _locales = LocaleList.getAdjustedDefault();
     final supportedLocales = LocalePicker.getSupportedLocales();
     _logger.info('getSupportedLocales: $supportedLocales');
     final systemAssetLocales = LocalePicker.getSystemAssetLocales();

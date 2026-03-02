@@ -2,6 +2,7 @@ import 'package:clover/clover.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:invictus_example/view_models.dart';
+import 'package:material_symbols_icons/material_symbols_icons.dart';
 
 class HomeView extends StatelessWidget {
   const HomeView({super.key});
@@ -11,7 +12,15 @@ class HomeView extends StatelessWidget {
     final router = GoRouter.of(context);
     final viewModel = ViewModel.of<HomeViewModel>(context);
     return Scaffold(
-      appBar: AppBar(title: const Text('invictus SDK')),
+      appBar: AppBar(
+        title: const Text('invictus SDK'),
+        actions: [
+          IconButton(
+            onPressed: () => showLicensePage(context: context),
+            icon: const Icon(Symbols.license),
+          ),
+        ],
+      ),
       body: Center(
         child: Column(
           mainAxisSize: MainAxisSize.max,
@@ -45,6 +54,10 @@ class HomeView extends StatelessWidget {
             TextButton(
               onPressed: () => router.go('./locale'),
               child: Text('Locale'),
+            ),
+            TextButton(
+              onPressed: () => router.go('./system-properties'),
+              child: Text('SystemProperties'),
             ),
           ],
         ),

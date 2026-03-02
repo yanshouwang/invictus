@@ -1,5 +1,6 @@
 import 'package:clover/clover.dart';
 import 'package:flutter/material.dart';
+import 'package:invictus/invictus.dart';
 import 'package:invictus_example/models.dart';
 import 'package:invictus_example/view_models.dart';
 
@@ -9,48 +10,49 @@ class ConnectivityView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final viewModel = ViewModel.of<ConnectivityViewModel>(context);
-    final wifiModels = viewModel.wifiModels;
-    final ethernetModels = viewModel.ethernetModels;
+    final statuses = viewModel.statuses;
     return Scaffold(
       appBar: AppBar(title: Text('Connectivity')),
       body: CustomScrollView(
         slivers: [
           SliverList.separated(
             itemBuilder: (context, i) {
-              final model = wifiModels.values.elementAt(i);
-              return _buildNetworkModel(context, model);
+              final status = statuses.values.elementAt(i);
+              return _buildNetworkStatus(context, status);
             },
             separatorBuilder: (context, i) => Divider(),
-            itemCount: wifiModels.length,
-          ),
-          SliverToBoxAdapter(child: Divider()),
-          SliverList.separated(
-            itemBuilder: (context, i) {
-              final model = ethernetModels.values.elementAt(i);
-              return _buildNetworkModel(context, model);
-            },
-            separatorBuilder: (context, i) => Divider(),
-            itemCount: ethernetModels.length,
+            itemCount: statuses.length,
           ),
         ],
       ),
     );
   }
 
-  Widget _buildNetworkModel(BuildContext context, NetworkModel model) {
-    final theme = Theme.of(context);
+  Widget _buildNetworkStatus(BuildContext context, NetworkStatus status) {
+    final iface = status.iface;
+    final linkAddress = status.linkAddress;
+    final ipAddress = linkAddress?.address.hostAddress;
+    final netmask = linkAddress == null
+        ? null
+        : Inet4AddressUtil.getPrefixMaskAsInet4Address(
+            linkAddress.prefixLength,
+          ).hostAddress;
+    final gateway = status.gateway?.hostAddress;
+    final dnsServers = status.dnsServers.map((e) => e.hostAddress).join(', ');
+    final domains = status.domains;
     return Container(
       margin: const EdgeInsets.symmetric(horizontal: 16.0),
       child: Column(
         mainAxisSize: MainAxisSize.min,
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Text(model.iface, style: theme.textTheme.titleMedium),
-          if (model is WifiModel) Text('SSID: ${model.ssid}'),
-          Text('ipAddress: ${model.ipAddress}'),
-          Text('netmask: ${model.netmask}'),
-          Text('gateway: ${model.gateway}'),
-          Text('dnsServers: ${model.dnsServers.join(', ')}'),
+          Text('iface: $iface'),
+          if (status is WifiStatus) Text('SSID: ${status.ssid}'),
+          Text('ipAddress: $ipAddress'),
+          Text('netmask: $netmask'),
+          Text('gateway: $gateway'),
+          Text('dnsServers: $dnsServers'),
+          Text('domains: $domains'),
         ],
       ),
     );

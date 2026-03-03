@@ -100,24 +100,6 @@ final class NetworkInterfaceImpl extends ObjectImpl
 
 final class NetworkInterfaceChannelImpl extends NetworkInterfaceChannel {
   @override
-  NetworkInterface? getByIndex(int index) {
-    final apiOrNull = jni.NetworkInterface.getByIndex(index);
-    return apiOrNull == null ? null : NetworkInterfaceImpl.internal(apiOrNull);
-  }
-
-  @override
-  NetworkInterface? getByInetAddress(InetAddress addr) {
-    final apiOrNull = jni.NetworkInterface.getByInetAddress(addr.api);
-    return apiOrNull == null ? null : NetworkInterfaceImpl.internal(apiOrNull);
-  }
-
-  @override
-  NetworkInterface? getByName(String name) {
-    final apiOrNull = jni.NetworkInterface.getByName(name.api);
-    return apiOrNull == null ? null : NetworkInterfaceImpl.internal(apiOrNull);
-  }
-
-  @override
   List<NetworkInterface> getNetworkInterfaces() {
     final enumeration = jni.NetworkInterface.getNetworkInterfaces();
     final networkInterfacesApiOrNull = enumeration == null
@@ -132,6 +114,18 @@ final class NetworkInterfaceChannelImpl extends NetworkInterfaceChannel {
         .map((e) => e.impl)
         .toList();
   }
+
+  @override
+  NetworkInterface? getByIndex(int index) =>
+      jni.NetworkInterface.getByIndex(index)?.impl;
+
+  @override
+  NetworkInterface? getByInetAddress(InetAddress addr) =>
+      jni.NetworkInterface.getByInetAddress(addr.api)?.impl;
+
+  @override
+  NetworkInterface? getByName(String name) =>
+      jni.NetworkInterface.getByName(name.api)?.impl;
 }
 
 extension Invictus$NetworkInterfaceX on NetworkInterface {

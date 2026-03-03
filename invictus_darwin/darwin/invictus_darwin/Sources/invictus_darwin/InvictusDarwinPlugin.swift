@@ -1,19 +1,26 @@
+#if os(iOS)
 import Flutter
 import UIKit
+#elseif os(macOS)
+import Cocoa
+import FlutterMacOS
+#else
+#error("Unsupported platform.")
+#endif
 
 public class InvictusDarwinPlugin: NSObject, FlutterPlugin {
   public static func register(with registrar: FlutterPluginRegistrar) {
-    let channel = FlutterMethodChannel(name: "invictus_darwin", binaryMessenger: registrar.messenger())
-    let instance = InvictusDarwinPlugin()
-    registrar.addMethodCallDelegate(instance, channel: channel)
+    let instance = InvictusDarwinPlugin(with: registrar)
+        registrar.publish(instance)
   }
 
-  public func handle(_ call: FlutterMethodCall, result: @escaping FlutterResult) {
-    switch call.method {
-    case "getPlatformVersion":
-      result("iOS " + UIDevice.current.systemVersion)
-    default:
-      result(FlutterMethodNotImplemented)
-    }
-  }
+    init(with registrar: FlutterPluginRegistrar) {}
+    
+    public func detachFromEngine(for registrar: any FlutterPluginRegistrar) {}
 }
+
+#if os(iOS)
+extension FlutterPluginRegistrar {
+    var messenger: FlutterBinaryMessenger { return self.messenger() }
+}
+#endif

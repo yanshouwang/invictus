@@ -13,8 +13,8 @@ import 'package:logging/logging.dart';
 
 void main() {
   Logger.root.level = Level.INFO;
-  Logger.root.onRecord.listen((event) {
-    log(
+  Logger.root.onRecord.listen(
+    (event) => log(
       event.message,
       time: event.time,
       sequenceNumber: event.sequenceNumber,
@@ -23,8 +23,8 @@ void main() {
       zone: event.zone,
       error: event.error,
       stackTrace: event.stackTrace,
-    );
-  });
+    ),
+  );
   runZonedGuarded(() {
     LicenseRegistry.addLicense(() async* {
       final packages = ['google_fonts'];
@@ -37,7 +37,7 @@ void main() {
       }
     });
     runApp(const MyApp());
-  }, (error, stackTrace) => Logger.root.shout(error, stackTrace));
+  }, (error, stackTrace) => Logger.root.shout('onError', error, stackTrace));
 }
 
 class MyApp extends StatefulWidget {

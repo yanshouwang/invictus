@@ -122,10 +122,10 @@ final class NetworkInterfaceChannelImpl extends NetworkInterfaceChannel {
 
   @override
   List<NetworkInterface> getNetworkInterfaces() {
-    final networkInterfacesApiOrNull = jni.Collections.list(
-      jni.NetworkInterface.getNetworkInterfaces(),
-      T: jni.NetworkInterface.type,
-    );
+    final enumeration = jni.NetworkInterface.getNetworkInterfaces();
+    final networkInterfacesApiOrNull = enumeration == null
+        ? null
+        : jni.Collections.list(enumeration, T: jni.NetworkInterface.type);
     final networkInterfacesApi = ArgumentError.checkNotNull(
       networkInterfacesApiOrNull,
       'networkInterfacesApi',

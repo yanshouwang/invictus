@@ -551,7 +551,7 @@ extension Invictus$Locale$FilteringModeX on Locale$FilteringMode {
         return jni.Locale$FilteringMode.IGNORE_EXTENDED_RANGES;
       case Locale$FilteringMode.mapExtendedRanges:
         return jni.Locale$FilteringMode.MAP_EXTENDED_RANGES;
-      case Locale$FilteringMode.regjectExtendedRanges:
+      case Locale$FilteringMode.rejectExtendedRanges:
         return jni.Locale$FilteringMode.REJECT_EXTENDED_RANGES;
     }
   }

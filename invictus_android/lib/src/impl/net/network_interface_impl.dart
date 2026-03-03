@@ -100,24 +100,21 @@ final class NetworkInterfaceImpl extends ObjectImpl
 
 final class NetworkInterfaceChannelImpl extends NetworkInterfaceChannel {
   @override
-  NetworkInterface getByIndex(int index) {
+  NetworkInterface? getByIndex(int index) {
     final apiOrNull = jni.NetworkInterface.getByIndex(index);
-    final api = ArgumentError.checkNotNull(apiOrNull, 'api');
-    return NetworkInterfaceImpl.internal(api);
+    return apiOrNull == null ? null : NetworkInterfaceImpl.internal(apiOrNull);
   }
 
   @override
-  NetworkInterface getByInetAddress(InetAddress addr) {
+  NetworkInterface? getByInetAddress(InetAddress addr) {
     final apiOrNull = jni.NetworkInterface.getByInetAddress(addr.api);
-    final api = ArgumentError.checkNotNull(apiOrNull, 'api');
-    return NetworkInterfaceImpl.internal(api);
+    return apiOrNull == null ? null : NetworkInterfaceImpl.internal(apiOrNull);
   }
 
   @override
-  NetworkInterface getByName(String name) {
+  NetworkInterface? getByName(String name) {
     final apiOrNull = jni.NetworkInterface.getByName(name.api);
-    final api = ArgumentError.checkNotNull(apiOrNull, 'api');
-    return NetworkInterfaceImpl.internal(api);
+    return apiOrNull == null ? null : NetworkInterfaceImpl.internal(apiOrNull);
   }
 
   @override

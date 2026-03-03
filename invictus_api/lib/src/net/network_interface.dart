@@ -35,7 +35,7 @@ abstract interface class NetworkInterface {
   /// throws SocketException if an I/O error occurs.
   ///
   /// throws IllegalArgumentException if index has a negative value
-  factory NetworkInterface.byIndex(int index) =>
+  static NetworkInterface? byIndex(int index) =>
       NetworkInterfaceChannel.instance.getByIndex(index);
 
   /// Convenience method to search for a network interface that has the specified Internet Protocol (IP) address bound to
@@ -50,7 +50,7 @@ abstract interface class NetworkInterface {
   /// throws SocketException if an I/O error occurs.
   ///
   /// throws NullPointerException if the specified address is null.
-  factory NetworkInterface.byInetAddress(InetAddress addr) =>
+  static NetworkInterface? byInetAddress(InetAddress addr) =>
       NetworkInterfaceChannel.instance.getByInetAddress(addr);
 
   /// Searches for the network interface with the specified name.
@@ -63,7 +63,7 @@ abstract interface class NetworkInterface {
   /// throws SocketException if an I/O error occurs.
   ///
   /// throws NullPointerException if the specified name is null.
-  factory NetworkInterface.byName(String name) =>
+  static NetworkInterface? byName(String name) =>
       NetworkInterfaceChannel.instance.getByName(name);
 
   /// Get the display name of this network interface. A display name is a human readable String describing the network
@@ -158,8 +158,8 @@ abstract base class NetworkInterfaceChannel extends PlatformInterface {
     _instance = instance;
   }
 
-  NetworkInterface getByIndex(int index);
-  NetworkInterface getByInetAddress(InetAddress addr);
-  NetworkInterface getByName(String name);
+  NetworkInterface? getByIndex(int index);
+  NetworkInterface? getByInetAddress(InetAddress addr);
+  NetworkInterface? getByName(String name);
   List<NetworkInterface> getNetworkInterfaces();
 }

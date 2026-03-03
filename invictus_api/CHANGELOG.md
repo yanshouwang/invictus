@@ -1,5 +1,6 @@
 ## 1.0.0-dev.2
 
+* Update to flutter 3.38.10.
 * Add `NetworkInterface` Api.
 * Add `SystemProperties` Api.
 

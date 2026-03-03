@@ -48,8 +48,8 @@ final class SystemPropertiesChannelImpl extends SystemPropertiesChannel {
       ?.impl;
 
   @override
-  void set(String key, String? defaultValue) =>
-      jni.SystemProperties.INSTANCE.set(key.api, defaultValue?.api);
+  void set(String key, String? value) =>
+      jni.SystemProperties.INSTANCE.set(key.api, value?.api);
 
   @override
   void addChangeCallback(Runnable callback) =>

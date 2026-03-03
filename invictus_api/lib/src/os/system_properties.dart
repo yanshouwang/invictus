@@ -101,7 +101,7 @@ abstract base class SystemPropertiesChannel extends PlatformInterface {
   int? getInt(String key, [int? defaultValue]);
   int? getLong(String key, [int? defaultValue]);
   bool? getBoolean(String key, [bool? defaultValue]);
-  void set(String key, String? defaultValue);
+  void set(String key, String? value);
   void addChangeCallback(Runnable callback);
   void removeChangeCallback(Runnable callback);
   String digestOf(List<String> keys);

@@ -25,7 +25,7 @@ object SystemProperties {
          * @return Value of the property
          */
         fun get(): String {
-            return clazz.getMethod("get", String::class.java).invoke(this.obj) as String
+            return clazz.getMethod("get").invoke(this.obj) as String
         }
 
         /**

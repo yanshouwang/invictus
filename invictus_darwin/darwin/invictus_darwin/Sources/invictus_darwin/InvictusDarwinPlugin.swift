@@ -9,11 +9,11 @@ import FlutterMacOS
 #endif
 
 public class InvictusDarwinPlugin: NSObject, FlutterPlugin {
-  public static func register(with registrar: FlutterPluginRegistrar) {
-    let instance = InvictusDarwinPlugin(with: registrar)
+    public static func register(with registrar: FlutterPluginRegistrar) {
+        let instance = InvictusDarwinPlugin(with: registrar)
         registrar.publish(instance)
-  }
-
+    }
+    
     init(with registrar: FlutterPluginRegistrar) {}
     
     public func detachFromEngine(for registrar: any FlutterPluginRegistrar) {}

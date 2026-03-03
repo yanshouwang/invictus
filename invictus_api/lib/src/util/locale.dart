@@ -32,7 +32,7 @@ enum Locale$FilteringMode {
 
   /// Specifies basic filtering: If any extended language ranges are included in the given Language Priority List, the list is
   /// rejected and the filtering method throws IllegalArgumentException.
-  regjectExtendedRanges,
+  rejectExtendedRanges,
 }
 
 /// Enum for specifying the type defined in ISO 3166. This enum is used to retrieve the two-letter ISO3166-1 alpha-2,

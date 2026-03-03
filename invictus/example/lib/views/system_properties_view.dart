@@ -18,7 +18,10 @@ class SystemPropertiesView extends StatelessWidget {
               .map((e) => DropdownMenuEntry(value: e, label: e.name))
               .toList(),
           initialSelection: boot,
-          onSelected: viewModel.setPersistSysCustomanimBoot,
+          onSelected: (boot) {
+            if (boot == null) return;
+            viewModel.setPersistSysCustomanimBoot(boot);
+          },
         ),
       ),
     );

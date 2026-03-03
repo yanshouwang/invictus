@@ -1,7 +1,6 @@
-import 'package:clover/clover.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
-import 'package:invictus_example/view_models.dart';
+import 'package:invictus_example/widgets.dart';
 import 'package:material_symbols_icons/material_symbols_icons.dart';
 
 class HomeView extends StatelessWidget {
@@ -10,7 +9,6 @@ class HomeView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final router = GoRouter.of(context);
-    final viewModel = ViewModel.of<HomeViewModel>(context);
     return Scaffold(
       appBar: AppBar(
         title: const Text('invictus SDK'),
@@ -22,42 +20,50 @@ class HomeView extends StatelessWidget {
         ],
       ),
       body: Center(
-        child: Column(
-          mainAxisSize: MainAxisSize.max,
-          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+        child: GridView.count(
+          crossAxisCount: 3,
+          mainAxisSpacing: 1.0,
+          crossAxisSpacing: 1.0,
           children: [
-            TextButton(
+            NewGridTile(
               onPressed: () => context.go('./build'),
-              child: Text('Build'),
+              icon: Icon(Symbols.build),
+              label: Text('Build'),
             ),
-            TextButton(
-              onPressed: () => viewModel.reboot(),
-              child: Text('Reboot'),
-            ),
-            TextButton(
-              onPressed: () => viewModel.shutdown(),
-              child: Text('Shutdown'),
-            ),
-            TextButton(
-              onPressed: () => router.go('./connectivity'),
-              child: Text('Connectivity'),
-            ),
-            TextButton(
-              onPressed: () => router.go('./ethernet'),
-              child: Text('Ethernet'),
-            ),
-            TextButton(
-              onPressed: () => router.go('./wifi'),
-              child: Text('Wifi'),
-            ),
-            TextButton(onPressed: () => router.go('./usb'), child: Text('Usb')),
-            TextButton(
+            NewGridTile(
               onPressed: () => router.go('./locale'),
-              child: Text('Locale'),
+              icon: Icon(Symbols.language),
+              label: Text('Locale'),
             ),
-            TextButton(
+            NewGridTile(
+              onPressed: () => context.go('./power'),
+              icon: Icon(Symbols.power_settings_new),
+              label: Text('Power'),
+            ),
+            NewGridTile(
+              onPressed: () => router.go('./connectivity'),
+              icon: Icon(Symbols.communication),
+              label: Text('Connectivity'),
+            ),
+            NewGridTile(
+              onPressed: () => router.go('./ethernet'),
+              icon: Icon(Symbols.settings_ethernet),
+              label: Text('Ethernet'),
+            ),
+            NewGridTile(
+              onPressed: () => router.go('./wifi'),
+              icon: Icon(Symbols.wifi),
+              label: Text('Wifi'),
+            ),
+            NewGridTile(
+              onPressed: () => router.go('./usb'),
+              icon: Icon(Symbols.usb),
+              label: Text('Usb'),
+            ),
+            NewGridTile(
               onPressed: () => router.go('./system-properties'),
-              child: Text('SystemProperties'),
+              icon: Icon(Symbols.admin_panel_settings),
+              label: Text('System Properties'),
             ),
           ],
         ),

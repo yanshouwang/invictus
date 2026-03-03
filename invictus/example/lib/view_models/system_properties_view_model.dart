@@ -4,11 +4,11 @@ import 'package:invictus/invictus.dart';
 const _keyPersistSysCustomanimBoot = 'persist.sys.customanim.boot';
 
 enum PersistSysCustomanimBoot {
-  undefined('/product/media/bootanimation.zip'),
+  undefined(null),
   byConST('/product/media/bootanimation_const.zip'),
   byAdditel('/product/media/bootanimation_additel.zip');
 
-  final String value;
+  final String? value;
   const PersistSysCustomanimBoot(this.value);
 
   factory PersistSysCustomanimBoot.of(String value) =>
@@ -19,23 +19,23 @@ enum PersistSysCustomanimBoot {
 }
 
 class SystemPropertiesViewModel extends ViewModel {
-  PersistSysCustomanimBoot? _boot;
-  PersistSysCustomanimBoot? get boot => _boot;
+  PersistSysCustomanimBoot _boot;
+  PersistSysCustomanimBoot get boot => _boot;
 
   SystemPropertiesViewModel() : _boot = _getPersistSysCustomanimBoot();
 
-  void setPersistSysCustomanimBoot(PersistSysCustomanimBoot? value) {
+  void setPersistSysCustomanimBoot(PersistSysCustomanimBoot value) {
     _setPersistSysCustomanimBoot(value);
     _boot = _getPersistSysCustomanimBoot();
     notifyListeners();
   }
 }
 
-PersistSysCustomanimBoot? _getPersistSysCustomanimBoot() {
+PersistSysCustomanimBoot _getPersistSysCustomanimBoot() {
   final value = SystemProperties.get(_keyPersistSysCustomanimBoot);
   return PersistSysCustomanimBoot.of(value);
 }
 
-void _setPersistSysCustomanimBoot(PersistSysCustomanimBoot? boot) {
-  SystemProperties.set(_keyPersistSysCustomanimBoot, boot?.value);
+void _setPersistSysCustomanimBoot(PersistSysCustomanimBoot boot) {
+  SystemProperties.set(_keyPersistSysCustomanimBoot, boot.value);
 }

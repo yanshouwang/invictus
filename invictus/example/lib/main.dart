@@ -70,6 +70,20 @@ class _MyAppState extends State<MyApp> {
               ),
             ),
             GoRoute(
+              path: 'locale',
+              builder: (context, state) => ViewModelBinding(
+                viewBuilder: () => LocaleView(),
+                viewModelBuilder: () => LocaleViewModel(),
+              ),
+            ),
+            GoRoute(
+              path: 'power',
+              builder: (context, state) => ViewModelBinding(
+                viewBuilder: () => PowerView(),
+                viewModelBuilder: () => PowerViewModel(),
+              ),
+            ),
+            GoRoute(
               path: 'connectivity',
               builder: (context, state) => ViewModelBinding(
                 viewBuilder: () => ConnectivityView(),
@@ -95,13 +109,6 @@ class _MyAppState extends State<MyApp> {
               builder: (context, state) => ViewModelBinding(
                 viewBuilder: () => UsbView(),
                 viewModelBuilder: () => UsbViewModel(),
-              ),
-            ),
-            GoRoute(
-              path: 'locale',
-              builder: (context, state) => ViewModelBinding(
-                viewBuilder: () => LocaleView(),
-                viewModelBuilder: () => LocaleViewModel(),
               ),
             ),
             GoRoute(

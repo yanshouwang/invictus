@@ -13,15 +13,14 @@ final class SystemProperties$HandleImpl extends ObjectImpl
   String get() => api.get().impl;
 
   @override
-  int? getInt([int? defaultValue]) => api.getInt(defaultValue?.int32Api)?.impl;
+  int? getInt([int? defaultValue]) => api.getInt(defaultValue ?? 0);
 
   @override
-  int? getLong([int? defaultValue]) =>
-      api.getLong(defaultValue?.int64Api)?.impl;
+  int? getLong([int? defaultValue]) => api.getLong(defaultValue ?? 0);
 
   @override
   bool? getBoolean([bool? defaultValue]) =>
-      api.getBoolean(defaultValue?.api)?.impl;
+      api.getBoolean(defaultValue ?? false);
 }
 
 final class SystemPropertiesChannelImpl extends SystemPropertiesChannel {
@@ -31,21 +30,18 @@ final class SystemPropertiesChannelImpl extends SystemPropertiesChannel {
       : jni.SystemProperties.INSTANCE.get$1(key.api, defaultValue.api).impl;
 
   @override
-  int? getInt(String key, [int? defaultValue]) => jni.SystemProperties.INSTANCE
-      .getInt(key.api, defaultValue?.int32Api)
-      ?.impl;
+  int? getInt(String key, [int? defaultValue]) =>
+      jni.SystemProperties.INSTANCE.getInt(key.api, defaultValue ?? 0);
 
   @override
-  int? getLong(String key, [int? defaultValue]) => jni.SystemProperties.INSTANCE
-      .getLong(key.api, defaultValue?.int64Api)
-      ?.impl;
+  int? getLong(String key, [int? defaultValue]) =>
+      jni.SystemProperties.INSTANCE.getLong(key.api, defaultValue ?? 0);
 
   @override
   bool? getBoolean(String key, [bool? defaultValue]) => jni
       .SystemProperties
       .INSTANCE
-      .getBoolean(key.api, defaultValue?.api)
-      ?.impl;
+      .getBoolean(key.api, defaultValue ?? false);
 
   @override
   void set(String key, String? value) =>

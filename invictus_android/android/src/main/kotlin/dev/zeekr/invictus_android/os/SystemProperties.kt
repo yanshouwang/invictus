@@ -32,24 +32,24 @@ object SystemProperties {
          * @param defaultValue default value
          * @return value or {@code defaultValue} on parse error
          */
-        fun getInt(defaultValue: Int?): Int? {
-            return clazz.getMethod("getInt", Int::class.java).invoke(this.obj, defaultValue) as Int?
+        fun getInt(defaultValue: Int = 0): Int {
+            return clazz.getMethod("getInt", Int::class.javaPrimitiveType).invoke(this.obj, defaultValue) as Int
         }
 
         /**
          * @param defaultValue default value
          * @return value or {@code defaultValue} on parse error
          */
-        fun getLong(defaultValue: Long?): Long? {
-            return clazz.getMethod("getLong", Long::class.java).invoke(this.obj, defaultValue) as Long?
+        fun getLong(defaultValue: Long = 0L): Long {
+            return clazz.getMethod("getLong", Long::class.javaPrimitiveType).invoke(this.obj, defaultValue) as Long
         }
 
         /**
          * @param defaultValue default value
          * @return value or {@code defaultValue} on parse error
          */
-        fun getBoolean(defaultValue: Boolean?): Boolean? {
-            return clazz.getMethod("getBoolean", Boolean::class.java).invoke(this.obj, defaultValue) as Boolean?
+        fun getBoolean(defaultValue: Boolean = false): Boolean {
+            return clazz.getMethod("getBoolean", Boolean::class.javaPrimitiveType).invoke(this.obj, defaultValue) as Boolean
         }
     }
 
@@ -85,8 +85,8 @@ object SystemProperties {
      * @return the key parsed as an integer, or defaultValue if the key isn't found or
      *         cannot be parsed
      */
-    fun getInt(key: String, defaultValue: Int?): Int? {
-        return clazz.getMethod("getInt", String::class.java, Int::class.java).invoke(null, key, defaultValue) as Int?
+    fun getInt(key: String, defaultValue: Int = 0): Int {
+        return clazz.getMethod("getInt", String::class.java, Int::class.javaPrimitiveType).invoke(null, key, defaultValue) as Int
     }
 
     /**
@@ -97,8 +97,8 @@ object SystemProperties {
      * @return the key parsed as a long, or defaultValue if the key isn't found or
      *         cannot be parsed
      */
-    fun getLong(key: String, defaultValue: Long?): Long? {
-        return clazz.getMethod("getLong", String::class.java, Long::class.java).invoke(null, key, defaultValue) as Long?
+    fun getLong(key: String, defaultValue: Long = 0L): Long {
+        return clazz.getMethod("getLong", String::class.java, Long::class.javaPrimitiveType).invoke(null, key, defaultValue) as Long
     }
 
     /**
@@ -114,9 +114,9 @@ object SystemProperties {
      * @return the key parsed as a boolean, or defaultValue if the key isn't found or is
      *         not able to be parsed as a boolean.
      */
-    fun getBoolean(key: String, defaultValue: Boolean?): Boolean? {
-        return clazz.getMethod("getBoolean", String::class.java, Boolean::class.java)
-            .invoke(null, key, defaultValue) as Boolean?
+    fun getBoolean(key: String, defaultValue: Boolean = false): Boolean {
+        return clazz.getMethod("getBoolean", String::class.java, Boolean::class.javaPrimitiveType)
+            .invoke(null, key, defaultValue) as Boolean
     }
 
 

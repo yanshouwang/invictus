@@ -12,6 +12,8 @@ final class InvictusAndroidPlugin {
     UsbRequestChannel.instance = UsbRequestChannelImpl();
     // internal.app
     LocalePickerChannel.instance = LocalePickerChannelImpl();
+    // lang
+    RunnableChannel.instance = RunnableChannelImpl();
     // net.ethernet
     EthernetManagerChannel.instance = EthernetManagerChannelImpl();
     // net.util
@@ -33,6 +35,7 @@ final class InvictusAndroidPlugin {
     Inet6AddressChannel.instance = Inet6AddressChannelImpl();
     IpConfigurationChannel.instance = IpConfigurationChannelImpl();
     LinkAddressChannel.instance = LinkAddressChannelImpl();
+    NetworkInterfaceChannel.instance = NetworkInterfaceChannelImpl();
     NetworkRequestChannel.instance = NetworkRequestChannelImpl();
     NetworkChannel.instance = NetworkChannelImpl();
     StaticIpConfigurationChannel.instance = StaticIpConfigurationChannelImpl();
@@ -45,7 +48,9 @@ final class InvictusAndroidPlugin {
     BuildChannel.instance = BuildChannelImpl();
     LocaleListChannel.instance = LocaleListChannelImpl();
     PowerManagerChannel.instance = PowerManagerChannelImpl();
+    SystemPropertiesChannel.instance = SystemPropertiesChannelImpl();
     // util
+    Locale$LanguageRangeChannel.instance = Locale$LanguageRangeChannelImpl();
     LocaleChannel.instance = LocaleChannelImpl();
   }
 }

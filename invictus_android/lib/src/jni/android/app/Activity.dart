@@ -40,6 +40,8 @@ import '../../java/io/FileDescriptor.dart' as filedescriptor$_;
 
 import '../../java/lang/CharSequence.dart' as charsequence$_;
 
+import '../../java/lang/Runnable.dart' as runnable$_;
+
 import '../../java/util/concurrent/Executor.dart' as executor$_;
 
 import '../content/Context.dart' as context$_;
@@ -6344,7 +6346,7 @@ class Activity extends jni$_.JObject {
           >();
 
   /// from: `public final void runOnUiThread(java.lang.Runnable runnable)`
-  void runOnUiThread(jni$_.JObject? runnable) {
+  void runOnUiThread(runnable$_.Runnable? runnable) {
     final _$runnable = runnable?.reference ?? jni$_.jNullReference;
     _runOnUiThread(
       reference.pointer,

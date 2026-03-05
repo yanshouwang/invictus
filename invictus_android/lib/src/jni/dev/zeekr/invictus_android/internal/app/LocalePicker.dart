@@ -296,7 +296,7 @@ class LocalePicker$Companion extends jni$_.JObject {
             )
           >();
 
-  /// from: `public fun updateLocales(locals: android.os.LocaleList): kotlin.Unit`
+  /// from: `public fun updateLocales(locales: android.os.LocaleList): kotlin.Unit`
   void updateLocales(localelist$_.LocaleList localeList) {
     final _$localeList = localeList.reference;
     _updateLocales(

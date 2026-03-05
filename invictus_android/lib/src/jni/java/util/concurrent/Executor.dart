@@ -36,6 +36,8 @@ import 'dart:core' show Object, String, bool, double, int;
 import 'package:jni/_internal.dart' as jni$_;
 import 'package:jni/jni.dart' as jni$_;
 
+import '../../lang/Runnable.dart' as runnable$_;
+
 /// from: `java.util.concurrent.Executor`
 class Executor extends jni$_.JObject {
   @jni$_.internal
@@ -78,7 +80,7 @@ class Executor extends jni$_.JObject {
           >();
 
   /// from: `public abstract void execute(java.lang.Runnable runnable)`
-  void execute(jni$_.JObject? runnable) {
+  void execute(runnable$_.Runnable? runnable) {
     final _$runnable = runnable?.reference ?? jni$_.jNullReference;
     _execute(
       reference.pointer,
@@ -116,7 +118,7 @@ class Executor extends jni$_.JObject {
       final $a = $i.args;
       if ($d == r'execute(Ljava/lang/Runnable;)V') {
         _$impls[$p]!.execute(
-          $a![0]?.as(const jni$_.$JObject$Type$(), releaseOriginal: true),
+          $a![0]?.as(const runnable$_.$Runnable$Type$(), releaseOriginal: true),
         );
         return jni$_.nullptr;
       }
@@ -154,24 +156,24 @@ class Executor extends jni$_.JObject {
 
 abstract base mixin class $Executor {
   factory $Executor({
-    required void Function(jni$_.JObject? runnable) execute,
+    required void Function(runnable$_.Runnable? runnable) execute,
     bool execute$async,
   }) = _$Executor;
 
-  void execute(jni$_.JObject? runnable);
+  void execute(runnable$_.Runnable? runnable);
   bool get execute$async => false;
 }
 
 final class _$Executor with $Executor {
   _$Executor({
-    required void Function(jni$_.JObject? runnable) execute,
+    required void Function(runnable$_.Runnable? runnable) execute,
     this.execute$async = false,
   }) : _execute = execute;
 
-  final void Function(jni$_.JObject? runnable) _execute;
+  final void Function(runnable$_.Runnable? runnable) _execute;
   final bool execute$async;
 
-  void execute(jni$_.JObject? runnable) {
+  void execute(runnable$_.Runnable? runnable) {
     return _execute(runnable);
   }
 }

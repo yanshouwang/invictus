@@ -36,6 +36,8 @@ import 'dart:core' show Object, String, bool, double, int;
 import 'package:jni/_internal.dart' as jni$_;
 import 'package:jni/jni.dart' as jni$_;
 
+import '../util/Enumeration.dart' as enumeration$_;
+
 import 'InetAddress.dart' as inetaddress$_;
 
 import 'InterfaceAddress.dart' as interfaceaddress$_;
@@ -304,11 +306,15 @@ class NetworkInterface extends jni$_.JObject {
 
   /// from: `public java.util.Enumeration<java.net.InetAddress> getInetAddresses()`
   /// The returned object must be released after use, by calling the [release] method.
-  jni$_.JObject? getInetAddresses() {
+  enumeration$_.Enumeration<inetaddress$_.InetAddress?>? getInetAddresses() {
     return _getInetAddresses(
       reference.pointer,
       _id_getInetAddresses as jni$_.JMethodIDPtr,
-    ).object<jni$_.JObject?>(const jni$_.$JObject$NullableType$());
+    ).object<enumeration$_.Enumeration<inetaddress$_.InetAddress?>?>(
+      const enumeration$_.$Enumeration$NullableType$<
+        inetaddress$_.InetAddress?
+      >(inetaddress$_.$InetAddress$NullableType$()),
+    );
   }
 
   static final _id_getInterfaceAddresses = _class.instanceMethodId(
@@ -421,11 +427,15 @@ class NetworkInterface extends jni$_.JObject {
 
   /// from: `static public java.util.Enumeration<java.net.NetworkInterface> getNetworkInterfaces()`
   /// The returned object must be released after use, by calling the [release] method.
-  static jni$_.JObject? getNetworkInterfaces() {
+  static enumeration$_.Enumeration<NetworkInterface?>? getNetworkInterfaces() {
     return _getNetworkInterfaces(
       _class.reference.pointer,
       _id_getNetworkInterfaces as jni$_.JMethodIDPtr,
-    ).object<jni$_.JObject?>(const jni$_.$JObject$NullableType$());
+    ).object<enumeration$_.Enumeration<NetworkInterface?>?>(
+      const enumeration$_.$Enumeration$NullableType$<NetworkInterface?>(
+        $NetworkInterface$NullableType$(),
+      ),
+    );
   }
 
   static final _id_getParent = _class.instanceMethodId(
@@ -481,11 +491,15 @@ class NetworkInterface extends jni$_.JObject {
 
   /// from: `public java.util.Enumeration<java.net.NetworkInterface> getSubInterfaces()`
   /// The returned object must be released after use, by calling the [release] method.
-  jni$_.JObject? getSubInterfaces() {
+  enumeration$_.Enumeration<NetworkInterface?>? getSubInterfaces() {
     return _getSubInterfaces(
       reference.pointer,
       _id_getSubInterfaces as jni$_.JMethodIDPtr,
-    ).object<jni$_.JObject?>(const jni$_.$JObject$NullableType$());
+    ).object<enumeration$_.Enumeration<NetworkInterface?>?>(
+      const enumeration$_.$Enumeration$NullableType$<NetworkInterface?>(
+        $NetworkInterface$NullableType$(),
+      ),
+    );
   }
 
   static final _id_hashCode$1 = _class.instanceMethodId(r'hashCode', r'()I');

@@ -40,6 +40,8 @@ import '../../../android/content/Context.dart' as context$_;
 
 import '../../../android/content/Intent.dart' as intent$_;
 
+import '../../../java/util/ArrayList.dart' as arraylist$_;
+
 /// from: `androidx.core.content.IntentCompat`
 class IntentCompat extends jni$_.JObject {
   @jni$_.internal
@@ -337,7 +339,8 @@ class IntentCompat extends jni$_.JObject {
 
   /// from: `static public java.util.ArrayList<T> getParcelableArrayListExtra(android.content.Intent intent, java.lang.String string, java.lang.Class<? extends T> class)`
   /// The returned object must be released after use, by calling the [release] method.
-  static jni$_.JObject? getParcelableArrayListExtra<$T extends jni$_.JObject?>(
+  static arraylist$_.ArrayList<$T?>?
+  getParcelableArrayListExtra<$T extends jni$_.JObject?>(
     intent$_.Intent intent,
     jni$_.JString? string,
     jni$_.JObject class$, {
@@ -352,7 +355,9 @@ class IntentCompat extends jni$_.JObject {
       _$intent.pointer,
       _$string.pointer,
       _$class$.pointer,
-    ).object<jni$_.JObject?>(const jni$_.$JObject$NullableType$());
+    ).object<arraylist$_.ArrayList<$T?>?>(
+      arraylist$_.$ArrayList$NullableType$<$T?>(T.nullableType),
+    );
   }
 
   static final _id_getSerializableExtra = _class.staticMethodId(

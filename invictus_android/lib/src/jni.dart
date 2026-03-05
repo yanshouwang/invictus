@@ -31,11 +31,28 @@ export 'jni/javax/net/_package.dart';
 Context get context => Jni.androidApplicationContext.as(Context.type);
 
 extension Invictus$intX on int {
-  JInteger get api => toJInteger();
+  JInteger get int32Api => toJInteger();
+  JLong get int64Api => toJLong();
 }
 
 extension Invictus$JIntegerX on JInteger {
   int get impl => intValue(releaseOriginal: true);
+}
+
+extension Invictus$JLongX on JLong {
+  int get impl => longValue(releaseOriginal: true);
+}
+
+extension Invictus$boolX on bool {
+  JBoolean get api => toJBoolean();
+}
+
+extension Invictus$JBooleanX on JBoolean {
+  bool get impl => booleanValue(releaseOriginal: true);
+}
+
+extension Invictus$JCharacterX on JCharacter {
+  int get impl => charValue(releaseOriginal: true);
 }
 
 extension Invictus$StringX on String {
@@ -44,6 +61,10 @@ extension Invictus$StringX on String {
 
 extension Invictus$JStringX on JString {
   String get impl => toDartString(releaseOriginal: true);
+}
+
+extension Invictus$ListX on List<String> {
+  JArray<JString> get api => JArray.of(JString.type, map((e) => e.api));
 }
 
 extension Invictus$Uint8ListX on Uint8List {

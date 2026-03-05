@@ -103,7 +103,7 @@ abstract interface class ConnectivityManager {
     ConnectivityManager$NetworkCallback networkCallback,
   );
 
-  bool bindProcessToNetwork(Network network);
+  bool bindProcessToNetwork(Network? network);
   SocketKeepalive createSocketKeepalive(
     Network network,
     IpSecManager$UdpEncapsulationSocket socket,

@@ -38,6 +38,8 @@ import 'package:jni/jni.dart' as jni$_;
 
 import '../../java/lang/CharSequence.dart' as charsequence$_;
 
+import '../../java/util/ArrayList.dart' as arraylist$_;
+
 import 'Context.dart' as context$_;
 
 /// from: `android.content.Intent$FilterComparison`
@@ -4843,13 +4845,18 @@ class Intent extends jni$_.JObject {
 
   /// from: `public java.util.ArrayList<java.lang.CharSequence> getCharSequenceArrayListExtra(java.lang.String string)`
   /// The returned object must be released after use, by calling the [release] method.
-  jni$_.JObject? getCharSequenceArrayListExtra(jni$_.JString? string) {
+  arraylist$_.ArrayList<charsequence$_.CharSequence?>?
+  getCharSequenceArrayListExtra(jni$_.JString? string) {
     final _$string = string?.reference ?? jni$_.jNullReference;
     return _getCharSequenceArrayListExtra(
       reference.pointer,
       _id_getCharSequenceArrayListExtra as jni$_.JMethodIDPtr,
       _$string.pointer,
-    ).object<jni$_.JObject?>(const jni$_.$JObject$NullableType$());
+    ).object<arraylist$_.ArrayList<charsequence$_.CharSequence?>?>(
+      const arraylist$_.$ArrayList$NullableType$<charsequence$_.CharSequence?>(
+        charsequence$_.$CharSequence$NullableType$(),
+      ),
+    );
   }
 
   static final _id_getCharSequenceExtra = _class.instanceMethodId(
@@ -5326,13 +5333,19 @@ class Intent extends jni$_.JObject {
 
   /// from: `public java.util.ArrayList<java.lang.Integer> getIntegerArrayListExtra(java.lang.String string)`
   /// The returned object must be released after use, by calling the [release] method.
-  jni$_.JObject? getIntegerArrayListExtra(jni$_.JString? string) {
+  arraylist$_.ArrayList<jni$_.JInteger?>? getIntegerArrayListExtra(
+    jni$_.JString? string,
+  ) {
     final _$string = string?.reference ?? jni$_.jNullReference;
     return _getIntegerArrayListExtra(
       reference.pointer,
       _id_getIntegerArrayListExtra as jni$_.JMethodIDPtr,
       _$string.pointer,
-    ).object<jni$_.JObject?>(const jni$_.$JObject$NullableType$());
+    ).object<arraylist$_.ArrayList<jni$_.JInteger?>?>(
+      const arraylist$_.$ArrayList$NullableType$<jni$_.JInteger?>(
+        jni$_.$JInteger$NullableType$(),
+      ),
+    );
   }
 
   static final _id_getIntent = _class.staticMethodId(
@@ -5610,16 +5623,17 @@ class Intent extends jni$_.JObject {
 
   /// from: `public java.util.ArrayList<T> getParcelableArrayListExtra(java.lang.String string)`
   /// The returned object must be released after use, by calling the [release] method.
-  jni$_.JObject? getParcelableArrayListExtra<$T extends jni$_.JObject?>(
-    jni$_.JString? string, {
-    required jni$_.JType<$T> T,
-  }) {
+  arraylist$_.ArrayList<$T?>? getParcelableArrayListExtra<
+    $T extends jni$_.JObject?
+  >(jni$_.JString? string, {required jni$_.JType<$T> T}) {
     final _$string = string?.reference ?? jni$_.jNullReference;
     return _getParcelableArrayListExtra(
       reference.pointer,
       _id_getParcelableArrayListExtra as jni$_.JMethodIDPtr,
       _$string.pointer,
-    ).object<jni$_.JObject?>(const jni$_.$JObject$NullableType$());
+    ).object<arraylist$_.ArrayList<$T?>?>(
+      arraylist$_.$ArrayList$NullableType$<$T?>(T.nullableType),
+    );
   }
 
   static final _id_getParcelableArrayListExtra$1 = _class.instanceMethodId(
@@ -5650,11 +5664,9 @@ class Intent extends jni$_.JObject {
 
   /// from: `public java.util.ArrayList<T> getParcelableArrayListExtra(java.lang.String string, java.lang.Class<? extends T> class)`
   /// The returned object must be released after use, by calling the [release] method.
-  jni$_.JObject? getParcelableArrayListExtra$1<$T extends jni$_.JObject?>(
-    jni$_.JString? string,
-    jni$_.JObject class$, {
-    required jni$_.JType<$T> T,
-  }) {
+  arraylist$_.ArrayList<$T?>? getParcelableArrayListExtra$1<
+    $T extends jni$_.JObject?
+  >(jni$_.JString? string, jni$_.JObject class$, {required jni$_.JType<$T> T}) {
     final _$string = string?.reference ?? jni$_.jNullReference;
     final _$class$ = class$.reference;
     return _getParcelableArrayListExtra$1(
@@ -5662,7 +5674,9 @@ class Intent extends jni$_.JObject {
       _id_getParcelableArrayListExtra$1 as jni$_.JMethodIDPtr,
       _$string.pointer,
       _$class$.pointer,
-    ).object<jni$_.JObject?>(const jni$_.$JObject$NullableType$());
+    ).object<arraylist$_.ArrayList<$T?>?>(
+      arraylist$_.$ArrayList$NullableType$<$T?>(T.nullableType),
+    );
   }
 
   static final _id_getParcelableExtra = _class.instanceMethodId(
@@ -6044,13 +6058,19 @@ class Intent extends jni$_.JObject {
 
   /// from: `public java.util.ArrayList<java.lang.String> getStringArrayListExtra(java.lang.String string)`
   /// The returned object must be released after use, by calling the [release] method.
-  jni$_.JObject? getStringArrayListExtra(jni$_.JString? string) {
+  arraylist$_.ArrayList<jni$_.JString?>? getStringArrayListExtra(
+    jni$_.JString? string,
+  ) {
     final _$string = string?.reference ?? jni$_.jNullReference;
     return _getStringArrayListExtra(
       reference.pointer,
       _id_getStringArrayListExtra as jni$_.JMethodIDPtr,
       _$string.pointer,
-    ).object<jni$_.JObject?>(const jni$_.$JObject$NullableType$());
+    ).object<arraylist$_.ArrayList<jni$_.JString?>?>(
+      const arraylist$_.$ArrayList$NullableType$<jni$_.JString?>(
+        jni$_.$JString$NullableType$(),
+      ),
+    );
   }
 
   static final _id_getStringExtra = _class.instanceMethodId(
@@ -6501,7 +6521,7 @@ class Intent extends jni$_.JObject {
   /// The returned object must be released after use, by calling the [release] method.
   Intent putCharSequenceArrayListExtra(
     jni$_.JString? string,
-    jni$_.JObject? arrayList,
+    arraylist$_.ArrayList<charsequence$_.CharSequence?>? arrayList,
   ) {
     final _$string = string?.reference ?? jni$_.jNullReference;
     final _$arrayList = arrayList?.reference ?? jni$_.jNullReference;
@@ -7535,7 +7555,7 @@ class Intent extends jni$_.JObject {
   /// The returned object must be released after use, by calling the [release] method.
   Intent putIntegerArrayListExtra(
     jni$_.JString? string,
-    jni$_.JObject? arrayList,
+    arraylist$_.ArrayList<jni$_.JInteger?>? arrayList,
   ) {
     final _$string = string?.reference ?? jni$_.jNullReference;
     final _$arrayList = arrayList?.reference ?? jni$_.jNullReference;
@@ -7577,7 +7597,7 @@ class Intent extends jni$_.JObject {
   /// The returned object must be released after use, by calling the [release] method.
   Intent putParcelableArrayListExtra(
     jni$_.JString? string,
-    jni$_.JObject? arrayList,
+    arraylist$_.ArrayList<jni$_.JObject?>? arrayList,
   ) {
     final _$string = string?.reference ?? jni$_.jNullReference;
     final _$arrayList = arrayList?.reference ?? jni$_.jNullReference;
@@ -7619,7 +7639,7 @@ class Intent extends jni$_.JObject {
   /// The returned object must be released after use, by calling the [release] method.
   Intent putStringArrayListExtra(
     jni$_.JString? string,
-    jni$_.JObject? arrayList,
+    arraylist$_.ArrayList<jni$_.JString?>? arrayList,
   ) {
     final _$string = string?.reference ?? jni$_.jNullReference;
     final _$arrayList = arrayList?.reference ?? jni$_.jNullReference;

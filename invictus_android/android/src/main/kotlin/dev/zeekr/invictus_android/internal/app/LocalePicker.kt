@@ -91,8 +91,8 @@ class LocalePicker {
          * Note that the system looks halted for a while during the Locale migration,
          * so the caller need to take care of it.
          */
-        fun updateLocales(locals: LocaleList) {
-            clazz.getMethod("updateLocale", LocaleList::class.java).invoke(null, locals)
+        fun updateLocales(locales: LocaleList) {
+            clazz.getMethod("updateLocales", LocaleList::class.java).invoke(null, locales)
         }
 
         /**

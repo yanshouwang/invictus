@@ -78,8 +78,8 @@ final class ConnectivityManagerImpl extends ObjectImpl
   ) => api.addDefaultNetworkActiveListener(listener.api);
 
   @override
-  bool bindProcessToNetwork(Network network) =>
-      api.bindProcessToNetwork(network.api);
+  bool bindProcessToNetwork(Network? network) =>
+      api.bindProcessToNetwork(network?.api);
 
   @override
   SocketKeepalive createSocketKeepalive(

@@ -60,15 +60,23 @@ class WifiView extends StatelessWidget {
       ListTile(
         tileColor: theme.colorScheme.surfaceContainer,
         shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.vertical(
-            top: Radius.circular(r2),
-            bottom: Radius.circular(r1),
-          ),
+          borderRadius: BorderRadius.all(Radius.circular(r2)),
         ),
         title: Text('DNS 2'),
         trailing: Text(
           '${NetworkUtil.intToInetAddress(dhcpInfo.dns2).hostAddress}',
         ),
+      ),
+      ListTile(
+        tileColor: theme.colorScheme.surfaceContainer,
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.vertical(
+            top: Radius.circular(r2),
+            bottom: Radius.circular(r1),
+          ),
+        ),
+        title: Text('MAC'),
+        trailing: Text(connectionInfo.macAddress),
       ),
     ];
     return Scaffold(
@@ -99,7 +107,7 @@ class WifiView extends StatelessWidget {
             SliverList.separated(
               itemBuilder: (context, i) => items[i],
               separatorBuilder: (context, i) =>
-                  Divider(color: theme.colorScheme.surface),
+                  Divider(color: Colors.transparent),
               itemCount: items.length,
             ),
             SliverToBoxAdapter(
@@ -133,7 +141,7 @@ class WifiView extends StatelessWidget {
                 );
               },
               separatorBuilder: (context, i) =>
-                  Divider(color: theme.colorScheme.surface),
+                  Divider(color: Colors.transparent),
               itemCount: scanResults.length,
             ),
           ],

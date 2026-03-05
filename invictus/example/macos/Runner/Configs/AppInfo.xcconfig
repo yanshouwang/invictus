@@ -11,4 +11,4 @@ PRODUCT_NAME = invictus_example
 PRODUCT_BUNDLE_IDENTIFIER = dev.zeekr.invictusExample
 
 // The copyright displayed in application information
-PRODUCT_COPYRIGHT = Copyright © 2025 dev.zeekr. All rights reserved.
+PRODUCT_COPYRIGHT = Copyright © 2026 dev.zeekr. All rights reserved.

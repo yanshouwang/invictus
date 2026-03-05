@@ -334,10 +334,7 @@ class SystemProperties$Handle extends jni$_.JObject {
     ).object<jni$_.JString>(const jni$_.$JString$Type$());
   }
 
-  static final _id_getInt = _class.instanceMethodId(
-    r'getInt',
-    r'(Ljava/lang/Integer;)Ljava/lang/Integer;',
-  );
+  static final _id_getInt = _class.instanceMethodId(r'getInt', r'(I)I');
 
   static final _getInt =
       jni$_.ProtectedJniExtensions.lookup<
@@ -345,33 +342,28 @@ class SystemProperties$Handle extends jni$_.JObject {
               jni$_.JniResult Function(
                 jni$_.Pointer<jni$_.Void>,
                 jni$_.JMethodIDPtr,
-                jni$_.VarArgs<(jni$_.Pointer<jni$_.Void>,)>,
+                jni$_.VarArgs<(jni$_.Int32,)>,
               )
             >
-          >('globalEnv_CallObjectMethod')
+          >('globalEnv_CallIntMethod')
           .asFunction<
             jni$_.JniResult Function(
               jni$_.Pointer<jni$_.Void>,
               jni$_.JMethodIDPtr,
-              jni$_.Pointer<jni$_.Void>,
+              int,
             )
           >();
 
-  /// from: `public fun getInt(defaultValue: kotlin.Int?): kotlin.Int?`
-  /// The returned object must be released after use, by calling the [release] method.
-  jni$_.JInteger? getInt(jni$_.JInteger? integer) {
-    final _$integer = integer?.reference ?? jni$_.jNullReference;
+  /// from: `public fun getInt(defaultValue: kotlin.Int): kotlin.Int`
+  int getInt(int i) {
     return _getInt(
       reference.pointer,
       _id_getInt as jni$_.JMethodIDPtr,
-      _$integer.pointer,
-    ).object<jni$_.JInteger?>(const jni$_.$JInteger$NullableType$());
+      i,
+    ).integer;
   }
 
-  static final _id_getLong = _class.instanceMethodId(
-    r'getLong',
-    r'(Ljava/lang/Long;)Ljava/lang/Long;',
-  );
+  static final _id_getLong = _class.instanceMethodId(r'getLong', r'(J)J');
 
   static final _getLong =
       jni$_.ProtectedJniExtensions.lookup<
@@ -379,33 +371,28 @@ class SystemProperties$Handle extends jni$_.JObject {
               jni$_.JniResult Function(
                 jni$_.Pointer<jni$_.Void>,
                 jni$_.JMethodIDPtr,
-                jni$_.VarArgs<(jni$_.Pointer<jni$_.Void>,)>,
+                jni$_.VarArgs<(jni$_.Int64,)>,
               )
             >
-          >('globalEnv_CallObjectMethod')
+          >('globalEnv_CallLongMethod')
           .asFunction<
             jni$_.JniResult Function(
               jni$_.Pointer<jni$_.Void>,
               jni$_.JMethodIDPtr,
-              jni$_.Pointer<jni$_.Void>,
+              int,
             )
           >();
 
-  /// from: `public fun getLong(defaultValue: kotlin.Long?): kotlin.Long?`
-  /// The returned object must be released after use, by calling the [release] method.
-  jni$_.JLong? getLong(jni$_.JLong? long) {
-    final _$long = long?.reference ?? jni$_.jNullReference;
+  /// from: `public fun getLong(defaultValue: kotlin.Long): kotlin.Long`
+  int getLong(int j) {
     return _getLong(
       reference.pointer,
       _id_getLong as jni$_.JMethodIDPtr,
-      _$long.pointer,
-    ).object<jni$_.JLong?>(const jni$_.$JLong$NullableType$());
+      j,
+    ).long;
   }
 
-  static final _id_getBoolean = _class.instanceMethodId(
-    r'getBoolean',
-    r'(Ljava/lang/Boolean;)Ljava/lang/Boolean;',
-  );
+  static final _id_getBoolean = _class.instanceMethodId(r'getBoolean', r'(Z)Z');
 
   static final _getBoolean =
       jni$_.ProtectedJniExtensions.lookup<
@@ -413,27 +400,25 @@ class SystemProperties$Handle extends jni$_.JObject {
               jni$_.JniResult Function(
                 jni$_.Pointer<jni$_.Void>,
                 jni$_.JMethodIDPtr,
-                jni$_.VarArgs<(jni$_.Pointer<jni$_.Void>,)>,
+                jni$_.VarArgs<(jni$_.Int32,)>,
               )
             >
-          >('globalEnv_CallObjectMethod')
+          >('globalEnv_CallBooleanMethod')
           .asFunction<
             jni$_.JniResult Function(
               jni$_.Pointer<jni$_.Void>,
               jni$_.JMethodIDPtr,
-              jni$_.Pointer<jni$_.Void>,
+              int,
             )
           >();
 
-  /// from: `public fun getBoolean(defaultValue: kotlin.Boolean?): kotlin.Boolean?`
-  /// The returned object must be released after use, by calling the [release] method.
-  jni$_.JBoolean? getBoolean(jni$_.JBoolean? boolean) {
-    final _$boolean = boolean?.reference ?? jni$_.jNullReference;
+  /// from: `public fun getBoolean(defaultValue: kotlin.Boolean): kotlin.Boolean`
+  bool getBoolean(bool z) {
     return _getBoolean(
       reference.pointer,
       _id_getBoolean as jni$_.JMethodIDPtr,
-      _$boolean.pointer,
-    ).object<jni$_.JBoolean?>(const jni$_.$JBoolean$NullableType$());
+      z ? 1 : 0,
+    ).boolean;
   }
 }
 
@@ -648,7 +633,7 @@ class SystemProperties extends jni$_.JObject {
 
   static final _id_getInt = _class.instanceMethodId(
     r'getInt',
-    r'(Ljava/lang/String;Ljava/lang/Integer;)Ljava/lang/Integer;',
+    r'(Ljava/lang/String;I)I',
   );
 
   static final _getInt =
@@ -657,37 +642,33 @@ class SystemProperties extends jni$_.JObject {
               jni$_.JniResult Function(
                 jni$_.Pointer<jni$_.Void>,
                 jni$_.JMethodIDPtr,
-                jni$_.VarArgs<
-                  (jni$_.Pointer<jni$_.Void>, jni$_.Pointer<jni$_.Void>)
-                >,
+                jni$_.VarArgs<(jni$_.Pointer<jni$_.Void>, jni$_.Int32)>,
               )
             >
-          >('globalEnv_CallObjectMethod')
+          >('globalEnv_CallIntMethod')
           .asFunction<
             jni$_.JniResult Function(
               jni$_.Pointer<jni$_.Void>,
               jni$_.JMethodIDPtr,
               jni$_.Pointer<jni$_.Void>,
-              jni$_.Pointer<jni$_.Void>,
+              int,
             )
           >();
 
-  /// from: `public fun getInt(key: kotlin.String, defaultValue: kotlin.Int?): kotlin.Int?`
-  /// The returned object must be released after use, by calling the [release] method.
-  jni$_.JInteger? getInt(jni$_.JString string, jni$_.JInteger? integer) {
+  /// from: `public fun getInt(key: kotlin.String, defaultValue: kotlin.Int): kotlin.Int`
+  int getInt(jni$_.JString string, int i) {
     final _$string = string.reference;
-    final _$integer = integer?.reference ?? jni$_.jNullReference;
     return _getInt(
       reference.pointer,
       _id_getInt as jni$_.JMethodIDPtr,
       _$string.pointer,
-      _$integer.pointer,
-    ).object<jni$_.JInteger?>(const jni$_.$JInteger$NullableType$());
+      i,
+    ).integer;
   }
 
   static final _id_getLong = _class.instanceMethodId(
     r'getLong',
-    r'(Ljava/lang/String;Ljava/lang/Long;)Ljava/lang/Long;',
+    r'(Ljava/lang/String;J)J',
   );
 
   static final _getLong =
@@ -696,37 +677,33 @@ class SystemProperties extends jni$_.JObject {
               jni$_.JniResult Function(
                 jni$_.Pointer<jni$_.Void>,
                 jni$_.JMethodIDPtr,
-                jni$_.VarArgs<
-                  (jni$_.Pointer<jni$_.Void>, jni$_.Pointer<jni$_.Void>)
-                >,
+                jni$_.VarArgs<(jni$_.Pointer<jni$_.Void>, jni$_.Int64)>,
               )
             >
-          >('globalEnv_CallObjectMethod')
+          >('globalEnv_CallLongMethod')
           .asFunction<
             jni$_.JniResult Function(
               jni$_.Pointer<jni$_.Void>,
               jni$_.JMethodIDPtr,
               jni$_.Pointer<jni$_.Void>,
-              jni$_.Pointer<jni$_.Void>,
+              int,
             )
           >();
 
-  /// from: `public fun getLong(key: kotlin.String, defaultValue: kotlin.Long?): kotlin.Long?`
-  /// The returned object must be released after use, by calling the [release] method.
-  jni$_.JLong? getLong(jni$_.JString string, jni$_.JLong? long) {
+  /// from: `public fun getLong(key: kotlin.String, defaultValue: kotlin.Long): kotlin.Long`
+  int getLong(jni$_.JString string, int j) {
     final _$string = string.reference;
-    final _$long = long?.reference ?? jni$_.jNullReference;
     return _getLong(
       reference.pointer,
       _id_getLong as jni$_.JMethodIDPtr,
       _$string.pointer,
-      _$long.pointer,
-    ).object<jni$_.JLong?>(const jni$_.$JLong$NullableType$());
+      j,
+    ).long;
   }
 
   static final _id_getBoolean = _class.instanceMethodId(
     r'getBoolean',
-    r'(Ljava/lang/String;Ljava/lang/Boolean;)Ljava/lang/Boolean;',
+    r'(Ljava/lang/String;Z)Z',
   );
 
   static final _getBoolean =
@@ -735,32 +712,28 @@ class SystemProperties extends jni$_.JObject {
               jni$_.JniResult Function(
                 jni$_.Pointer<jni$_.Void>,
                 jni$_.JMethodIDPtr,
-                jni$_.VarArgs<
-                  (jni$_.Pointer<jni$_.Void>, jni$_.Pointer<jni$_.Void>)
-                >,
+                jni$_.VarArgs<(jni$_.Pointer<jni$_.Void>, jni$_.Int32)>,
               )
             >
-          >('globalEnv_CallObjectMethod')
+          >('globalEnv_CallBooleanMethod')
           .asFunction<
             jni$_.JniResult Function(
               jni$_.Pointer<jni$_.Void>,
               jni$_.JMethodIDPtr,
               jni$_.Pointer<jni$_.Void>,
-              jni$_.Pointer<jni$_.Void>,
+              int,
             )
           >();
 
-  /// from: `public fun getBoolean(key: kotlin.String, defaultValue: kotlin.Boolean?): kotlin.Boolean?`
-  /// The returned object must be released after use, by calling the [release] method.
-  jni$_.JBoolean? getBoolean(jni$_.JString string, jni$_.JBoolean? boolean) {
+  /// from: `public fun getBoolean(key: kotlin.String, defaultValue: kotlin.Boolean): kotlin.Boolean`
+  bool getBoolean(jni$_.JString string, bool z) {
     final _$string = string.reference;
-    final _$boolean = boolean?.reference ?? jni$_.jNullReference;
     return _getBoolean(
       reference.pointer,
       _id_getBoolean as jni$_.JMethodIDPtr,
       _$string.pointer,
-      _$boolean.pointer,
-    ).object<jni$_.JBoolean?>(const jni$_.$JBoolean$NullableType$());
+      z ? 1 : 0,
+    ).boolean;
   }
 
   static final _id_set = _class.instanceMethodId(

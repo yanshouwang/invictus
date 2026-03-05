@@ -8,13 +8,13 @@ abstract interface class SystemProperties$Handle {
   String get();
 
   /// return value or defaultValue on parse error
-  int? getInt([int? defaultValue]);
+  int getInt(int defaultValue);
 
   /// return value or defaultValue on parse error
-  int? getLong([int? defaultValue]);
+  int getLong(int defaultValue);
 
   /// return value or defaultValue on parse error
-  bool? getBoolean([bool? defaultValue]);
+  bool getBoolean(bool defaultValue);
 }
 
 /// Gives access to the system properties store.  The system properties
@@ -32,11 +32,11 @@ abstract interface class SystemProperties {
       SystemPropertiesChannel.instance.get(key, defaultValue);
 
   /// Get the value for the given {@code key}, and return as an integer.
-  static int? getInt(String key, [int? defaultValue]) =>
+  static int getInt(String key, int defaultValue) =>
       SystemPropertiesChannel.instance.getInt(key, defaultValue);
 
   /// Get the value for the given {@code key}, and return as a long.
-  static int? getLong(String key, [int? defaultValue]) =>
+  static int getLong(String key, int defaultValue) =>
       SystemPropertiesChannel.instance.getLong(key, defaultValue);
 
   /// Get the value for the given {@code key}, returned as a boolean.
@@ -45,7 +45,7 @@ abstract interface class SystemProperties {
   /// (case sensitive).
   /// If the key does not exist, or has any other value, then the default
   /// result is returned.
-  static bool? getBoolean(String key, [bool? defaultValue]) =>
+  static bool getBoolean(String key, bool defaultValue) =>
       SystemPropertiesChannel.instance.getBoolean(key, defaultValue);
 
   /// Set the value for the given key to value.
@@ -98,9 +98,9 @@ abstract base class SystemPropertiesChannel extends PlatformInterface {
   }
 
   String get(String key, [String? defaultValue]);
-  int? getInt(String key, [int? defaultValue]);
-  int? getLong(String key, [int? defaultValue]);
-  bool? getBoolean(String key, [bool? defaultValue]);
+  int getInt(String key, int defaultValue);
+  int getLong(String key, int defaultValue);
+  bool getBoolean(String key, bool defaultValue);
   void set(String key, String? value);
   void addChangeCallback(Runnable callback);
   void removeChangeCallback(Runnable callback);

@@ -157,7 +157,7 @@ object SystemProperties {
      * digest result.
      */
     fun digestOf(vararg keys: String): String {
-        return clazz.getMethod("digestOf", Array<String>::class.java).invoke(null, keys as Any) as String
+        return clazz.getMethod("digestOf", Array<String>::class.java).invoke(null, keys) as String
     }
 
     fun find(name: String): Handle? {

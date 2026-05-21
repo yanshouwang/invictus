@@ -9,43 +9,43 @@ final class UsbDeviceImpl extends ObjectImpl implements UsbDevice {
   UsbDeviceImpl.internal(this.api);
 
   @override
-  int get configurationCount => api.getConfigurationCount();
+  int get configurationCount => api.configurationCount;
 
   @override
-  int get deviceClass => api.getDeviceClass();
+  int get deviceClass => api.deviceClass;
 
   @override
-  int get deviceId => api.getDeviceId();
+  int get deviceId => api.deviceId;
 
   @override
-  String get deviceName => api.getDeviceName().impl;
+  String get deviceName => api.deviceName.impl;
 
   @override
-  int get deviceProtocol => api.getDeviceProtocol();
+  int get deviceProtocol => api.deviceProtocol;
 
   @override
-  int get deviceSubclass => api.getDeviceSubclass();
+  int get deviceSubclass => api.deviceSubclass;
 
   @override
-  int get interfaceCount => api.getInterfaceCount();
+  int get interfaceCount => api.interfaceCount;
 
   @override
-  String? get manufacturerName => api.getManufacturerName()?.impl;
+  String? get manufacturerName => api.manufacturerName?.impl;
 
   @override
-  int get productId => api.getProductId();
+  int get productId => api.productId;
 
   @override
-  String? get productName => api.getProductName()?.impl;
+  String? get productName => api.productName?.impl;
 
   @override
-  String? get serialNumber => api.getSerialNumber()?.impl;
+  String? get serialNumber => api.serialNumber?.impl;
 
   @override
-  int get vendorId => api.getVendorId();
+  int get vendorId => api.vendorId;
 
   @override
-  String get version => api.getVersion().impl;
+  String get version => api.version.impl;
 
   @override
   UsbConfiguration getConfiguration(int index) =>
@@ -57,11 +57,11 @@ final class UsbDeviceImpl extends ObjectImpl implements UsbDevice {
 
 final class UsbDeviceChannelImpl extends UsbDeviceChannel {
   @override
-  int getDeviceId(String name) => jni.UsbDevice.getDeviceId$1(name.api);
+  int getDeviceId(String name) => jni.UsbDevice.getDeviceId(name.api);
 
   @override
   String getDeviceName(int id) {
-    final deviceNameApiOrNull = jni.UsbDevice.getDeviceName$1(id);
+    final deviceNameApiOrNull = jni.UsbDevice.getDeviceName(id);
     final deviceNameApi = ArgumentError.checkNotNull(
       deviceNameApiOrNull,
       'deviceNameApi',

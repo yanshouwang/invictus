@@ -11,14 +11,14 @@ final class Inet6AddressImpl extends InetAddressImpl implements Inet6Address {
   Inet6AddressImpl.internal(this.api);
 
   @override
-  bool get isIPv4CompatibleAddress => api.isIPv4CompatibleAddress();
+  bool get isIPv4CompatibleAddress => api.isIPv4CompatibleAddress;
 }
 
 final class Inet6AddressChannelImpl extends Inet6AddressChannel {
   @override
   Inet6Address create() {
     final invictusApi = jni.InvictusInet6Address.new$1();
-    final api = invictusApi.getObj();
+    final api = invictusApi.obj;
     return Inet6AddressImpl.internal(api);
   }
 

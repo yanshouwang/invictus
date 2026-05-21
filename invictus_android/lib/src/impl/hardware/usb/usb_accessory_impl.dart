@@ -9,22 +9,22 @@ final class UsbAccessoryImpl extends ObjectImpl implements UsbAccessory {
   UsbAccessoryImpl.internal(this.api);
 
   @override
-  String? get description => api.getDescription()?.impl;
+  String? get description => api.description?.impl;
 
   @override
-  String get manufacturer => api.getManufacturer().impl;
+  String get manufacturer => api.manufacturer.impl;
 
   @override
-  String get model => api.getModel().impl;
+  String get model => api.model.impl;
 
   @override
-  String? get serial => api.getSerial()?.impl;
+  String? get serial => api.serial?.impl;
 
   @override
-  String? get uri => api.getUri()?.impl;
+  String? get uri => api.uri?.impl;
 
   @override
-  String? get version => api.getVersion()?.impl;
+  String? get version => api.version?.impl;
 }
 
 extension Invictus$UsbAccessoryX on UsbAccessory {

@@ -18,7 +18,7 @@ final class EthernetManagerImpl extends ObjectImpl implements EthernetManager {
 
   @override
   List<String> get availableInterfaces =>
-      api.getAvailableInterfaces().map((e) => e.impl).toList();
+      api.availableInterfaces.asDart().map((e) => e.impl).toList();
 
   @override
   void addListener(EthernetManager$Listener listener) =>
@@ -30,7 +30,7 @@ final class EthernetManagerImpl extends ObjectImpl implements EthernetManager {
 
   @override
   bool isAvailable([String? iface]) =>
-      iface == null ? api.isAvailable() : api.isAvailable$1(iface.api);
+      iface == null ? api.isAvailable : api.isAvailable$1(iface.api);
 
   @override
   IpConfiguration getConfiguration(String iface) =>

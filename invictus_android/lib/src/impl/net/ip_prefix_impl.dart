@@ -11,13 +11,13 @@ final class IpPrefixImpl extends ObjectImpl implements IpPrefix {
   IpPrefixImpl.internal(this.api);
 
   @override
-  InetAddress get address => api.getAddress().impl;
+  InetAddress get address => api.address.impl;
 
   @override
-  int get prefixLength => api.getPrefixLength();
+  int get prefixLength => api.prefixLength;
 
   @override
-  Uint8List get rawAddress => api.getRawAddress().impl;
+  Uint8List get rawAddress => api.rawAddress.impl;
 
   @override
   bool contains(InetAddress address) => api.contains(address.api);

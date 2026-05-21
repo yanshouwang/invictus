@@ -11,7 +11,7 @@ final class PowerManagerImpl extends ObjectImpl implements PowerManager {
     : invictusApi = jni.InvictusPowerManager(api);
 
   @override
-  bool get isRebootingUserspaceSupported => api.isRebootingUserspaceSupported();
+  bool get isRebootingUserspaceSupported => api.isRebootingUserspaceSupported;
 
   @override
   void reboot({PowerManager$Reboot? reason}) => api.reboot(reason?.api);
@@ -27,10 +27,9 @@ final class PowerManagerImpl extends ObjectImpl implements PowerManager {
 final class PowerManagerChannelImpl extends PowerManagerChannel {
   @override
   PowerManager create() {
-    final apiOrNull = jni.ContextCompat.getSystemService(
+    final apiOrNull = jni.ContextCompat.getSystemService<jni.PowerManager>(
       jni.context,
       jni.PowerManager.type.jClass,
-      T: jni.PowerManager.type,
     );
     final api = ArgumentError.checkNotNull(apiOrNull, 'api');
     return PowerManagerImpl.internal(api);
@@ -41,18 +40,20 @@ extension PowerManager$RebootX on PowerManager$Reboot {
   jni.JString get api {
     switch (this) {
       case PowerManager$Reboot.recovery:
-        return jni.InvictusPowerManager.Companion.getREBOOT_RECOVERY();
+        return jni.InvictusPowerManager.Companion.rEBOOT_RECOVERY;
       case PowerManager$Reboot.recoveryUpdate:
-        return jni.InvictusPowerManager.Companion.getREBOOT_RECOVERY_UPDATE();
+        return jni.InvictusPowerManager.Companion.rEBOOT_RECOVERY_UPDATE;
       case PowerManager$Reboot.requestedByDeviceOwner:
-        return jni.InvictusPowerManager.Companion
-            .getREBOOT_REQUESTED_BY_DEVICE_OWNER();
+        return jni
+            .InvictusPowerManager
+            .Companion
+            .rEBOOT_REQUESTED_BY_DEVICE_OWNER;
       case PowerManager$Reboot.safeMode:
-        return jni.InvictusPowerManager.Companion.getREBOOT_SAFE_MODE();
+        return jni.InvictusPowerManager.Companion.rEBOOT_SAFE_MODE;
       case PowerManager$Reboot.userspace:
-        return jni.InvictusPowerManager.Companion.getREBOOT_USERSPACE();
+        return jni.InvictusPowerManager.Companion.rEBOOT_USERSPACE;
       case PowerManager$Reboot.quiescent:
-        return jni.InvictusPowerManager.Companion.getREBOOT_QUIESCENT();
+        return jni.InvictusPowerManager.Companion.rEBOOT_QUIESCENT;
     }
   }
 }
@@ -61,14 +62,16 @@ extension PowerManager$ShutdownX on PowerManager$Shutdown {
   jni.JString get api {
     switch (this) {
       case PowerManager$Shutdown.userRequested:
-        return jni.InvictusPowerManager.Companion.getSHUTDOWN_USER_REQUESTED();
+        return jni.InvictusPowerManager.Companion.sHUTDOWN_USER_REQUESTED;
       case PowerManager$Shutdown.batteryThermalState:
-        return jni.InvictusPowerManager.Companion
-            .getSHUTDOWN_BATTERY_THERMAL_STATE();
+        return jni
+            .InvictusPowerManager
+            .Companion
+            .sHUTDOWN_BATTERY_THERMAL_STATE;
       case PowerManager$Shutdown.thermalState:
-        return jni.InvictusPowerManager.Companion.getSHUTDOWN_THERMAL_STATE();
+        return jni.InvictusPowerManager.Companion.sHUTDOWN_THERMAL_STATE;
       case PowerManager$Shutdown.lowBattery:
-        return jni.InvictusPowerManager.Companion.getSHUTDOWN_LOW_BATTERY();
+        return jni.InvictusPowerManager.Companion.sHUTDOWN_LOW_BATTERY;
     }
   }
 }

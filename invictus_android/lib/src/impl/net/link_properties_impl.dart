@@ -9,70 +9,62 @@ final class LinkPropertiesImpl extends ObjectImpl implements LinkProperties {
   LinkPropertiesImpl.internal(this.api);
 
   @override
-  Inet4Address? get dhcpServerAddress => api.getDhcpServerAddress()?.impl;
+  Inet4Address? get dhcpServerAddress => api.dhcpServerAddress?.impl;
   @override
   set dhcpServerAddress(Inet4Address? value) =>
-      api.setDhcpServerAddress(value?.api);
+      api.dhcpServerAddress = value?.api;
 
   @override
   List<InetAddress> get dnsServers =>
-      api.getDnsServers().nonNulls.map((e) => e.impl).toList();
+      api.dnsServers.asDart().nonNulls.map((e) => e.impl).toList();
   @override
-  set dnsServers(List<InetAddress> value) => api.setDnsServers(
-    value
-        .map((e) => e.api)
-        .toJList(jni.InetAddress.type)
-        .as(jni.Collection.type(jni.InetAddress.type)),
-  );
+  set dnsServers(List<InetAddress> value) => api.dnsServers$1 =
+      value.map((e) => e.api).toJList() as jni.Collection<jni.InetAddress>;
 
   @override
-  String? get domains => api.getDomains()?.impl;
+  String? get domains => api.domains?.impl;
   @override
-  set domains(String? value) => api.setDomains(value?.api);
+  set domains(String? value) => api.domains = value?.api;
 
   @override
-  ProxyInfo? get httpProxy => api.getHttpProxy()?.impl;
+  ProxyInfo? get httpProxy => api.httpProxy?.impl;
   @override
-  set httpProxy(ProxyInfo? value) => api.setHttpProxy(value?.api);
+  set httpProxy(ProxyInfo? value) => api.httpProxy = value?.api;
 
   @override
-  String? get interfaceName => api.getInterfaceName()?.impl;
+  String? get interfaceName => api.interfaceName?.impl;
   @override
-  set interfaceName(String? value) => api.setInterfaceName(value?.api);
+  set interfaceName(String? value) => api.interfaceName = value?.api;
 
   @override
   List<LinkAddress> get linkAddresses =>
-      api.getLinkAddresses().nonNulls.map((e) => e.impl).toList();
+      api.linkAddresses.asDart().nonNulls.map((e) => e.impl).toList();
   @override
-  set linkAddresses(List<LinkAddress> value) => api.setLinkAddresses(
-    value
-        .map((e) => e.api)
-        .toJList(jni.LinkAddress.type)
-        .as(jni.Collection.type(jni.LinkAddress.type)),
-  );
+  set linkAddresses(List<LinkAddress> value) => api.linkAddresses$1 =
+      value.map((e) => e.api).toJList() as jni.Collection<jni.LinkAddress>;
 
   @override
-  int get mtu => api.getMtu();
+  int get mtu => api.mtu;
   @override
-  set mtu(int value) => api.setMtu(value);
+  set mtu(int value) => api.mtu = value;
 
   @override
-  IpPrefix? get nat64Prefix => api.getNat64Prefix()?.impl;
+  IpPrefix? get nat64Prefix => api.nat64Prefix?.impl;
   @override
-  set nat64Prefix(IpPrefix? value) => api.setNat64Prefix(value?.api);
+  set nat64Prefix(IpPrefix? value) => api.nat64Prefix = value?.api;
 
   @override
-  bool get isPrivateDnsActive => api.isPrivateDnsActive();
+  bool get isPrivateDnsActive => api.isPrivateDnsActive;
 
   @override
-  bool get isWakeOnLanSupported => api.isWakeOnLanSupported();
+  bool get isWakeOnLanSupported => api.isWakeOnLanSupported;
 
   @override
-  String? get privateDnsServerName => api.getPrivateDnsServerName()?.impl;
+  String? get privateDnsServerName => api.privateDnsServerName?.impl;
 
   @override
   List<RouteInfo> get routes =>
-      api.getRoutes().nonNulls.map((e) => e.impl).toList();
+      api.routes.asDart().nonNulls.map((e) => e.impl).toList();
 
   @override
   bool addRoute(RouteInfo route) => api.addRoute(route.api);

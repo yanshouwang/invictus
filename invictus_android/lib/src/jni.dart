@@ -1,6 +1,8 @@
 import 'dart:typed_data';
+import 'dart:ui';
 
 import 'package:invictus_android/src/jni.dart';
+import 'package:jni_flutter/jni_flutter.dart';
 
 export 'package:jni/jni.dart';
 
@@ -12,8 +14,10 @@ export 'jni/android/net/_package.dart';
 export 'jni/android/net/wifi/_package.dart';
 export 'jni/android/net/wifi/aware/_package.dart';
 export 'jni/android/os/_package.dart';
+export 'jni/android/provider/_package.dart';
 export 'jni/androidx/core/content/_package.dart';
 export 'jni/dev/zeekr/invictus_android/app/_package.dart';
+export 'jni/dev/zeekr/invictus_android/app/time/_package.dart';
 export 'jni/dev/zeekr/invictus_android/content/_package.dart';
 export 'jni/dev/zeekr/invictus_android/internal/app/_package.dart';
 export 'jni/dev/zeekr/invictus_android/net/_package.dart';
@@ -28,7 +32,12 @@ export 'jni/java/util/_package.dart';
 export 'jni/java/util/concurrent/_package.dart';
 export 'jni/javax/net/_package.dart';
 
-Context get context => Jni.androidApplicationContext.as(Context.type);
+Context get context => androidApplicationContext.as(Context.type);
+Activity? get activity {
+  final engineId = PlatformDispatcher.instance.engineId;
+  if (engineId == null) return null;
+  return androidActivity(engineId)?.as(Activity.type);
+}
 
 extension Invictus$intX on int {
   JInteger get int32Api => toJInteger();
@@ -36,11 +45,11 @@ extension Invictus$intX on int {
 }
 
 extension Invictus$JIntegerX on JInteger {
-  int get impl => intValue(releaseOriginal: true);
+  int get impl => toDartInt(releaseOriginal: true);
 }
 
 extension Invictus$JLongX on JLong {
-  int get impl => longValue(releaseOriginal: true);
+  int get impl => toDartInt(releaseOriginal: true);
 }
 
 extension Invictus$boolX on bool {
@@ -48,11 +57,11 @@ extension Invictus$boolX on bool {
 }
 
 extension Invictus$JBooleanX on JBoolean {
-  bool get impl => booleanValue(releaseOriginal: true);
+  bool get impl => toDartBool(releaseOriginal: true);
 }
 
 extension Invictus$JCharacterX on JCharacter {
-  int get impl => charValue(releaseOriginal: true);
+  int get impl => toDartInt(releaseOriginal: true);
 }
 
 extension Invictus$StringX on String {
@@ -82,21 +91,16 @@ extension Invictus$JByteBufferX on JByteBuffer {
 }
 
 extension Invictus$JContextX on Context {
-  JString get packageName {
-    final packageNameOrNull = getPackageName();
-    return ArgumentError.checkNotNull(packageNameOrNull, 'packageName');
+  Handler get mainHandler {
+    final mainLooper = ArgumentError.checkNotNull(
+      this.mainLooper,
+      'mainLooper',
+    );
+    return Handler.new$2(mainLooper);
   }
-
-  Executor get mainExecutor => ContextCompat.getMainExecutor(this);
-  Handler get mainHandler => getMainHandler();
-  Looper get mainLooper {
-    final mainLooperOrNull = getMainLooper();
-    return ArgumentError.checkNotNull(mainLooperOrNull, 'mainLooper');
-  }
-
-  Handler getMainHandler() => Handler.new$2(mainLooper);
 }
 
-extension Invictus$JIntentX on Intent {
-  JString? get action => getAction();
+extension Invictus$MapExtensions<K extends Object, V extends Object>
+    on Map<K?, V?> {
+  Map<K, V> get nonNulls => Map.fromIterables(keys.nonNulls, values.nonNulls);
 }

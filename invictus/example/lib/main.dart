@@ -118,6 +118,20 @@ class _MyAppState extends State<MyApp> {
                 viewModelBuilder: () => SystemPropertiesViewModel(),
               ),
             ),
+            GoRoute(
+              path: 'settings',
+              builder: (context, state) => ViewModelBinding(
+                viewBuilder: () => SettingsView(),
+                viewModelBuilder: () => SettingsViewModel(),
+              ),
+            ),
+            GoRoute(
+              path: 'time',
+              builder: (context, state) => ViewModelBinding(
+                viewBuilder: () => TimeView(),
+                viewModelBuilder: () => TimeViewModel(),
+              ),
+            ),
           ],
         ),
       ],

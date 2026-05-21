@@ -10,7 +10,7 @@ abstract base class InetAddressImpl extends ObjectImpl implements InetAddress {
 
   @override
   Uint8List get address {
-    final addressApiOrNull = api.getAddress();
+    final addressApiOrNull = api.address;
     final addressApi = ArgumentError.checkNotNull(
       addressApiOrNull,
       'addressApi',
@@ -20,7 +20,7 @@ abstract base class InetAddressImpl extends ObjectImpl implements InetAddress {
 
   @override
   String get canonicalHostName {
-    final canonicalHostNameApiOrNull = api.getCanonicalHostName();
+    final canonicalHostNameApiOrNull = api.canonicalHostName;
     final canonicalHostNameApi = ArgumentError.checkNotNull(
       canonicalHostNameApiOrNull,
       'canonicalHostNameApi',
@@ -29,11 +29,11 @@ abstract base class InetAddressImpl extends ObjectImpl implements InetAddress {
   }
 
   @override
-  String? get hostAddress => api.getHostAddress()?.impl;
+  String? get hostAddress => api.hostAddress?.impl;
 
   @override
   String get hostName {
-    final hostNameApiOrNull = api.getHostName();
+    final hostNameApiOrNull = api.hostName;
     final hostNameApi = ArgumentError.checkNotNull(
       hostNameApiOrNull,
       'hostNameApi',
@@ -42,34 +42,34 @@ abstract base class InetAddressImpl extends ObjectImpl implements InetAddress {
   }
 
   @override
-  bool get isAnyLocalAddress => api.isAnyLocalAddress();
+  bool get isAnyLocalAddress => api.isAnyLocalAddress;
 
   @override
-  bool get isLinkLocalAddress => api.isLinkLocalAddress();
+  bool get isLinkLocalAddress => api.isLinkLocalAddress;
 
   @override
-  bool get isLoopbackAddress => api.isLoopbackAddress();
+  bool get isLoopbackAddress => api.isLoopbackAddress;
 
   @override
-  bool get isMulticastAddress => api.isMulticastAddress();
+  bool get isMulticastAddress => api.isMulticastAddress;
 
   @override
-  bool get isSiteLocalAddress => api.isSiteLocalAddress();
+  bool get isSiteLocalAddress => api.isSiteLocalAddress;
 
   @override
-  bool get isMcGlobal => api.isMCGlobal();
+  bool get isMcGlobal => api.isMCGlobal;
 
   @override
-  bool get isMcLinkLocal => api.isMCLinkLocal();
+  bool get isMcLinkLocal => api.isMCLinkLocal;
 
   @override
-  bool get isMcNodeLocal => api.isMCNodeLocal();
+  bool get isMcNodeLocal => api.isMCNodeLocal;
 
   @override
-  bool get isMcOrgLocal => api.isMCOrgLocal();
+  bool get isMcOrgLocal => api.isMCOrgLocal;
 
   @override
-  bool get isMcSiteLocal => api.isMCSiteLocal();
+  bool get isMcSiteLocal => api.isMCSiteLocal;
 
   @override
   bool isReachableWithTimeout(int timeout) => api.isReachable(timeout);
@@ -87,7 +87,7 @@ final class InetAddressChannelImpl extends InetAddressChannel {
   List<InetAddress> getAllByName(String? host) {
     final allApiOrNull = jni.InetAddress.getAllByName(host?.api);
     final allApi = ArgumentError.checkNotNull(allApiOrNull, 'allApi');
-    return allApi.nonNulls.map((e) => e.impl).toList();
+    return allApi.asDart().nonNulls.map((e) => e.impl).toList();
   }
 
   @override
@@ -108,14 +108,14 @@ final class InetAddressChannelImpl extends InetAddressChannel {
 
   @override
   InetAddress createLocalHost() {
-    final apiOrNull = jni.InetAddress.getLocalHost();
+    final apiOrNull = jni.InetAddress.localHost;
     final api = ArgumentError.checkNotNull(apiOrNull, 'api');
     return api.impl;
   }
 
   @override
   InetAddress createLoopbackAddress() {
-    final apiOrNull = jni.InetAddress.getLoopbackAddress();
+    final apiOrNull = jni.InetAddress.loopbackAddress;
     final api = ArgumentError.checkNotNull(apiOrNull, 'api');
     return api.impl;
   }

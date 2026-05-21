@@ -9,13 +9,13 @@ final class Build$PartitionImpl extends ObjectImpl implements Build$Partition {
   Build$PartitionImpl.internal(this.api);
 
   @override
-  int get buildTimeMillis => api.getBuildTimeMillis();
+  int get buildTimeMillis => api.buildTimeMillis;
 
   @override
-  String get fingerprint => api.getFingerprint().impl;
+  String get fingerprint => api.fingerprint.impl;
 
   @override
-  String get name => api.getName().impl;
+  String get name => api.name.impl;
 }
 
 final class Build$PartitionChannelImpl extends Build$PartitionChannel {
@@ -336,10 +336,13 @@ final class BuildChannelImpl extends BuildChannel {
       ArgumentError.checkNotNull(jni.Build.FINGERPRINT, 'FINGERPRINT').impl;
 
   @override
-  List<Build$Partition> get fingerprintedPartitions =>
-      jni.Build.getFingerprintedPartitions().nonNulls
-          .map((e) => e.impl)
-          .toList();
+  List<Build$Partition> get fingerprintedPartitions => jni
+      .Build
+      .fingerprintedPartitions
+      .asDart()
+      .nonNulls
+      .map((e) => e.impl)
+      .toList();
 
   @override
   String get hardware =>
@@ -369,13 +372,13 @@ final class BuildChannelImpl extends BuildChannel {
   String get radio => ArgumentError.checkNotNull(jni.Build.RADIO, 'RADIO').impl;
 
   @override
-  String? get radioVersion => jni.Build.getRadioVersion()?.impl;
+  String? get radioVersion => jni.Build.radioVersion?.impl;
 
   @override
   String get serial {
     final serialApiOrNull =
         jni.Build$VERSION.SDK_INT >= jni.Build$VERSION_CODES.O
-        ? jni.Build.getSerial()
+        ? jni.Build.serial
         : jni.Build.SERIAL;
     final serialApi = ArgumentError.checkNotNull(serialApiOrNull, 'serialApi');
     return serialApi.impl;
@@ -394,19 +397,19 @@ final class BuildChannelImpl extends BuildChannel {
   List<String> get supported32BitAbis => ArgumentError.checkNotNull(
     jni.Build.SUPPORTED_32_BIT_ABIS,
     'SUPPORTED_32_BIT_ABIS',
-  ).nonNulls.map((e) => e.impl).toList();
+  ).asDart().nonNulls.map((e) => e.impl).toList();
 
   @override
   List<String> get supported64BitAbis => ArgumentError.checkNotNull(
     jni.Build.SUPPORTED_64_BIT_ABIS,
     'SUPPORTED_64_BIT_ABIS',
-  ).nonNulls.map((e) => e.impl).toList();
+  ).asDart().nonNulls.map((e) => e.impl).toList();
 
   @override
   List<String> get supportedAbis => ArgumentError.checkNotNull(
     jni.Build.SUPPORTED_ABIS,
     'SUPPORTED_ABIS',
-  ).nonNulls.map((e) => e.impl).toList();
+  ).asDart().nonNulls.map((e) => e.impl).toList();
 
   @override
   String get tags => ArgumentError.checkNotNull(jni.Build.TAGS, 'TAGS').impl;

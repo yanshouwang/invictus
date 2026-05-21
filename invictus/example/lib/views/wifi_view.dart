@@ -161,7 +161,7 @@ class WifiView extends StatelessWidget {
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         crossAxisAlignment: CrossAxisAlignment.end,
-        children: [title, if (trailing != null) trailing],
+        children: [title, ?trailing],
       ),
     );
   }

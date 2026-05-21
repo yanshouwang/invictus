@@ -9,25 +9,25 @@ final class UsbEndpointImpl extends ObjectImpl implements UsbEndpoint {
   UsbEndpointImpl.internal(this.api);
 
   @override
-  int get address => api.getAddress();
+  int get address => api.address;
 
   @override
-  int get attributes => api.getAttributes();
+  int get attributes => api.attributes;
 
   @override
-  UsbDir get direction => api.getDirection().usbDirImpl;
+  UsbDir get direction => api.direction.usbDirImpl;
 
   @override
-  int get endpointNumber => api.getEndpointNumber();
+  int get endpointNumber => api.endpointNumber;
 
   @override
-  int get interval => api.getInterval();
+  int get interval => api.interval;
 
   @override
-  int get maxPacketSize => api.getMaxPacketSize();
+  int get maxPacketSize => api.maxPacketSize;
 
   @override
-  UsbEndpointXfer get type => api.getType().usbEndpointXferImpl;
+  UsbEndpointXfer get type => api.type$1.usbEndpointXferImpl;
 }
 
 extension Invictus$UsbEndpointX on UsbEndpoint {

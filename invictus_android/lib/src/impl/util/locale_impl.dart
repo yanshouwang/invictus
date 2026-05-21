@@ -11,14 +11,14 @@ final class Locale$LanguageRangeImpl extends ObjectImpl
 
   @override
   String get range {
-    final rangeApiOrNull = api.getRange();
+    final rangeApiOrNull = api.range;
     final rangeApi = ArgumentError.checkNotNull(rangeApiOrNull, 'rangeApi');
     return rangeApi.impl;
   }
 
   @override
   double get weight {
-    final weightOrNull = api.getWeight();
+    final weightOrNull = api.weight;
     final weight = ArgumentError.checkNotNull(weightOrNull, 'weight');
     return weight;
   }
@@ -32,7 +32,7 @@ final class LocaleImpl extends ObjectImpl implements Locale {
 
   @override
   String get country {
-    final countryApiOrNull = api.getCountry();
+    final countryApiOrNull = api.country;
     final countryApi = ArgumentError.checkNotNull(
       countryApiOrNull,
       'countryApi',
@@ -42,17 +42,17 @@ final class LocaleImpl extends ObjectImpl implements Locale {
 
   @override
   Set<int> get extensionKeys {
-    final extensionKeysApiOrNull = api.getExtensionKeys();
+    final extensionKeysApiOrNull = api.extensionKeys;
     final extensionKeysApi = ArgumentError.checkNotNull(
       extensionKeysApiOrNull,
       'extensionKeysApi',
     );
-    return extensionKeysApi.nonNulls.map((e) => e.impl).toSet();
+    return extensionKeysApi.asDart().nonNulls.map((e) => e.impl).toSet();
   }
 
   @override
   String get iso3Country {
-    final iso3CountryApiOrNull = api.getISO3Country();
+    final iso3CountryApiOrNull = api.iSO3Country;
     final iso3CountryApi = ArgumentError.checkNotNull(
       iso3CountryApiOrNull,
       'iso3CountryApi',
@@ -62,7 +62,7 @@ final class LocaleImpl extends ObjectImpl implements Locale {
 
   @override
   String get iso3Language {
-    final iso3LanguageApiOrNull = api.getISO3Language();
+    final iso3LanguageApiOrNull = api.iSO3Language;
     final iso3LanguageApi = ArgumentError.checkNotNull(
       iso3LanguageApiOrNull,
       'iso3LanguageApi',
@@ -72,7 +72,7 @@ final class LocaleImpl extends ObjectImpl implements Locale {
 
   @override
   String get language {
-    final languageApiOrNull = api.getLanguage();
+    final languageApiOrNull = api.language;
     final languageApi = ArgumentError.checkNotNull(
       languageApiOrNull,
       'languageApi',
@@ -82,34 +82,38 @@ final class LocaleImpl extends ObjectImpl implements Locale {
 
   @override
   String get script {
-    final scriptApiOrNull = api.getScript();
+    final scriptApiOrNull = api.script;
     final scriptApi = ArgumentError.checkNotNull(scriptApiOrNull, 'scriptApi');
     return scriptApi.impl;
   }
 
   @override
   Set<String> get unicodeLocaleAttributes {
-    final unicodeLocaleAttributesApiOrNull = api.getUnicodeLocaleAttributes();
+    final unicodeLocaleAttributesApiOrNull = api.unicodeLocaleAttributes;
     final unicodeLocaleAttributesApi = ArgumentError.checkNotNull(
       unicodeLocaleAttributesApiOrNull,
       'unicodeLocaleAttributesApi',
     );
-    return unicodeLocaleAttributesApi.nonNulls.map((e) => e.impl).toSet();
+    return unicodeLocaleAttributesApi
+        .asDart()
+        .nonNulls
+        .map((e) => e.impl)
+        .toSet();
   }
 
   @override
   Set<String> get unicodeLocaleKeys {
-    final unicodeLocaleKeysApiOrNull = api.getUnicodeLocaleKeys();
+    final unicodeLocaleKeysApiOrNull = api.unicodeLocaleKeys;
     final unicodeLocaleKeysApi = ArgumentError.checkNotNull(
       unicodeLocaleKeysApiOrNull,
       'unicodeLocaleKeysApi',
     );
-    return unicodeLocaleKeysApi.nonNulls.map((e) => e.impl).toSet();
+    return unicodeLocaleKeysApi.asDart().nonNulls.map((e) => e.impl).toSet();
   }
 
   @override
   String get variant {
-    final variantApiOrNull = api.getVariant();
+    final variantApiOrNull = api.variant;
     final variantApi = ArgumentError.checkNotNull(
       variantApiOrNull,
       'variantApi',
@@ -123,8 +127,8 @@ final class LocaleImpl extends ObjectImpl implements Locale {
   @override
   String getDisplayCountry([Locale? locale]) {
     final displayCountryApiOrNull = locale == null
-        ? api.getDisplayCountry()
-        : api.getDisplayCountry$1(locale.api);
+        ? api.displayCountry
+        : api.getDisplayCountry(locale.api);
     final displayCountryApi = ArgumentError.checkNotNull(
       displayCountryApiOrNull,
       'displayCountryApi',
@@ -135,8 +139,8 @@ final class LocaleImpl extends ObjectImpl implements Locale {
   @override
   String getDisplayLanguage([Locale? locale]) {
     final displayLanguageApiOrNull = locale == null
-        ? api.getDisplayLanguage()
-        : api.getDisplayLanguage$1(locale.api);
+        ? api.displayLanguage
+        : api.getDisplayLanguage(locale.api);
     final displayLanguageApi = ArgumentError.checkNotNull(
       displayLanguageApiOrNull,
       'displayLanguageApi',
@@ -147,8 +151,8 @@ final class LocaleImpl extends ObjectImpl implements Locale {
   @override
   String getDisplayName([Locale? locale]) {
     final displayNameApiOrNull = locale == null
-        ? api.getDisplayName()
-        : api.getDisplayName$1(locale.api);
+        ? api.displayName
+        : api.getDisplayName(locale.api);
     final displayNameApi = ArgumentError.checkNotNull(
       displayNameApiOrNull,
       'displayNameApi',
@@ -159,8 +163,8 @@ final class LocaleImpl extends ObjectImpl implements Locale {
   @override
   String getDisplayScript([Locale? inLocale]) {
     final displayScriptApiOrNull = inLocale == null
-        ? api.getDisplayScript()
-        : api.getDisplayScript$1(inLocale.api);
+        ? api.displayScript
+        : api.getDisplayScript(inLocale.api);
     final displayScriptApi = ArgumentError.checkNotNull(
       displayScriptApiOrNull,
       'displayScriptApi',
@@ -171,8 +175,8 @@ final class LocaleImpl extends ObjectImpl implements Locale {
   @override
   String getDisplayVariant([Locale? inLocale]) {
     final displayVariantApiOrNull = inLocale == null
-        ? api.getDisplayVariant()
-        : api.getDisplayVariant$1(inLocale.api);
+        ? api.displayVariant
+        : api.getDisplayVariant(inLocale.api);
     final displayVariantApi = ArgumentError.checkNotNull(
       displayVariantApiOrNull,
       'displayVariantApi',
@@ -221,21 +225,19 @@ final class Locale$LanguageRangeChannelImpl
     Map<String, List<String>> map,
   ) {
     final equivalentsApiOrNull = jni.Locale$LanguageRange.mapEquivalents(
-      priorityList.map((e) => e.api).toJList(jni.Locale$LanguageRange.type),
+      priorityList.map((e) => e.api).toJList(),
       map
           .map(
-            (key, value) => MapEntry(
-              key.api,
-              value.map((e) => e.api).toJList(jni.JString.type),
-            ),
+            (key, value) =>
+                MapEntry(key.api, value.map((e) => e.api).toJList()),
           )
-          .toJMap(jni.JString.type, jni.JList.type(jni.JString.type)),
+          .toJMap(),
     );
     final equivalentsApi = ArgumentError.checkNotNull(
       equivalentsApiOrNull,
       'equivalentsApi',
     );
-    return equivalentsApi.nonNulls.map((e) => e.impl).toList();
+    return equivalentsApi.asDart().nonNulls.map((e) => e.impl).toList();
   }
 
   @override
@@ -249,18 +251,16 @@ final class Locale$LanguageRangeChannelImpl
             ranges.api,
             map
                 .map(
-                  (key, value) => MapEntry(
-                    key.api,
-                    value.map((e) => e.api).toJList(jni.JString.type),
-                  ),
+                  (key, value) =>
+                      MapEntry(key.api, value.map((e) => e.api).toJList()),
                 )
-                .toJMap(jni.JString.type, jni.JList.type(jni.JString.type)),
+                .toJMap(),
           );
     final languageRangesApi = ArgumentError.checkNotNull(
       languageRangesApiOrNull,
       'languageRangesApi',
     );
-    return languageRangesApi.nonNulls.map((e) => e.impl).toList();
+    return languageRangesApi.asDart().nonNulls.map((e) => e.impl).toList();
   }
 
   @override
@@ -350,29 +350,19 @@ final class LocaleChannelImpl extends LocaleChannel {
   ]) {
     final localesApiOrNull = mode == null
         ? jni.Locale.filter(
-            priorityList
-                .map((e) => e.api)
-                .toJList(jni.Locale$LanguageRange.type),
-            locales
-                .map((e) => e.api)
-                .toJList(jni.Locale.type)
-                .as(jni.Collection.type(jni.Locale.type)),
+            priorityList.map((e) => e.api).toJList(),
+            locales.map((e) => e.api).toJList() as jni.Collection<jni.Locale>,
           )
         : jni.Locale.filter$1(
-            priorityList
-                .map((e) => e.api)
-                .toJList(jni.Locale$LanguageRange.type),
-            locales
-                .map((e) => e.api)
-                .toJList(jni.Locale.type)
-                .as(jni.Collection.type(jni.Locale.type)),
+            priorityList.map((e) => e.api).toJList(),
+            locales.map((e) => e.api).toJList() as jni.Collection<jni.Locale>,
             mode.api,
           );
     final localesApi = ArgumentError.checkNotNull(
       localesApiOrNull,
       'localesApi',
     );
-    return localesApi.nonNulls.map((e) => e.impl).toList();
+    return localesApi.asDart().nonNulls.map((e) => e.impl).toList();
   }
 
   @override
@@ -383,26 +373,16 @@ final class LocaleChannelImpl extends LocaleChannel {
   ]) {
     final tagsApiOrNull = mode == null
         ? jni.Locale.filterTags(
-            priorityList
-                .map((e) => e.api)
-                .toJList(jni.Locale$LanguageRange.type),
-            tags
-                .map((e) => e.api)
-                .toJList(jni.JString.type)
-                .as(jni.Collection.type(jni.JString.type)),
+            priorityList.map((e) => e.api).toJList(),
+            tags.map((e) => e.api).toJList() as jni.Collection<jni.JString>,
           )
         : jni.Locale.filterTags$1(
-            priorityList
-                .map((e) => e.api)
-                .toJList(jni.Locale$LanguageRange.type),
-            tags
-                .map((e) => e.api)
-                .toJList(jni.JString.type)
-                .as(jni.Collection.type(jni.JString.type)),
+            priorityList.map((e) => e.api).toJList(),
+            tags.map((e) => e.api).toJList() as jni.Collection<jni.JString>,
             mode.api,
           );
     final tagsApi = ArgumentError.checkNotNull(tagsApiOrNull, 'tagsApi');
-    return tagsApi.nonNulls.map((e) => e.impl).toList();
+    return tagsApi.asDart().nonNulls.map((e) => e.impl).toList();
   }
 
   @override
@@ -414,19 +394,19 @@ final class LocaleChannelImpl extends LocaleChannel {
 
   @override
   List<Locale> getAvailableLocales() {
-    final availableLocalesApiOrNull = jni.Locale.getAvailableLocales();
+    final availableLocalesApiOrNull = jni.Locale.availableLocales$1;
     final availableLocalesApi = ArgumentError.checkNotNull(
       availableLocalesApiOrNull,
       'availableLocalesApi',
     );
-    return availableLocalesApi.nonNulls.map((e) => e.impl).toList();
+    return availableLocalesApi.asDart().nonNulls.map((e) => e.impl).toList();
   }
 
   @override
   Locale getDefault([Locale$Category? category]) {
     final apiOrNull = category == null
-        ? jni.Locale.getDefault()
-        : jni.Locale.getDefault$1(category.api);
+        ? jni.Locale.default$
+        : jni.Locale.getDefault(category.api);
     final api = ArgumentError.checkNotNull(apiOrNull, 'api');
     return LocaleImpl.internal(api);
   }
@@ -434,14 +414,14 @@ final class LocaleChannelImpl extends LocaleChannel {
   @override
   void setDefault(Locale newLocale, [Locale$Category? category]) =>
       category == null
-      ? jni.Locale.setDefault(newLocale.api)
-      : jni.Locale.setDefault$1(category.api, newLocale.api);
+      ? jni.Locale.default$ = newLocale.api
+      : jni.Locale.setDefault(category.api, newLocale.api);
 
   @override
   List<String> getIsoCountries([Locale$IsoCountryCode? type]) {
     final isoCountriesApiOrNull = type == null
-        ? jni.Locale.getISOCountries()?.toJList(jni.JString.type)
-        : jni.Locale.getISOCountries$1(type.api)?.toJList(jni.JString.type);
+        ? jni.Locale.iSOCountries?.asDart()
+        : jni.Locale.getISOCountries(type.api)?.asDart();
     final isoCountriesApi = ArgumentError.checkNotNull(
       isoCountriesApiOrNull,
       'isoCountriesApi',
@@ -451,12 +431,12 @@ final class LocaleChannelImpl extends LocaleChannel {
 
   @override
   List<String> getIsoLanguages() {
-    final isoLanguagesApiOrNull = jni.Locale.getISOLanguages();
+    final isoLanguagesApiOrNull = jni.Locale.iSOLanguages;
     final isoLanguagesApi = ArgumentError.checkNotNull(
       isoLanguagesApiOrNull,
       'isoLanguagesApi',
     );
-    return isoLanguagesApi.nonNulls.map((e) => e.impl).toList();
+    return isoLanguagesApi.asDart().nonNulls.map((e) => e.impl).toList();
   }
 
   @override
@@ -464,11 +444,8 @@ final class LocaleChannelImpl extends LocaleChannel {
     List<Locale$LanguageRange> priorityList,
     List<Locale> locales,
   ) => jni.Locale.lookup(
-    priorityList.map((e) => e.api).toJList(jni.Locale$LanguageRange.type),
-    locales
-        .map((e) => e.api)
-        .toJList(jni.Locale.type)
-        .as(jni.Collection.type(jni.Locale.type)),
+    priorityList.map((e) => e.api).toJList(),
+    locales.map((e) => e.api).toJList() as jni.Collection<jni.Locale>,
   )?.impl;
 
   @override
@@ -476,11 +453,8 @@ final class LocaleChannelImpl extends LocaleChannel {
     List<Locale$LanguageRange> priorityList,
     List<String> tags,
   ) => jni.Locale.lookupTag(
-    priorityList.map((e) => e.api).toJList(jni.Locale$LanguageRange.type),
-    tags
-        .map((e) => e.api)
-        .toJList(jni.JString.type)
-        .as(jni.Collection.type(jni.JString.type)),
+    priorityList.map((e) => e.api).toJList(),
+    tags.map((e) => e.api).toJList() as jni.Collection<jni.JString>,
   )?.impl;
 
   @override

@@ -12,11 +12,11 @@ final class UsbDeviceConnectionImpl extends ObjectImpl
   UsbDeviceConnectionImpl.internal(this.api);
 
   @override
-  int get fileDescriptor => api.getFileDescriptor();
+  int get fileDescriptor => api.fileDescriptor;
 
   @override
   Uint8List get rawDescriptors {
-    final rawDescriptorsApiOrNull = api.getRawDescriptors();
+    final rawDescriptorsApiOrNull = api.rawDescriptors;
     final rawDescriptorsApi = ArgumentError.checkNotNull(
       rawDescriptorsApiOrNull,
       'rawDescriptorsApi',
@@ -25,7 +25,7 @@ final class UsbDeviceConnectionImpl extends ObjectImpl
   }
 
   @override
-  String? get serial => api.getSerial()?.impl;
+  String? get serial => api.serial?.impl;
 
   @override
   int bulkTransfer({

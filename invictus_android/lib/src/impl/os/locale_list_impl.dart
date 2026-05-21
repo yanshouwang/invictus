@@ -26,7 +26,7 @@ final class LocaleListImpl extends ObjectImpl implements LocaleList {
   int indexOf(Locale locale) => api.indexOf(locale.api);
 
   @override
-  bool get isEmpty => api.isEmpty();
+  bool get isEmpty => api.isEmpty;
 
   @override
   int get size => api.size();
@@ -54,24 +54,24 @@ final class LocaleListChannelImpl extends LocaleListChannel {
 
   @override
   LocaleList getAdjustedDefault() {
-    final api = jni.LocaleList.getAdjustedDefault();
+    final api = jni.LocaleList.adjustedDefault;
     return LocaleListImpl.internal(api);
   }
 
   @override
   LocaleList getDefault() {
-    final api = jni.LocaleList.getDefault();
+    final api = jni.LocaleList.default$;
     return LocaleListImpl.internal(api);
   }
 
   @override
   void setDefault(LocaleList locales) {
-    jni.LocaleList.setDefault(locales.api);
+    jni.LocaleList.default$ = locales.api;
   }
 
   @override
   LocaleList getEmptyLocaleList() {
-    final api = jni.LocaleList.getEmptyLocaleList();
+    final api = jni.LocaleList.emptyLocaleList;
     return LocaleListImpl.internal(api);
   }
 

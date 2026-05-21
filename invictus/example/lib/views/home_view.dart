@@ -65,6 +65,16 @@ class HomeView extends StatelessWidget {
               icon: Icon(Symbols.admin_panel_settings),
               label: Text('System Properties'),
             ),
+            NewGridTile(
+              onPressed: () => router.go('./settings'),
+              icon: Icon(Symbols.settings),
+              label: Text('Settings'),
+            ),
+            NewGridTile(
+              onPressed: () => router.go('./time'),
+              icon: Icon(Symbols.edit_calendar),
+              label: Text('Date & Time'),
+            ),
           ],
         ),
       ),

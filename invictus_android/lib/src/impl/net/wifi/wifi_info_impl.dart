@@ -12,54 +12,54 @@ final class WifiInfoImpl extends TransportInfoImpl implements WifiInfo {
 
   @override
   List<MloLink> get affiliatedMloLinks =>
-      api.getAffiliatedMloLinks().nonNulls.map((e) => e.impl).toList();
+      api.affiliatedMloLinks.asDart().nonNulls.map((e) => e.impl).toList();
 
   @override
-  MacAddress? get apMldMacAddress => api.getApMldMacAddress()?.impl;
+  MacAddress? get apMldMacAddress => api.apMldMacAddress?.impl;
 
   @override
-  int get apMloLinkId => api.getApMloLinkId();
+  int get apMloLinkId => api.apMloLinkId;
 
   @override
-  int get applicableRedactions => api.getApplicableRedactions();
+  int get applicableRedactions => api.applicableRedactions;
 
   @override
   List<MloLink> get associatedMloLinks =>
-      api.getAssociatedMloLinks().nonNulls.map((e) => e.impl).toList();
+      api.associatedMloLinks.asDart().nonNulls.map((e) => e.impl).toList();
 
   @override
   String get bssid {
-    final bssidApiOrNull = api.getBSSID();
+    final bssidApiOrNull = api.bSSID;
     final bssidApi = ArgumentError.checkNotNull(bssidApiOrNull, 'bssidApi');
     return bssidApi.impl;
   }
 
   @override
   WifiInfo$SecurityType get currentSecurityType =>
-      api.getCurrentSecurityType().wifiInfo$SecurityTypeImpl;
+      api.currentSecurityType.wifiInfo$SecurityTypeImpl;
 
   @override
-  int get frequency => api.getFrequency();
+  int get frequency => api.frequency;
 
   @override
-  bool get hiddenSSID => api.getHiddenSSID();
+  bool get hiddenSSID => api.hiddenSSID;
 
   @override
   List<ScanResult$InformationElement>? get informationElements =>
-      api.getInformationElements()?.nonNulls.map((e) => e.impl).toList();
+      api.informationElements?.asDart().nonNulls.map((e) => e.impl).toList();
 
   @override
-  int get ipAddress => api.getIpAddress();
+  int get ipAddress => api.ipAddress;
 
   @override
-  bool get isRestricted => api.isRestricted();
+  bool get isRestricted => api.isRestricted;
 
   @override
-  int get linkSpeed => api.getLinkSpeed();
+  int get linkSpeed => api.linkSpeed;
 
   @override
   String get macAddress {
-    final macAddressApiOrNull = api.getMacAddress();
+    final macAddressApiOrNull = api.macAddress;
     final macAddressApi = ArgumentError.checkNotNull(
       macAddressApiOrNull,
       'macAddressApi',
@@ -71,43 +71,43 @@ final class WifiInfoImpl extends TransportInfoImpl implements WifiInfo {
   WifiInfo makeCopy(int redactions) => api.makeCopy(redactions).impl;
 
   @override
-  int get maxSupportedRxLinkSpeedMbps => api.getMaxSupportedRxLinkSpeedMbps();
+  int get maxSupportedRxLinkSpeedMbps => api.maxSupportedRxLinkSpeedMbps;
 
   @override
-  int get maxSupportedTxLinkSpeedMbps => api.getMaxSupportedTxLinkSpeedMbps();
+  int get maxSupportedTxLinkSpeedMbps => api.maxSupportedTxLinkSpeedMbps;
 
   @override
-  int get networkId => api.getNetworkId();
+  int get networkId => api.networkId;
 
   @override
-  String? get passpointFqdn => api.getPasspointFqdn()?.impl;
+  String? get passpointFqdn => api.passpointFqdn?.impl;
 
   @override
   String? get passpointProviderFriendlyName =>
-      api.getPasspointProviderFriendlyName()?.impl;
+      api.passpointProviderFriendlyName?.impl;
 
   @override
-  String? get passpointUniqueId => api.getPasspointUniqueId()?.impl;
+  String? get passpointUniqueId => api.passpointUniqueId?.impl;
 
   @override
-  int get rssi => api.getRssi();
+  int get rssi => api.rssi;
 
   @override
-  int get rxLinkSpeedMbps => api.getRxLinkSpeedMbps();
+  int get rxLinkSpeedMbps => api.rxLinkSpeedMbps;
 
   @override
   String get ssid {
-    final ssidApiOrNull = api.getSSID();
+    final ssidApiOrNull = api.sSID;
     final ssidApi = ArgumentError.checkNotNull(ssidApiOrNull, 'ssidApi');
     return ssidApi.impl;
   }
 
   @override
-  int get subscriptionId => api.getSubscriptionId();
+  int get subscriptionId => api.subscriptionId;
 
   @override
   SupplicantState get supplicantState {
-    final supplicantStateApiOrNull = api.getSupplicantState();
+    final supplicantStateApiOrNull = api.supplicantState;
     final supplicantStateApi = ArgumentError.checkNotNull(
       supplicantStateApiOrNull,
       'supplicantStateApi',
@@ -116,10 +116,10 @@ final class WifiInfoImpl extends TransportInfoImpl implements WifiInfo {
   }
 
   @override
-  int get txLinkSpeedMbps => api.getTxLinkSpeedMbps();
+  int get txLinkSpeedMbps => api.txLinkSpeedMbps;
 
   @override
-  int get wifiStandard => api.getWifiStandard();
+  int get wifiStandard => api.wifiStandard;
 }
 
 final class WifiInfoChannelImpl extends WifiInfoChannel {

@@ -6,4 +6,5 @@ export 'impl/io.dart';
 export 'impl/lang.dart';
 export 'impl/net.dart';
 export 'impl/os.dart';
+export 'impl/provider.dart';
 export 'impl/util.dart';

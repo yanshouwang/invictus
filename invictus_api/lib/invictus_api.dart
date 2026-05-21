@@ -6,4 +6,5 @@ export 'src/io.dart';
 export 'src/lang.dart';
 export 'src/net.dart';
 export 'src/os.dart';
+export 'src/provider.dart';
 export 'src/util.dart';

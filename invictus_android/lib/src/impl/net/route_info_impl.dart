@@ -9,22 +9,22 @@ final class RouteInfoImpl extends ObjectImpl implements RouteInfo {
   RouteInfoImpl.internal(this.api);
 
   @override
-  IpPrefix get destination => api.getDestination().impl;
+  IpPrefix get destination => api.destination.impl;
 
   @override
-  InetAddress? get gateway => api.getGateway()?.impl;
+  InetAddress? get gateway => api.gateway?.impl;
 
   @override
   bool get hasGateway => api.hasGateway();
 
   @override
-  String? get interface => api.getInterface()?.impl;
+  String? get interface => api.interface?.impl;
 
   @override
-  bool get isDefaultRoute => api.isDefaultRoute();
+  bool get isDefaultRoute => api.isDefaultRoute;
 
   @override
-  RouteInfo$RTN get type => api.getType().routeInfoRtnImpl;
+  RouteInfo$RTN get type => api.type$1.routeInfoRtnImpl;
 
   @override
   bool matches(InetAddress destination) => api.matches(destination.api);

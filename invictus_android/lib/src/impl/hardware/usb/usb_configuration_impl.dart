@@ -10,22 +10,22 @@ final class UsbConfigurationImpl extends ObjectImpl
   UsbConfigurationImpl.internal(this.api);
 
   @override
-  int get id => api.getId();
+  int get id => api.id;
 
   @override
-  int get interfaceCount => api.getInterfaceCount();
+  int get interfaceCount => api.interfaceCount;
 
   @override
-  int get maxPower => api.getMaxPower();
+  int get maxPower => api.maxPower;
 
   @override
-  String? get name => api.getName()?.impl;
+  String? get name => api.name?.impl;
 
   @override
-  bool get isRemoteWakeup => api.isRemoteWakeup();
+  bool get isRemoteWakeup => api.isRemoteWakeup;
 
   @override
-  bool get isSelfPowered => api.isSelfPowered();
+  bool get isSelfPowered => api.isSelfPowered;
 
   @override
   UsbInterface getInterface(int index) => api.getInterface(index).impl;

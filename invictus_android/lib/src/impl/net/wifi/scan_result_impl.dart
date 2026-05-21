@@ -12,13 +12,13 @@ final class ScanResult$InformationElementImpl extends ObjectImpl
   ScanResult$InformationElementImpl.internal(this.api);
 
   @override
-  Uint8List get bytes => api.getBytes().impl;
+  Uint8List get bytes => api.bytes.impl;
 
   @override
-  int get id => api.getId();
+  int get id => api.id;
 
   @override
-  int get idExt => api.getIdExt();
+  int get idExt => api.idExt;
 }
 
 final class ScanResultImpl extends ObjectImpl implements ScanResult {
@@ -29,13 +29,13 @@ final class ScanResultImpl extends ObjectImpl implements ScanResult {
 
   @override
   List<MloLink> get affiliatedMloLinks =>
-      api.getAffiliatedMloLinks().nonNulls.map((e) => e.impl).toList();
+      api.affiliatedMloLinks.asDart().nonNulls.map((e) => e.impl).toList();
 
   @override
-  MacAddress? get apMldMacAddress => api.getApMldMacAddress()?.impl;
+  MacAddress? get apMldMacAddress => api.apMldMacAddress?.impl;
 
   @override
-  int get apMloLinkId => api.getApMloLinkId();
+  int get apMloLinkId => api.apMloLinkId;
 
   @override
   String get bssid => ArgumentError.checkNotNull(api.BSSID, 'BSSID').impl;
@@ -59,7 +59,7 @@ final class ScanResultImpl extends ObjectImpl implements ScanResult {
 
   @override
   List<ScanResult$InformationElement> get informationElements =>
-      api.getInformationElements().nonNulls.map((e) => e.impl).toList();
+      api.informationElements.asDart().nonNulls.map((e) => e.impl).toList();
 
   @override
   bool get is80211azNtbResponder => api.is80211azNtbResponder();
@@ -68,17 +68,17 @@ final class ScanResultImpl extends ObjectImpl implements ScanResult {
   bool get is80211mcResponder => api.is80211mcResponder();
 
   @override
-  bool get isPasspointNetwork => api.isPasspointNetwork();
+  bool get isPasspointNetwork => api.isPasspointNetwork;
 
   @override
   bool get isRangingFrameProtectionRequired =>
-      api.isRangingFrameProtectionRequired();
+      api.isRangingFrameProtectionRequired;
 
   @override
-  bool get isSecureHeLtfSupported => api.isSecureHeLtfSupported();
+  bool get isSecureHeLtfSupported => api.isSecureHeLtfSupported;
 
   @override
-  bool get isTwtResponder => api.isTwtResponder();
+  bool get isTwtResponder => api.isTwtResponder;
 
   @override
   int get level => api.level;
@@ -90,8 +90,10 @@ final class ScanResultImpl extends ObjectImpl implements ScanResult {
   ).toString();
 
   @override
-  List<WifiInfo$SecurityType> get securityTypes =>
-      api.getSecurityTypes().map((e) => e.wifiInfo$SecurityTypeImpl).toList();
+  List<WifiInfo$SecurityType> get securityTypes => api.securityTypes
+      .asDart()
+      .map((e) => e.wifiInfo$SecurityTypeImpl)
+      .toList();
 
   @override
   String get ssid => ArgumentError.checkNotNull(api.SSID, 'SSID').impl;
@@ -104,11 +106,11 @@ final class ScanResultImpl extends ObjectImpl implements ScanResult {
       ArgumentError.checkNotNull(api.venueName, 'venueName').toString();
 
   @override
-  WifiSsid? get wifiSsid => api.getWifiSsid()?.impl;
+  WifiSsid? get wifiSsid => api.wifiSsid?.impl;
 
   @override
   ScanResult$WifiStandard get wifiStandard =>
-      api.getWifiStandard().scanResult$WifiStandardImpl;
+      api.wifiStandard.scanResult$WifiStandardImpl;
 }
 
 final class ScanResultChannelImpl extends ScanResultChannel {

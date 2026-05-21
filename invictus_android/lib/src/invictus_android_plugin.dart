@@ -68,6 +68,7 @@ final class InvictusAndroidPlugin {
     Settings$SecureChannel.instance = Settings$SecureChannelImpl();
     Settings$SystemChannel.instance = Settings$SystemChannelImpl();
     // util
+    BitSetChannel.instance = BitSetChannelImpl();
     Locale$LanguageRangeChannel.instance = Locale$LanguageRangeChannelImpl();
     LocaleChannel.instance = LocaleChannelImpl();
     TimeZoneChannel.instance = TimeZoneChannelImpl();

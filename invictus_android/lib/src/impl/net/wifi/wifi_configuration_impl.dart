@@ -10,35 +10,72 @@ final class WifiConfigurationImpl extends ObjectImpl
   WifiConfigurationImpl.internal(this.api);
 
   @override
-  String get bssid {
-    final bssidApiOrNull = api.BSSID;
-    final bssidApi = ArgumentError.checkNotNull(bssidApiOrNull, 'bssidApi');
-    return bssidApi.impl;
-  }
+  String get bssid => ArgumentError.checkNotNull(api.BSSID, 'bssidApi').impl;
+  @override
+  set bssid(String value) => api.BSSID = value.api;
 
   @override
-  String get fqdn {
-    final fqdnApiOrNull = api.FQDN;
-    final fqdnApi = ArgumentError.checkNotNull(fqdnApiOrNull, 'fqdnApi');
-    return fqdnApi.impl;
-  }
+  String get fqdn => ArgumentError.checkNotNull(api.FQDN, 'fqdnApi').impl;
+  @override
+  set fqdn(String value) => api.FQDN = value.api;
 
   @override
   bool get hiddenSSID => api.hiddenSSID;
+  @override
+  set hiddenSSID(bool value) => api.hiddenSSID = value;
 
   @override
   int get networkId => api.networkId;
 
   @override
-  String get ssid {
-    final ssidApiOrNull = api.SSID;
-    final ssidApi = ArgumentError.checkNotNull(ssidApiOrNull, 'ssidApi');
-    return ssidApi.impl;
-  }
+  String get ssid => ArgumentError.checkNotNull(api.SSID, 'ssidApi').impl;
+  @override
+  set ssid(String value) => api.SSID = value.api;
 
   @override
   WifiConfiguration$Status get status =>
       api.status.wifiConfiguration$StatusImpl;
+  @override
+  set status(WifiConfiguration$Status value) => api.status = value.api;
+
+  @override
+  BitSet allowedAuthAlgorithms;
+
+  @override
+  BitSet allowedGroupCiphers;
+
+  @override
+  BitSet allowedKeyManagement;
+
+  @override
+  BitSet allowedPairwiseCiphers;
+
+  @override
+  BitSet allowedProtocols;
+
+  @override
+  WifiEnterpriseConfig enterpriseConfig;
+
+  @override
+  bool isPasspoint;
+
+  @override
+  String preSharedKey;
+
+  @override
+  int priority;
+
+  @override
+  String providerFriendlyName;
+
+  @override
+  List<int> roamingConsortiumIds;
+
+  @override
+  List<String> wepKeys;
+
+  @override
+  int wepTxKeyIndex;
 }
 
 final class WifiConfigurationChannelImpl extends WifiConfigurationChannel {
@@ -49,10 +86,22 @@ final class WifiConfigurationChannelImpl extends WifiConfigurationChannel {
   }
 }
 
+extension Invictus$WifiConfiguration$StatusX on WifiConfiguration$Status {
+  int get api {
+    switch (this) {
+      case .current:
+        return jni.WifiConfiguration$Status.CURRENT;
+      case .disabled:
+        return jni.WifiConfiguration$Status.DISABLED;
+      case .enabled:
+        return jni.WifiConfiguration$Status.ENABLED;
+    }
+  }
+}
+
 extension Invictus$JWifiConfiguration$intX on int {
   WifiConfiguration$Status get wifiConfiguration$StatusImpl {
-    final api = this;
-    switch (api) {
+    switch (this) {
       case jni.WifiConfiguration$Status.CURRENT:
         return WifiConfiguration$Status.current;
       case jni.WifiConfiguration$Status.DISABLED:
@@ -60,7 +109,7 @@ extension Invictus$JWifiConfiguration$intX on int {
       case jni.WifiConfiguration$Status.ENABLED:
         return WifiConfiguration$Status.enabled;
       default:
-        throw ArgumentError.value(api, 'api');
+        throw ArgumentError.value(this, 'wifiConfiguration\$Status');
     }
   }
 }

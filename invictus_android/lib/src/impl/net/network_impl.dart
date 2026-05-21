@@ -9,11 +9,11 @@ final class NetworkImpl extends ObjectImpl implements Network {
   NetworkImpl.internal(this.api);
 
   @override
-  int get networkHandle => api.getNetworkHandle();
+  int get networkHandle => api.networkHandle;
 
   @override
   SocketFactory get socketFactory {
-    final socketFactoryApiOrNull = api.getSocketFactory();
+    final socketFactoryApiOrNull = api.socketFactory;
     final socketFactoryApi = ArgumentError.checkNotNull(
       socketFactoryApiOrNull,
       'socketFactoryApi',
@@ -35,7 +35,7 @@ final class NetworkImpl extends ObjectImpl implements Network {
   List<InetAddress> getAllByName(String host) {
     final allApiOrNull = api.getAllByName(host.api);
     final allApi = ArgumentError.checkNotNull(allApiOrNull, 'allApi');
-    return allApi.nonNulls.map((e) => e.impl).toList();
+    return allApi.asDart().nonNulls.map((e) => e.impl).toList();
   }
 
   @override

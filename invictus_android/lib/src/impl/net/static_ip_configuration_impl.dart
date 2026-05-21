@@ -10,17 +10,17 @@ final class StaticIpConfigurationImpl extends ObjectImpl
   StaticIpConfigurationImpl.internal(this.api);
 
   @override
-  LinkAddress get ipAddress => api.getIpAddress().impl;
+  LinkAddress get ipAddress => api.ipAddress.impl;
 
   @override
-  InetAddress? get gateway => api.getGateway()?.impl;
+  InetAddress? get gateway => api.gateway?.impl;
 
   @override
   List<InetAddress> get dnsServers =>
-      api.getDnsServers().map((e) => e.impl).toList();
+      api.dnsServers.asDart().map((e) => e.impl).toList();
 
   @override
-  String? get domains => api.getDomains()?.impl;
+  String? get domains => api.domains?.impl;
 
   @override
   void addDnsServer(InetAddress server) => api.addDnsServer(server.api);
@@ -30,7 +30,7 @@ final class StaticIpConfigurationImpl extends ObjectImpl
 
   @override
   List<RouteInfo> getRoutes([String? iface]) =>
-      api.getRoutes(iface?.api).map((e) => e.impl).toList();
+      api.getRoutes(iface?.api).asDart().map((e) => e.impl).toList();
 
   @override
   LinkProperties toLinkProperties([String? iface]) =>
@@ -51,10 +51,7 @@ final class StaticIpConfigurationChannelImpl
     builder.setGateway(gateway?.api);
     if (dnsServers != null) {
       builder.setDnsServers(
-        dnsServers
-            .map((e) => e.api)
-            .toJList(jni.InetAddress.type)
-            .as(jni.Iterable.type(jni.InetAddress.type)),
+        dnsServers.map((e) => e.api).toJList() as jni.Iterable<jni.InetAddress>,
       );
     }
     builder.setDomains(domains?.api);

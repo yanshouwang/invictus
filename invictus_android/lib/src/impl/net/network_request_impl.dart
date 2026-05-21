@@ -9,21 +9,21 @@ final class NetworkRequestImpl extends ObjectImpl implements NetworkRequest {
   NetworkRequestImpl.internal(this.api);
 
   @override
-  List<NetworkCapabilities$NetCapability> get capabilities => api
-      .getCapabilities()
+  List<NetworkCapabilities$NetCapability> get capabilities => api.capabilities
+      .asDart()
       .map((e) => e.networkCapabilities$NetCapabilityImpl)
       .toList();
 
   @override
-  NetworkSpecifier? get networkSpecifier => api.getNetworkSpecifier()?.impl;
+  NetworkSpecifier? get networkSpecifier => api.networkSpecifier?.impl;
 
   @override
   Set<int> get subscriptionIds =>
-      api.getSubscriptionIds().nonNulls.map((e) => e.impl).toSet();
+      api.subscriptionIds.asDart().nonNulls.map((e) => e.impl).toSet();
 
   @override
-  List<NetworkCapabilities$Transport> get transportTypes => api
-      .getTransportTypes()
+  List<NetworkCapabilities$Transport> get transportTypes => api.transportTypes
+      .asDart()
       .map((e) => e.networkCapabilities$TransportImpl)
       .toList();
 
@@ -66,9 +66,7 @@ final class NetworkRequestChannelImpl extends NetworkRequestChannel {
       builder.setNetworkSpecifier(networkSpecifier.api);
     }
     if (subIds != null) {
-      builder.setSubscriptionIds(
-        subIds.map((e) => e.int32Api).toJSet(jni.JInteger.type),
-      );
+      builder.setSubscriptionIds(subIds.map((e) => e.int32Api).toJSet());
     }
     final apiOrNull = builder.build();
     final api = ArgumentError.checkNotNull(apiOrNull, 'api');

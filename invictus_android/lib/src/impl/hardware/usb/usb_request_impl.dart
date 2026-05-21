@@ -11,7 +11,7 @@ final class UsbRequestImpl extends ObjectImpl implements UsbRequest {
   UsbRequestImpl.internal(this.api);
 
   @override
-  UsbEndpoint? get endpoint => api.getEndpoint()?.impl;
+  UsbEndpoint? get endpoint => api.endpoint?.impl;
 
   @override
   bool cancel() => api.cancel();

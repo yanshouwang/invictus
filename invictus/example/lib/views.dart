@@ -7,3 +7,5 @@ export 'views/ethernet_view.dart';
 export 'views/wifi_view.dart';
 export 'views/usb_view.dart';
 export 'views/system_properties_view.dart';
+export 'views/settings_view.dart';
+export 'views/time_view.dart';

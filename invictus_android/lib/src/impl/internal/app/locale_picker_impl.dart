@@ -19,10 +19,10 @@ final class LocalePicker$LocaleInfoImpl extends ObjectImpl
   LocalePicker$LocaleInfoImpl.internal(this.api);
 
   @override
-  String get label => api.getLabel().impl;
+  String get label => api.label.impl;
 
   @override
-  Locale get locale => api.getLocale().impl;
+  Locale get locale => api.locale.impl;
 }
 
 final class LocalePickerChannelImpl extends LocalePickerChannel {
@@ -47,14 +47,18 @@ final class LocalePickerChannelImpl extends LocalePickerChannel {
   }
 
   @override
-  List<String> getSystemAssetLocales() => jni.LocalePicker.Companion
-      .getSystemAssetLocales()
+  List<String> getSystemAssetLocales() => jni
+      .LocalePicker
+      .Companion
+      .systemAssetLocales
+      .asDart()
       .map((e) => e.impl)
       .toList();
 
   @override
   List<String> getSupportedLocales() => jni.LocalePicker.Companion
       .getSupportedLocales(jni.context)
+      .asDart()
       .map((e) => e.impl)
       .toList();
 
@@ -63,13 +67,14 @@ final class LocalePickerChannelImpl extends LocalePickerChannel {
     bool isInDeveloperMode = false,
   }) => jni.LocalePicker.Companion
       .getAllAssetLocales(jni.context, isInDeveloperMode)
+      .asDart()
       .map((e) => e.impl)
       .toList();
 
   @override
   void setLocaleSelectionListener(
     LocalePicker$LocaleSelectionListener listener,
-  ) => jni.LocalePicker.Companion.setLocaleSelectionListener(listener.api);
+  ) => jni.LocalePicker.Companion.localeSelectionListener = listener.api;
 
   @override
   void updateLocale(Locale locale) =>
@@ -80,7 +85,7 @@ final class LocalePickerChannelImpl extends LocalePickerChannel {
       jni.LocalePicker.Companion.updateLocales(locales.api);
 
   @override
-  LocaleList getLocales() => jni.LocalePicker.Companion.getLocales().impl;
+  LocaleList getLocales() => jni.LocalePicker.Companion.locales.impl;
 }
 
 extension Invictus$LocalePicker$LocaleSelectionListenerX

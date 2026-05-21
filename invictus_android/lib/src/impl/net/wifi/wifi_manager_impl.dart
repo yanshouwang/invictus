@@ -35,19 +35,22 @@ final class WifiManagerImpl extends ObjectImpl implements WifiManager {
 
   WifiManagerImpl.internal(this.api);
 
+  jni.Executor get executorApi =>
+      ArgumentError.checkNotNull(jni.context.mainExecutor, 'mainExecutor');
+
   @override
   List<WifiConfiguration> get configuredNetworks {
-    final configuredNetworksApiOrNull = api.getConfiguredNetworks();
+    final configuredNetworksApiOrNull = api.configuredNetworks;
     final configuredNetworksApi = ArgumentError.checkNotNull(
       configuredNetworksApiOrNull,
       'configuredNetworksApi',
     );
-    return configuredNetworksApi.nonNulls.map((e) => e.impl).toList();
+    return configuredNetworksApi.asDart().nonNulls.map((e) => e.impl).toList();
   }
 
   @override
   WifiInfo get connectionInfo {
-    final connectionInfoApiOrNull = api.getConnectionInfo();
+    final connectionInfoApiOrNull = api.connectionInfo;
     final connectionInfoApi = ArgumentError.checkNotNull(
       connectionInfoApiOrNull,
       'connectionInfoApi',
@@ -57,7 +60,7 @@ final class WifiManagerImpl extends ObjectImpl implements WifiManager {
 
   @override
   DhcpInfo get dhcpInfo {
-    final dhcpInfoApiOrNull = api.getDhcpInfo();
+    final dhcpInfoApiOrNull = api.dhcpInfo;
     final dhcpInfoApi = ArgumentError.checkNotNull(
       dhcpInfoApiOrNull,
       'dhcpInfoApi',
@@ -66,21 +69,21 @@ final class WifiManagerImpl extends ObjectImpl implements WifiManager {
   }
 
   @override
-  bool get isWifiEnabled => api.isWifiEnabled();
+  bool get isWifiEnabled => api.isWifiEnabled;
 
   @override
   List<ScanResult> get scanResults {
-    final scanResultsApiOrNull = api.getScanResults();
+    final scanResultsApiOrNull = api.scanResults;
     final scanResultsApi = ArgumentError.checkNotNull(
       scanResultsApiOrNull,
       'scanResultsApi',
     );
-    return scanResultsApi.nonNulls.map((e) => e.impl).toList();
+    return scanResultsApi.asDart().nonNulls.map((e) => e.impl).toList();
   }
 
   @override
   WifiManager$WifiState get wifiState =>
-      api.getWifiState().wifiManager$WifiStateImpl;
+      api.wifiState.wifiManager$WifiStateImpl;
 
   @override
   int addNetwork(WifiConfiguration config) => api.addNetwork(config.api);
@@ -89,10 +92,7 @@ final class WifiManagerImpl extends ObjectImpl implements WifiManager {
   void addWifiStateChangedListener(
     WifiManager$WifiStateChangedListener listener,
   ) => jni.Build$VERSION.SDK_INT >= jni.Build$VERSION_CODES.BAKLAVA
-      ? api.addWifiStateChangedListener(
-          jni.context.mainExecutor,
-          listener.api36,
-        )
+      ? api.addWifiStateChangedListener(executorApi, listener.api36)
       : jni.ContextCompat.registerReceiver(
           jni.context,
           listener.api,
@@ -121,7 +121,7 @@ final class WifiManagerImpl extends ObjectImpl implements WifiManager {
 
   @override
   void registerScanResultsCallback(WifiManager$ScanResultsCallback callback) =>
-      api.registerScanResultsCallback(jni.context.mainExecutor, callback.api);
+      api.registerScanResultsCallback(executorApi, callback.api);
 
   @override
   bool removeNetwork(int netId) => api.removeNetwork(netId);
@@ -158,10 +158,9 @@ final class WifiManagerImpl extends ObjectImpl implements WifiManager {
 final class WifiManagerChannelImpl extends WifiManagerChannel {
   @override
   WifiManager create() {
-    final apiOrNull = jni.ContextCompat.getSystemService(
+    final apiOrNull = jni.ContextCompat.getSystemService<jni.WifiManager>(
       jni.context,
       jni.WifiManager.type.jClass,
-      T: jni.WifiManager.type,
     );
     final api = ArgumentError.checkNotNull(apiOrNull, 'api');
     return WifiManagerImpl.internal(api);

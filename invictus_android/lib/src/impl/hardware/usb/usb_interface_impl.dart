@@ -9,7 +9,7 @@ final class UsbInterfaceImpl extends ObjectImpl implements UsbInterface {
   UsbInterfaceImpl.internal(this.api);
 
   @override
-  int get alternateSetting => api.getAlternateSetting();
+  int get alternateSetting => api.alternateSetting;
 
   @override
   UsbEndpoint getEndpoint(int index) {
@@ -22,22 +22,22 @@ final class UsbInterfaceImpl extends ObjectImpl implements UsbInterface {
   }
 
   @override
-  int get endpointCount => api.getEndpointCount();
+  int get endpointCount => api.endpointCount;
 
   @override
-  int get id => api.getId();
+  int get id => api.id;
 
   @override
-  int get interfaceClass => api.getInterfaceClass();
+  int get interfaceClass => api.interfaceClass;
 
   @override
-  int get interfaceProtocol => api.getInterfaceProtocol();
+  int get interfaceProtocol => api.interfaceProtocol;
 
   @override
-  int get interfaceSubclass => api.getInterfaceSubclass();
+  int get interfaceSubclass => api.interfaceSubclass;
 
   @override
-  String? get name => api.getName()?.impl;
+  String? get name => api.name?.impl;
 }
 
 extension Invictus$UsbInterfaceX on UsbInterface {

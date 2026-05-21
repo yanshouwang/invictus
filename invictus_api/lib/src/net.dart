@@ -31,5 +31,6 @@ export 'net/socket_keepalive.dart';
 export 'net/socket.dart';
 export 'net/static_ip_configuration.dart';
 export 'net/transport_info.dart';
+export 'net/uri.dart';
 export 'net/url_connection.dart';
 export 'net/url.dart';

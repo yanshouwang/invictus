@@ -69,18 +69,18 @@ final class UsbManagerImpl extends ObjectImpl implements UsbManager {
 
   @override
   List<UsbAccessory> getAccessoryList() =>
-      api.getAccessoryList()?.nonNulls.map((e) => e.impl).toList() ?? [];
+      api.accessoryList?.asDart().nonNulls.map((e) => e.impl).toList() ?? [];
 
   @override
   Map<String, UsbDevice> getDeviceList() {
-    final devicesApiOrNull = api.getDeviceList();
+    final devicesApiOrNull = api.deviceList;
     final devicesApi = ArgumentError.checkNotNull(
       devicesApiOrNull,
       'devicesApi',
     );
-    return devicesApi
-        .as(jni.JMap.type(jni.JString.type, jni.UsbDevice.type))
-        .map((key, value) => MapEntry(key.impl, value.impl));
+    return devicesApi.asDart().nonNulls.map(
+      (key, value) => MapEntry(key.impl, value.impl),
+    );
   }
 
   @override
@@ -131,13 +131,13 @@ final class UsbManagerImpl extends ObjectImpl implements UsbManager {
             }
             final action = intent.action?.impl;
             if (action != actionUsbAccessoryPermission) return;
-            final accessoryApi = jni.IntentCompat.getParcelableExtra(
-              intent,
-              jni.UsbManager.EXTRA_ACCESSORY,
-              jni.UsbAccessory.type.jClass,
-              T: jni.UsbAccessory.type,
-            );
-            if (accessoryApi != accessory.api) return;
+            final accessoryApiOrNull =
+                jni.IntentCompat.getParcelableExtra<jni.UsbAccessory>(
+                  intent,
+                  jni.UsbManager.EXTRA_ACCESSORY,
+                  jni.UsbAccessory.type.jClass,
+                );
+            if (accessoryApiOrNull != accessory.api) return;
             final isGranted = intent.getBooleanExtra(
               jni.UsbManager.EXTRA_PERMISSION_GRANTED,
               false,
@@ -181,13 +181,13 @@ final class UsbManagerImpl extends ObjectImpl implements UsbManager {
             }
             final action = intent.action?.impl;
             if (action != actionUsbDevicePermission) return;
-            final deviceApi = jni.IntentCompat.getParcelableExtra(
-              intent,
-              jni.UsbManager.EXTRA_DEVICE,
-              jni.UsbDevice.type.jClass,
-              T: jni.UsbDevice.type,
-            );
-            if (deviceApi != device.api) return;
+            final deviceApiOrNull =
+                jni.IntentCompat.getParcelableExtra<jni.UsbDevice>(
+                  intent,
+                  jni.UsbManager.EXTRA_DEVICE,
+                  jni.UsbDevice.type.jClass,
+                );
+            if (deviceApiOrNull != device.api) return;
             final isGranted = intent.getBooleanExtra(
               jni.UsbManager.EXTRA_PERMISSION_GRANTED,
               false,
@@ -222,10 +222,9 @@ final class UsbManagerImpl extends ObjectImpl implements UsbManager {
 final class UsbManagerChannelImpl extends UsbManagerChannel {
   @override
   UsbManager create() {
-    final apiOrNull = jni.ContextCompat.getSystemService(
+    final apiOrNull = jni.ContextCompat.getSystemService<jni.UsbManager>(
       jni.context,
       jni.UsbManager.type.jClass,
-      T: jni.UsbManager.type,
     );
     final api = ArgumentError.checkNotNull(apiOrNull, 'api');
     return UsbManagerImpl.internal(api);
@@ -249,20 +248,20 @@ final class UsbManagerChannelImpl extends UsbManagerChannel {
                 action != jni.UsbManager.ACTION_USB_ACCESSORY_DETACHED) {
               return;
             }
-            final accessory = jni.IntentCompat.getParcelableExtra(
-              intent,
-              jni.UsbManager.EXTRA_ACCESSORY,
-              jni.UsbAccessory.type.jClass,
-              T: jni.UsbAccessory.type,
-            );
-            if (accessory == null) {
+            final accessoryOrNull =
+                jni.IntentCompat.getParcelableExtra<jni.UsbAccessory>(
+                  intent,
+                  jni.UsbManager.EXTRA_ACCESSORY,
+                  jni.UsbAccessory.type.jClass,
+                );
+            if (accessoryOrNull == null) {
               _logger.warning('accessory is null');
               return;
             }
             if (action == jni.UsbManager.ACTION_USB_ACCESSORY_ATTACHED) {
-              onAttached(accessory.impl);
+              onAttached(accessoryOrNull.impl);
             } else {
-              onDetached(accessory.impl);
+              onDetached(accessoryOrNull.impl);
             }
           },
         ),
@@ -289,20 +288,20 @@ final class UsbManagerChannelImpl extends UsbManagerChannel {
                 action != jni.UsbManager.ACTION_USB_DEVICE_DETACHED) {
               return;
             }
-            final device = jni.IntentCompat.getParcelableExtra(
-              intent,
-              jni.UsbManager.EXTRA_DEVICE,
-              jni.UsbDevice.type.jClass,
-              T: jni.UsbDevice.type,
-            );
-            if (device == null) {
+            final deviceOrNull =
+                jni.IntentCompat.getParcelableExtra<jni.UsbDevice>(
+                  intent,
+                  jni.UsbManager.EXTRA_DEVICE,
+                  jni.UsbDevice.type.jClass,
+                );
+            if (deviceOrNull == null) {
               _logger.warning('device is null');
               return;
             }
             if (action == jni.UsbManager.ACTION_USB_DEVICE_ATTACHED) {
-              onAttached(device.impl);
+              onAttached(deviceOrNull.impl);
             } else {
-              onDetached(device.impl);
+              onDetached(deviceOrNull.impl);
             }
           },
         ),

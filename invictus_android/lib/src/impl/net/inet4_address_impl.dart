@@ -13,7 +13,7 @@ final class Inet4AddressChannelImpl extends Inet4AddressChannel {
   @override
   Inet4Address create() {
     final invictusApi = jni.InvictusInet4Address.new$1();
-    final api = invictusApi.getObj();
+    final api = invictusApi.obj;
     return Inet4AddressImpl.internal(api);
   }
 }

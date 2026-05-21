@@ -11,7 +11,7 @@ final class WifiSsidImpl extends ObjectImpl implements WifiSsid {
   WifiSsidImpl.internal(this.api);
 
   @override
-  Uint8List get bytes => api.getBytes().impl;
+  Uint8List get bytes => api.bytes.impl;
 }
 
 final class WifiSsidChannelImpl extends WifiSsidChannel {

@@ -27,50 +27,53 @@ final class ConnectivityManagerImpl extends ObjectImpl
 
   ConnectivityManagerImpl.internal(this.api);
 
-  @override
-  Network? get activeNetwork => api.getActiveNetwork()?.impl;
+  jni.Executor get executorApi =>
+      ArgumentError.checkNotNull(jni.context.mainExecutor, 'mainExecutor');
 
   @override
-  NetworkInfo? get activeNetworkInfo => api.getActiveNetworkInfo()?.impl;
+  Network? get activeNetwork => api.activeNetwork?.impl;
+
+  @override
+  NetworkInfo? get activeNetworkInfo => api.activeNetworkInfo?.impl;
 
   @override
   List<NetworkInfo> get allNetworkInfo =>
-      api.getAllNetworkInfo().nonNulls.map((e) => e.impl).toList();
+      api.allNetworkInfo.asDart().nonNulls.map((e) => e.impl).toList();
 
   @override
   List<Network> get allNetworks =>
-      api.getAllNetworks().nonNulls.map((e) => e.impl).toList();
+      api.allNetworks.asDart().nonNulls.map((e) => e.impl).toList();
 
   @override
-  bool get backgroundDataSetting => api.getBackgroundDataSetting();
+  bool get backgroundDataSetting => api.backgroundDataSetting;
 
   @override
-  Network? get boundNetworkForProcess => api.getBoundNetworkForProcess()?.impl;
+  Network? get boundNetworkForProcess => api.boundNetworkForProcess?.impl;
 
   @override
-  ProxyInfo? get defaultProxy => api.getDefaultProxy()?.impl;
+  ProxyInfo? get defaultProxy => api.defaultProxy?.impl;
 
   @override
-  int get networkPreference => api.getNetworkPreference();
+  int get networkPreference => api.networkPreference;
 
   @override
-  set networkPreference(int preference) => api.setNetworkPreference(preference);
+  set networkPreference(int preference) => api.networkPreference = preference;
 
   @override
   Uint8List? get networkWatchlistConfigHash =>
-      api.getNetworkWatchlistConfigHash()?.impl;
+      api.networkWatchlistConfigHash?.impl;
 
   @override
   ConnectivityManager$RestrictBackgroundStatus get restrictBackgroundStatus =>
       api
-          .getRestrictBackgroundStatus()
+          .restrictBackgroundStatus
           .connectivityManager$RestrictBackgroundStatusImpl;
 
   @override
-  bool get isActiveNetworkMetered => api.isActiveNetworkMetered();
+  bool get isActiveNetworkMetered => api.isActiveNetworkMetered;
 
   @override
-  bool get isDefaultNetworkActive => api.isDefaultNetworkActive();
+  bool get isDefaultNetworkActive => api.isDefaultNetworkActive;
 
   @override
   void addDefaultNetworkActiveListener(
@@ -94,7 +97,7 @@ final class ConnectivityManagerImpl extends ObjectImpl
         socket.api,
         source.api,
         destination.api,
-        jni.context.mainExecutor,
+        executorApi,
         callback.api,
       )
       .impl;
@@ -195,7 +198,7 @@ final class ConnectivityManagerChannelImpl extends ConnectivityManagerChannel {
 
   @override
   Network? getProcessDefaultNetwork() =>
-      jni.ConnectivityManager.getProcessDefaultNetwork()?.impl;
+      jni.ConnectivityManager.processDefaultNetwork?.impl;
 
   @override
   bool setProcessDefaultNetwork(Network? network) =>
@@ -203,11 +206,11 @@ final class ConnectivityManagerChannelImpl extends ConnectivityManagerChannel {
 
   @override
   ConnectivityManager create() {
-    final apiOrNull = jni.ContextCompat.getSystemService(
-      jni.context,
-      jni.ConnectivityManager.type.jClass,
-      T: jni.ConnectivityManager.type,
-    );
+    final apiOrNull =
+        jni.ContextCompat.getSystemService<jni.ConnectivityManager>(
+          jni.context,
+          jni.ConnectivityManager.type.jClass,
+        );
     final api = ArgumentError.checkNotNull(apiOrNull);
     return ConnectivityManagerImpl.internal(api);
   }

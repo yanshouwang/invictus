@@ -10,35 +10,35 @@ final class NetworkCapabilitiesImpl extends ObjectImpl
   NetworkCapabilitiesImpl.internal(this.api);
 
   @override
-  List<NetworkCapabilities$NetCapability> get capabilities => api
-      .getCapabilities()
+  List<NetworkCapabilities$NetCapability> get capabilities => api.capabilities
+      .asDart()
       .map((e) => e.networkCapabilities$NetCapabilityImpl)
       .toList();
 
   @override
-  List<int> get enterpriseIds => api.getEnterpriseIds().toList();
+  List<int> get enterpriseIds => api.enterpriseIds.asDart().toList();
 
   @override
-  int get linkDownstreamBandwidthKbps => api.getLinkDownstreamBandwidthKbps();
+  int get linkDownstreamBandwidthKbps => api.linkDownstreamBandwidthKbps;
 
   @override
-  int get linkUpstreamBandwidthKbps => api.getLinkUpstreamBandwidthKbps();
+  int get linkUpstreamBandwidthKbps => api.linkUpstreamBandwidthKbps;
 
   @override
-  NetworkSpecifier? get networkSpecifier => api.getNetworkSpecifier()?.impl;
+  NetworkSpecifier? get networkSpecifier => api.networkSpecifier?.impl;
 
   @override
-  int get ownerUid => api.getOwnerUid();
+  int get ownerUid => api.ownerUid;
 
   @override
-  int get signalStrength => api.getSignalStrength();
+  int get signalStrength => api.signalStrength;
 
   @override
   Set<int> get subscriptionIds =>
-      api.getSubscriptionIds().nonNulls.map((e) => e.impl).toSet();
+      api.subscriptionIds.asDart().nonNulls.map((e) => e.impl).toSet();
 
   @override
-  TransportInfo? get transportInfo => api.getTransportInfo()?.impl;
+  TransportInfo? get transportInfo => api.transportInfo?.impl;
 
   @override
   bool hasCapability(NetworkCapabilities$NetCapability capability) =>

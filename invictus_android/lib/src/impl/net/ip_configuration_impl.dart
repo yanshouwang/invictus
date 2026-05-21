@@ -9,19 +9,19 @@ final class IpConfigurationImpl extends ObjectImpl implements IpConfiguration {
   IpConfigurationImpl.internal(this.api);
 
   @override
-  IpConfiguration$IpAssignment get ipAssignment => api.getIpAssignment().impl;
+  IpConfiguration$IpAssignment get ipAssignment => api.ipAssignment.impl;
 
   @override
   set ipAssignment(IpConfiguration$IpAssignment value) =>
-      api.setIpAssignment(value.api);
+      api.ipAssignment = value.api;
 
   @override
   StaticIpConfiguration? get staticIpConfiguration =>
-      api.getStaticIpConfiguration()?.impl;
+      api.staticIpConfiguration?.impl;
 
   @override
   set staticIpConfiguration(StaticIpConfiguration? value) =>
-      api.setStaticIpConfiguration(value?.api);
+      api.staticIpConfiguration = value?.api;
 }
 
 final class IpConfigurationChannelImpl extends IpConfigurationChannel {

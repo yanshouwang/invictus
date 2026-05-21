@@ -1,6 +1,6 @@
 name: invictus
 description: "The invictus SDK for Flutter."
-version: 1.0.0-dev.2
+version: 1.0.0-dev.3
 repository: https://github.com/yanshouwang/invictus
 issue_tracker: https://github.com/yanshouwang/invictus/issues
 
@@ -8,14 +8,14 @@ resolution: workspace
 
 environment:
   sdk: ^3.10.9
-  flutter: '>=3.3.0'
+  flutter: ">=3.3.0"
 
 dependencies:
   flutter:
     sdk: flutter
-  invictus_api: ^1.0.0-dev.2
-  invictus_android: ^1.0.0-dev.2
-  invictus_darwin: ^1.0.0-dev.2
+  invictus_api: ^1.0.0-dev.3
+  invictus_android: ^1.0.0-dev.3
+  invictus_darwin: ^1.0.0-dev.3
 
 dev_dependencies:
   flutter_test:

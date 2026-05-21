@@ -5,6 +5,16 @@ final class InvictusAndroidPlugin {
   static void registerWith() {
     // app
     ActivityManagerChannel.instance = ActivityManagerChannelImpl();
+    AlarmManagerChannel.instance = AlarmManagerChannelImpl();
+    // app.time
+    ExternalTimeSuggestionChannel.instance =
+        ExternalTimeSuggestionChannelImpl();
+    TimeCapabilitiesChannel.instance = TimeCapabilitiesChannelImpl();
+    TimeConfigurationChannel.instance = TimeConfigurationChannelImpl();
+    TimeManagerChannel.instance = TimeManagerChannelImpl();
+    TimeZoneCapabilitiesChannel.instance = TimeZoneCapabilitiesChannelImpl();
+    TimeZoneConfigurationChannel.instance = TimeZoneConfigurationChannelImpl();
+    UnixEpochTimeChannel.instance = UnixEpochTimeChannelImpl();
     // hardware.usb
     UsbConstantsChannel.instance = UsbConstantsChannelImpl();
     UsbDeviceChannel.instance = UsbDeviceChannelImpl();
@@ -48,9 +58,18 @@ final class InvictusAndroidPlugin {
     BuildChannel.instance = BuildChannelImpl();
     LocaleListChannel.instance = LocaleListChannelImpl();
     PowerManagerChannel.instance = PowerManagerChannelImpl();
+    SystemClockChannel.instance = SystemClockChannelImpl();
     SystemPropertiesChannel.instance = SystemPropertiesChannelImpl();
+    // provider
+    SettingsChannel.instance = SettingsChannelImpl();
+    Settings$NameValueTableChannel.instance =
+        Settings$NameValueTableChannelImpl();
+    Settings$GlobalChannel.instance = Settings$GlobalChannelImpl();
+    Settings$SecureChannel.instance = Settings$SecureChannelImpl();
+    Settings$SystemChannel.instance = Settings$SystemChannelImpl();
     // util
     Locale$LanguageRangeChannel.instance = Locale$LanguageRangeChannelImpl();
     LocaleChannel.instance = LocaleChannelImpl();
+    TimeZoneChannel.instance = TimeZoneChannelImpl();
   }
 }

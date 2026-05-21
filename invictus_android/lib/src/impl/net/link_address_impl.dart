@@ -10,7 +10,7 @@ final class LinkAddressImpl extends ObjectImpl implements LinkAddress {
 
   @override
   InetAddress get address {
-    final addressApiOrNull = api.getAddress();
+    final addressApiOrNull = api.address;
     final addressApi = ArgumentError.checkNotNull(
       addressApiOrNull,
       'addressApi',
@@ -19,13 +19,13 @@ final class LinkAddressImpl extends ObjectImpl implements LinkAddress {
   }
 
   @override
-  int get flags => api.getFlags();
+  int get flags => api.flags;
 
   @override
-  int get prefixLength => api.getPrefixLength();
+  int get prefixLength => api.prefixLength;
 
   @override
-  int get scope => api.getScope();
+  int get scope => api.scope;
 }
 
 final class LinkAddressChannelImpl extends LinkAddressChannel {
@@ -38,7 +38,7 @@ final class LinkAddressChannelImpl extends LinkAddressChannel {
       address.api,
       prefixLength,
     );
-    final api = invictusApi.getObj();
+    final api = invictusApi.obj;
     return LinkAddressImpl.internal(api);
   }
 
@@ -55,7 +55,7 @@ final class LinkAddressChannelImpl extends LinkAddressChannel {
       flags,
       scope,
     );
-    final api = invictusApi.getObj();
+    final api = invictusApi.obj;
     return LinkAddressImpl.internal(api);
   }
 
@@ -77,14 +77,14 @@ final class LinkAddressChannelImpl extends LinkAddressChannel {
       deprecationTime,
       expirationTime,
     );
-    final api = invictusApi.getObj();
+    final api = invictusApi.obj;
     return LinkAddressImpl.internal(api);
   }
 
   @override
   LinkAddress createByAddress(String address) {
     final invictusApi = jni.InvictusLinkAddress.new$5(address.api);
-    final api = invictusApi.getObj();
+    final api = invictusApi.obj;
     return LinkAddressImpl.internal(api);
   }
 
@@ -95,14 +95,14 @@ final class LinkAddressChannelImpl extends LinkAddressChannel {
       flags,
       scope,
     );
-    final api = invictusApi.getObj();
+    final api = invictusApi.obj;
     return LinkAddressImpl.internal(api);
   }
 
   @override
   LinkAddress createByInterfaceAddress(InterfaceAddress address) {
     final invictusApi = jni.InvictusLinkAddress.new$4(address.api);
-    final api = invictusApi.getObj();
+    final api = invictusApi.obj;
     return LinkAddressImpl.internal(api);
   }
 }

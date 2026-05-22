@@ -72,8 +72,12 @@ extension Invictus$JStringX on JString {
   String get impl => toDartString(releaseOriginal: true);
 }
 
-extension Invictus$ListX on List<String> {
+extension Invictus$StringListX on List<String> {
   JArray<JString> get api => JArray.of(JString.type, map((e) => e.api));
+}
+
+extension Invictus$IntListX on List<int> {
+  JLongArray get longArrayApi => JLongArray.of(this);
 }
 
 extension Invictus$Uint8ListX on Uint8List {
@@ -83,7 +87,10 @@ extension Invictus$Uint8ListX on Uint8List {
 }
 
 extension Invictus$JByteArrayX on JByteArray {
-  Uint8List get impl => JByteBuffer.wrap(this).impl;
+  Uint8List get impl {
+    final elements = asDart();
+    return Uint8List.fromList(elements);
+  }
 }
 
 extension Invictus$JByteBufferX on JByteBuffer {

@@ -95,7 +95,7 @@ abstract interface class WifiManager {
   @Deprecated(
     'a) See WifiNetworkSpecifier.Builder.build() for new mechanism to trigger connection to a Wi-Fi network. b) See addNetworkSuggestions(java.util.List), removeNetworkSuggestions(java.util.List) for new API to add Wi-Fi networks for consideration when auto-connecting to wifi. Compatibility Note: For applications targeting android.os.Build.VERSION_CODES#Q or above, this API will always fail and return false. Deprecation Exemptions:',
   )
-  bool enableNetwork(int nedId, bool attemptConnect);
+  bool enableNetwork(int netId, bool attemptConnect);
   // void flushPasspointAnqpCache();
   // List<WifiAvailableChannel> getAllowedChannels(int band, int mode);
   // List<WifiConfiguration> getCallerConfiguredNetworks();

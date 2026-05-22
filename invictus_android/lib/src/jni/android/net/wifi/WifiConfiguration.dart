@@ -36,9 +36,13 @@ import 'dart:core' show Object, String;
 import 'package:jni/_internal.dart' as jni$_;
 import 'package:jni/jni.dart' as jni$_;
 
+import '../../../java/util/BitSet.dart' as bitset$_;
+
 import '../MacAddress.dart' as macaddress$_;
 
 import '../ProxyInfo.dart' as proxyinfo$_;
+
+import 'WifiEnterpriseConfig.dart' as wifienterpriseconfig$_;
 
 /// from: `android.net.wifi.WifiConfiguration$AuthAlgorithm`
 extension type WifiConfiguration$AuthAlgorithm._(jni$_.JObject _$this)
@@ -625,66 +629,70 @@ extension WifiConfiguration$$Methods on WifiConfiguration {
 
   /// from: `public java.util.BitSet allowedAuthAlgorithms`
   /// The returned object must be released after use, by calling the [release] method.
-  jni$_.JObject get allowedAuthAlgorithms =>
-      _id_allowedAuthAlgorithms.get(this, jni$_.JObject.type) as jni$_.JObject;
+  bitset$_.BitSet get allowedAuthAlgorithms =>
+      _id_allowedAuthAlgorithms.get(this, bitset$_.BitSet.type)
+          as bitset$_.BitSet;
 
   /// from: `public java.util.BitSet allowedAuthAlgorithms`
   /// The returned object must be released after use, by calling the [release] method.
-  set allowedAuthAlgorithms(jni$_.JObject value) =>
-      _id_allowedAuthAlgorithms.set(this, jni$_.JObject.type, value);
+  set allowedAuthAlgorithms(bitset$_.BitSet value) =>
+      _id_allowedAuthAlgorithms.set(this, bitset$_.BitSet.type, value);
 
   static final _id_allowedGroupCiphers = WifiConfiguration._class
       .instanceFieldId(r'allowedGroupCiphers', r'Ljava/util/BitSet;');
 
   /// from: `public java.util.BitSet allowedGroupCiphers`
   /// The returned object must be released after use, by calling the [release] method.
-  jni$_.JObject get allowedGroupCiphers =>
-      _id_allowedGroupCiphers.get(this, jni$_.JObject.type) as jni$_.JObject;
+  bitset$_.BitSet get allowedGroupCiphers =>
+      _id_allowedGroupCiphers.get(this, bitset$_.BitSet.type)
+          as bitset$_.BitSet;
 
   /// from: `public java.util.BitSet allowedGroupCiphers`
   /// The returned object must be released after use, by calling the [release] method.
-  set allowedGroupCiphers(jni$_.JObject value) =>
-      _id_allowedGroupCiphers.set(this, jni$_.JObject.type, value);
+  set allowedGroupCiphers(bitset$_.BitSet value) =>
+      _id_allowedGroupCiphers.set(this, bitset$_.BitSet.type, value);
 
   static final _id_allowedGroupManagementCiphers = WifiConfiguration._class
       .instanceFieldId(r'allowedGroupManagementCiphers', r'Ljava/util/BitSet;');
 
   /// from: `public java.util.BitSet allowedGroupManagementCiphers`
   /// The returned object must be released after use, by calling the [release] method.
-  jni$_.JObject get allowedGroupManagementCiphers =>
-      _id_allowedGroupManagementCiphers.get(this, jni$_.JObject.type)
-          as jni$_.JObject;
+  bitset$_.BitSet get allowedGroupManagementCiphers =>
+      _id_allowedGroupManagementCiphers.get(this, bitset$_.BitSet.type)
+          as bitset$_.BitSet;
 
   /// from: `public java.util.BitSet allowedGroupManagementCiphers`
   /// The returned object must be released after use, by calling the [release] method.
-  set allowedGroupManagementCiphers(jni$_.JObject value) =>
-      _id_allowedGroupManagementCiphers.set(this, jni$_.JObject.type, value);
+  set allowedGroupManagementCiphers(bitset$_.BitSet value) =>
+      _id_allowedGroupManagementCiphers.set(this, bitset$_.BitSet.type, value);
 
   static final _id_allowedKeyManagement = WifiConfiguration._class
       .instanceFieldId(r'allowedKeyManagement', r'Ljava/util/BitSet;');
 
   /// from: `public java.util.BitSet allowedKeyManagement`
   /// The returned object must be released after use, by calling the [release] method.
-  jni$_.JObject get allowedKeyManagement =>
-      _id_allowedKeyManagement.get(this, jni$_.JObject.type) as jni$_.JObject;
+  bitset$_.BitSet get allowedKeyManagement =>
+      _id_allowedKeyManagement.get(this, bitset$_.BitSet.type)
+          as bitset$_.BitSet;
 
   /// from: `public java.util.BitSet allowedKeyManagement`
   /// The returned object must be released after use, by calling the [release] method.
-  set allowedKeyManagement(jni$_.JObject value) =>
-      _id_allowedKeyManagement.set(this, jni$_.JObject.type, value);
+  set allowedKeyManagement(bitset$_.BitSet value) =>
+      _id_allowedKeyManagement.set(this, bitset$_.BitSet.type, value);
 
   static final _id_allowedPairwiseCiphers = WifiConfiguration._class
       .instanceFieldId(r'allowedPairwiseCiphers', r'Ljava/util/BitSet;');
 
   /// from: `public java.util.BitSet allowedPairwiseCiphers`
   /// The returned object must be released after use, by calling the [release] method.
-  jni$_.JObject get allowedPairwiseCiphers =>
-      _id_allowedPairwiseCiphers.get(this, jni$_.JObject.type) as jni$_.JObject;
+  bitset$_.BitSet get allowedPairwiseCiphers =>
+      _id_allowedPairwiseCiphers.get(this, bitset$_.BitSet.type)
+          as bitset$_.BitSet;
 
   /// from: `public java.util.BitSet allowedPairwiseCiphers`
   /// The returned object must be released after use, by calling the [release] method.
-  set allowedPairwiseCiphers(jni$_.JObject value) =>
-      _id_allowedPairwiseCiphers.set(this, jni$_.JObject.type, value);
+  set allowedPairwiseCiphers(bitset$_.BitSet value) =>
+      _id_allowedPairwiseCiphers.set(this, bitset$_.BitSet.type, value);
 
   static final _id_allowedProtocols = WifiConfiguration._class.instanceFieldId(
     r'allowedProtocols',
@@ -693,26 +701,27 @@ extension WifiConfiguration$$Methods on WifiConfiguration {
 
   /// from: `public java.util.BitSet allowedProtocols`
   /// The returned object must be released after use, by calling the [release] method.
-  jni$_.JObject get allowedProtocols =>
-      _id_allowedProtocols.get(this, jni$_.JObject.type) as jni$_.JObject;
+  bitset$_.BitSet get allowedProtocols =>
+      _id_allowedProtocols.get(this, bitset$_.BitSet.type) as bitset$_.BitSet;
 
   /// from: `public java.util.BitSet allowedProtocols`
   /// The returned object must be released after use, by calling the [release] method.
-  set allowedProtocols(jni$_.JObject value) =>
-      _id_allowedProtocols.set(this, jni$_.JObject.type, value);
+  set allowedProtocols(bitset$_.BitSet value) =>
+      _id_allowedProtocols.set(this, bitset$_.BitSet.type, value);
 
   static final _id_allowedSuiteBCiphers = WifiConfiguration._class
       .instanceFieldId(r'allowedSuiteBCiphers', r'Ljava/util/BitSet;');
 
   /// from: `public java.util.BitSet allowedSuiteBCiphers`
   /// The returned object must be released after use, by calling the [release] method.
-  jni$_.JObject get allowedSuiteBCiphers =>
-      _id_allowedSuiteBCiphers.get(this, jni$_.JObject.type) as jni$_.JObject;
+  bitset$_.BitSet get allowedSuiteBCiphers =>
+      _id_allowedSuiteBCiphers.get(this, bitset$_.BitSet.type)
+          as bitset$_.BitSet;
 
   /// from: `public java.util.BitSet allowedSuiteBCiphers`
   /// The returned object must be released after use, by calling the [release] method.
-  set allowedSuiteBCiphers(jni$_.JObject value) =>
-      _id_allowedSuiteBCiphers.set(this, jni$_.JObject.type, value);
+  set allowedSuiteBCiphers(bitset$_.BitSet value) =>
+      _id_allowedSuiteBCiphers.set(this, bitset$_.BitSet.type, value);
 
   static final _id_enterpriseConfig = WifiConfiguration._class.instanceFieldId(
     r'enterpriseConfig',
@@ -721,14 +730,21 @@ extension WifiConfiguration$$Methods on WifiConfiguration {
 
   /// from: `public android.net.wifi.WifiEnterpriseConfig enterpriseConfig`
   /// The returned object must be released after use, by calling the [release] method.
-  jni$_.JObject? get enterpriseConfig =>
-      _id_enterpriseConfig.getNullable(this, jni$_.JObject.type)
-          as jni$_.JObject?;
+  wifienterpriseconfig$_.WifiEnterpriseConfig? get enterpriseConfig =>
+      _id_enterpriseConfig.getNullable(
+            this,
+            wifienterpriseconfig$_.WifiEnterpriseConfig.type,
+          )
+          as wifienterpriseconfig$_.WifiEnterpriseConfig?;
 
   /// from: `public android.net.wifi.WifiEnterpriseConfig enterpriseConfig`
   /// The returned object must be released after use, by calling the [release] method.
-  set enterpriseConfig(jni$_.JObject? value) =>
-      _id_enterpriseConfig.set(this, jni$_.JObject.type, value);
+  set enterpriseConfig(wifienterpriseconfig$_.WifiEnterpriseConfig? value) =>
+      _id_enterpriseConfig.set(
+        this,
+        wifienterpriseconfig$_.WifiEnterpriseConfig.type,
+        value,
+      );
 
   static final _id_hiddenSSID = WifiConfiguration._class.instanceFieldId(
     r'hiddenSSID',

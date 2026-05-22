@@ -24,18 +24,6 @@ final class InvictusAndroidPlugin {
     LocalePickerChannel.instance = LocalePickerChannelImpl();
     // lang
     RunnableChannel.instance = RunnableChannelImpl();
-    // net.ethernet
-    EthernetManagerChannel.instance = EthernetManagerChannelImpl();
-    // net.util
-    Inet4AddressUtilChannel.instance = Inet4AddressUtilChannelImpl();
-    NetworkUtilChannel.instance = NetworkUtilChannelImpl();
-    // net.wifi
-    ScanResultChannel.instance = ScanResultChannelImpl();
-    SupplicantStateChannel.instance = SupplicantStateChannelImpl();
-    WifiConfigurationChannel.instance = WifiConfigurationChannelImpl();
-    WifiInfoChannel.instance = WifiInfoChannelImpl();
-    WifiManagerChannel.instance = WifiManagerChannelImpl();
-    WifiSsidChannel.instance = WifiSsidChannelImpl();
     // net
     ConnectivityManagerChannel.instance = ConnectivityManagerChannelImpl();
     DhcpInfoChannel.instance = DhcpInfoChannelImpl();
@@ -49,6 +37,20 @@ final class InvictusAndroidPlugin {
     NetworkRequestChannel.instance = NetworkRequestChannelImpl();
     NetworkChannel.instance = NetworkChannelImpl();
     StaticIpConfigurationChannel.instance = StaticIpConfigurationChannelImpl();
+    // net.ethernet
+    EthernetManagerChannel.instance = EthernetManagerChannelImpl();
+    // net.util
+    Inet4AddressUtilChannel.instance = Inet4AddressUtilChannelImpl();
+    NetworkUtilChannel.instance = NetworkUtilChannelImpl();
+    // net.wifi
+    ScanResultChannel.instance = ScanResultChannelImpl();
+    SupplicantStateChannel.instance = SupplicantStateChannelImpl();
+    WifiConfigurationChannel.instance = WifiConfigurationChannelImpl();
+    WifiConfiguration$KeyMgmtChannel.instance =
+        WifiConfiguration$KeyMgmtChannelImpl();
+    WifiInfoChannel.instance = WifiInfoChannelImpl();
+    WifiManagerChannel.instance = WifiManagerChannelImpl();
+    WifiSsidChannel.instance = WifiSsidChannelImpl();
     // os
     Build$PartitionChannel.instance = Build$PartitionChannelImpl();
     Build$VersionChannel.instance = Build$VersionChannelImpl();

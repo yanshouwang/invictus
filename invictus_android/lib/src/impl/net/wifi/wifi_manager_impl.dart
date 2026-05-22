@@ -110,8 +110,8 @@ final class WifiManagerImpl extends ObjectImpl implements WifiManager {
   bool disconnect() => api.disconnect();
 
   @override
-  bool enableNetwork(int nedId, bool attemptConnect) =>
-      api.enableNetwork(nedId, attemptConnect);
+  bool enableNetwork(int netId, bool attemptConnect) =>
+      api.enableNetwork(netId, attemptConnect);
 
   @override
   bool reassociate() => api.reassociate();

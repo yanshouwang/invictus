@@ -3,6 +3,7 @@ export 'AbstractCollection.dart';
 export 'AbstractList.dart';
 export 'AbstractMap.dart';
 export 'ArrayList.dart';
+export 'BitSet.dart';
 export 'Collection.dart';
 export 'Collections.dart';
 export 'Enumeration.dart';

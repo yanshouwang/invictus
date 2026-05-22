@@ -1,25 +1,22 @@
+## 1.0.0-dev.4
+
+* Bump version.
+
 ## 1.0.0-dev.3
 
-* Add `TimeManager` Api.
-* Add `AlarmManager` Api.
-* Add `SystemClock` Api.
+* Bump version.
 
 ## 1.0.0-dev.2
 
-* Update to flutter 3.38.10.
-* Add `NetworkInterface` Api.
-* Add `SystemProperties` Api.
+* Bump version.
 
 ## 1.0.0-dev.1
 
-* Add locale Apis.
+* Bump version.
 
 ## 1.0.0-dev.0
 
-* Android hardware Apis.
-* Android io Apis.
-* Android net Apis.
-* Android os Apis.
+* Bump version.
 
 ## 0.0.1
 

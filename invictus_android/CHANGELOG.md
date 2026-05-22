@@ -1,3 +1,26 @@
+## 1.0.0-dev.4
+
+* Add `WifiConfiguration#httpProxy` Api.
+* Add `WifiConfiguration#ipConfiguration` Api.
+* Add `WifiConfiguration#staticIpConfiguration` Api.
+* Add `WifiConfiguration#ipAssignment` Api.
+* Add `WifiConfiguration#allowedAuthAlgorithms` Api.
+* Add `WifiConfiguration#allowedGroupCiphers` Api.
+* Add `WifiConfiguration#allowedKeyManagement` Api.
+* Add `WifiConfiguration#allowedPairwiseCiphers` Api.
+* Add `WifiConfiguration#allowedProtocols` Api.
+* Add `WifiConfiguration#enterpriseConfig` Api.
+* Add `WifiConfiguration#isPasspoint` Api.
+* Add `WifiConfiguration#preSharedKey` Api.
+* Add `WifiConfiguration#priority` Api.
+* Add `WifiConfiguration#providerFriendlyName` Api.
+* Add `WifiConfiguration#roamingConsortiumIds` Api.
+* Add `WifiConfiguration#wepKeys` Api.
+* Add `WifiConfiguration#wepTxKeyIndex` Api.
+* Add `WifiConfiguration$Mgmt` Api.
+* Add `WifiEnterpriseConfig` Api.
+* Add `BitSet` Api.
+
 ## 1.0.0-dev.3
 
 * Add `TimeManager` Api.

@@ -1,3 +1,4 @@
+export 'media/audio_attributes.dart';
 export 'media/audio_device_info.dart';
 export 'media/audio_routing.dart';
 export 'media/media_player.dart';

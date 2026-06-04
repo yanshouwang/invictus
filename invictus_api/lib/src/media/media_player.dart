@@ -2,6 +2,8 @@ import 'package:invictus_api/src/io.dart';
 import 'package:invictus_api/src/net.dart' as net;
 import 'package:plugin_platform_interface/plugin_platform_interface.dart';
 
+import 'audio_attributes.dart';
+
 enum MediaPlayer$TrackInfo$MediaTrackType {
   /// TODO
   unknown,

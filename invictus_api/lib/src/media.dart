@@ -1,5 +1,10 @@
 export 'media/audio_attributes.dart';
 export 'media/audio_device_info.dart';
+export 'media/audio_manager.dart';
 export 'media/audio_routing.dart';
+export 'media/media_data_source.dart';
 export 'media/media_player.dart';
 export 'media/media_recorder.dart';
+export 'media/media_timestamp.dart';
+export 'media/playback_params.dart';
+export 'media/sync_params.dart';

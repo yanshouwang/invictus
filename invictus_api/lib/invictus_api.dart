@@ -1,4 +1,5 @@
 export 'src/app.dart';
+export 'src/content.dart';
 export 'src/hardware.dart';
 export 'src/icu.dart';
 export 'src/internal.dart';

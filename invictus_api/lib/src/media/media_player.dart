@@ -1,8 +1,13 @@
+import 'package:invictus_api/src/content.dart';
 import 'package:invictus_api/src/io.dart';
 import 'package:invictus_api/src/net.dart' as net;
 import 'package:plugin_platform_interface/plugin_platform_interface.dart';
 
 import 'audio_attributes.dart';
+import 'media_data_source.dart';
+import 'media_timestamp.dart';
+import 'playback_params.dart';
+import 'sync_params.dart';
 
 enum MediaPlayer$TrackInfo$MediaTrackType {
   /// TODO
@@ -171,13 +176,13 @@ abstract interface class MediaPlayer {
   set wakeMode(int value);
 
   /// Adds an external timed text source file (Uri). Currently supported format is SubRip with the file extension .srt, case insensitive. Note that a single external timed text source may contain multiple tracks in it. One can find the total number of available tracks using getTrackInfo() to see what additional tracks become available after this method call.
-  void addTimedTextSource(net.Uri uri, String mimeType);
+  void addTimedTextSourceWithUri(net.Uri uri, String mimeType);
 
   /// Adds an external timed text source file (FileDescriptor). It is the caller's responsibility to close the file descriptor. It is safe to do so as soon as this call returns. Currently supported format is SubRip. Note that a single external timed text source may contain multiple tracks in it. One can find the total number of available tracks using getTrackInfo() to see what additional tracks become available after this method call.
-  void addTimedTextSource(FileDescriptor fd, String mimeType);
+  void addTimedTextSourceWithFileDescriptor(FileDescriptor fd, String mimeType);
 
   /// Adds an external timed text file (FileDescriptor). It is the caller's responsibility to close the file descriptor. It is safe to do so as soon as this call returns. Currently supported format is SubRip. Note that a single external timed text source may contain multiple tracks in it. One can find the total number of available tracks using getTrackInfo() to see what additional tracks become available after this method call.
-  void addTimedTextSource(
+  void addTimedTextSourceWithFileDescriptorOffsetLength(
     FileDescriptor fd,
     int offset,
     int length,
@@ -185,7 +190,7 @@ abstract interface class MediaPlayer {
   );
 
   /// Adds an external timed text source file. Currently supported format is SubRip with the file extension .srt, case insensitive. Note that a single external timed text source may contain multiple tracks in it. One can find the total number of available tracks using getTrackInfo() to see what additional tracks become available after this method call.
-  void addTimedTextSource(String path, String mimeType);
+  void addTimedTextSourceWithPath(String path, String mimeType);
 
   /// Attaches an auxiliary effect to the player. A typical auxiliary effect is a reverberation effect which can be applied on any sound source that directs a certain amount of its energy to this effect. This amount is defined by setAuxEffectSendLevel(). See setAuxEffectSendLevel(float).
   ///
@@ -337,6 +342,26 @@ abstract interface class MediaPlayer {
   /// Stops playback after playback has been started or paused.
   void stop();
 }
+
+abstract interface class MediaPlayer$TrackInfo {}
+
+abstract interface class MediaPlayer$OnBufferingUpdateListener {}
+
+abstract interface class MediaPlayer$OnCompletionListener {}
+
+abstract interface class MediaPlayer$OnErrorListener {}
+
+abstract interface class MediaPlayer$OnInfoListener {}
+
+abstract interface class MediaPlayer$OnPreparedListener {}
+
+abstract interface class MediaPlayer$OnSeekCompleteListener {}
+
+abstract interface class MediaPlayer$OnTimedMetaDataAvailableListener {}
+
+abstract interface class MediaPlayer$OnTimedTextListener {}
+
+abstract interface class MediaPlayer$OnVideoSizeChangedListener {}
 
 abstract base class MediaPlayerChannel extends PlatformInterface {
   /// Constructs a [MediaPlayerChannel].

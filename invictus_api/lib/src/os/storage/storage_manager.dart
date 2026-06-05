@@ -50,12 +50,29 @@ abstract interface class StorageManager {
   static bool isUserKeyUnlocked(int userId) =>
       StorageManagerChannel.instance.isUserKeyUnlocked(userId);
 
+  static bool checkPermissionAndAppOp(
+    bool enforce,
+    int pid,
+    int uid,
+    String packageName,
+    String featureId,
+    String permission,
+    int op,
+  ) => StorageManagerChannel.instance.checkPermissionAndAppOp(
+    enforce,
+    pid,
+    uid,
+    packageName,
+    featureId,
+    permission,
+    op,
+  );
+
   static bool checkPermissionAndCheckOp(
     bool enforce,
     int pid,
     int uid,
     String packageName,
-    String? featureId,
     String permission,
     int op,
   ) => StorageManagerChannel.instance.checkPermissionAndCheckOp(
@@ -63,7 +80,6 @@ abstract interface class StorageManager {
     pid,
     uid,
     packageName,
-    featureId,
     permission,
     op,
   );
@@ -278,18 +294,26 @@ abstract interface class StorageManagerChannel extends PlatformInterface {
   StorageManager$StorageVolumeCallback createStorageVolumeCallback({
     required void Function(StorageVolume volume) onStateChanged,
   });
-  // StorageVolume getStorageVolume(List<StorageVolume> volumes, File file);
+  // StorageVolume? getStorageVolume(File file, int userId);
   // Pair<String, int> getPrimaryStoragePathAndSize();
   List<StorageVolume> getVolumeList(int userId, int flags);
   StorageVolume getPrimaryVolume(List<StorageVolume> volumes);
   bool isUserKeyUnlocked(int userId);
   // File maybeTranslateEmulatedPathToInternal(File path);
+  bool checkPermissionAndAppOp(
+    bool enforce,
+    int pid,
+    int uid,
+    String packageName,
+    String featureId,
+    String permission,
+    int op,
+  );
   bool checkPermissionAndCheckOp(
     bool enforce,
     int pid,
     int uid,
     String packageName,
-    String? featureId,
     String permission,
     int op,
   );

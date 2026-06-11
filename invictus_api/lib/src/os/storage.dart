@@ -1,4 +1,5 @@
 export 'storage/disk_info.dart';
+export 'storage/on_obb_state_change_listener.dart';
 export 'storage/storage_event_listener.dart';
 export 'storage/storage_manager.dart';
 export 'storage/storage_volume.dart';

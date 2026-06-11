@@ -62,6 +62,10 @@ final class InvictusAndroidPlugin {
     PowerManagerChannel.instance = PowerManagerChannelImpl();
     SystemClockChannel.instance = SystemClockChannelImpl();
     SystemPropertiesChannel.instance = SystemPropertiesChannelImpl();
+    // os.storage
+    OnObbStateChangeListenerChannel.instance =
+        OnObbStateChangeListenerChannelImpl();
+    StorageManagerChannel.instance = StorageManagerChannelImpl();
     // provider
     SettingsChannel.instance = SettingsChannelImpl();
     Settings$NameValueTableChannel.instance =

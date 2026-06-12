@@ -82,6 +82,10 @@ final class StorageManagerImpl extends ObjectImpl implements StorageManager {
   void unregisterStorageVolumeCallback(
     StorageManager$StorageVolumeCallback callback,
   ) => invictusApi.unregisterStorageVolumeCallback(callback.api);
+
+  @override
+  VolumeInfo? findVolumeById(String id) =>
+      invictusApi.findVolumeById(id.api)?.impl;
 }
 
 final class StorageManager$StorageVolumeCallbackImpl extends ObjectImpl

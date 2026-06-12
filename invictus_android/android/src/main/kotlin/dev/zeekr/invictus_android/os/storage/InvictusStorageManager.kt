@@ -68,8 +68,14 @@ class InvictusStorageManager(val obj: StorageManager) {
     }
 
     fun unregisterStorageVolumeCallback(callback: InvictusStorageVolumeCallback) {
-        clazz.getMethod("registerStorageVolumeCallback", InvictusStorageVolumeCallback.clazz)
+        clazz.getMethod("unregisterStorageVolumeCallback", InvictusStorageVolumeCallback.clazz)
             .invoke(this.obj, callback.obj)
+    }
+
+    fun findVolumeById(id: String): InvictusVolumeInfo? {
+        val obj = clazz.getMethod("findVolumeById", String::class.java).invoke(this.obj, id)
+        return if (obj == null) null
+        else InvictusVolumeInfo(obj)
     }
 
     fun mount(volId: String) {

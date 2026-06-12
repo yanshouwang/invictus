@@ -3,6 +3,7 @@ import 'package:plugin_platform_interface/plugin_platform_interface.dart';
 
 import 'on_obb_state_change_listener.dart';
 import 'storage_volume.dart';
+import 'volume_info.dart';
 
 enum StorageManager$MountMode {
   /// No external storage should be mounted.
@@ -130,7 +131,7 @@ abstract interface class StorageManager {
   bool isObbMounted(String rawPath);
   String? getMountedObbPath(String rawPath);
   // DiskInfo? findDiskById(String id);
-  // VolumeInfo? findVolumeById(String id);
+  VolumeInfo? findVolumeById(String id);
   // VolumeInfo? findVolumeByUuid(String fsUuid);
   // VolumeRecord? findRecordByUuid(String fsUuid);
   // VolumeInfo? findPrivateForEmulated(VolumeInfo? emulatedVol);

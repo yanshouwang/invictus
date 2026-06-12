@@ -111,6 +111,7 @@ void main() async {
       'dev.zeekr.invictus_android.os.storage.JniOnObbStateChangeListenerImpl',
       'dev.zeekr.invictus_android.os.storage.InvictusStorageManager',
       'dev.zeekr.invictus_android.os.storage.InvictusStorageVolume',
+      'dev.zeekr.invictus_android.os.storage.InvictusVolumeInfo',
       'java.io.Closeable',
       'java.io.FileDescriptor',
       'java.io.Flushable',

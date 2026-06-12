@@ -3,3 +3,4 @@ export 'JniOnObbStateChangeListener.dart';
 export 'JniOnObbStateChangeListenerImpl.dart';
 export 'InvictusStorageManager.dart';
 export 'InvictusStorageVolume.dart';
+export 'InvictusVolumeInfo.dart';

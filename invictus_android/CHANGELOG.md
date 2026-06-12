@@ -1,3 +1,7 @@
+## 1.0.0-dev.5
+
+* Add `StorageManager` Api.
+
 ## 1.0.0-dev.4
 
 * Add `WifiConfiguration#httpProxy` Api.

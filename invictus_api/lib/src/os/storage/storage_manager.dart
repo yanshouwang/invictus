@@ -2,6 +2,7 @@ import 'package:invictus_api/src/io.dart';
 import 'package:plugin_platform_interface/plugin_platform_interface.dart';
 
 import 'on_obb_state_change_listener.dart';
+import 'storage_event_listener.dart';
 import 'storage_volume.dart';
 import 'volume_info.dart';
 
@@ -106,8 +107,8 @@ abstract interface class StorageManager {
   // String? get cloudMediaProvider;
   // set cloudMediaProvider(String? authority);
 
-  // void registerListener(StorageEventListener listener);
-  // void unregisterListener(StorageEventListener listener);
+  void registerListener(StorageEventListener listener);
+  void unregisterListener(StorageEventListener listener);
   void registerStorageVolumeCallback(
     StorageManager$StorageVolumeCallback callback,
   );

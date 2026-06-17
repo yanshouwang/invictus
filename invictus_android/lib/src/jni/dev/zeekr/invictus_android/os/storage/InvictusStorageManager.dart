@@ -46,6 +46,8 @@ import '../../../../../android/os/storage/StorageVolume.dart'
 
 import '../../../../../java/util/concurrent/Executor.dart' as executor$_;
 
+import 'InvictusStorageEventListener.dart' as invictusstorageeventlistener$_;
+
 import 'InvictusVolumeInfo.dart' as invictusvolumeinfo$_;
 
 /// from: `dev.zeekr.invictus_android.os.storage.InvictusStorageManager$Companion`
@@ -768,7 +770,10 @@ extension InvictusStorageManager$$Methods on InvictusStorageManager {
           >();
 
   /// from: `public fun registerListener(listener: dev.zeekr.invictus_android.os.storage.InvictusStorageEventListener): kotlin.Unit`
-  void registerListener(jni$_.JObject invictusStorageEventListener) {
+  void registerListener(
+    invictusstorageeventlistener$_.InvictusStorageEventListener
+    invictusStorageEventListener,
+  ) {
     final _$invictusStorageEventListener =
         invictusStorageEventListener.reference;
     _registerListener(
@@ -803,7 +808,10 @@ extension InvictusStorageManager$$Methods on InvictusStorageManager {
           >();
 
   /// from: `public fun unregisterListener(listener: dev.zeekr.invictus_android.os.storage.InvictusStorageEventListener): kotlin.Unit`
-  void unregisterListener(jni$_.JObject invictusStorageEventListener) {
+  void unregisterListener(
+    invictusstorageeventlistener$_.InvictusStorageEventListener
+    invictusStorageEventListener,
+  ) {
     final _$invictusStorageEventListener =
         invictusStorageEventListener.reference;
     _unregisterListener(
@@ -896,6 +904,42 @@ extension InvictusStorageManager$$Methods on InvictusStorageManager {
     ).check();
   }
 
+  static final _id_findVolumeById = InvictusStorageManager._class.instanceMethodId(
+    r'findVolumeById',
+    r'(Ljava/lang/String;)Ldev/zeekr/invictus_android/os/storage/InvictusVolumeInfo;',
+  );
+
+  static final _findVolumeById =
+      jni$_.ProtectedJniExtensions.lookup<
+            jni$_.NativeFunction<
+              jni$_.JniResult Function(
+                jni$_.Pointer<jni$_.Void>,
+                jni$_.JMethodIDPtr,
+                jni$_.VarArgs<(jni$_.Pointer<jni$_.Void>,)>,
+              )
+            >
+          >('globalEnv_CallObjectMethod')
+          .asFunction<
+            jni$_.JniResult Function(
+              jni$_.Pointer<jni$_.Void>,
+              jni$_.JMethodIDPtr,
+              jni$_.Pointer<jni$_.Void>,
+            )
+          >();
+
+  /// from: `public fun findVolumeById(id: kotlin.String): dev.zeekr.invictus_android.os.storage.InvictusVolumeInfo?`
+  /// The returned object must be released after use, by calling the [release] method.
+  invictusvolumeinfo$_.InvictusVolumeInfo? findVolumeById(
+    jni$_.JString string,
+  ) {
+    final _$string = string.reference;
+    return _findVolumeById(
+      reference.pointer,
+      _id_findVolumeById.pointer,
+      _$string.pointer,
+    ).object<invictusvolumeinfo$_.InvictusVolumeInfo?>();
+  }
+
   static final _id_mount = InvictusStorageManager._class.instanceMethodId(
     r'mount',
     r'(Ljava/lang/String;)V',
@@ -981,42 +1025,6 @@ extension InvictusStorageManager$$Methods on InvictusStorageManager {
   void format(jni$_.JString string) {
     final _$string = string.reference;
     _format(reference.pointer, _id_format.pointer, _$string.pointer).check();
-  }
-
-  static final _id_findVolumeById = InvictusStorageManager._class.instanceMethodId(
-    r'findVolumeById',
-    r'(Ljava/lang/String;)Ldev/zeekr/invictus_android/os/storage/InvictusVolumeInfo;',
-  );
-
-  static final _findVolumeById =
-      jni$_.ProtectedJniExtensions.lookup<
-            jni$_.NativeFunction<
-              jni$_.JniResult Function(
-                jni$_.Pointer<jni$_.Void>,
-                jni$_.JMethodIDPtr,
-                jni$_.VarArgs<(jni$_.Pointer<jni$_.Void>,)>,
-              )
-            >
-          >('globalEnv_CallObjectMethod')
-          .asFunction<
-            jni$_.JniResult Function(
-              jni$_.Pointer<jni$_.Void>,
-              jni$_.JMethodIDPtr,
-              jni$_.Pointer<jni$_.Void>,
-            )
-          >();
-
-  /// from: `public fun findVolumeById(id: kotlin.String): dev.zeekr.invictus_android.os.storage.InvictusVolumeInfo?`
-  /// The returned object must be released after use, by calling the [release] method.
-  invictusvolumeinfo$_.InvictusVolumeInfo? findVolumeById(
-    jni$_.JString string,
-  ) {
-    final _$string = string.reference;
-    return _findVolumeById(
-      reference.pointer,
-      _id_findVolumeById.pointer,
-      _$string.pointer,
-    ).object<invictusvolumeinfo$_.InvictusVolumeInfo?>();
   }
 }
 

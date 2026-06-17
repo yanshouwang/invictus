@@ -1,3 +1,7 @@
+## 1.0.0-dev.6
+
+* Add `StorageEventListener` Api.
+
 ## 1.0.0-dev.5
 
 * Add `StorageManager` Api.

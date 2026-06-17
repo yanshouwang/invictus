@@ -24,7 +24,7 @@ abstract class InvictusStorageEventListener {
                 }
 
                 "onStorageStateChanged" -> {
-                    val path = args[0] as String
+                    val path = args[0] as String?
                     val oldState = args[1] as String
                     val newState = args[2] as String
                     this.onStorageStateChanged(path, oldState, newState)
@@ -66,7 +66,7 @@ abstract class InvictusStorageEventListener {
     }
 
     abstract fun onUsbMassStorageConnectionChanged(connected: Boolean)
-    abstract fun onStorageStateChanged(path: String, oldState: String, newState: String)
+    abstract fun onStorageStateChanged(path: String?, oldState: String, newState: String)
     abstract fun onVolumeStateChanged(vol: InvictusVolumeInfo, oldState: Int, newState: Int)
     abstract fun onVolumeRecordChanged(rec: InvictusVolumeRecord)
     abstract fun onVolumeForgotten(fsUuid: String)
@@ -76,7 +76,7 @@ abstract class InvictusStorageEventListener {
 
 interface JniInvictusStorageEventListener {
     fun onUsbMassStorageConnectionChanged(connected: Boolean)
-    fun onStorageStateChanged(path: String, oldState: String, newState: String)
+    fun onStorageStateChanged(path: String?, oldState: String, newState: String)
     fun onVolumeStateChanged(vol: InvictusVolumeInfo, oldState: Int, newState: Int)
     fun onVolumeRecordChanged(rec: InvictusVolumeRecord)
     fun onVolumeForgotten(fsUuid: String)
@@ -91,7 +91,7 @@ class JniInvictusStorageEventListenerImpl(
         listener.onUsbMassStorageConnectionChanged(connected)
     }
 
-    override fun onStorageStateChanged(path: String, oldState: String, newState: String) {
+    override fun onStorageStateChanged(path: String?, oldState: String, newState: String) {
         listener.onStorageStateChanged(path, oldState, newState)
     }
 

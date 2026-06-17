@@ -52,6 +52,10 @@ final class StorageManagerImpl extends ObjectImpl implements StorageManager {
       api.recentStorageVolumes.asDart().nonNulls.map((e) => e.impl).toList();
 
   @override
+  void registerListener(StorageEventListener listener) =>
+      invictusApi.registerListener(listener.api);
+
+  @override
   void registerStorageVolumeCallback(
     StorageManager$StorageVolumeCallback callback,
   ) => invictusApi.registerStorageVolumeCallback(executorApi, callback.api);
@@ -77,6 +81,10 @@ final class StorageManagerImpl extends ObjectImpl implements StorageManager {
     bool force,
     OnObbStateChangeListener listener,
   ) => api.unmountObb(rawPath.api, force, listener.api);
+
+  @override
+  void unregisterListener(StorageEventListener listener) =>
+      invictusApi.unregisterListener(listener.api);
 
   @override
   void unregisterStorageVolumeCallback(

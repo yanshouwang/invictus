@@ -65,6 +65,7 @@ final class InvictusAndroidPlugin {
     // os.storage
     OnObbStateChangeListenerChannel.instance =
         OnObbStateChangeListenerChannelImpl();
+    StorageEventListenerChannel.instance = StorageEventListenerChannelImpl();
     StorageManagerChannel.instance = StorageManagerChannelImpl();
     // provider
     SettingsChannel.instance = SettingsChannelImpl();

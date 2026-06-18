@@ -1,3 +1,9 @@
+## 1.0.0-dev.7
+
+* Add `StorageManager#volumes` Api.
+* Add other callbacks to `StorageEventListener`.
+* Change `oldState` and `newState` in `StorageEventListener` to enum type.
+
 ## 1.0.0-dev.6
 
 * Add `StorageEventListener` Api.

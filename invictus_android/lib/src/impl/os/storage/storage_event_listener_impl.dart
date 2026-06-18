@@ -14,26 +14,47 @@ final class StorageEventListenerChannelImpl
     extends StorageEventListenerChannel {
   @override
   StorageEventListener create({
-    required void Function(bool connected) onUsbMassStorageConnectionChanged,
-    required void Function(String? path, String oldState, String newState)
+    void Function(bool connected)? onUsbMassStorageConnectionChanged,
+    void Function(
+      String? path,
+      Environment$Media oldState,
+      Environment$Media newState,
+    )?
     onStorageStateChanged,
-    required void Function(VolumeInfo vol, int oldState, int newState)
+    void Function(
+      VolumeInfo vol,
+      VolumeInfo$State oldState,
+      VolumeInfo$State newState,
+    )?
     onVolumeStateChanged,
+    void Function(VolumeRecord rec)? onVolumeRecordChanged,
+    void Function(String fsUuid)? onVolumeForgotten,
+    void Function(DiskInfo disk, int volumeCount)? onDiskScanned,
+    void Function(DiskInfo disk)? onDiskDestroyed,
   }) {
     final api = jni.JniInvictusStorageEventListenerImpl(
       jni.context,
       jni.JniInvictusStorageEventListener.implement(
         jni.$JniInvictusStorageEventListener(
           onUsbMassStorageConnectionChanged: (connected) =>
-              onUsbMassStorageConnectionChanged(connected),
+              onUsbMassStorageConnectionChanged?.call(connected),
           onStorageStateChanged: (path, oldState, newState) =>
-              onStorageStateChanged(path?.impl, oldState.impl, newState.impl),
+              onStorageStateChanged?.call(
+                path?.impl,
+                oldState.environment$MediaImpl,
+                newState.environment$MediaImpl,
+              ),
           onVolumeStateChanged: (vol, oldState, newState) =>
-              onVolumeStateChanged(vol.impl, oldState, newState),
-          onVolumeRecordChanged: (rec) {},
-          onVolumeForgotten: (fsUuid) {},
-          onDiskScanned: (disk, volumeCount) {},
-          onDiskDestroyed: (disk) {},
+              onVolumeStateChanged?.call(
+                vol.impl,
+                oldState.volumeInfo$StateImpl,
+                newState.volumeInfo$StateImpl,
+              ),
+          onVolumeRecordChanged: (rec) => onVolumeRecordChanged?.call(rec.impl),
+          onVolumeForgotten: (fsUuid) => onVolumeForgotten?.call(fsUuid.impl),
+          onDiskScanned: (disk, volumeCount) =>
+              onDiskScanned?.call(disk.impl, volumeCount),
+          onDiskDestroyed: (disk) => onDiskDestroyed?.call(disk.impl),
         ),
       ),
     );

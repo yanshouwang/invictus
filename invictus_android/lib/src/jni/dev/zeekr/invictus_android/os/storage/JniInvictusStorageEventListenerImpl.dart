@@ -38,9 +38,13 @@ import 'package:jni/jni.dart' as jni$_;
 
 import '../../../../../android/content/Context.dart' as context$_;
 
+import 'InvictusDiskInfo.dart' as invictusdiskinfo$_;
+
 import 'InvictusStorageEventListener.dart' as invictusstorageeventlistener$_;
 
 import 'InvictusVolumeInfo.dart' as invictusvolumeinfo$_;
+
+import 'InvictusVolumeRecord.dart' as invictusvolumerecord$_;
 
 import 'JniInvictusStorageEventListener.dart'
     as jniinvictusstorageeventlistener$_;
@@ -288,7 +292,9 @@ extension JniInvictusStorageEventListenerImpl$$Methods
           >();
 
   /// from: `public fun onVolumeRecordChanged(rec: dev.zeekr.invictus_android.os.storage.InvictusVolumeRecord): kotlin.Unit`
-  void onVolumeRecordChanged(jni$_.JObject invictusVolumeRecord) {
+  void onVolumeRecordChanged(
+    invictusvolumerecord$_.InvictusVolumeRecord invictusVolumeRecord,
+  ) {
     final _$invictusVolumeRecord = invictusVolumeRecord.reference;
     _onVolumeRecordChanged(
       reference.pointer,
@@ -355,7 +361,10 @@ extension JniInvictusStorageEventListenerImpl$$Methods
           >();
 
   /// from: `public fun onDiskScanned(disk: dev.zeekr.invictus_android.os.storage.InvictusDiskInfo, volumeCount: kotlin.Int): kotlin.Unit`
-  void onDiskScanned(jni$_.JObject invictusDiskInfo, core$_.int i) {
+  void onDiskScanned(
+    invictusdiskinfo$_.InvictusDiskInfo invictusDiskInfo,
+    core$_.int i,
+  ) {
     final _$invictusDiskInfo = invictusDiskInfo.reference;
     _onDiskScanned(
       reference.pointer,
@@ -390,7 +399,7 @@ extension JniInvictusStorageEventListenerImpl$$Methods
           >();
 
   /// from: `public fun onDiskDestroyed(disk: dev.zeekr.invictus_android.os.storage.InvictusDiskInfo): kotlin.Unit`
-  void onDiskDestroyed(jni$_.JObject invictusDiskInfo) {
+  void onDiskDestroyed(invictusdiskinfo$_.InvictusDiskInfo invictusDiskInfo) {
     final _$invictusDiskInfo = invictusDiskInfo.reference;
     _onDiskDestroyed(
       reference.pointer,

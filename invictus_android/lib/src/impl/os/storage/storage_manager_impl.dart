@@ -94,6 +94,10 @@ final class StorageManagerImpl extends ObjectImpl implements StorageManager {
   @override
   VolumeInfo? findVolumeById(String id) =>
       invictusApi.findVolumeById(id.api)?.impl;
+
+  @override
+  List<VolumeInfo> get volumes =>
+      invictusApi.volumes.asDart().map((e) => e.impl).toList();
 }
 
 final class StorageManager$StorageVolumeCallbackImpl extends ObjectImpl

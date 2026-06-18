@@ -49,6 +49,12 @@ class InvictusStorageManager(val obj: StorageManager) {
         val clazz: Class<*> get() = StorageManager::class.java
     }
 
+    val volumes: List<InvictusVolumeInfo>
+        get() {
+            val objs = clazz.getMethod("getVolumes").invoke(this.obj) as List<*>
+            return objs.filterNotNull().map { obj -> InvictusVolumeInfo(obj) }
+        }
+
     fun registerListener(listener: InvictusStorageEventListener) {
         clazz.getMethod("registerListener", InvictusStorageEventListener.clazz)
             .invoke(this.obj, listener.obj)

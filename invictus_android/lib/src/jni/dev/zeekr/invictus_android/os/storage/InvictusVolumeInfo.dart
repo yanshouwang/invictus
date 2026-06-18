@@ -36,6 +36,8 @@ import 'dart:core' show Object, String;
 import 'package:jni/_internal.dart' as jni$_;
 import 'package:jni/jni.dart' as jni$_;
 
+import 'InvictusDiskInfo.dart' as invictusdiskinfo$_;
+
 /// from: `dev.zeekr.invictus_android.os.storage.InvictusVolumeInfo$Companion`
 extension type InvictusVolumeInfo$Companion._(jni$_.JObject _$this)
     implements jni$_.JObject {
@@ -1008,11 +1010,11 @@ extension InvictusVolumeInfo$$Methods on InvictusVolumeInfo {
 
   /// from: `public final dev.zeekr.invictus_android.os.storage.InvictusDiskInfo getDisk()`
   /// The returned object must be released after use, by calling the [release] method.
-  jni$_.JObject? get disk {
+  invictusdiskinfo$_.InvictusDiskInfo? get disk {
     return _get$disk(
       reference.pointer,
       _id_get$disk.pointer,
-    ).object<jni$_.JObject?>();
+    ).object<invictusdiskinfo$_.InvictusDiskInfo?>();
   }
 
   static final _id_get$diskId = InvictusVolumeInfo._class.instanceMethodId(

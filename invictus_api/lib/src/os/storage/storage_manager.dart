@@ -91,7 +91,7 @@ abstract interface class StorageManager {
   // @Deprecated(null)
   // bool get isUsbMassStorageEnabled;
   // List<DiskInfo> get disks;
-  // List<VolumeInfo> get volumes;
+  List<VolumeInfo> get volumes;
   // List<VolumeInfo> get writablePrivateVolumes;
   // List<VolumeRecord> get volumeRecords;
   // VolumeInfo? get primaryPhysicalVolume;

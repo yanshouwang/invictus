@@ -1,20 +1,33 @@
+import 'package:invictus_api/src/os.dart';
 import 'package:plugin_platform_interface/plugin_platform_interface.dart';
-
-// import 'disk_info.dart';
-import 'volume_info.dart';
-// import 'volume_record.dart';
 
 abstract interface class StorageEventListener {
   factory StorageEventListener({
-    required void Function(bool connected) onUsbMassStorageConnectionChanged,
-    required void Function(String? path, String oldState, String newState)
+    void Function(bool connected)? onUsbMassStorageConnectionChanged,
+    void Function(
+      String? path,
+      Environment$Media oldState,
+      Environment$Media newState,
+    )?
     onStorageStateChanged,
-    required void Function(VolumeInfo vol, int oldState, int newState)
+    void Function(
+      VolumeInfo vol,
+      VolumeInfo$State oldState,
+      VolumeInfo$State newState,
+    )?
     onVolumeStateChanged,
+    void Function(VolumeRecord rec)? onVolumeRecordChanged,
+    void Function(String fsUuid)? onVolumeForgotten,
+    void Function(DiskInfo disk, int volumeCount)? onDiskScanned,
+    void Function(DiskInfo disk)? onDiskDestroyed,
   }) => StorageEventListenerChannel.instance.create(
     onUsbMassStorageConnectionChanged: onUsbMassStorageConnectionChanged,
     onStorageStateChanged: onStorageStateChanged,
     onVolumeStateChanged: onVolumeStateChanged,
+    onVolumeRecordChanged: onVolumeRecordChanged,
+    onVolumeForgotten: onVolumeForgotten,
+    onDiskScanned: onDiskScanned,
+    onDiskDestroyed: onDiskDestroyed,
   );
 }
 
@@ -39,14 +52,22 @@ abstract base class StorageEventListenerChannel extends PlatformInterface {
   }
 
   StorageEventListener create({
-    required void Function(bool connected) onUsbMassStorageConnectionChanged,
-    required void Function(String? path, String oldState, String newState)
+    void Function(bool connected)? onUsbMassStorageConnectionChanged,
+    void Function(
+      String? path,
+      Environment$Media oldState,
+      Environment$Media newState,
+    )?
     onStorageStateChanged,
-    required void Function(VolumeInfo vol, int oldState, int newState)
+    void Function(
+      VolumeInfo vol,
+      VolumeInfo$State oldState,
+      VolumeInfo$State newState,
+    )?
     onVolumeStateChanged,
-    // required void Function(VolumeRecord rec) onVolumeRecordChanged,
-    // required void Function(String fsUuid) onVolumeForgotten,
-    // required void Function(DiskInfo disk, int volumeCount) onDiskScanned,
-    // required void Function(DiskInfo disk) onDiskDestroyed,
+    void Function(VolumeRecord rec)? onVolumeRecordChanged,
+    void Function(String fsUuid)? onVolumeForgotten,
+    void Function(DiskInfo disk, int volumeCount)? onDiskScanned,
+    void Function(DiskInfo disk)? onDiskDestroyed,
   });
 }

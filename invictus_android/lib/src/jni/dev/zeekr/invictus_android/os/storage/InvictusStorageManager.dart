@@ -745,6 +745,36 @@ extension InvictusStorageManager$$Methods on InvictusStorageManager {
     ).object<storagemanager$_.StorageManager>();
   }
 
+  static final _id_get$volumes = InvictusStorageManager._class.instanceMethodId(
+    r'getVolumes',
+    r'()Ljava/util/List;',
+  );
+
+  static final _get$volumes =
+      jni$_.ProtectedJniExtensions.lookup<
+            jni$_.NativeFunction<
+              jni$_.JniResult Function(
+                jni$_.Pointer<jni$_.Void>,
+                jni$_.JMethodIDPtr,
+              )
+            >
+          >('globalEnv_CallObjectMethod')
+          .asFunction<
+            jni$_.JniResult Function(
+              jni$_.Pointer<jni$_.Void>,
+              jni$_.JMethodIDPtr,
+            )
+          >();
+
+  /// from: `public final java.util.List<dev.zeekr.invictus_android.os.storage.InvictusVolumeInfo> getVolumes()`
+  /// The returned object must be released after use, by calling the [release] method.
+  jni$_.JList<invictusvolumeinfo$_.InvictusVolumeInfo> get volumes {
+    return _get$volumes(
+      reference.pointer,
+      _id_get$volumes.pointer,
+    ).object<jni$_.JList<invictusvolumeinfo$_.InvictusVolumeInfo>>();
+  }
+
   static final _id_registerListener = InvictusStorageManager._class
       .instanceMethodId(
         r'registerListener',

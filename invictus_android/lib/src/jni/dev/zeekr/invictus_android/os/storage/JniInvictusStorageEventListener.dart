@@ -36,7 +36,11 @@ import 'dart:core' show Object, String;
 import 'package:jni/_internal.dart' as jni$_;
 import 'package:jni/jni.dart' as jni$_;
 
+import 'InvictusDiskInfo.dart' as invictusdiskinfo$_;
+
 import 'InvictusVolumeInfo.dart' as invictusvolumeinfo$_;
+
+import 'InvictusVolumeRecord.dart' as invictusvolumerecord$_;
 
 /// from: `dev.zeekr.invictus_android.os.storage.JniInvictusStorageEventListener`
 extension type JniInvictusStorageEventListener._(jni$_.JObject _$this)
@@ -103,7 +107,9 @@ extension type JniInvictusStorageEventListener._(jni$_.JObject _$this)
       }
       if ($d ==
           r'onVolumeRecordChanged(Ldev/zeekr/invictus_android/os/storage/InvictusVolumeRecord;)V') {
-        _$impls[$p]!.onVolumeRecordChanged(($a![0] as jni$_.JObject));
+        _$impls[$p]!.onVolumeRecordChanged(
+          ($a![0] as invictusvolumerecord$_.InvictusVolumeRecord),
+        );
         return jni$_.nullptr;
       }
       if ($d == r'onVolumeForgotten(Ljava/lang/String;)V') {
@@ -113,14 +119,16 @@ extension type JniInvictusStorageEventListener._(jni$_.JObject _$this)
       if ($d ==
           r'onDiskScanned(Ldev/zeekr/invictus_android/os/storage/InvictusDiskInfo;I)V') {
         _$impls[$p]!.onDiskScanned(
-          ($a![0] as jni$_.JObject),
+          ($a![0] as invictusdiskinfo$_.InvictusDiskInfo),
           ($a![1] as jni$_.JInteger).toDartInt(releaseOriginal: true),
         );
         return jni$_.nullptr;
       }
       if ($d ==
           r'onDiskDestroyed(Ldev/zeekr/invictus_android/os/storage/InvictusDiskInfo;)V') {
-        _$impls[$p]!.onDiskDestroyed(($a![0] as jni$_.JObject));
+        _$impls[$p]!.onDiskDestroyed(
+          ($a![0] as invictusdiskinfo$_.InvictusDiskInfo),
+        );
         return jni$_.nullptr;
       }
     } catch (e) {
@@ -334,7 +342,9 @@ extension JniInvictusStorageEventListener$$Methods
           >();
 
   /// from: `public fun onVolumeRecordChanged(rec: dev.zeekr.invictus_android.os.storage.InvictusVolumeRecord): kotlin.Unit`
-  void onVolumeRecordChanged(jni$_.JObject invictusVolumeRecord) {
+  void onVolumeRecordChanged(
+    invictusvolumerecord$_.InvictusVolumeRecord invictusVolumeRecord,
+  ) {
     final _$invictusVolumeRecord = invictusVolumeRecord.reference;
     _onVolumeRecordChanged(
       reference.pointer,
@@ -400,7 +410,10 @@ extension JniInvictusStorageEventListener$$Methods
           >();
 
   /// from: `public fun onDiskScanned(disk: dev.zeekr.invictus_android.os.storage.InvictusDiskInfo, volumeCount: kotlin.Int): kotlin.Unit`
-  void onDiskScanned(jni$_.JObject invictusDiskInfo, core$_.int i) {
+  void onDiskScanned(
+    invictusdiskinfo$_.InvictusDiskInfo invictusDiskInfo,
+    core$_.int i,
+  ) {
     final _$invictusDiskInfo = invictusDiskInfo.reference;
     _onDiskScanned(
       reference.pointer,
@@ -435,7 +448,7 @@ extension JniInvictusStorageEventListener$$Methods
           >();
 
   /// from: `public fun onDiskDestroyed(disk: dev.zeekr.invictus_android.os.storage.InvictusDiskInfo): kotlin.Unit`
-  void onDiskDestroyed(jni$_.JObject invictusDiskInfo) {
+  void onDiskDestroyed(invictusdiskinfo$_.InvictusDiskInfo invictusDiskInfo) {
     final _$invictusDiskInfo = invictusDiskInfo.reference;
     _onDiskDestroyed(
       reference.pointer,
@@ -463,15 +476,21 @@ abstract base mixin class $JniInvictusStorageEventListener {
     )
     onVolumeStateChanged,
     core$_.bool onVolumeStateChanged$async,
-    required void Function(jni$_.JObject invictusVolumeRecord)
+    required void Function(
+      invictusvolumerecord$_.InvictusVolumeRecord invictusVolumeRecord,
+    )
     onVolumeRecordChanged,
     core$_.bool onVolumeRecordChanged$async,
     required void Function(jni$_.JString string) onVolumeForgotten,
     core$_.bool onVolumeForgotten$async,
-    required void Function(jni$_.JObject invictusDiskInfo, core$_.int i)
+    required void Function(
+      invictusdiskinfo$_.InvictusDiskInfo invictusDiskInfo,
+      core$_.int i,
+    )
     onDiskScanned,
     core$_.bool onDiskScanned$async,
-    required void Function(jni$_.JObject invictusDiskInfo) onDiskDestroyed,
+    required void Function(invictusdiskinfo$_.InvictusDiskInfo invictusDiskInfo)
+    onDiskDestroyed,
     core$_.bool onDiskDestroyed$async,
   }) = _$JniInvictusStorageEventListener;
 
@@ -489,13 +508,18 @@ abstract base mixin class $JniInvictusStorageEventListener {
     core$_.int i1,
   );
   core$_.bool get onVolumeStateChanged$async => false;
-  void onVolumeRecordChanged(jni$_.JObject invictusVolumeRecord);
+  void onVolumeRecordChanged(
+    invictusvolumerecord$_.InvictusVolumeRecord invictusVolumeRecord,
+  );
   core$_.bool get onVolumeRecordChanged$async => false;
   void onVolumeForgotten(jni$_.JString string);
   core$_.bool get onVolumeForgotten$async => false;
-  void onDiskScanned(jni$_.JObject invictusDiskInfo, core$_.int i);
+  void onDiskScanned(
+    invictusdiskinfo$_.InvictusDiskInfo invictusDiskInfo,
+    core$_.int i,
+  );
   core$_.bool get onDiskScanned$async => false;
-  void onDiskDestroyed(jni$_.JObject invictusDiskInfo);
+  void onDiskDestroyed(invictusdiskinfo$_.InvictusDiskInfo invictusDiskInfo);
   core$_.bool get onDiskDestroyed$async => false;
 }
 
@@ -518,15 +542,21 @@ final class _$JniInvictusStorageEventListener
     )
     onVolumeStateChanged,
     this.onVolumeStateChanged$async = false,
-    required void Function(jni$_.JObject invictusVolumeRecord)
+    required void Function(
+      invictusvolumerecord$_.InvictusVolumeRecord invictusVolumeRecord,
+    )
     onVolumeRecordChanged,
     this.onVolumeRecordChanged$async = false,
     required void Function(jni$_.JString string) onVolumeForgotten,
     this.onVolumeForgotten$async = false,
-    required void Function(jni$_.JObject invictusDiskInfo, core$_.int i)
+    required void Function(
+      invictusdiskinfo$_.InvictusDiskInfo invictusDiskInfo,
+      core$_.int i,
+    )
     onDiskScanned,
     this.onDiskScanned$async = false,
-    required void Function(jni$_.JObject invictusDiskInfo) onDiskDestroyed,
+    required void Function(invictusdiskinfo$_.InvictusDiskInfo invictusDiskInfo)
+    onDiskDestroyed,
     this.onDiskDestroyed$async = false,
   }) : _onUsbMassStorageConnectionChanged = onUsbMassStorageConnectionChanged,
        _onStorageStateChanged = onStorageStateChanged,
@@ -552,15 +582,21 @@ final class _$JniInvictusStorageEventListener
   )
   _onVolumeStateChanged;
   final core$_.bool onVolumeStateChanged$async;
-  final void Function(jni$_.JObject invictusVolumeRecord)
+  final void Function(
+    invictusvolumerecord$_.InvictusVolumeRecord invictusVolumeRecord,
+  )
   _onVolumeRecordChanged;
   final core$_.bool onVolumeRecordChanged$async;
   final void Function(jni$_.JString string) _onVolumeForgotten;
   final core$_.bool onVolumeForgotten$async;
-  final void Function(jni$_.JObject invictusDiskInfo, core$_.int i)
+  final void Function(
+    invictusdiskinfo$_.InvictusDiskInfo invictusDiskInfo,
+    core$_.int i,
+  )
   _onDiskScanned;
   final core$_.bool onDiskScanned$async;
-  final void Function(jni$_.JObject invictusDiskInfo) _onDiskDestroyed;
+  final void Function(invictusdiskinfo$_.InvictusDiskInfo invictusDiskInfo)
+  _onDiskDestroyed;
   final core$_.bool onDiskDestroyed$async;
 
   void onUsbMassStorageConnectionChanged(core$_.bool z) {
@@ -583,7 +619,9 @@ final class _$JniInvictusStorageEventListener
     return _onVolumeStateChanged(invictusVolumeInfo, i, i1);
   }
 
-  void onVolumeRecordChanged(jni$_.JObject invictusVolumeRecord) {
+  void onVolumeRecordChanged(
+    invictusvolumerecord$_.InvictusVolumeRecord invictusVolumeRecord,
+  ) {
     return _onVolumeRecordChanged(invictusVolumeRecord);
   }
 
@@ -591,11 +629,14 @@ final class _$JniInvictusStorageEventListener
     return _onVolumeForgotten(string);
   }
 
-  void onDiskScanned(jni$_.JObject invictusDiskInfo, core$_.int i) {
+  void onDiskScanned(
+    invictusdiskinfo$_.InvictusDiskInfo invictusDiskInfo,
+    core$_.int i,
+  ) {
     return _onDiskScanned(invictusDiskInfo, i);
   }
 
-  void onDiskDestroyed(jni$_.JObject invictusDiskInfo) {
+  void onDiskDestroyed(invictusdiskinfo$_.InvictusDiskInfo invictusDiskInfo) {
     return _onDiskDestroyed(invictusDiskInfo);
   }
 }

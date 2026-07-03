@@ -1,3 +1,7 @@
+## 1.0.0-dev.8
+
+* Adjust Apis.
+
 ## 1.0.0-dev.7
 
 * Add `StorageManager#volumes` Api.

@@ -86,11 +86,11 @@ abstract interface class WifiConfiguration {
   IpConfiguration get ipConfiguration;
   set ipConfiguration(IpConfiguration? value);
 
-  StaticIpConfiguration? get staticIpConfiguration;
-  set staticIpConfiguration(StaticIpConfiguration? value);
-
   IpConfiguration$IpAssignment get ipAssignment;
   set ipAssignment(IpConfiguration$IpAssignment value);
+
+  StaticIpConfiguration? get staticIpConfiguration;
+  set staticIpConfiguration(StaticIpConfiguration? value);
 
   // IpConfiguration$ProxySettings get proxySettings;
   // set proxySettings(IpConfiguration$ProxySettings value);

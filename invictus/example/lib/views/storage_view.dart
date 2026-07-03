@@ -21,7 +21,12 @@ class StorageView extends StatelessWidget {
             subtitle: Text('[$type, ${volume.state.name}] ${volume.path}'),
             trailing: volume.isRemovable
                 ? IconButton(
-                    onPressed: () => viewModel.unmount(volume.id),
+                    onPressed:
+                        volume.state == .mounted || volume.state == .unmounted
+                        ? () => volume.state == .mounted
+                              ? viewModel.unmount(volume.id)
+                              : viewModel.mount(volume.id)
+                        : null,
                     icon: Icon(Symbols.eject),
                   )
                 : null,

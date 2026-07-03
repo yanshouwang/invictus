@@ -83,38 +83,6 @@ extension type TimeState$Companion._(jni$_.JObject _$this)
   }
 }
 
-extension TimeState$Companion$$Methods on TimeState$Companion {
-  static final _id_get$clazz = TimeState$Companion._class.instanceMethodId(
-    r'getClazz',
-    r'()Ljava/lang/Class;',
-  );
-
-  static final _get$clazz =
-      jni$_.ProtectedJniExtensions.lookup<
-            jni$_.NativeFunction<
-              jni$_.JniResult Function(
-                jni$_.Pointer<jni$_.Void>,
-                jni$_.JMethodIDPtr,
-              )
-            >
-          >('globalEnv_CallObjectMethod')
-          .asFunction<
-            jni$_.JniResult Function(
-              jni$_.Pointer<jni$_.Void>,
-              jni$_.JMethodIDPtr,
-            )
-          >();
-
-  /// from: `public final java.lang.Class<?> getClazz()`
-  /// The returned object must be released after use, by calling the [release] method.
-  jni$_.JObject get clazz {
-    return _get$clazz(
-      reference.pointer,
-      _id_get$clazz.pointer,
-    ).object<jni$_.JObject>();
-  }
-}
-
 final class $TimeState$Companion$Type$
     extends jni$_.JType<TimeState$Companion> {
   @jni$_.internal
@@ -178,36 +146,6 @@ extension type TimeState._(jni$_.JObject _$this) implements jni$_.JObject {
 }
 
 extension TimeState$$Methods on TimeState {
-  static final _id_get$obj = TimeState._class.instanceMethodId(
-    r'getObj',
-    r'()Ljava/lang/Object;',
-  );
-
-  static final _get$obj =
-      jni$_.ProtectedJniExtensions.lookup<
-            jni$_.NativeFunction<
-              jni$_.JniResult Function(
-                jni$_.Pointer<jni$_.Void>,
-                jni$_.JMethodIDPtr,
-              )
-            >
-          >('globalEnv_CallObjectMethod')
-          .asFunction<
-            jni$_.JniResult Function(
-              jni$_.Pointer<jni$_.Void>,
-              jni$_.JMethodIDPtr,
-            )
-          >();
-
-  /// from: `public final java.lang.Object getObj()`
-  /// The returned object must be released after use, by calling the [release] method.
-  jni$_.JObject get obj {
-    return _get$obj(
-      reference.pointer,
-      _id_get$obj.pointer,
-    ).object<jni$_.JObject>();
-  }
-
   static final _id_get$unixEpochTime = TimeState._class.instanceMethodId(
     r'getUnixEpochTime',
     r'()Ldev/zeekr/invictus_android/app/time/UnixEpochTime;',
@@ -263,95 +201,6 @@ extension TimeState$$Methods on TimeState {
       reference.pointer,
       _id_get$userShouldConfirmTime.pointer,
     ).boolean;
-  }
-
-  static final _id_equals = TimeState._class.instanceMethodId(
-    r'equals',
-    r'(Ljava/lang/Object;)Z',
-  );
-
-  static final _equals =
-      jni$_.ProtectedJniExtensions.lookup<
-            jni$_.NativeFunction<
-              jni$_.JniResult Function(
-                jni$_.Pointer<jni$_.Void>,
-                jni$_.JMethodIDPtr,
-                jni$_.VarArgs<(jni$_.Pointer<jni$_.Void>,)>,
-              )
-            >
-          >('globalEnv_CallBooleanMethod')
-          .asFunction<
-            jni$_.JniResult Function(
-              jni$_.Pointer<jni$_.Void>,
-              jni$_.JMethodIDPtr,
-              jni$_.Pointer<jni$_.Void>,
-            )
-          >();
-
-  /// from: `public operator fun equals(other: kotlin.Any?): kotlin.Boolean`
-  core$_.bool equals(jni$_.JObject? object) {
-    final _$object = object?.reference ?? jni$_.jNullReference;
-    return _equals(
-      reference.pointer,
-      _id_equals.pointer,
-      _$object.pointer,
-    ).boolean;
-  }
-
-  static final _id_hashCode$1 = TimeState._class.instanceMethodId(
-    r'hashCode',
-    r'()I',
-  );
-
-  static final _hashCode$1 =
-      jni$_.ProtectedJniExtensions.lookup<
-            jni$_.NativeFunction<
-              jni$_.JniResult Function(
-                jni$_.Pointer<jni$_.Void>,
-                jni$_.JMethodIDPtr,
-              )
-            >
-          >('globalEnv_CallIntMethod')
-          .asFunction<
-            jni$_.JniResult Function(
-              jni$_.Pointer<jni$_.Void>,
-              jni$_.JMethodIDPtr,
-            )
-          >();
-
-  /// from: `public fun hashCode(): kotlin.Int`
-  core$_.int hashCode$1() {
-    return _hashCode$1(reference.pointer, _id_hashCode$1.pointer).integer;
-  }
-
-  static final _id_toString$1 = TimeState._class.instanceMethodId(
-    r'toString',
-    r'()Ljava/lang/String;',
-  );
-
-  static final _toString$1 =
-      jni$_.ProtectedJniExtensions.lookup<
-            jni$_.NativeFunction<
-              jni$_.JniResult Function(
-                jni$_.Pointer<jni$_.Void>,
-                jni$_.JMethodIDPtr,
-              )
-            >
-          >('globalEnv_CallObjectMethod')
-          .asFunction<
-            jni$_.JniResult Function(
-              jni$_.Pointer<jni$_.Void>,
-              jni$_.JMethodIDPtr,
-            )
-          >();
-
-  /// from: `public fun toString(): kotlin.String`
-  /// The returned object must be released after use, by calling the [release] method.
-  jni$_.JString toString$1() {
-    return _toString$1(
-      reference.pointer,
-      _id_toString$1.pointer,
-    ).object<jni$_.JString>();
   }
 }
 

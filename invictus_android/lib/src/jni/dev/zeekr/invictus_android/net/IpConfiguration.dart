@@ -85,37 +85,6 @@ extension type IpConfiguration$Builder$Companion._(jni$_.JObject _$this)
   }
 }
 
-extension IpConfiguration$Builder$Companion$$Methods
-    on IpConfiguration$Builder$Companion {
-  static final _id_get$clazz = IpConfiguration$Builder$Companion._class
-      .instanceMethodId(r'getClazz', r'()Ljava/lang/Class;');
-
-  static final _get$clazz =
-      jni$_.ProtectedJniExtensions.lookup<
-            jni$_.NativeFunction<
-              jni$_.JniResult Function(
-                jni$_.Pointer<jni$_.Void>,
-                jni$_.JMethodIDPtr,
-              )
-            >
-          >('globalEnv_CallObjectMethod')
-          .asFunction<
-            jni$_.JniResult Function(
-              jni$_.Pointer<jni$_.Void>,
-              jni$_.JMethodIDPtr,
-            )
-          >();
-
-  /// from: `public final java.lang.Class<?> getClazz()`
-  /// The returned object must be released after use, by calling the [release] method.
-  jni$_.JObject get clazz {
-    return _get$clazz(
-      reference.pointer,
-      _id_get$clazz.pointer,
-    ).object<jni$_.JObject>();
-  }
-}
-
 final class $IpConfiguration$Builder$Companion$Type$
     extends jni$_.JType<IpConfiguration$Builder$Companion> {
   @jni$_.internal
@@ -208,36 +177,6 @@ extension type IpConfiguration$Builder._(jni$_.JObject _$this)
 }
 
 extension IpConfiguration$Builder$$Methods on IpConfiguration$Builder {
-  static final _id_get$obj = IpConfiguration$Builder._class.instanceMethodId(
-    r'getObj',
-    r'()Ljava/lang/Object;',
-  );
-
-  static final _get$obj =
-      jni$_.ProtectedJniExtensions.lookup<
-            jni$_.NativeFunction<
-              jni$_.JniResult Function(
-                jni$_.Pointer<jni$_.Void>,
-                jni$_.JMethodIDPtr,
-              )
-            >
-          >('globalEnv_CallObjectMethod')
-          .asFunction<
-            jni$_.JniResult Function(
-              jni$_.Pointer<jni$_.Void>,
-              jni$_.JMethodIDPtr,
-            )
-          >();
-
-  /// from: `public final java.lang.Object getObj()`
-  /// The returned object must be released after use, by calling the [release] method.
-  jni$_.JObject get obj {
-    return _get$obj(
-      reference.pointer,
-      _id_get$obj.pointer,
-    ).object<jni$_.JObject>();
-  }
-
   static final _id_setStaticIpConfiguration = IpConfiguration$Builder._class
       .instanceMethodId(
         r'setStaticIpConfiguration',
@@ -363,36 +302,6 @@ extension type IpConfiguration$Companion._(jni$_.JObject _$this)
   }
 }
 
-extension IpConfiguration$Companion$$Methods on IpConfiguration$Companion {
-  static final _id_get$clazz = IpConfiguration$Companion._class
-      .instanceMethodId(r'getClazz', r'()Ljava/lang/Class;');
-
-  static final _get$clazz =
-      jni$_.ProtectedJniExtensions.lookup<
-            jni$_.NativeFunction<
-              jni$_.JniResult Function(
-                jni$_.Pointer<jni$_.Void>,
-                jni$_.JMethodIDPtr,
-              )
-            >
-          >('globalEnv_CallObjectMethod')
-          .asFunction<
-            jni$_.JniResult Function(
-              jni$_.Pointer<jni$_.Void>,
-              jni$_.JMethodIDPtr,
-            )
-          >();
-
-  /// from: `public final java.lang.Class<?> getClazz()`
-  /// The returned object must be released after use, by calling the [release] method.
-  jni$_.JObject get clazz {
-    return _get$clazz(
-      reference.pointer,
-      _id_get$clazz.pointer,
-    ).object<jni$_.JObject>();
-  }
-}
-
 final class $IpConfiguration$Companion$Type$
     extends jni$_.JType<IpConfiguration$Companion> {
   @jni$_.internal
@@ -448,72 +357,6 @@ extension type IpConfiguration$IpAssignment$Companion._(jni$_.JObject _$this)
       _id_new$.pointer,
       _$defaultConstructorMarker.pointer,
     ).object<IpConfiguration$IpAssignment$Companion>();
-  }
-}
-
-extension IpConfiguration$IpAssignment$Companion$$Methods
-    on IpConfiguration$IpAssignment$Companion {
-  static final _id_get$clazz = IpConfiguration$IpAssignment$Companion._class
-      .instanceMethodId(r'getClazz', r'()Ljava/lang/Class;');
-
-  static final _get$clazz =
-      jni$_.ProtectedJniExtensions.lookup<
-            jni$_.NativeFunction<
-              jni$_.JniResult Function(
-                jni$_.Pointer<jni$_.Void>,
-                jni$_.JMethodIDPtr,
-              )
-            >
-          >('globalEnv_CallObjectMethod')
-          .asFunction<
-            jni$_.JniResult Function(
-              jni$_.Pointer<jni$_.Void>,
-              jni$_.JMethodIDPtr,
-            )
-          >();
-
-  /// from: `public final java.lang.Class<?> getClazz()`
-  /// The returned object must be released after use, by calling the [release] method.
-  jni$_.JObject get clazz {
-    return _get$clazz(
-      reference.pointer,
-      _id_get$clazz.pointer,
-    ).object<jni$_.JObject>();
-  }
-
-  static final _id_of = IpConfiguration$IpAssignment$Companion._class
-      .instanceMethodId(
-        r'of',
-        r'(Ljava/lang/Object;)Ldev/zeekr/invictus_android/net/IpConfiguration$IpAssignment;',
-      );
-
-  static final _of =
-      jni$_.ProtectedJniExtensions.lookup<
-            jni$_.NativeFunction<
-              jni$_.JniResult Function(
-                jni$_.Pointer<jni$_.Void>,
-                jni$_.JMethodIDPtr,
-                jni$_.VarArgs<(jni$_.Pointer<jni$_.Void>,)>,
-              )
-            >
-          >('globalEnv_CallObjectMethod')
-          .asFunction<
-            jni$_.JniResult Function(
-              jni$_.Pointer<jni$_.Void>,
-              jni$_.JMethodIDPtr,
-              jni$_.Pointer<jni$_.Void>,
-            )
-          >();
-
-  /// from: `public fun of(obj: kotlin.Any): dev.zeekr.invictus_android.net.IpConfiguration.IpAssignment`
-  /// The returned object must be released after use, by calling the [release] method.
-  IpConfiguration$IpAssignment of(jni$_.JObject object) {
-    final _$object = object.reference;
-    return _of(
-      reference.pointer,
-      _id_of.pointer,
-      _$object.pointer,
-    ).object<IpConfiguration$IpAssignment>();
   }
 }
 
@@ -677,37 +520,6 @@ extension type IpConfiguration$IpAssignment._(jni$_.JObject _$this)
   }
 }
 
-extension IpConfiguration$IpAssignment$$Methods
-    on IpConfiguration$IpAssignment {
-  static final _id_get$obj = IpConfiguration$IpAssignment._class
-      .instanceMethodId(r'getObj', r'()Ljava/lang/Object;');
-
-  static final _get$obj =
-      jni$_.ProtectedJniExtensions.lookup<
-            jni$_.NativeFunction<
-              jni$_.JniResult Function(
-                jni$_.Pointer<jni$_.Void>,
-                jni$_.JMethodIDPtr,
-              )
-            >
-          >('globalEnv_CallObjectMethod')
-          .asFunction<
-            jni$_.JniResult Function(
-              jni$_.Pointer<jni$_.Void>,
-              jni$_.JMethodIDPtr,
-            )
-          >();
-
-  /// from: `public final java.lang.Object getObj()`
-  /// The returned object must be released after use, by calling the [release] method.
-  jni$_.JObject get obj {
-    return _get$obj(
-      reference.pointer,
-      _id_get$obj.pointer,
-    ).object<jni$_.JObject>();
-  }
-}
-
 final class $IpConfiguration$IpAssignment$Type$
     extends jni$_.JType<IpConfiguration$IpAssignment> {
   @jni$_.internal
@@ -832,36 +644,6 @@ extension type IpConfiguration._(jni$_.JObject _$this)
 }
 
 extension IpConfiguration$$Methods on IpConfiguration {
-  static final _id_get$obj = IpConfiguration._class.instanceMethodId(
-    r'getObj',
-    r'()Ljava/lang/Object;',
-  );
-
-  static final _get$obj =
-      jni$_.ProtectedJniExtensions.lookup<
-            jni$_.NativeFunction<
-              jni$_.JniResult Function(
-                jni$_.Pointer<jni$_.Void>,
-                jni$_.JMethodIDPtr,
-              )
-            >
-          >('globalEnv_CallObjectMethod')
-          .asFunction<
-            jni$_.JniResult Function(
-              jni$_.Pointer<jni$_.Void>,
-              jni$_.JMethodIDPtr,
-            )
-          >();
-
-  /// from: `public final java.lang.Object getObj()`
-  /// The returned object must be released after use, by calling the [release] method.
-  jni$_.JObject get obj {
-    return _get$obj(
-      reference.pointer,
-      _id_get$obj.pointer,
-    ).object<jni$_.JObject>();
-  }
-
   static final _id_get$ipAssignment = IpConfiguration._class.instanceMethodId(
     r'getIpAssignment',
     r'()Ldev/zeekr/invictus_android/net/IpConfiguration$IpAssignment;',

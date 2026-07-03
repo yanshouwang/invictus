@@ -22,7 +22,6 @@ export 'jni/dev/zeekr/invictus_android/app/time/_package.dart';
 export 'jni/dev/zeekr/invictus_android/content/_package.dart';
 export 'jni/dev/zeekr/invictus_android/internal/app/_package.dart';
 export 'jni/dev/zeekr/invictus_android/net/_package.dart';
-export 'jni/dev/zeekr/invictus_android/net/ethernet/_package.dart';
 export 'jni/dev/zeekr/invictus_android/net/util/_package.dart';
 export 'jni/dev/zeekr/invictus_android/net/wifi/_package.dart';
 export 'jni/dev/zeekr/invictus_android/os/_package.dart';

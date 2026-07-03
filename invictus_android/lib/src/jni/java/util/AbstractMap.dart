@@ -42,8 +42,7 @@ import 'Collection.dart' as collection$_;
 extension type AbstractMap$SimpleEntry<
   $K extends jni$_.JObject?,
   $V extends jni$_.JObject?
->._(jni$_.JObject _$this)
-    implements jni$_.JObject {
+>._(jni$_.JObject _$this) implements jni$_.JObject {
   static final _class = jni$_.JClass.forName(
     r'java/util/AbstractMap$SimpleEntry',
   );
@@ -318,8 +317,7 @@ final class $AbstractMap$SimpleEntry$Type$
 extension type AbstractMap$SimpleImmutableEntry<
   $K extends jni$_.JObject?,
   $V extends jni$_.JObject?
->._(jni$_.JObject _$this)
-    implements jni$_.JObject {
+>._(jni$_.JObject _$this) implements jni$_.JObject {
   static final _class = jni$_.JClass.forName(
     r'java/util/AbstractMap$SimpleImmutableEntry',
   );
@@ -582,8 +580,7 @@ final class $AbstractMap$SimpleImmutableEntry$Type$
 extension type AbstractMap<
   $K extends jni$_.JObject?,
   $V extends jni$_.JObject?
->._(jni$_.JObject _$this)
-    implements jni$_.JObject, jni$_.JMap<$K?, $V?> {
+>._(jni$_.JObject _$this) implements jni$_.JObject, jni$_.JMap<$K?, $V?> {
   static final _class = jni$_.JClass.forName(r'java/util/AbstractMap');
 
   /// The type which includes information such as the signature of this class.

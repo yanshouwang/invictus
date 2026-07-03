@@ -6,10 +6,8 @@ final class WifiConfigurationImpl extends ObjectImpl
     implements WifiConfiguration {
   @override
   final jni.WifiConfiguration api;
-  final jni.InvictusWifiConfiguration invictusApi;
 
-  WifiConfigurationImpl.internal(this.api)
-    : invictusApi = jni.InvictusWifiConfiguration(api);
+  WifiConfigurationImpl.internal(this.api);
 
   @override
   String get bssid => ArgumentError.checkNotNull(api.BSSID, 'bssidApi').impl;
@@ -129,23 +127,26 @@ final class WifiConfigurationImpl extends ObjectImpl
 
   @override
   IpConfiguration$IpAssignment get ipAssignment =>
-      invictusApi.ipAssignment.impl;
+      jni.WifiConfigurationCompat.INSTANCE.getIpAssignment(api).impl;
   @override
   set ipAssignment(IpConfiguration$IpAssignment value) =>
-      invictusApi.ipAssignment = value.api;
+      jni.WifiConfigurationCompat.INSTANCE.setIpAssignment(api, value.api);
 
   @override
-  IpConfiguration get ipConfiguration => invictusApi.ipConfiguration.impl;
+  IpConfiguration get ipConfiguration =>
+      jni.WifiConfigurationCompat.INSTANCE.getIpConfiguration(api).impl;
   @override
   set ipConfiguration(IpConfiguration? value) =>
-      invictusApi.ipConfiguration = value?.api;
+      jni.WifiConfigurationCompat.INSTANCE.setIpConfiguration(api, value?.api);
 
   @override
   StaticIpConfiguration? get staticIpConfiguration =>
-      invictusApi.staticIpConfiguration?.impl;
+      jni.WifiConfigurationCompat.INSTANCE.getStaticIpConfiguration(api)?.impl;
   @override
-  set staticIpConfiguration(StaticIpConfiguration? value) =>
-      invictusApi.staticIpConfiguration = value?.api;
+  set staticIpConfiguration(StaticIpConfiguration? value) => jni
+      .WifiConfigurationCompat
+      .INSTANCE
+      .setStaticIpConfiguration(api, value?.api);
 }
 
 final class WifiConfigurationChannelImpl extends WifiConfigurationChannel {

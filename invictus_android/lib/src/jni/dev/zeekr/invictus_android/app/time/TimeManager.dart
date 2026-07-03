@@ -101,38 +101,6 @@ extension type TimeManager$Companion._(jni$_.JObject _$this)
   }
 }
 
-extension TimeManager$Companion$$Methods on TimeManager$Companion {
-  static final _id_get$clazz = TimeManager$Companion._class.instanceMethodId(
-    r'getClazz',
-    r'()Ljava/lang/Class;',
-  );
-
-  static final _get$clazz =
-      jni$_.ProtectedJniExtensions.lookup<
-            jni$_.NativeFunction<
-              jni$_.JniResult Function(
-                jni$_.Pointer<jni$_.Void>,
-                jni$_.JMethodIDPtr,
-              )
-            >
-          >('globalEnv_CallObjectMethod')
-          .asFunction<
-            jni$_.JniResult Function(
-              jni$_.Pointer<jni$_.Void>,
-              jni$_.JMethodIDPtr,
-            )
-          >();
-
-  /// from: `public final java.lang.Class<?> getClazz()`
-  /// The returned object must be released after use, by calling the [release] method.
-  jni$_.JObject get clazz {
-    return _get$clazz(
-      reference.pointer,
-      _id_get$clazz.pointer,
-    ).object<jni$_.JObject>();
-  }
-}
-
 final class $TimeManager$Companion$Type$
     extends jni$_.JType<TimeManager$Companion> {
   @jni$_.internal
@@ -147,8 +115,7 @@ final class $TimeManager$Companion$Type$
 /// from: `dev.zeekr.invictus_android.app.time.TimeManager$TimeZoneDetectorListener$Companion`
 extension type TimeManager$TimeZoneDetectorListener$Companion._(
   jni$_.JObject _$this
-)
-    implements jni$_.JObject {
+) implements jni$_.JObject {
   static final _class = jni$_.JClass.forName(
     r'dev/zeekr/invictus_android/app/time/TimeManager$TimeZoneDetectorListener$Companion',
   );
@@ -193,38 +160,6 @@ extension type TimeManager$TimeZoneDetectorListener$Companion._(
   }
 }
 
-extension TimeManager$TimeZoneDetectorListener$Companion$$Methods
-    on TimeManager$TimeZoneDetectorListener$Companion {
-  static final _id_get$clazz = TimeManager$TimeZoneDetectorListener$Companion
-      ._class
-      .instanceMethodId(r'getClazz', r'()Ljava/lang/Class;');
-
-  static final _get$clazz =
-      jni$_.ProtectedJniExtensions.lookup<
-            jni$_.NativeFunction<
-              jni$_.JniResult Function(
-                jni$_.Pointer<jni$_.Void>,
-                jni$_.JMethodIDPtr,
-              )
-            >
-          >('globalEnv_CallObjectMethod')
-          .asFunction<
-            jni$_.JniResult Function(
-              jni$_.Pointer<jni$_.Void>,
-              jni$_.JMethodIDPtr,
-            )
-          >();
-
-  /// from: `public final java.lang.Class<?> getClazz()`
-  /// The returned object must be released after use, by calling the [release] method.
-  jni$_.JObject get clazz {
-    return _get$clazz(
-      reference.pointer,
-      _id_get$clazz.pointer,
-    ).object<jni$_.JObject>();
-  }
-}
-
 final class $TimeManager$TimeZoneDetectorListener$Companion$Type$
     extends jni$_.JType<TimeManager$TimeZoneDetectorListener$Companion> {
   @jni$_.internal
@@ -263,34 +198,6 @@ extension type TimeManager$TimeZoneDetectorListener._(jni$_.JObject _$this)
 
 extension TimeManager$TimeZoneDetectorListener$$Methods
     on TimeManager$TimeZoneDetectorListener {
-  static final _id_get$obj = TimeManager$TimeZoneDetectorListener._class
-      .instanceMethodId(r'getObj', r'()Ljava/lang/Object;');
-
-  static final _get$obj =
-      jni$_.ProtectedJniExtensions.lookup<
-            jni$_.NativeFunction<
-              jni$_.JniResult Function(
-                jni$_.Pointer<jni$_.Void>,
-                jni$_.JMethodIDPtr,
-              )
-            >
-          >('globalEnv_CallObjectMethod')
-          .asFunction<
-            jni$_.JniResult Function(
-              jni$_.Pointer<jni$_.Void>,
-              jni$_.JMethodIDPtr,
-            )
-          >();
-
-  /// from: `public final java.lang.Object getObj()`
-  /// The returned object must be released after use, by calling the [release] method.
-  jni$_.JObject get obj {
-    return _get$obj(
-      reference.pointer,
-      _id_get$obj.pointer,
-    ).object<jni$_.JObject>();
-  }
-
   static final _id_onChange = TimeManager$TimeZoneDetectorListener._class
       .instanceMethodId(r'onChange', r'()V');
 
@@ -379,36 +286,6 @@ extension type TimeManager._(jni$_.JObject _$this) implements jni$_.JObject {
 }
 
 extension TimeManager$$Methods on TimeManager {
-  static final _id_get$obj = TimeManager._class.instanceMethodId(
-    r'getObj',
-    r'()Ljava/lang/Object;',
-  );
-
-  static final _get$obj =
-      jni$_.ProtectedJniExtensions.lookup<
-            jni$_.NativeFunction<
-              jni$_.JniResult Function(
-                jni$_.Pointer<jni$_.Void>,
-                jni$_.JMethodIDPtr,
-              )
-            >
-          >('globalEnv_CallObjectMethod')
-          .asFunction<
-            jni$_.JniResult Function(
-              jni$_.Pointer<jni$_.Void>,
-              jni$_.JMethodIDPtr,
-            )
-          >();
-
-  /// from: `public final java.lang.Object getObj()`
-  /// The returned object must be released after use, by calling the [release] method.
-  jni$_.JObject get obj {
-    return _get$obj(
-      reference.pointer,
-      _id_get$obj.pointer,
-    ).object<jni$_.JObject>();
-  }
-
   static final _id_get$timeZoneCapabilitiesAndConfig = TimeManager._class
       .instanceMethodId(
         r'getTimeZoneCapabilitiesAndConfig',

@@ -1,5 +1,7 @@
 package dev.zeekr.invictus_android.os
 
+import dev.zeekr.invictus_android.InvictusObject
+
 /**
  * Gives access to the system properties store.  The system properties
  * store contains a list of string key-value pairs.
@@ -16,9 +18,15 @@ object SystemProperties {
      * Handle to a pre-located property. Looking up a property handle in advance allows
      * for optimal repeated lookup of a single property.
      */
-    class Handle(val obj: Any) {
+    class Handle : InvictusObject {
         companion object {
-            val clazz: Class<*> get() = Class.forName("android.os.SystemProperties\$Handle")
+            internal val clazz: Class<*> get() = Class.forName("android.os.SystemProperties\$Handle")
+        }
+
+        override val obj: Any
+
+        internal constructor(obj: Any) {
+            this.obj = obj
         }
 
         /**
@@ -41,7 +49,8 @@ object SystemProperties {
          * @return value or {@code defaultValue} on parse error
          */
         fun getLong(defaultValue: Long): Long {
-            return clazz.getMethod("getLong", Long::class.java).invoke(this.obj, defaultValue) as Long
+            return clazz.getMethod("getLong", Long::class.java)
+                .invoke(this.obj, defaultValue) as Long
         }
 
         /**
@@ -49,11 +58,12 @@ object SystemProperties {
          * @return value or {@code defaultValue} on parse error
          */
         fun getBoolean(defaultValue: Boolean): Boolean {
-            return clazz.getMethod("getBoolean", Boolean::class.java).invoke(this.obj, defaultValue) as Boolean
+            return clazz.getMethod("getBoolean", Boolean::class.java)
+                .invoke(this.obj, defaultValue) as Boolean
         }
     }
 
-    val clazz: Class<*> get() = Class.forName("android.os.SystemProperties")
+    internal val clazz: Class<*> get() = Class.forName("android.os.SystemProperties")
 
     /**
      * Get the String value for the given {@code key}.
@@ -74,7 +84,8 @@ object SystemProperties {
      * string otherwise
      */
     fun get(key: String, defaultValue: String?): String {
-        return clazz.getMethod("get", String::class.java, String::class.java).invoke(null, key, defaultValue) as String
+        return clazz.getMethod("get", String::class.java, String::class.java)
+            .invoke(null, key, defaultValue) as String
     }
 
     /**
@@ -86,7 +97,8 @@ object SystemProperties {
      *         cannot be parsed
      */
     fun getInt(key: String, defaultValue: Int): Int {
-        return clazz.getMethod("getInt", String::class.java, Int::class.java).invoke(null, key, defaultValue) as Int
+        return clazz.getMethod("getInt", String::class.java, Int::class.java)
+            .invoke(null, key, defaultValue) as Int
     }
 
     /**
@@ -98,7 +110,8 @@ object SystemProperties {
      *         cannot be parsed
      */
     fun getLong(key: String, defaultValue: Long): Long {
-        return clazz.getMethod("getLong", String::class.java, Long::class.java).invoke(null, key, defaultValue) as Long
+        return clazz.getMethod("getLong", String::class.java, Long::class.java)
+            .invoke(null, key, defaultValue) as Long
     }
 
     /**
@@ -161,8 +174,8 @@ object SystemProperties {
     }
 
     fun find(name: String): Handle? {
-        val handleObj = clazz.getMethod("find", String::class.java).invoke(null, name)
-        return if (handleObj == null) null
-        else Handle(handleObj)
+        val obj = clazz.getMethod("find", String::class.java).invoke(null, name)
+        return if (obj == null) null
+        else Handle(obj)
     }
 }

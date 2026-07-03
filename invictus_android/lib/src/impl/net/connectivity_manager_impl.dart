@@ -229,30 +229,27 @@ final class ConnectivityManagerChannelImpl extends ConnectivityManagerChannel {
     void Function(NetworkCapabilities networkCapabilities)? onReserved,
     void Function()? onUnavailable,
   }) {
-    final invictusApi =
-        jni.InvictusConnectivityManager$InvictusNetworkCallback.implement(
-          jni.$InvictusConnectivityManager$InvictusNetworkCallback(
-            onAvailable: (e) => onAvailable?.call(e.impl),
-            onBlockedStatusChanged: (e1, e2) =>
-                onBlockedStatusChanged?.call(e1.impl, e2),
-            onCapabilitiesChanged: (e1, e2) =>
-                onCapabilitiesChanged?.call(e1.impl, e2.impl),
-            onLinkPropertiesChanged: (e1, e2) =>
-                onLinkPropertiesChanged?.call(e1.impl, e2.impl),
-            onLosing: (e1, e2) => onLosing?.call(e1.impl, e2),
-            onLost: (e) => onLost?.call(e.impl),
-            onReserved: (e) => onReserved?.call(e.impl),
-            onUnavailable: () => onUnavailable?.call(),
-          ),
-        );
+    final invictusApi = jni.JniConnectivityManager$JniNetworkCallback.implement(
+      jni.$JniConnectivityManager$JniNetworkCallback(
+        onAvailable: (e) => onAvailable?.call(e.impl),
+        onBlockedStatusChanged: (e1, e2) =>
+            onBlockedStatusChanged?.call(e1.impl, e2),
+        onCapabilitiesChanged: (e1, e2) =>
+            onCapabilitiesChanged?.call(e1.impl, e2.impl),
+        onLinkPropertiesChanged: (e1, e2) =>
+            onLinkPropertiesChanged?.call(e1.impl, e2.impl),
+        onLosing: (e1, e2) => onLosing?.call(e1.impl, e2),
+        onLost: (e) => onLost?.call(e.impl),
+        onReserved: (e) => onReserved?.call(e.impl),
+        onUnavailable: () => onUnavailable?.call(),
+      ),
+    );
     final api = includeLocationInfo
-        ? jni.InvictusConnectivityManager$InvictusNetworkCallbackImpl.new$3(
+        ? jni.JniConnectivityManager$JniNetworkCallbackImpl.new$3(
             invictusApi,
             jni.ConnectivityManager$NetworkCallback.FLAG_INCLUDE_LOCATION_INFO,
           )
-        : jni.InvictusConnectivityManager$InvictusNetworkCallbackImpl.new$2(
-            invictusApi,
-          );
+        : jni.JniConnectivityManager$JniNetworkCallbackImpl.new$2(invictusApi);
     return ConnectivityManager$NetworkCallbackImpl.internal(api);
   }
 

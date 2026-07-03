@@ -93,37 +93,6 @@ extension type StaticIpConfiguration$Builder$Companion._(jni$_.JObject _$this)
   }
 }
 
-extension StaticIpConfiguration$Builder$Companion$$Methods
-    on StaticIpConfiguration$Builder$Companion {
-  static final _id_get$clazz = StaticIpConfiguration$Builder$Companion._class
-      .instanceMethodId(r'getClazz', r'()Ljava/lang/Class;');
-
-  static final _get$clazz =
-      jni$_.ProtectedJniExtensions.lookup<
-            jni$_.NativeFunction<
-              jni$_.JniResult Function(
-                jni$_.Pointer<jni$_.Void>,
-                jni$_.JMethodIDPtr,
-              )
-            >
-          >('globalEnv_CallObjectMethod')
-          .asFunction<
-            jni$_.JniResult Function(
-              jni$_.Pointer<jni$_.Void>,
-              jni$_.JMethodIDPtr,
-            )
-          >();
-
-  /// from: `public final java.lang.Class<?> getClazz()`
-  /// The returned object must be released after use, by calling the [release] method.
-  jni$_.JObject get clazz {
-    return _get$clazz(
-      reference.pointer,
-      _id_get$clazz.pointer,
-    ).object<jni$_.JObject>();
-  }
-}
-
 final class $StaticIpConfiguration$Builder$Companion$Type$
     extends jni$_.JType<StaticIpConfiguration$Builder$Companion> {
   @jni$_.internal
@@ -217,34 +186,6 @@ extension type StaticIpConfiguration$Builder._(jni$_.JObject _$this)
 
 extension StaticIpConfiguration$Builder$$Methods
     on StaticIpConfiguration$Builder {
-  static final _id_get$obj = StaticIpConfiguration$Builder._class
-      .instanceMethodId(r'getObj', r'()Ljava/lang/Object;');
-
-  static final _get$obj =
-      jni$_.ProtectedJniExtensions.lookup<
-            jni$_.NativeFunction<
-              jni$_.JniResult Function(
-                jni$_.Pointer<jni$_.Void>,
-                jni$_.JMethodIDPtr,
-              )
-            >
-          >('globalEnv_CallObjectMethod')
-          .asFunction<
-            jni$_.JniResult Function(
-              jni$_.Pointer<jni$_.Void>,
-              jni$_.JMethodIDPtr,
-            )
-          >();
-
-  /// from: `public final java.lang.Object getObj()`
-  /// The returned object must be released after use, by calling the [release] method.
-  jni$_.JObject get obj {
-    return _get$obj(
-      reference.pointer,
-      _id_get$obj.pointer,
-    ).object<jni$_.JObject>();
-  }
-
   static final _id_setIpAddress = StaticIpConfiguration$Builder._class
       .instanceMethodId(
         r'setIpAddress',
@@ -481,37 +422,6 @@ extension type StaticIpConfiguration$Companion._(jni$_.JObject _$this)
   }
 }
 
-extension StaticIpConfiguration$Companion$$Methods
-    on StaticIpConfiguration$Companion {
-  static final _id_get$clazz = StaticIpConfiguration$Companion._class
-      .instanceMethodId(r'getClazz', r'()Ljava/lang/Class;');
-
-  static final _get$clazz =
-      jni$_.ProtectedJniExtensions.lookup<
-            jni$_.NativeFunction<
-              jni$_.JniResult Function(
-                jni$_.Pointer<jni$_.Void>,
-                jni$_.JMethodIDPtr,
-              )
-            >
-          >('globalEnv_CallObjectMethod')
-          .asFunction<
-            jni$_.JniResult Function(
-              jni$_.Pointer<jni$_.Void>,
-              jni$_.JMethodIDPtr,
-            )
-          >();
-
-  /// from: `public final java.lang.Class<?> getClazz()`
-  /// The returned object must be released after use, by calling the [release] method.
-  jni$_.JObject get clazz {
-    return _get$clazz(
-      reference.pointer,
-      _id_get$clazz.pointer,
-    ).object<jni$_.JObject>();
-  }
-}
-
 final class $StaticIpConfiguration$Companion$Type$
     extends jni$_.JType<StaticIpConfiguration$Companion> {
   @jni$_.internal
@@ -639,36 +549,6 @@ extension type StaticIpConfiguration._(jni$_.JObject _$this)
 }
 
 extension StaticIpConfiguration$$Methods on StaticIpConfiguration {
-  static final _id_get$obj = StaticIpConfiguration._class.instanceMethodId(
-    r'getObj',
-    r'()Ljava/lang/Object;',
-  );
-
-  static final _get$obj =
-      jni$_.ProtectedJniExtensions.lookup<
-            jni$_.NativeFunction<
-              jni$_.JniResult Function(
-                jni$_.Pointer<jni$_.Void>,
-                jni$_.JMethodIDPtr,
-              )
-            >
-          >('globalEnv_CallObjectMethod')
-          .asFunction<
-            jni$_.JniResult Function(
-              jni$_.Pointer<jni$_.Void>,
-              jni$_.JMethodIDPtr,
-            )
-          >();
-
-  /// from: `public final java.lang.Object getObj()`
-  /// The returned object must be released after use, by calling the [release] method.
-  jni$_.JObject get obj {
-    return _get$obj(
-      reference.pointer,
-      _id_get$obj.pointer,
-    ).object<jni$_.JObject>();
-  }
-
   static final _id_get$ipAddress = StaticIpConfiguration._class
       .instanceMethodId(r'getIpAddress', r'()Landroid/net/LinkAddress;');
 

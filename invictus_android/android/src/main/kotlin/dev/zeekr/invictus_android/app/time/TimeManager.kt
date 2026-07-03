@@ -2,39 +2,42 @@ package dev.zeekr.invictus_android.app.time
 
 import android.content.Context
 import androidx.core.content.ContextCompat
+import dev.zeekr.invictus_android.InvictusObject
 import java.lang.reflect.Proxy
 import java.util.concurrent.Executor
 
 /**
  * The interface through which system components can interact with time and time zone services.
- *
- * @hide
  */
-class TimeManager(context: Context) {
+class TimeManager(context: Context) : InvictusObject() {
     /**
      * An interface that can be used to listen for changes to the time zone detector behavior.
      */
-    abstract class TimeZoneDetectorListener {
+    abstract class TimeZoneDetectorListener : InvictusObject() {
         companion object {
-            val clazz: Class<*> get() = Class.forName("android.app.time.TimeManager\$TimeZoneDetectorListener")
+            internal val clazz: Class<*> get() = Class.forName("android.app.time.TimeManager\$TimeZoneDetectorListener")
         }
 
-        val obj: Any
+        final override val obj: Any
 
         init {
-            this.obj = Proxy.newProxyInstance(
-                clazz.classLoader, arrayOf(clazz)
-            ) { _, _, _ -> onChange() }
+            this.obj = Proxy.newProxyInstance(clazz.classLoader, arrayOf(clazz)) { _, _, _ ->
+                this.onChange()
+            }
         }
 
         abstract fun onChange()
     }
 
     companion object {
-        val clazz: Class<*> get() = Class.forName("android.app.time.TimeManager")
+        internal val clazz: Class<*> get() = Class.forName("android.app.time.TimeManager")
     }
 
-    val obj: Any = ContextCompat.getSystemService(context, clazz) as Any
+    override val obj: Any
+
+    init {
+        this.obj = ContextCompat.getSystemService(context, clazz) as Any
+    }
 
     /**
      * Returns the calling user's time zone capabilities and configuration.

@@ -401,8 +401,7 @@ final class $WifiManager$InterfaceCreationImpact$Type$
 /// from: `android.net.wifi.WifiManager$LocalOnlyConnectionFailureListener`
 extension type WifiManager$LocalOnlyConnectionFailureListener._(
   jni$_.JObject _$this
-)
-    implements jni$_.JObject {
+) implements jni$_.JObject {
   static final _class = jni$_.JClass.forName(
     r'android/net/wifi/WifiManager$LocalOnlyConnectionFailureListener',
   );
@@ -1046,8 +1045,7 @@ final class $WifiManager$ScanResultsCallback$Type$
 /// from: `android.net.wifi.WifiManager$SubsystemRestartTrackingCallback`
 extension type WifiManager$SubsystemRestartTrackingCallback._(
   jni$_.JObject _$this
-)
-    implements jni$_.JObject {
+) implements jni$_.JObject {
   static final _class = jni$_.JClass.forName(
     r'android/net/wifi/WifiManager$SubsystemRestartTrackingCallback',
   );
@@ -1134,8 +1132,7 @@ final class $WifiManager$SubsystemRestartTrackingCallback$Type$
 /// from: `android.net.wifi.WifiManager$SuggestionConnectionStatusListener`
 extension type WifiManager$SuggestionConnectionStatusListener._(
   jni$_.JObject _$this
-)
-    implements jni$_.JObject {
+) implements jni$_.JObject {
   static final _class = jni$_.JClass.forName(
     r'android/net/wifi/WifiManager$SuggestionConnectionStatusListener',
   );
@@ -1307,8 +1304,7 @@ final class $WifiManager$SuggestionConnectionStatusListener$Type$
 /// from: `android.net.wifi.WifiManager$SuggestionUserApprovalStatusListener`
 extension type WifiManager$SuggestionUserApprovalStatusListener._(
   jni$_.JObject _$this
-)
-    implements jni$_.JObject {
+) implements jni$_.JObject {
   static final _class = jni$_.JClass.forName(
     r'android/net/wifi/WifiManager$SuggestionUserApprovalStatusListener',
   );

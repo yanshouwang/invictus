@@ -17,8 +17,7 @@ final class Inet6AddressImpl extends InetAddressImpl implements Inet6Address {
 final class Inet6AddressChannelImpl extends Inet6AddressChannel {
   @override
   Inet6Address create() {
-    final invictusApi = jni.InvictusInet6Address.new$1();
-    final api = invictusApi.obj;
+    final api = jni.Inet6AddressCompat.INSTANCE.create();
     return Inet6AddressImpl.internal(api);
   }
 

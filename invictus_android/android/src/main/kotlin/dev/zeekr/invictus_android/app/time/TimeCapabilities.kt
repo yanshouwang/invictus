@@ -1,6 +1,7 @@
 package dev.zeekr.invictus_android.app.time
 
 import android.os.UserHandle
+import dev.zeekr.invictus_android.InvictusObject
 
 /**
  * Time-relate capabilities for a user.
@@ -9,23 +10,19 @@ import android.os.UserHandle
  * {@link TimeManager#getTimeCapabilitiesAndConfig()} and may be changed using {@link
  * TimeManager#updateTimeConfiguration(TimeConfiguration)} (if the user's capabilities
  * allow).
- *
- * @hide
  */
-class TimeCapabilities(val obj: Any) {
+class TimeCapabilities : InvictusObject {
     /**
      * A builder of {@link TimeCapabilities} objects.
-     *
-     * @hide
      */
-    class Builder {
+    class Builder : InvictusObject {
         companion object {
-            val clazz: Class<*> get() = Class.forName("android.app.time.TimeCapabilities\$Builder")
+            internal val clazz: Class<*> get() = Class.forName("android.app.time.TimeCapabilities\$Builder")
         }
 
-        val obj: Any
+        override val obj: Any
 
-        constructor(obj: Any) {
+        internal constructor(obj: Any) {
             this.obj = obj
         }
 
@@ -34,15 +31,13 @@ class TimeCapabilities(val obj: Any) {
         }
 
         constructor(timeCapabilities: TimeCapabilities) {
-            this.obj =
-                clazz.getConstructor(TimeCapabilities.clazz).newInstance(timeCapabilities.obj)
+            this.obj = clazz.getConstructor(clazz).newInstance(timeCapabilities.obj)
         }
 
         /** Sets the value for the "configure automatic time detection" capability. */
         fun setConfigureAutoDetectionEnabledCapability(value: Int): Builder {
-            val obj = clazz.getMethod(
-                "setConfigureAutoDetectionEnabledCapability", Int::class.java
-            ).invoke(this.obj, value) as Any
+            val obj = clazz.getMethod("setConfigureAutoDetectionEnabledCapability", Int::class.java)
+                .invoke(this.obj, value) as Any
             return Builder(obj)
         }
 
@@ -61,7 +56,13 @@ class TimeCapabilities(val obj: Any) {
     }
 
     companion object {
-        val clazz: Class<*> get() = Class.forName("android.app.time.TimeCapabilities")
+        internal val clazz: Class<*> get() = Class.forName("android.app.time.TimeCapabilities")
+    }
+
+    override val obj: Any
+
+    internal constructor(obj: Any) {
+        this.obj = obj
     }
 
     val configureAutoDetectionEnabledCapability: Int
@@ -70,16 +71,4 @@ class TimeCapabilities(val obj: Any) {
 
     val setManualTimeCapability: Int
         get() = clazz.getMethod("getSetManualTimeCapability").invoke(this.obj) as Int
-
-    override fun equals(other: Any?): Boolean {
-        return clazz.getMethod("equals", Any::class.java).invoke(this.obj, other) as Boolean
-    }
-
-    override fun hashCode(): Int {
-        return clazz.getMethod("hashCode").invoke(this.obj) as Int
-    }
-
-    override fun toString(): String {
-        return clazz.getMethod("toString").invoke(this.obj) as String
-    }
 }

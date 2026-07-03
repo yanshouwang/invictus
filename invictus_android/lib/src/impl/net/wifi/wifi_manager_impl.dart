@@ -178,9 +178,9 @@ final class WifiManagerChannelImpl extends WifiManagerChannel {
       );
       return WifiManager$WifiStateChangedListenerImpl36.internal(api);
     } else {
-      final api = jni.InvictusBroadcastReceiverImpl(
-        jni.InvictusBroadcastReceiver.implement(
-          jni.$InvictusBroadcastReceiver(
+      final api = jni.JniBroadcastReceiverImpl(
+        jni.JniBroadcastReceiver.implement(
+          jni.$JniBroadcastReceiver(
             onReceive: (context, intent) {
               if (intent == null) {
                 _logger.warning('intent is null');
@@ -201,14 +201,12 @@ final class WifiManagerChannelImpl extends WifiManagerChannel {
   WifiManager$ScanResultsCallback createScanResultsCallback({
     required void Function() onScanResultsAvailable,
   }) {
-    final invictusApi =
-        jni.InvictusWifiManager$InvictusScanResultsCallback.implement(
-          jni.$InvictusWifiManager$InvictusScanResultsCallback(
-            onScanResultsAvailable: onScanResultsAvailable,
-          ),
-        );
-    final api = jni.InvictusWifiManager$InvictusScanResultsCallbackImpl(
-      invictusApi,
+    final api = jni.JniWifiManager$JniScanResultsCallbackImpl(
+      jni.JniWifiManager$JniScanResultsCallback.implement(
+        jni.$JniWifiManager$JniScanResultsCallback(
+          onScanResultsAvailable: onScanResultsAvailable,
+        ),
+      ),
     );
     return WifiManager$ScanResultsCallbackImpl.internal(api);
   }

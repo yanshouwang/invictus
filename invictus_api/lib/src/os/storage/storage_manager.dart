@@ -1,4 +1,3 @@
-import 'package:invictus_api/src/io.dart';
 import 'package:plugin_platform_interface/plugin_platform_interface.dart';
 
 import 'on_obb_state_change_listener.dart';
@@ -96,14 +95,14 @@ abstract interface class StorageManager {
   // List<VolumeRecord> get volumeRecords;
   // VolumeInfo? get primaryPhysicalVolume;
   List<StorageVolume> get storageVolumes;
-  List<StorageVolume> get storageVolumesIncludingSharedProfiles;
-  List<StorageVolume> get recentStorageVolumes;
+  // List<StorageVolume> get storageVolumesIncludingSharedProfiles;
+  // List<StorageVolume> get recentStorageVolumes;
   StorageVolume get primaryStorageVolume;
   // int get primaryStorageSize;
   // List<StorageVolume> get volumeList;
   // List<String> get volumePaths;
   // StorageVolume get primaryVolume;
-  bool get isCheckpointSupported;
+  // bool get isCheckpointSupported;
   // String? get cloudMediaProvider;
   // set cloudMediaProvider(String? authority);
 
@@ -140,7 +139,7 @@ abstract interface class StorageManager {
   // VolumeInfo? findVolumeByQualifiedUuid(String volumeUuid);
   // UUID getUuidForPath(File path);
   // File findPathForUuid(String volumeUuid);
-  bool isAllocationSupported(FileDescriptor fd);
+  // bool isAllocationSupported(FileDescriptor fd);
   // String? getBestVolumeDescription(VolumeInfo vol);
   void mount(String volId);
   void unmount(String volId);
@@ -239,7 +238,7 @@ abstract interface class StorageManager {
   //   int uid,
   //   String packageName,
   // );
-  void allocateBytes(FileDescriptor fd, int bytes);
+  // void allocateBytes(FileDescriptor fd, int bytes);
   // void updateExternalStorageFileQuotaType(File path, int quotaType);
   // void fixupAppDir(File path);
   // void setCacheBehavioGroup(File path, bool group);

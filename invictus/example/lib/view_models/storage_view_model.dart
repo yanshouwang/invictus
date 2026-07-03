@@ -38,6 +38,8 @@ class StorageViewModel extends ViewModel {
   String? getVolumeType(String volumeId) =>
       _storageManager.findVolumeById(volumeId)?.fsType;
 
+  void mount(String volumeId) => _storageManager.mount(volumeId);
+
   void unmount(String volumeId) => _storageManager.unmount(volumeId);
 
   @override

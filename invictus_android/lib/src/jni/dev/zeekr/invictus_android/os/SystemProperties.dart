@@ -85,37 +85,6 @@ extension type SystemProperties$Handle$Companion._(jni$_.JObject _$this)
   }
 }
 
-extension SystemProperties$Handle$Companion$$Methods
-    on SystemProperties$Handle$Companion {
-  static final _id_get$clazz = SystemProperties$Handle$Companion._class
-      .instanceMethodId(r'getClazz', r'()Ljava/lang/Class;');
-
-  static final _get$clazz =
-      jni$_.ProtectedJniExtensions.lookup<
-            jni$_.NativeFunction<
-              jni$_.JniResult Function(
-                jni$_.Pointer<jni$_.Void>,
-                jni$_.JMethodIDPtr,
-              )
-            >
-          >('globalEnv_CallObjectMethod')
-          .asFunction<
-            jni$_.JniResult Function(
-              jni$_.Pointer<jni$_.Void>,
-              jni$_.JMethodIDPtr,
-            )
-          >();
-
-  /// from: `public final java.lang.Class<?> getClazz()`
-  /// The returned object must be released after use, by calling the [release] method.
-  jni$_.JObject get clazz {
-    return _get$clazz(
-      reference.pointer,
-      _id_get$clazz.pointer,
-    ).object<jni$_.JObject>();
-  }
-}
-
 final class $SystemProperties$Handle$Companion$Type$
     extends jni$_.JType<SystemProperties$Handle$Companion> {
   @jni$_.internal
@@ -181,36 +150,6 @@ extension type SystemProperties$Handle._(jni$_.JObject _$this)
 }
 
 extension SystemProperties$Handle$$Methods on SystemProperties$Handle {
-  static final _id_get$obj = SystemProperties$Handle._class.instanceMethodId(
-    r'getObj',
-    r'()Ljava/lang/Object;',
-  );
-
-  static final _get$obj =
-      jni$_.ProtectedJniExtensions.lookup<
-            jni$_.NativeFunction<
-              jni$_.JniResult Function(
-                jni$_.Pointer<jni$_.Void>,
-                jni$_.JMethodIDPtr,
-              )
-            >
-          >('globalEnv_CallObjectMethod')
-          .asFunction<
-            jni$_.JniResult Function(
-              jni$_.Pointer<jni$_.Void>,
-              jni$_.JMethodIDPtr,
-            )
-          >();
-
-  /// from: `public final java.lang.Object getObj()`
-  /// The returned object must be released after use, by calling the [release] method.
-  jni$_.JObject get obj {
-    return _get$obj(
-      reference.pointer,
-      _id_get$obj.pointer,
-    ).object<jni$_.JObject>();
-  }
-
   static final _id_get = SystemProperties$Handle._class.instanceMethodId(
     r'get',
     r'()Ljava/lang/String;',
@@ -359,36 +298,6 @@ extension type SystemProperties._(jni$_.JObject _$this)
 }
 
 extension SystemProperties$$Methods on SystemProperties {
-  static final _id_get$clazz = SystemProperties._class.instanceMethodId(
-    r'getClazz',
-    r'()Ljava/lang/Class;',
-  );
-
-  static final _get$clazz =
-      jni$_.ProtectedJniExtensions.lookup<
-            jni$_.NativeFunction<
-              jni$_.JniResult Function(
-                jni$_.Pointer<jni$_.Void>,
-                jni$_.JMethodIDPtr,
-              )
-            >
-          >('globalEnv_CallObjectMethod')
-          .asFunction<
-            jni$_.JniResult Function(
-              jni$_.Pointer<jni$_.Void>,
-              jni$_.JMethodIDPtr,
-            )
-          >();
-
-  /// from: `public final java.lang.Class<?> getClazz()`
-  /// The returned object must be released after use, by calling the [release] method.
-  jni$_.JObject get clazz {
-    return _get$clazz(
-      reference.pointer,
-      _id_get$clazz.pointer,
-    ).object<jni$_.JObject>();
-  }
-
   static final _id_get = SystemProperties._class.instanceMethodId(
     r'get',
     r'(Ljava/lang/String;)Ljava/lang/String;',

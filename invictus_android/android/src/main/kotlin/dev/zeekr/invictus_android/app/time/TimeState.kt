@@ -1,5 +1,7 @@
 package dev.zeekr.invictus_android.app.time
 
+import dev.zeekr.invictus_android.InvictusObject
+
 /**
  * A snapshot of the system time state.
  *
@@ -10,12 +12,16 @@ package dev.zeekr.invictus_android.app.time
  * suggests that the user be asked to confirm the {@code unixEpochTime} value is correct via {@link
  * TimeManager#confirmTime}. If it is not correct, the value can usually be changed via {@link
  * TimeManager#setManualTime}.
- *
- * @hide
  */
-class TimeState(val obj: Any) {
+class TimeState : InvictusObject {
     companion object {
-        val clazz: Class<*> get() = Class.forName("android.app.time.TimeState")
+        internal val clazz: Class<*> get() = Class.forName("android.app.time.TimeState")
+    }
+
+    override val obj: Any
+
+    internal constructor(obj: Any) {
+        this.obj = obj
     }
 
     val unixEpochTime: UnixEpochTime
@@ -26,16 +32,4 @@ class TimeState(val obj: Any) {
 
     val userShouldConfirmTime: Boolean
         get() = clazz.getMethod("getUserShouldConfirmTime").invoke(this.obj) as Boolean
-
-    override fun equals(other: Any?): Boolean {
-        return clazz.getMethod("equals", Any::class.java).invoke(this.obj, other) as Boolean
-    }
-
-    override fun hashCode(): Int {
-        return clazz.getMethod("hashCode").invoke(this.obj) as Int
-    }
-
-    override fun toString(): String {
-        return clazz.getMethod("toString").invoke(this.obj) as String
-    }
 }

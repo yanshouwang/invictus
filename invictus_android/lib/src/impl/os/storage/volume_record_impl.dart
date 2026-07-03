@@ -4,11 +4,11 @@ import 'package:invictus_api/invictus_api.dart';
 
 final class VolumeRecordImpl extends ObjectImpl implements VolumeRecord {
   @override
-  final jni.InvictusVolumeRecord api;
+  final jni.VolumeRecord api;
 
   VolumeRecordImpl.internal(this.api);
 }
 
-extension Invictus$JVolumeRecordX on jni.InvictusVolumeRecord {
+extension Invictus$JVolumeRecordX on jni.VolumeRecord {
   VolumeRecord get impl => VolumeRecordImpl.internal(this);
 }

@@ -36,7 +36,7 @@ class WifiView extends StatelessWidget {
         ),
         title: Text('IPv4'),
         trailing: Text(
-          '${NetworkUtil.intToInetAddress(connectionInfo.ipAddress).hostAddress}',
+          '${Inet4AddressUtils.intToInet4AddressHTL(connectionInfo.ipAddress).hostAddress}',
         ),
       ),
       ListTile(
@@ -54,7 +54,7 @@ class WifiView extends StatelessWidget {
         ),
         title: Text('DNS 1'),
         trailing: Text(
-          '${NetworkUtil.intToInetAddress(dhcpInfo.dns1).hostAddress}',
+          '${Inet4AddressUtils.intToInet4AddressHTL(dhcpInfo.dns1).hostAddress}',
         ),
       ),
       ListTile(
@@ -64,7 +64,7 @@ class WifiView extends StatelessWidget {
         ),
         title: Text('DNS 2'),
         trailing: Text(
-          '${NetworkUtil.intToInetAddress(dhcpInfo.dns2).hostAddress}',
+          '${Inet4AddressUtils.intToInet4AddressHTL(dhcpInfo.dns2).hostAddress}',
         ),
       ),
       ListTile(

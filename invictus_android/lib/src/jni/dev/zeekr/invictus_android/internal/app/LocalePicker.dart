@@ -90,36 +90,6 @@ extension type LocalePicker$Companion._(jni$_.JObject _$this)
 }
 
 extension LocalePicker$Companion$$Methods on LocalePicker$Companion {
-  static final _id_get$clazz = LocalePicker$Companion._class.instanceMethodId(
-    r'getClazz',
-    r'()Ljava/lang/Class;',
-  );
-
-  static final _get$clazz =
-      jni$_.ProtectedJniExtensions.lookup<
-            jni$_.NativeFunction<
-              jni$_.JniResult Function(
-                jni$_.Pointer<jni$_.Void>,
-                jni$_.JMethodIDPtr,
-              )
-            >
-          >('globalEnv_CallObjectMethod')
-          .asFunction<
-            jni$_.JniResult Function(
-              jni$_.Pointer<jni$_.Void>,
-              jni$_.JMethodIDPtr,
-            )
-          >();
-
-  /// from: `public final java.lang.Class<?> getClazz()`
-  /// The returned object must be released after use, by calling the [release] method.
-  jni$_.JObject get clazz {
-    return _get$clazz(
-      reference.pointer,
-      _id_get$clazz.pointer,
-    ).object<jni$_.JObject>();
-  }
-
   static final _id_get$systemAssetLocales = LocalePicker$Companion._class
       .instanceMethodId(r'getSystemAssetLocales', r'()[Ljava/lang/String;');
 
@@ -410,37 +380,6 @@ extension type LocalePicker$LocaleInfo$Companion._(jni$_.JObject _$this)
   }
 }
 
-extension LocalePicker$LocaleInfo$Companion$$Methods
-    on LocalePicker$LocaleInfo$Companion {
-  static final _id_get$clazz = LocalePicker$LocaleInfo$Companion._class
-      .instanceMethodId(r'getClazz', r'()Ljava/lang/Class;');
-
-  static final _get$clazz =
-      jni$_.ProtectedJniExtensions.lookup<
-            jni$_.NativeFunction<
-              jni$_.JniResult Function(
-                jni$_.Pointer<jni$_.Void>,
-                jni$_.JMethodIDPtr,
-              )
-            >
-          >('globalEnv_CallObjectMethod')
-          .asFunction<
-            jni$_.JniResult Function(
-              jni$_.Pointer<jni$_.Void>,
-              jni$_.JMethodIDPtr,
-            )
-          >();
-
-  /// from: `public final java.lang.Class<?> getClazz()`
-  /// The returned object must be released after use, by calling the [release] method.
-  jni$_.JObject get clazz {
-    return _get$clazz(
-      reference.pointer,
-      _id_get$clazz.pointer,
-    ).object<jni$_.JObject>();
-  }
-}
-
 final class $LocalePicker$LocaleInfo$Companion$Type$
     extends jni$_.JType<LocalePicker$LocaleInfo$Companion> {
   @jni$_.internal
@@ -549,36 +488,6 @@ extension type LocalePicker$LocaleInfo._(jni$_.JObject _$this)
 }
 
 extension LocalePicker$LocaleInfo$$Methods on LocalePicker$LocaleInfo {
-  static final _id_get$obj = LocalePicker$LocaleInfo._class.instanceMethodId(
-    r'getObj',
-    r'()Ljava/lang/Object;',
-  );
-
-  static final _get$obj =
-      jni$_.ProtectedJniExtensions.lookup<
-            jni$_.NativeFunction<
-              jni$_.JniResult Function(
-                jni$_.Pointer<jni$_.Void>,
-                jni$_.JMethodIDPtr,
-              )
-            >
-          >('globalEnv_CallObjectMethod')
-          .asFunction<
-            jni$_.JniResult Function(
-              jni$_.Pointer<jni$_.Void>,
-              jni$_.JMethodIDPtr,
-            )
-          >();
-
-  /// from: `public final java.lang.Object getObj()`
-  /// The returned object must be released after use, by calling the [release] method.
-  jni$_.JObject get obj {
-    return _get$obj(
-      reference.pointer,
-      _id_get$obj.pointer,
-    ).object<jni$_.JObject>();
-  }
-
   static final _id_get$label = LocalePicker$LocaleInfo._class.instanceMethodId(
     r'getLabel',
     r'()Ljava/lang/String;',
@@ -637,36 +546,6 @@ extension LocalePicker$LocaleInfo$$Methods on LocalePicker$LocaleInfo {
       reference.pointer,
       _id_get$locale.pointer,
     ).object<locale$_.Locale>();
-  }
-
-  static final _id_toString$1 = LocalePicker$LocaleInfo._class.instanceMethodId(
-    r'toString',
-    r'()Ljava/lang/String;',
-  );
-
-  static final _toString$1 =
-      jni$_.ProtectedJniExtensions.lookup<
-            jni$_.NativeFunction<
-              jni$_.JniResult Function(
-                jni$_.Pointer<jni$_.Void>,
-                jni$_.JMethodIDPtr,
-              )
-            >
-          >('globalEnv_CallObjectMethod')
-          .asFunction<
-            jni$_.JniResult Function(
-              jni$_.Pointer<jni$_.Void>,
-              jni$_.JMethodIDPtr,
-            )
-          >();
-
-  /// from: `public fun toString(): kotlin.String`
-  /// The returned object must be released after use, by calling the [release] method.
-  jni$_.JString toString$1() {
-    return _toString$1(
-      reference.pointer,
-      _id_toString$1.pointer,
-    ).object<jni$_.JString>();
   }
 
   static final _id_compareTo = LocalePicker$LocaleInfo._class.instanceMethodId(
@@ -733,8 +612,7 @@ final class $LocalePicker$LocaleInfo$Type$
 /// from: `dev.zeekr.invictus_android.internal.app.LocalePicker$LocaleSelectionListener$Companion`
 extension type LocalePicker$LocaleSelectionListener$Companion._(
   jni$_.JObject _$this
-)
-    implements jni$_.JObject {
+) implements jni$_.JObject {
   static final _class = jni$_.JClass.forName(
     r'dev/zeekr/invictus_android/internal/app/LocalePicker$LocaleSelectionListener$Companion',
   );
@@ -779,38 +657,6 @@ extension type LocalePicker$LocaleSelectionListener$Companion._(
   }
 }
 
-extension LocalePicker$LocaleSelectionListener$Companion$$Methods
-    on LocalePicker$LocaleSelectionListener$Companion {
-  static final _id_get$clazz = LocalePicker$LocaleSelectionListener$Companion
-      ._class
-      .instanceMethodId(r'getClazz', r'()Ljava/lang/Class;');
-
-  static final _get$clazz =
-      jni$_.ProtectedJniExtensions.lookup<
-            jni$_.NativeFunction<
-              jni$_.JniResult Function(
-                jni$_.Pointer<jni$_.Void>,
-                jni$_.JMethodIDPtr,
-              )
-            >
-          >('globalEnv_CallObjectMethod')
-          .asFunction<
-            jni$_.JniResult Function(
-              jni$_.Pointer<jni$_.Void>,
-              jni$_.JMethodIDPtr,
-            )
-          >();
-
-  /// from: `public final java.lang.Class<?> getClazz()`
-  /// The returned object must be released after use, by calling the [release] method.
-  jni$_.JObject get clazz {
-    return _get$clazz(
-      reference.pointer,
-      _id_get$clazz.pointer,
-    ).object<jni$_.JObject>();
-  }
-}
-
 final class $LocalePicker$LocaleSelectionListener$Companion$Type$
     extends jni$_.JType<LocalePicker$LocaleSelectionListener$Companion> {
   @jni$_.internal
@@ -849,34 +695,6 @@ extension type LocalePicker$LocaleSelectionListener._(jni$_.JObject _$this)
 
 extension LocalePicker$LocaleSelectionListener$$Methods
     on LocalePicker$LocaleSelectionListener {
-  static final _id_get$obj = LocalePicker$LocaleSelectionListener._class
-      .instanceMethodId(r'getObj', r'()Ljava/lang/Object;');
-
-  static final _get$obj =
-      jni$_.ProtectedJniExtensions.lookup<
-            jni$_.NativeFunction<
-              jni$_.JniResult Function(
-                jni$_.Pointer<jni$_.Void>,
-                jni$_.JMethodIDPtr,
-              )
-            >
-          >('globalEnv_CallObjectMethod')
-          .asFunction<
-            jni$_.JniResult Function(
-              jni$_.Pointer<jni$_.Void>,
-              jni$_.JMethodIDPtr,
-            )
-          >();
-
-  /// from: `public final java.lang.Object getObj()`
-  /// The returned object must be released after use, by calling the [release] method.
-  jni$_.JObject get obj {
-    return _get$obj(
-      reference.pointer,
-      _id_get$obj.pointer,
-    ).object<jni$_.JObject>();
-  }
-
   static final _id_onLocaleSelected = LocalePicker$LocaleSelectionListener
       ._class
       .instanceMethodId(r'onLocaleSelected', r'(Ljava/util/Locale;)V');
@@ -940,7 +758,7 @@ extension type LocalePicker._(jni$_.JObject _$this) implements jni$_.JObject {
       _id_Companion.get(_class, LocalePicker$Companion.type)
           as LocalePicker$Companion;
 
-  static final _id_new$ = _class.constructorId(r'()V');
+  static final _id_new$ = _class.constructorId(r'(Ljava/lang/Object;)V');
 
   static final _new$ =
       jni$_.ProtectedJniExtensions.lookup<
@@ -948,6 +766,7 @@ extension type LocalePicker._(jni$_.JObject _$this) implements jni$_.JObject {
               jni$_.JniResult Function(
                 jni$_.Pointer<jni$_.Void>,
                 jni$_.JMethodIDPtr,
+                jni$_.VarArgs<(jni$_.Pointer<jni$_.Void>,)>,
               )
             >
           >('globalEnv_NewObject')
@@ -955,15 +774,18 @@ extension type LocalePicker._(jni$_.JObject _$this) implements jni$_.JObject {
             jni$_.JniResult Function(
               jni$_.Pointer<jni$_.Void>,
               jni$_.JMethodIDPtr,
+              jni$_.Pointer<jni$_.Void>,
             )
           >();
 
-  /// from: `public void <init>()`
+  /// from: `public void <init>(java.lang.Object object)`
   /// The returned object must be released after use, by calling the [release] method.
-  factory LocalePicker() {
+  factory LocalePicker(jni$_.JObject object) {
+    final _$object = object.reference;
     return _new$(
       _class.reference.pointer,
       _id_new$.pointer,
+      _$object.pointer,
     ).object<LocalePicker>();
   }
 }

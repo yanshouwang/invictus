@@ -40,8 +40,8 @@ final class InvictusAndroidPlugin {
     // net.ethernet
     EthernetManagerChannel.instance = EthernetManagerChannelImpl();
     // net.util
-    Inet4AddressUtilChannel.instance = Inet4AddressUtilChannelImpl();
-    NetworkUtilChannel.instance = NetworkUtilChannelImpl();
+    Inet4AddressUtilsChannel.instance = Inet4AddressUtilChannelsImpl();
+    NetworkUtilsChannel.instance = NetworkUtilChannelsImpl();
     // net.wifi
     ScanResultChannel.instance = ScanResultChannelImpl();
     SupplicantStateChannel.instance = SupplicantStateChannelImpl();

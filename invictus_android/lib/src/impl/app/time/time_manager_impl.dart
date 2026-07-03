@@ -83,9 +83,9 @@ final class TimeManagerChannelImpl extends TimeManagerChannel {
   TimeManager$TimeZoneDetectorListener createTimeZoneDetectorListener({
     required void Function() onChanged,
   }) {
-    final api = jni.InvictusTimeManager$InvictusTimeZoneDetectorListenerImpl(
-      jni.InvictusTimeManager$InvictusTimeZoneDetectorListener.implement(
-        jni.$InvictusTimeManager$InvictusTimeZoneDetectorListener(
+    final api = jni.JniTimeManager$JniTimeZoneDetectorListenerImpl(
+      jni.JniTimeManager$JniTimeZoneDetectorListener.implement(
+        jni.$JniTimeManager$JniTimeZoneDetectorListener(
           onChange: onChanged,
         ),
       ),

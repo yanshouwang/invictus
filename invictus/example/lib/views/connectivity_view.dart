@@ -34,7 +34,7 @@ class ConnectivityView extends StatelessWidget {
     final ipAddress = linkAddress?.address.hostAddress;
     final netmask = linkAddress == null
         ? null
-        : Inet4AddressUtil.getPrefixMaskAsInet4Address(
+        : Inet4AddressUtils.getPrefixMaskAsInet4Address(
             linkAddress.prefixLength,
           ).hostAddress;
     final gateway = status.gateway?.hostAddress;

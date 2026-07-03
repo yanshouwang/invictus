@@ -2,7 +2,7 @@ import 'package:invictus_api/src/os.dart';
 
 abstract interface class StorageVolume {
   String get id;
-  // int get fatVolumeId;
+  int get fatVolumeId;
   String get userLabel;
   String get description;
   String get path;
@@ -10,7 +10,7 @@ abstract interface class StorageVolume {
   // File get pathFile;
   // File? get directory;
   int get maxFileSize;
-  String? get mediaStoreVolumeName;
+  // String? get mediaStoreVolumeName;
   // UserHandle get owner;
   Environment$Media get state;
   // UUID? get storageUuid;

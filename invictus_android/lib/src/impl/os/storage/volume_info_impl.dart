@@ -4,7 +4,7 @@ import 'package:invictus_api/invictus_api.dart';
 
 final class VolumeInfoImpl extends ObjectImpl implements VolumeInfo {
   @override
-  final jni.InvictusVolumeInfo api;
+  final jni.VolumeInfo api;
 
   VolumeInfoImpl.internal(this.api);
 
@@ -60,45 +60,45 @@ final class VolumeInfoImpl extends ObjectImpl implements VolumeInfo {
   VolumeInfo$Type get type => api.type$1.volumeInfo$TypeImpl;
 }
 
-extension Invictus$JVolumeInfoX on jni.InvictusVolumeInfo {
+extension Invictus$JVolumeInfoX on jni.VolumeInfo {
   VolumeInfo get impl => VolumeInfoImpl.internal(this);
 }
 
 extension Invictus$JVolumeInfo$intX on int {
   VolumeInfo$Type get volumeInfo$TypeImpl {
-    if (this == jni.InvictusVolumeInfo.Companion.tYPE_PUBLIC) return .public;
-    if (this == jni.InvictusVolumeInfo.Companion.tYPE_PRIVATE) return .private;
-    if (this == jni.InvictusVolumeInfo.Companion.tYPE_EMULATED) {
+    if (this == jni.VolumeInfo.Companion.tYPE_PUBLIC) return .public;
+    if (this == jni.VolumeInfo.Companion.tYPE_PRIVATE) return .private;
+    if (this == jni.VolumeInfo.Companion.tYPE_EMULATED) {
       return .emulated;
     }
-    if (this == jni.InvictusVolumeInfo.Companion.tYPE_ASEC) return .asec;
-    if (this == jni.InvictusVolumeInfo.Companion.tYPE_OBB) return .obb;
-    if (this == jni.InvictusVolumeInfo.Companion.tYPE_STUB) return .stub;
+    if (this == jni.VolumeInfo.Companion.tYPE_ASEC) return .asec;
+    if (this == jni.VolumeInfo.Companion.tYPE_OBB) return .obb;
+    if (this == jni.VolumeInfo.Companion.tYPE_STUB) return .stub;
     throw ArgumentError.value(this, 'volumeInfo\$Type');
   }
 
   VolumeInfo$State get volumeInfo$StateImpl {
-    if (this == jni.InvictusVolumeInfo.Companion.sTATE_UNMOUNTED) {
+    if (this == jni.VolumeInfo.Companion.sTATE_UNMOUNTED) {
       return .unmounted;
     }
-    if (this == jni.InvictusVolumeInfo.Companion.sTATE_CHECKING) {
+    if (this == jni.VolumeInfo.Companion.sTATE_CHECKING) {
       return .checking;
     }
-    if (this == jni.InvictusVolumeInfo.Companion.sTATE_MOUNTED) return .mounted;
-    if (this == jni.InvictusVolumeInfo.Companion.sTATE_MOUNTED_READ_ONLY) {
+    if (this == jni.VolumeInfo.Companion.sTATE_MOUNTED) return .mounted;
+    if (this == jni.VolumeInfo.Companion.sTATE_MOUNTED_READ_ONLY) {
       return .mountedReadOnly;
     }
-    if (this == jni.InvictusVolumeInfo.Companion.sTATE_FORMATTING) {
+    if (this == jni.VolumeInfo.Companion.sTATE_FORMATTING) {
       return .formatting;
     }
-    if (this == jni.InvictusVolumeInfo.Companion.sTATE_EJECTING) {
+    if (this == jni.VolumeInfo.Companion.sTATE_EJECTING) {
       return .ejecting;
     }
-    if (this == jni.InvictusVolumeInfo.Companion.sTATE_UNMOUNTABLE) {
+    if (this == jni.VolumeInfo.Companion.sTATE_UNMOUNTABLE) {
       return .unmountable;
     }
-    if (this == jni.InvictusVolumeInfo.Companion.sTATE_REMOVED) return .removed;
-    if (this == jni.InvictusVolumeInfo.Companion.sTATE_BAD_REMOVAL) {
+    if (this == jni.VolumeInfo.Companion.sTATE_REMOVED) return .removed;
+    if (this == jni.VolumeInfo.Companion.sTATE_BAD_REMOVAL) {
       return .badRemoval;
     }
     throw ArgumentError.value(this, 'volumeInfo\$State');

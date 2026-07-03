@@ -43,11 +43,10 @@ import 'Collection.dart' as collection$_;
 /// from: `java.util.HashMap`
 extension type HashMap<$K extends jni$_.JObject?, $V extends jni$_.JObject?>._(
   jni$_.JObject _$this
-)
-    implements
-        abstractmap$_.AbstractMap<$K?, $V?>,
-        jni$_.JObject,
-        jni$_.JMap<$K?, $V?> {
+) implements
+    abstractmap$_.AbstractMap<$K?, $V?>,
+    jni$_.JObject,
+    jni$_.JMap<$K?, $V?> {
   static final _class = jni$_.JClass.forName(r'java/util/HashMap');
 
   /// The type which includes information such as the signature of this class.

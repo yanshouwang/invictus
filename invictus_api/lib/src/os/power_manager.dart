@@ -20,9 +20,6 @@ enum PowerManager$Shutdown {
 abstract interface class PowerManager {
   factory PowerManager() => PowerManagerChannel.instance.create();
 
-  /// Returns true if this device supports rebooting userspace.
-  bool get isRebootingUserspaceSupported;
-
   /// Reboot the device. Will not return if the reboot is successful.
   ///
   /// Requires the Manifest.permission.REBOOT permission.

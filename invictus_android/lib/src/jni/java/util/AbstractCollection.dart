@@ -41,8 +41,7 @@ import 'Collection.dart' as collection$_;
 /// from: `java.util.AbstractCollection`
 extension type AbstractCollection<$E extends jni$_.JObject?>._(
   jni$_.JObject _$this
-)
-    implements jni$_.JObject, collection$_.Collection<$E?> {
+) implements jni$_.JObject, collection$_.Collection<$E?> {
   static final _class = jni$_.JClass.forName(r'java/util/AbstractCollection');
 
   /// The type which includes information such as the signature of this class.

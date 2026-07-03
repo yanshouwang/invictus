@@ -41,8 +41,7 @@ import '../../java/util/concurrent/Executor.dart' as executor$_;
 /// from: `android.os.PowerManager$OnThermalHeadroomChangedListener`
 extension type PowerManager$OnThermalHeadroomChangedListener._(
   jni$_.JObject _$this
-)
-    implements jni$_.JObject {
+) implements jni$_.JObject {
   static final _class = jni$_.JClass.forName(
     r'android/os/PowerManager$OnThermalHeadroomChangedListener',
   );
@@ -256,8 +255,7 @@ final class $PowerManager$OnThermalHeadroomChangedListener$Type$
 /// from: `android.os.PowerManager$OnThermalStatusChangedListener`
 extension type PowerManager$OnThermalStatusChangedListener._(
   jni$_.JObject _$this
-)
-    implements jni$_.JObject {
+) implements jni$_.JObject {
   static final _class = jni$_.JClass.forName(
     r'android/os/PowerManager$OnThermalStatusChangedListener',
   );

@@ -36,83 +36,27 @@ import 'dart:core' show Object, String;
 import 'package:jni/_internal.dart' as jni$_;
 import 'package:jni/jni.dart' as jni$_;
 
-/// from: `dev.zeekr.invictus_android.app.time.Capabilities$Companion`
-extension type Capabilities$Companion._(jni$_.JObject _$this)
-    implements jni$_.JObject {
+/// from: `dev.zeekr.invictus_android.app.time.Capabilities`
+extension type Capabilities._(jni$_.JObject _$this) implements jni$_.JObject {
   static final _class = jni$_.JClass.forName(
-    r'dev/zeekr/invictus_android/app/time/Capabilities$Companion',
+    r'dev/zeekr/invictus_android/app/time/Capabilities',
   );
 
   /// The type which includes information such as the signature of this class.
-  static const jni$_.JType<Capabilities$Companion> type =
-      $Capabilities$Companion$Type$();
-  static final _id_new$ = _class.constructorId(
-    r'(Lkotlin/jvm/internal/DefaultConstructorMarker;)V',
+  static const jni$_.JType<Capabilities> type = $Capabilities$Type$();
+  static final _id_INSTANCE = _class.staticFieldId(
+    r'INSTANCE',
+    r'Ldev/zeekr/invictus_android/app/time/Capabilities;',
   );
 
-  static final _new$ =
-      jni$_.ProtectedJniExtensions.lookup<
-            jni$_.NativeFunction<
-              jni$_.JniResult Function(
-                jni$_.Pointer<jni$_.Void>,
-                jni$_.JMethodIDPtr,
-                jni$_.VarArgs<(jni$_.Pointer<jni$_.Void>,)>,
-              )
-            >
-          >('globalEnv_NewObject')
-          .asFunction<
-            jni$_.JniResult Function(
-              jni$_.Pointer<jni$_.Void>,
-              jni$_.JMethodIDPtr,
-              jni$_.Pointer<jni$_.Void>,
-            )
-          >();
-
-  /// from: `synthetic public void <init>(kotlin.jvm.internal.DefaultConstructorMarker defaultConstructorMarker)`
+  /// from: `static public final dev.zeekr.invictus_android.app.time.Capabilities INSTANCE`
   /// The returned object must be released after use, by calling the [release] method.
-  factory Capabilities$Companion(jni$_.JObject? defaultConstructorMarker) {
-    final _$defaultConstructorMarker =
-        defaultConstructorMarker?.reference ?? jni$_.jNullReference;
-    return _new$(
-      _class.reference.pointer,
-      _id_new$.pointer,
-      _$defaultConstructorMarker.pointer,
-    ).object<Capabilities$Companion>();
-  }
+  static Capabilities get INSTANCE =>
+      _id_INSTANCE.get(_class, Capabilities.type) as Capabilities;
 }
 
-extension Capabilities$Companion$$Methods on Capabilities$Companion {
-  static final _id_get$clazz = Capabilities$Companion._class.instanceMethodId(
-    r'getClazz',
-    r'()Ljava/lang/Class;',
-  );
-
-  static final _get$clazz =
-      jni$_.ProtectedJniExtensions.lookup<
-            jni$_.NativeFunction<
-              jni$_.JniResult Function(
-                jni$_.Pointer<jni$_.Void>,
-                jni$_.JMethodIDPtr,
-              )
-            >
-          >('globalEnv_CallObjectMethod')
-          .asFunction<
-            jni$_.JniResult Function(
-              jni$_.Pointer<jni$_.Void>,
-              jni$_.JMethodIDPtr,
-            )
-          >();
-
-  /// from: `public final java.lang.Class<?> getClazz()`
-  /// The returned object must be released after use, by calling the [release] method.
-  jni$_.JObject get clazz {
-    return _get$clazz(
-      reference.pointer,
-      _id_get$clazz.pointer,
-    ).object<jni$_.JObject>();
-  }
-
-  static final _id_get$cAPABILITY_NOT_SUPPORTED = Capabilities$Companion._class
+extension Capabilities$$Methods on Capabilities {
+  static final _id_get$cAPABILITY_NOT_SUPPORTED = Capabilities._class
       .instanceMethodId(r'getCAPABILITY_NOT_SUPPORTED', r'()I');
 
   static final _get$cAPABILITY_NOT_SUPPORTED =
@@ -139,7 +83,7 @@ extension Capabilities$Companion$$Methods on Capabilities$Companion {
     ).integer;
   }
 
-  static final _id_get$cAPABILITY_NOT_ALLOWED = Capabilities$Companion._class
+  static final _id_get$cAPABILITY_NOT_ALLOWED = Capabilities._class
       .instanceMethodId(r'getCAPABILITY_NOT_ALLOWED', r'()I');
 
   static final _get$cAPABILITY_NOT_ALLOWED =
@@ -166,7 +110,7 @@ extension Capabilities$Companion$$Methods on Capabilities$Companion {
     ).integer;
   }
 
-  static final _id_get$cAPABILITY_NOT_APPLICABLE = Capabilities$Companion._class
+  static final _id_get$cAPABILITY_NOT_APPLICABLE = Capabilities._class
       .instanceMethodId(r'getCAPABILITY_NOT_APPLICABLE', r'()I');
 
   static final _get$cAPABILITY_NOT_APPLICABLE =
@@ -193,7 +137,7 @@ extension Capabilities$Companion$$Methods on Capabilities$Companion {
     ).integer;
   }
 
-  static final _id_get$cAPABILITY_POSSESSED = Capabilities$Companion._class
+  static final _id_get$cAPABILITY_POSSESSED = Capabilities._class
       .instanceMethodId(r'getCAPABILITY_POSSESSED', r'()I');
 
   static final _get$cAPABILITY_POSSESSED =
@@ -218,64 +162,6 @@ extension Capabilities$Companion$$Methods on Capabilities$Companion {
       reference.pointer,
       _id_get$cAPABILITY_POSSESSED.pointer,
     ).integer;
-  }
-}
-
-final class $Capabilities$Companion$Type$
-    extends jni$_.JType<Capabilities$Companion> {
-  @jni$_.internal
-  const $Capabilities$Companion$Type$();
-
-  @jni$_.internal
-  @core$_.override
-  String get signature =>
-      r'Ldev/zeekr/invictus_android/app/time/Capabilities$Companion;';
-}
-
-/// from: `dev.zeekr.invictus_android.app.time.Capabilities`
-extension type Capabilities._(jni$_.JObject _$this) implements jni$_.JObject {
-  static final _class = jni$_.JClass.forName(
-    r'dev/zeekr/invictus_android/app/time/Capabilities',
-  );
-
-  /// The type which includes information such as the signature of this class.
-  static const jni$_.JType<Capabilities> type = $Capabilities$Type$();
-  static final _id_Companion = _class.staticFieldId(
-    r'Companion',
-    r'Ldev/zeekr/invictus_android/app/time/Capabilities$Companion;',
-  );
-
-  /// from: `static public final dev.zeekr.invictus_android.app.time.Capabilities$Companion Companion`
-  /// The returned object must be released after use, by calling the [release] method.
-  static Capabilities$Companion get Companion =>
-      _id_Companion.get(_class, Capabilities$Companion.type)
-          as Capabilities$Companion;
-
-  static final _id_new$ = _class.constructorId(r'()V');
-
-  static final _new$ =
-      jni$_.ProtectedJniExtensions.lookup<
-            jni$_.NativeFunction<
-              jni$_.JniResult Function(
-                jni$_.Pointer<jni$_.Void>,
-                jni$_.JMethodIDPtr,
-              )
-            >
-          >('globalEnv_NewObject')
-          .asFunction<
-            jni$_.JniResult Function(
-              jni$_.Pointer<jni$_.Void>,
-              jni$_.JMethodIDPtr,
-            )
-          >();
-
-  /// from: `public void <init>()`
-  /// The returned object must be released after use, by calling the [release] method.
-  factory Capabilities() {
-    return _new$(
-      _class.reference.pointer,
-      _id_new$.pointer,
-    ).object<Capabilities>();
   }
 }
 

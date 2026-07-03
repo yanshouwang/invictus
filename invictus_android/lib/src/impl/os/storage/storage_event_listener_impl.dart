@@ -5,7 +5,7 @@ import 'package:invictus_api/invictus_api.dart';
 final class StorageEventListenerImpl extends ObjectImpl
     implements StorageEventListener {
   @override
-  final jni.InvictusStorageEventListener api;
+  final jni.StorageEventListener api;
 
   StorageEventListenerImpl.internal(this.api);
 }
@@ -32,10 +32,10 @@ final class StorageEventListenerChannelImpl
     void Function(DiskInfo disk, int volumeCount)? onDiskScanned,
     void Function(DiskInfo disk)? onDiskDestroyed,
   }) {
-    final api = jni.JniInvictusStorageEventListenerImpl(
+    final api = jni.JniStorageEventListenerImpl(
       jni.context,
-      jni.JniInvictusStorageEventListener.implement(
-        jni.$JniInvictusStorageEventListener(
+      jni.JniStorageEventListener.implement(
+        jni.$JniStorageEventListener(
           onUsbMassStorageConnectionChanged: (connected) =>
               onUsbMassStorageConnectionChanged?.call(connected),
           onStorageStateChanged: (path, oldState, newState) =>
@@ -63,7 +63,7 @@ final class StorageEventListenerChannelImpl
 }
 
 extension Invictus$StorageEventListenerX on StorageEventListener {
-  jni.InvictusStorageEventListener get api {
+  jni.StorageEventListener get api {
     final impl = this;
     if (impl is! StorageEventListenerImpl) throw TypeError();
     return impl.api;

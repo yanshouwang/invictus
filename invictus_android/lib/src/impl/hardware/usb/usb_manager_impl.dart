@@ -121,9 +121,9 @@ final class UsbManagerImpl extends ObjectImpl implements UsbManager {
   @override
   Future<bool> requestAccessoryPermission(UsbAccessory accessory) {
     final completer = Completer<bool>();
-    final receiverApi = jni.InvictusBroadcastReceiverImpl(
-      jni.InvictusBroadcastReceiver.implement(
-        jni.$InvictusBroadcastReceiver(
+    final receiverApi = jni.JniBroadcastReceiverImpl(
+      jni.JniBroadcastReceiver.implement(
+        jni.$JniBroadcastReceiver(
           onReceive: (context, intent) {
             if (intent == null) {
               _logger.warning('intent is null');
@@ -171,9 +171,9 @@ final class UsbManagerImpl extends ObjectImpl implements UsbManager {
   @override
   Future<bool> requestDevicePermission(UsbDevice device) {
     final completer = Completer<bool>();
-    final receiverApi = jni.InvictusBroadcastReceiverImpl(
-      jni.InvictusBroadcastReceiver.implement(
-        jni.$InvictusBroadcastReceiver(
+    final receiverApi = jni.JniBroadcastReceiverImpl(
+      jni.JniBroadcastReceiver.implement(
+        jni.$JniBroadcastReceiver(
           onReceive: (context, intent) {
             if (intent == null) {
               _logger.warning('intent is null');
@@ -235,9 +235,9 @@ final class UsbManagerChannelImpl extends UsbManagerChannel {
     required void Function(UsbAccessory accessory) onAttached,
     required void Function(UsbAccessory accessory) onDetached,
   }) {
-    final api = jni.InvictusBroadcastReceiverImpl(
-      jni.InvictusBroadcastReceiver.implement(
-        jni.$InvictusBroadcastReceiver(
+    final api = jni.JniBroadcastReceiverImpl(
+      jni.JniBroadcastReceiver.implement(
+        jni.$JniBroadcastReceiver(
           onReceive: (context, intent) {
             if (intent == null) {
               _logger.warning('intent is null');
@@ -275,9 +275,9 @@ final class UsbManagerChannelImpl extends UsbManagerChannel {
     required void Function(UsbDevice device) onAttached,
     required void Function(UsbDevice device) onDetached,
   }) {
-    final api = jni.InvictusBroadcastReceiverImpl(
-      jni.InvictusBroadcastReceiver.implement(
-        jni.$InvictusBroadcastReceiver(
+    final api = jni.JniBroadcastReceiverImpl(
+      jni.JniBroadcastReceiver.implement(
+        jni.$JniBroadcastReceiver(
           onReceive: (context, intent) {
             if (intent == null) {
               _logger.warning('intent is null');

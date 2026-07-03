@@ -420,8 +420,7 @@ final class $ConnectivityManager$NetworkCallback$Type$
 /// from: `android.net.ConnectivityManager$OnNetworkActiveListener`
 extension type ConnectivityManager$OnNetworkActiveListener._(
   jni$_.JObject _$this
-)
-    implements jni$_.JObject {
+) implements jni$_.JObject {
   static final _class = jni$_.JClass.forName(
     r'android/net/ConnectivityManager$OnNetworkActiveListener',
   );

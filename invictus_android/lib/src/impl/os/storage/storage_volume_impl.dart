@@ -5,10 +5,8 @@ import 'package:invictus_api/invictus_api.dart';
 final class StorageVolumeImpl extends ObjectImpl implements StorageVolume {
   @override
   final jni.StorageVolume api;
-  final jni.InvictusStorageVolume invictusApi;
 
-  StorageVolumeImpl.internal(this.api)
-    : invictusApi = jni.InvictusStorageVolume(api);
+  StorageVolumeImpl.internal(this.api);
 
   @override
   String get description {
@@ -21,10 +19,14 @@ final class StorageVolumeImpl extends ObjectImpl implements StorageVolume {
   }
 
   @override
-  String get id => invictusApi.id.impl;
+  int get fatVolumeId => jni.StorageVolumeCompat.INSTANCE.getFatVolumeId(api);
 
   @override
-  String get internalPath => invictusApi.internalPath.impl;
+  String get id => jni.StorageVolumeCompat.INSTANCE.getId(api).impl;
+
+  @override
+  String get internalPath =>
+      jni.StorageVolumeCompat.INSTANCE.getInternalPath(api).impl;
 
   @override
   bool get isEmulated => api.isEmulated;
@@ -36,13 +38,10 @@ final class StorageVolumeImpl extends ObjectImpl implements StorageVolume {
   bool get isRemovable => api.isRemovable;
 
   @override
-  int get maxFileSize => invictusApi.maxFileSize;
+  int get maxFileSize => jni.StorageVolumeCompat.INSTANCE.getMaxFileSize(api);
 
   @override
-  String? get mediaStoreVolumeName => api.mediaStoreVolumeName?.impl;
-
-  @override
-  String get path => invictusApi.path.impl;
+  String get path => jni.StorageVolumeCompat.INSTANCE.getPath(api).impl;
 
   @override
   Environment$Media get state {
@@ -52,7 +51,8 @@ final class StorageVolumeImpl extends ObjectImpl implements StorageVolume {
   }
 
   @override
-  String get userLabel => invictusApi.userLabel.impl;
+  String get userLabel =>
+      jni.StorageVolumeCompat.INSTANCE.getUserLabel(api).impl;
 
   @override
   String? get uuid => api.uuid?.impl;

@@ -1,6 +1,6 @@
 name: invictus_darwin
 description: "iOS and macOS implementation of the invictus plugin."
-version: 1.0.0-dev.8
+version: 1.0.0-dev.9
 repository: https://github.com/yanshouwang/invictus
 issue_tracker: https://github.com/yanshouwang/invictus/issues
 
@@ -15,7 +15,7 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
-  invictus_api: ^1.0.0-dev.8
+  invictus_api: ^1.0.0-dev.9
 
 dev_dependencies:
   flutter_test:

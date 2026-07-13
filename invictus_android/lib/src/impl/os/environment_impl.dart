@@ -3,30 +3,6 @@ import 'package:invictus_api/invictus_api.dart';
 
 final class EnvironmentChannelImpl extends EnvironmentChannel {
   @override
-  String get alarmsDirectory => ArgumentError.checkNotNull(
-    jni.Environment.DIRECTORY_ALARMS,
-    'DIRECTORY_ALARMS',
-  ).impl;
-
-  @override
-  String get dcimDirectory => ArgumentError.checkNotNull(
-    jni.Environment.DIRECTORY_DCIM,
-    'DIRECTORY_DCIM',
-  ).impl;
-
-  @override
-  String get documentsDirectory => ArgumentError.checkNotNull(
-    jni.Environment.DIRECTORY_DOCUMENTS,
-    'DIRECTORY_DOCUMENTS',
-  ).impl;
-
-  @override
-  String get downloadsDirectory => ArgumentError.checkNotNull(
-    jni.Environment.DIRECTORY_DOWNLOADS,
-    'DIRECTORY_DOWNLOADS',
-  ).impl;
-
-  @override
   String getDataDirectory() {
     final directoryApi = ArgumentError.checkNotNull(
       jni.Environment.dataDirectory,
@@ -96,42 +72,6 @@ final class EnvironmentChannelImpl extends EnvironmentChannel {
   bool isExternalStorageRemovable([String? path]) => path == null
       ? jni.Environment.isExternalStorageRemovable
       : jni.Environment.isExternalStorageRemovable$1(path.fileApi);
-
-  @override
-  String get moviesDirectory => ArgumentError.checkNotNull(
-    jni.Environment.DIRECTORY_MOVIES,
-    'DIRECTORY_MOVIES',
-  ).impl;
-
-  @override
-  String get musicDirectory => ArgumentError.checkNotNull(
-    jni.Environment.DIRECTORY_MUSIC,
-    'DIRECTORY_MUSIC',
-  ).impl;
-
-  @override
-  String get notificationsDirectory => ArgumentError.checkNotNull(
-    jni.Environment.DIRECTORY_NOTIFICATIONS,
-    'DIRECTORY_NOTIFICATIONS',
-  ).impl;
-
-  @override
-  String get picturesDirectory => ArgumentError.checkNotNull(
-    jni.Environment.DIRECTORY_PICTURES,
-    'DIRECTORY_PICTURES',
-  ).impl;
-
-  @override
-  String get podcastsDirectory => ArgumentError.checkNotNull(
-    jni.Environment.DIRECTORY_PODCASTS,
-    'DIRECTORY_PODCASTS',
-  ).impl;
-
-  @override
-  String get ringtonesDirectory => ArgumentError.checkNotNull(
-    jni.Environment.DIRECTORY_RINGTONES,
-    'DIRECTORY_RINGTONES',
-  ).impl;
 }
 
 extension Invictus$Environment$DirectoryX on Environment$Directory {

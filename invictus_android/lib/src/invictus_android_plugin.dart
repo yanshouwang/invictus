@@ -58,6 +58,7 @@ final class InvictusAndroidPlugin {
     Build$VersionCodesFullChannel.instance =
         Build$VersionCodesFullChannelImpl();
     BuildChannel.instance = BuildChannelImpl();
+    EnvironmentChannel.instance = EnvironmentChannelImpl();
     LocaleListChannel.instance = LocaleListChannelImpl();
     PowerManagerChannel.instance = PowerManagerChannelImpl();
     SystemClockChannel.instance = SystemClockChannelImpl();

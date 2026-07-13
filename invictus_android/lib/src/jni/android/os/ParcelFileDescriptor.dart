@@ -38,6 +38,8 @@ import 'package:jni/jni.dart' as jni$_;
 
 import '../../java/io/Closeable.dart' as closeable$_;
 
+import '../../java/io/File.dart' as file$_;
+
 import '../../java/io/FileDescriptor.dart' as filedescriptor$_;
 
 import '../../java/net/DatagramSocket.dart' as datagramsocket$_;
@@ -902,7 +904,7 @@ extension type ParcelFileDescriptor._(jni$_.JObject _$this)
 
   /// from: `static public android.os.ParcelFileDescriptor open(java.io.File file, int i)`
   /// The returned object must be released after use, by calling the [release] method.
-  static ParcelFileDescriptor? open(jni$_.JObject? file, core$_.int i) {
+  static ParcelFileDescriptor? open(file$_.File? file, core$_.int i) {
     final _$file = file?.reference ?? jni$_.jNullReference;
     return _open(
       _class.reference.pointer,
@@ -948,7 +950,7 @@ extension type ParcelFileDescriptor._(jni$_.JObject _$this)
   /// from: `static public android.os.ParcelFileDescriptor open(java.io.File file, int i, android.os.Handler handler, android.os.ParcelFileDescriptor$OnCloseListener onCloseListener)`
   /// The returned object must be released after use, by calling the [release] method.
   static ParcelFileDescriptor? open$1(
-    jni$_.JObject? file,
+    file$_.File? file,
     core$_.int i,
     handler$_.Handler? handler,
     ParcelFileDescriptor$OnCloseListener? onCloseListener,

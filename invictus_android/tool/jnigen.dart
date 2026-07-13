@@ -119,6 +119,7 @@ void main() async {
       'dev.zeekr.invictus_android.os.storage.JniStorageEventListenerImpl',
       'dev.zeekr.invictus_android.os.storage.JniStorageManagerCompat',
       'java.io.Closeable',
+      'java.io.File',
       'java.io.FileDescriptor',
       'java.io.Flushable',
       'java.io.InputStream',

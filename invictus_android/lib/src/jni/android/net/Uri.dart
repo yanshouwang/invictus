@@ -36,6 +36,8 @@ import 'dart:core' show Object, String;
 import 'package:jni/_internal.dart' as jni$_;
 import 'package:jni/jni.dart' as jni$_;
 
+import '../../java/io/File.dart' as file$_;
+
 import '../../java/lang/Comparable.dart' as comparable$_;
 
 /// from: `android.net.Uri$Builder`
@@ -812,7 +814,7 @@ extension type Uri._(jni$_.JObject _$this)
 
   /// from: `static public android.net.Uri fromFile(java.io.File file)`
   /// The returned object must be released after use, by calling the [release] method.
-  static Uri? fromFile(jni$_.JObject? file) {
+  static Uri? fromFile(file$_.File? file) {
     final _$file = file?.reference ?? jni$_.jNullReference;
     return _fromFile(
       _class.reference.pointer,

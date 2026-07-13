@@ -80,6 +80,11 @@ class HomeView extends StatelessWidget {
               icon: Icon(Symbols.storage),
               label: Text('Storage'),
             ),
+            NewGridTile(
+              onPressed: () => router.go('./environment'),
+              icon: Icon(Symbols.source_environment),
+              label: Text('Environment'),
+            ),
           ],
         ),
       ),

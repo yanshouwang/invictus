@@ -10,3 +10,4 @@ export 'views/system_properties_view.dart';
 export 'views/settings_view.dart';
 export 'views/time_view.dart';
 export 'views/storage_view.dart';
+export 'views/environment_view.dart';

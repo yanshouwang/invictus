@@ -36,6 +36,8 @@ import 'dart:core' show Object, String;
 import 'package:jni/_internal.dart' as jni$_;
 import 'package:jni/jni.dart' as jni$_;
 
+import '../../../java/io/File.dart' as file$_;
+
 import '../../content/Context.dart' as context$_;
 
 import '../../content/Intent.dart' as intent$_;
@@ -255,11 +257,11 @@ extension StorageVolume$$Methods on StorageVolume {
 
   /// from: `public java.io.File getDirectory()`
   /// The returned object must be released after use, by calling the [release] method.
-  jni$_.JObject? get directory {
+  file$_.File? get directory {
     return _get$directory(
       reference.pointer,
       _id_get$directory.pointer,
-    ).object<jni$_.JObject?>();
+    ).object<file$_.File?>();
   }
 
   static final _id_get$mediaStoreVolumeName = StorageVolume._class

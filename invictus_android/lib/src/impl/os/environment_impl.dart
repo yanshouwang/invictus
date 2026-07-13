@@ -1,6 +1,201 @@
 import 'package:invictus_android/src/jni.dart' as jni;
 import 'package:invictus_api/invictus_api.dart';
 
+final class EnvironmentChannelImpl extends EnvironmentChannel {
+  @override
+  String get alarmsDirectory => ArgumentError.checkNotNull(
+    jni.Environment.DIRECTORY_ALARMS,
+    'DIRECTORY_ALARMS',
+  ).impl;
+
+  @override
+  String get dcimDirectory => ArgumentError.checkNotNull(
+    jni.Environment.DIRECTORY_DCIM,
+    'DIRECTORY_DCIM',
+  ).impl;
+
+  @override
+  String get documentsDirectory => ArgumentError.checkNotNull(
+    jni.Environment.DIRECTORY_DOCUMENTS,
+    'DIRECTORY_DOCUMENTS',
+  ).impl;
+
+  @override
+  String get downloadsDirectory => ArgumentError.checkNotNull(
+    jni.Environment.DIRECTORY_DOWNLOADS,
+    'DIRECTORY_DOWNLOADS',
+  ).impl;
+
+  @override
+  String getDataDirectory() {
+    final directoryApi = ArgumentError.checkNotNull(
+      jni.Environment.dataDirectory,
+      'directoryApi',
+    );
+    return ArgumentError.checkNotNull(directoryApi.path, 'path').impl;
+  }
+
+  @override
+  String getDownloadCacheDirectory() {
+    final directoryApi = ArgumentError.checkNotNull(
+      jni.Environment.downloadCacheDirectory,
+      'directoryApi',
+    );
+    return ArgumentError.checkNotNull(directoryApi.path, 'path').impl;
+  }
+
+  @override
+  String getExternalStorageDirectory() {
+    final directoryApi = ArgumentError.checkNotNull(
+      jni.Environment.externalStorageDirectory,
+      'directoryApi',
+    );
+    return ArgumentError.checkNotNull(directoryApi.path, 'path').impl;
+  }
+
+  @override
+  String getExternalStoragePublicDirectory(Environment$Directory type) {
+    final directoryApi = ArgumentError.checkNotNull(
+      jni.Environment.getExternalStoragePublicDirectory(type.api),
+      'directoryApi',
+    );
+    return ArgumentError.checkNotNull(directoryApi.path, 'path').impl;
+  }
+
+  @override
+  Environment$Media getExternalStorageState([String? path]) {
+    final stateApi = ArgumentError.checkNotNull(
+      path == null
+          ? jni.Environment.externalStorageState
+          : jni.Environment.getExternalStorageState(path.fileApi),
+      'stateApi',
+    );
+    return stateApi.environment$MediaImpl;
+  }
+
+  @override
+  String getRootDirectory() {
+    final directoryApi = ArgumentError.checkNotNull(
+      jni.Environment.rootDirectory,
+      'directoryApi',
+    );
+    return ArgumentError.checkNotNull(directoryApi.path, 'path').impl;
+  }
+
+  @override
+  bool isExternalStorageEmulated([String? path]) => path == null
+      ? jni.Environment.isExternalStorageEmulated
+      : jni.Environment.isExternalStorageEmulated$1(path.fileApi);
+
+  @override
+  bool isExternalStorageManager([String? path]) => path == null
+      ? jni.Environment.isExternalStorageManager
+      : jni.Environment.isExternalStorageManager$1(path.fileApi);
+
+  @override
+  bool isExternalStorageRemovable([String? path]) => path == null
+      ? jni.Environment.isExternalStorageRemovable
+      : jni.Environment.isExternalStorageRemovable$1(path.fileApi);
+
+  @override
+  String get moviesDirectory => ArgumentError.checkNotNull(
+    jni.Environment.DIRECTORY_MOVIES,
+    'DIRECTORY_MOVIES',
+  ).impl;
+
+  @override
+  String get musicDirectory => ArgumentError.checkNotNull(
+    jni.Environment.DIRECTORY_MUSIC,
+    'DIRECTORY_MUSIC',
+  ).impl;
+
+  @override
+  String get notificationsDirectory => ArgumentError.checkNotNull(
+    jni.Environment.DIRECTORY_NOTIFICATIONS,
+    'DIRECTORY_NOTIFICATIONS',
+  ).impl;
+
+  @override
+  String get picturesDirectory => ArgumentError.checkNotNull(
+    jni.Environment.DIRECTORY_PICTURES,
+    'DIRECTORY_PICTURES',
+  ).impl;
+
+  @override
+  String get podcastsDirectory => ArgumentError.checkNotNull(
+    jni.Environment.DIRECTORY_PODCASTS,
+    'DIRECTORY_PODCASTS',
+  ).impl;
+
+  @override
+  String get ringtonesDirectory => ArgumentError.checkNotNull(
+    jni.Environment.DIRECTORY_RINGTONES,
+    'DIRECTORY_RINGTONES',
+  ).impl;
+}
+
+extension Invictus$Environment$DirectoryX on Environment$Directory {
+  jni.JString get api {
+    switch (this) {
+      case .alarms:
+        return ArgumentError.checkNotNull(
+          jni.Environment.DIRECTORY_ALARMS,
+          'DIRECTORY_ALARMS',
+        );
+      case Environment$Directory.dcim:
+        return ArgumentError.checkNotNull(
+          jni.Environment.DIRECTORY_DCIM,
+          'DIRECTORY_DCIM',
+        );
+      case Environment$Directory.documents:
+        return ArgumentError.checkNotNull(
+          jni.Environment.DIRECTORY_DOCUMENTS,
+          'DIRECTORY_DOCUMENTS',
+        );
+      case Environment$Directory.downloads:
+        return ArgumentError.checkNotNull(
+          jni.Environment.DIRECTORY_DOWNLOADS,
+          'DIRECTORY_DOWNLOADS',
+        );
+      case Environment$Directory.movies:
+        return ArgumentError.checkNotNull(
+          jni.Environment.DIRECTORY_MOVIES,
+          'DIRECTORY_MOVIES',
+        );
+      case Environment$Directory.music:
+        return ArgumentError.checkNotNull(
+          jni.Environment.DIRECTORY_MUSIC,
+          'DIRECTORY_MUSIC',
+        );
+      case Environment$Directory.notifications:
+        return ArgumentError.checkNotNull(
+          jni.Environment.DIRECTORY_NOTIFICATIONS,
+          'DIRECTORY_NOTIFICATIONS',
+        );
+      case Environment$Directory.pictures:
+        return ArgumentError.checkNotNull(
+          jni.Environment.DIRECTORY_PICTURES,
+          'DIRECTORY_PICTURES',
+        );
+      case Environment$Directory.podcasts:
+        return ArgumentError.checkNotNull(
+          jni.Environment.DIRECTORY_PODCASTS,
+          'DIRECTORY_PODCASTS',
+        );
+      case Environment$Directory.ringtones:
+        return ArgumentError.checkNotNull(
+          jni.Environment.DIRECTORY_RINGTONES,
+          'DIRECTORY_RINGTONES',
+        );
+      case Environment$Directory.screenshots:
+        return ArgumentError.checkNotNull(
+          jni.Environment.DIRECTORY_SCREENSHOTS,
+          'DIRECTORY_SCREENSHOTS',
+        );
+    }
+  }
+}
+
 extension Invictus$JEnvironment$JStriingX on jni.JString {
   Environment$Media get environment$MediaImpl {
     if (this == jni.Environment.MEDIA_UNKNOWN) return .unknown;

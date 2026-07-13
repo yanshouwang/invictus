@@ -36,6 +36,8 @@ import 'dart:core' show Object, String;
 import 'package:jni/_internal.dart' as jni$_;
 import 'package:jni/jni.dart' as jni$_;
 
+import '../../java/io/File.dart' as file$_;
+
 import '../../java/io/InputStream.dart' as inputstream$_;
 
 import '../../java/lang/CharSequence.dart' as charsequence$_;
@@ -3340,11 +3342,11 @@ extension Context$$Methods on Context {
 
   /// from: `public abstract java.io.File getCacheDir()`
   /// The returned object must be released after use, by calling the [release] method.
-  jni$_.JObject? get cacheDir {
+  file$_.File? get cacheDir {
     return _get$cacheDir(
       reference.pointer,
       _id_get$cacheDir.pointer,
-    ).object<jni$_.JObject?>();
+    ).object<file$_.File?>();
   }
 
   static final _id_get$classLoader = Context._class.instanceMethodId(
@@ -3400,11 +3402,11 @@ extension Context$$Methods on Context {
 
   /// from: `public abstract java.io.File getCodeCacheDir()`
   /// The returned object must be released after use, by calling the [release] method.
-  jni$_.JObject? get codeCacheDir {
+  file$_.File? get codeCacheDir {
     return _get$codeCacheDir(
       reference.pointer,
       _id_get$codeCacheDir.pointer,
-    ).object<jni$_.JObject?>();
+    ).object<file$_.File?>();
   }
 
   static final _id_getColor = Context._class.instanceMethodId(
@@ -3521,11 +3523,11 @@ extension Context$$Methods on Context {
 
   /// from: `public abstract java.io.File getDataDir()`
   /// The returned object must be released after use, by calling the [release] method.
-  jni$_.JObject? get dataDir {
+  file$_.File? get dataDir {
     return _get$dataDir(
       reference.pointer,
       _id_get$dataDir.pointer,
-    ).object<jni$_.JObject?>();
+    ).object<file$_.File?>();
   }
 
   static final _id_getDatabasePath = Context._class.instanceMethodId(
@@ -3553,13 +3555,13 @@ extension Context$$Methods on Context {
 
   /// from: `public abstract java.io.File getDatabasePath(java.lang.String string)`
   /// The returned object must be released after use, by calling the [release] method.
-  jni$_.JObject? getDatabasePath(jni$_.JString? string) {
+  file$_.File? getDatabasePath(jni$_.JString? string) {
     final _$string = string?.reference ?? jni$_.jNullReference;
     return _getDatabasePath(
       reference.pointer,
       _id_getDatabasePath.pointer,
       _$string.pointer,
-    ).object<jni$_.JObject?>();
+    ).object<file$_.File?>();
   }
 
   static final _id_get$deviceId = Context._class.instanceMethodId(
@@ -3614,14 +3616,14 @@ extension Context$$Methods on Context {
 
   /// from: `public abstract java.io.File getDir(java.lang.String string, int i)`
   /// The returned object must be released after use, by calling the [release] method.
-  jni$_.JObject? getDir(jni$_.JString? string, core$_.int i) {
+  file$_.File? getDir(jni$_.JString? string, core$_.int i) {
     final _$string = string?.reference ?? jni$_.jNullReference;
     return _getDir(
       reference.pointer,
       _id_getDir.pointer,
       _$string.pointer,
       i,
-    ).object<jni$_.JObject?>();
+    ).object<file$_.File?>();
   }
 
   static final _id_get$display = Context._class.instanceMethodId(
@@ -3710,11 +3712,11 @@ extension Context$$Methods on Context {
 
   /// from: `public abstract java.io.File getExternalCacheDir()`
   /// The returned object must be released after use, by calling the [release] method.
-  jni$_.JObject? get externalCacheDir {
+  file$_.File? get externalCacheDir {
     return _get$externalCacheDir(
       reference.pointer,
       _id_get$externalCacheDir.pointer,
-    ).object<jni$_.JObject?>();
+    ).object<file$_.File?>();
   }
 
   static final _id_get$externalCacheDirs = Context._class.instanceMethodId(
@@ -3740,11 +3742,11 @@ extension Context$$Methods on Context {
 
   /// from: `public abstract java.io.File[] getExternalCacheDirs()`
   /// The returned object must be released after use, by calling the [release] method.
-  jni$_.JArray<jni$_.JObject?>? get externalCacheDirs {
+  jni$_.JArray<file$_.File?>? get externalCacheDirs {
     return _get$externalCacheDirs(
       reference.pointer,
       _id_get$externalCacheDirs.pointer,
-    ).object<jni$_.JArray<jni$_.JObject?>?>();
+    ).object<jni$_.JArray<file$_.File?>?>();
   }
 
   static final _id_getExternalFilesDir = Context._class.instanceMethodId(
@@ -3772,13 +3774,13 @@ extension Context$$Methods on Context {
 
   /// from: `public abstract java.io.File getExternalFilesDir(java.lang.String string)`
   /// The returned object must be released after use, by calling the [release] method.
-  jni$_.JObject? getExternalFilesDir(jni$_.JString? string) {
+  file$_.File? getExternalFilesDir(jni$_.JString? string) {
     final _$string = string?.reference ?? jni$_.jNullReference;
     return _getExternalFilesDir(
       reference.pointer,
       _id_getExternalFilesDir.pointer,
       _$string.pointer,
-    ).object<jni$_.JObject?>();
+    ).object<file$_.File?>();
   }
 
   static final _id_getExternalFilesDirs = Context._class.instanceMethodId(
@@ -3806,13 +3808,13 @@ extension Context$$Methods on Context {
 
   /// from: `public abstract java.io.File[] getExternalFilesDirs(java.lang.String string)`
   /// The returned object must be released after use, by calling the [release] method.
-  jni$_.JArray<jni$_.JObject?>? getExternalFilesDirs(jni$_.JString? string) {
+  jni$_.JArray<file$_.File?>? getExternalFilesDirs(jni$_.JString? string) {
     final _$string = string?.reference ?? jni$_.jNullReference;
     return _getExternalFilesDirs(
       reference.pointer,
       _id_getExternalFilesDirs.pointer,
       _$string.pointer,
-    ).object<jni$_.JArray<jni$_.JObject?>?>();
+    ).object<jni$_.JArray<file$_.File?>?>();
   }
 
   static final _id_get$externalMediaDirs = Context._class.instanceMethodId(
@@ -3838,11 +3840,11 @@ extension Context$$Methods on Context {
 
   /// from: `public abstract java.io.File[] getExternalMediaDirs()`
   /// The returned object must be released after use, by calling the [release] method.
-  jni$_.JArray<jni$_.JObject?>? get externalMediaDirs {
+  jni$_.JArray<file$_.File?>? get externalMediaDirs {
     return _get$externalMediaDirs(
       reference.pointer,
       _id_get$externalMediaDirs.pointer,
-    ).object<jni$_.JArray<jni$_.JObject?>?>();
+    ).object<jni$_.JArray<file$_.File?>?>();
   }
 
   static final _id_getFileStreamPath = Context._class.instanceMethodId(
@@ -3870,13 +3872,13 @@ extension Context$$Methods on Context {
 
   /// from: `public abstract java.io.File getFileStreamPath(java.lang.String string)`
   /// The returned object must be released after use, by calling the [release] method.
-  jni$_.JObject? getFileStreamPath(jni$_.JString? string) {
+  file$_.File? getFileStreamPath(jni$_.JString? string) {
     final _$string = string?.reference ?? jni$_.jNullReference;
     return _getFileStreamPath(
       reference.pointer,
       _id_getFileStreamPath.pointer,
       _$string.pointer,
-    ).object<jni$_.JObject?>();
+    ).object<file$_.File?>();
   }
 
   static final _id_get$filesDir = Context._class.instanceMethodId(
@@ -3902,11 +3904,11 @@ extension Context$$Methods on Context {
 
   /// from: `public abstract java.io.File getFilesDir()`
   /// The returned object must be released after use, by calling the [release] method.
-  jni$_.JObject? get filesDir {
+  file$_.File? get filesDir {
     return _get$filesDir(
       reference.pointer,
       _id_get$filesDir.pointer,
-    ).object<jni$_.JObject?>();
+    ).object<file$_.File?>();
   }
 
   static final _id_get$mainExecutor = Context._class.instanceMethodId(
@@ -3992,11 +3994,11 @@ extension Context$$Methods on Context {
 
   /// from: `public abstract java.io.File getNoBackupFilesDir()`
   /// The returned object must be released after use, by calling the [release] method.
-  jni$_.JObject? get noBackupFilesDir {
+  file$_.File? get noBackupFilesDir {
     return _get$noBackupFilesDir(
       reference.pointer,
       _id_get$noBackupFilesDir.pointer,
-    ).object<jni$_.JObject?>();
+    ).object<file$_.File?>();
   }
 
   static final _id_get$obbDir = Context._class.instanceMethodId(
@@ -4022,11 +4024,11 @@ extension Context$$Methods on Context {
 
   /// from: `public abstract java.io.File getObbDir()`
   /// The returned object must be released after use, by calling the [release] method.
-  jni$_.JObject? get obbDir {
+  file$_.File? get obbDir {
     return _get$obbDir(
       reference.pointer,
       _id_get$obbDir.pointer,
-    ).object<jni$_.JObject?>();
+    ).object<file$_.File?>();
   }
 
   static final _id_get$obbDirs = Context._class.instanceMethodId(
@@ -4052,11 +4054,11 @@ extension Context$$Methods on Context {
 
   /// from: `public abstract java.io.File[] getObbDirs()`
   /// The returned object must be released after use, by calling the [release] method.
-  jni$_.JArray<jni$_.JObject?>? get obbDirs {
+  jni$_.JArray<file$_.File?>? get obbDirs {
     return _get$obbDirs(
       reference.pointer,
       _id_get$obbDirs.pointer,
-    ).object<jni$_.JArray<jni$_.JObject?>?>();
+    ).object<jni$_.JArray<file$_.File?>?>();
   }
 
   static final _id_get$opPackageName = Context._class.instanceMethodId(

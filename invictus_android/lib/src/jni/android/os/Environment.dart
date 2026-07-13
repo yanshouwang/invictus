@@ -36,6 +36,8 @@ import 'dart:core' show Object, String;
 import 'package:jni/_internal.dart' as jni$_;
 import 'package:jni/jni.dart' as jni$_;
 
+import '../../java/io/File.dart' as file$_;
+
 /// from: `android.os.Environment`
 extension type Environment._(jni$_.JObject _$this) implements jni$_.JObject {
   static final _class = jni$_.JClass.forName(r'android/os/Environment');
@@ -419,11 +421,11 @@ extension type Environment._(jni$_.JObject _$this) implements jni$_.JObject {
 
   /// from: `static public java.io.File getDataDirectory()`
   /// The returned object must be released after use, by calling the [release] method.
-  static jni$_.JObject? get dataDirectory {
+  static file$_.File? get dataDirectory {
     return _get$dataDirectory(
       _class.reference.pointer,
       _id_get$dataDirectory.pointer,
-    ).object<jni$_.JObject?>();
+    ).object<file$_.File?>();
   }
 
   static final _id_get$downloadCacheDirectory = _class.staticMethodId(
@@ -449,11 +451,11 @@ extension type Environment._(jni$_.JObject _$this) implements jni$_.JObject {
 
   /// from: `static public java.io.File getDownloadCacheDirectory()`
   /// The returned object must be released after use, by calling the [release] method.
-  static jni$_.JObject? get downloadCacheDirectory {
+  static file$_.File? get downloadCacheDirectory {
     return _get$downloadCacheDirectory(
       _class.reference.pointer,
       _id_get$downloadCacheDirectory.pointer,
-    ).object<jni$_.JObject?>();
+    ).object<file$_.File?>();
   }
 
   static final _id_get$externalStorageDirectory = _class.staticMethodId(
@@ -479,11 +481,11 @@ extension type Environment._(jni$_.JObject _$this) implements jni$_.JObject {
 
   /// from: `static public java.io.File getExternalStorageDirectory()`
   /// The returned object must be released after use, by calling the [release] method.
-  static jni$_.JObject? get externalStorageDirectory {
+  static file$_.File? get externalStorageDirectory {
     return _get$externalStorageDirectory(
       _class.reference.pointer,
       _id_get$externalStorageDirectory.pointer,
-    ).object<jni$_.JObject?>();
+    ).object<file$_.File?>();
   }
 
   static final _id_getExternalStoragePublicDirectory = _class.staticMethodId(
@@ -511,15 +513,13 @@ extension type Environment._(jni$_.JObject _$this) implements jni$_.JObject {
 
   /// from: `static public java.io.File getExternalStoragePublicDirectory(java.lang.String string)`
   /// The returned object must be released after use, by calling the [release] method.
-  static jni$_.JObject? getExternalStoragePublicDirectory(
-    jni$_.JString? string,
-  ) {
+  static file$_.File? getExternalStoragePublicDirectory(jni$_.JString? string) {
     final _$string = string?.reference ?? jni$_.jNullReference;
     return _getExternalStoragePublicDirectory(
       _class.reference.pointer,
       _id_getExternalStoragePublicDirectory.pointer,
       _$string.pointer,
-    ).object<jni$_.JObject?>();
+    ).object<file$_.File?>();
   }
 
   static final _id_get$externalStorageState = _class.staticMethodId(
@@ -577,7 +577,7 @@ extension type Environment._(jni$_.JObject _$this) implements jni$_.JObject {
 
   /// from: `static public java.lang.String getExternalStorageState(java.io.File file)`
   /// The returned object must be released after use, by calling the [release] method.
-  static jni$_.JString? getExternalStorageState(jni$_.JObject? file) {
+  static jni$_.JString? getExternalStorageState(file$_.File? file) {
     final _$file = file?.reference ?? jni$_.jNullReference;
     return _getExternalStorageState(
       _class.reference.pointer,
@@ -609,11 +609,11 @@ extension type Environment._(jni$_.JObject _$this) implements jni$_.JObject {
 
   /// from: `static public java.io.File getRootDirectory()`
   /// The returned object must be released after use, by calling the [release] method.
-  static jni$_.JObject get rootDirectory {
+  static file$_.File get rootDirectory {
     return _get$rootDirectory(
       _class.reference.pointer,
       _id_get$rootDirectory.pointer,
-    ).object<jni$_.JObject>();
+    ).object<file$_.File>();
   }
 
   static final _id_get$storageDirectory = _class.staticMethodId(
@@ -639,11 +639,11 @@ extension type Environment._(jni$_.JObject _$this) implements jni$_.JObject {
 
   /// from: `static public java.io.File getStorageDirectory()`
   /// The returned object must be released after use, by calling the [release] method.
-  static jni$_.JObject get storageDirectory {
+  static file$_.File get storageDirectory {
     return _get$storageDirectory(
       _class.reference.pointer,
       _id_get$storageDirectory.pointer,
-    ).object<jni$_.JObject>();
+    ).object<file$_.File>();
   }
 
   static final _id_getStorageState = _class.staticMethodId(
@@ -671,7 +671,7 @@ extension type Environment._(jni$_.JObject _$this) implements jni$_.JObject {
 
   /// from: `static public java.lang.String getStorageState(java.io.File file)`
   /// The returned object must be released after use, by calling the [release] method.
-  static jni$_.JString? getStorageState(jni$_.JObject? file) {
+  static jni$_.JString? getStorageState(file$_.File? file) {
     final _$file = file?.reference ?? jni$_.jNullReference;
     return _getStorageState(
       _class.reference.pointer,
@@ -733,7 +733,7 @@ extension type Environment._(jni$_.JObject _$this) implements jni$_.JObject {
           >();
 
   /// from: `static public boolean isExternalStorageEmulated(java.io.File file)`
-  static core$_.bool isExternalStorageEmulated$1(jni$_.JObject file) {
+  static core$_.bool isExternalStorageEmulated$1(file$_.File file) {
     final _$file = file.reference;
     return _isExternalStorageEmulated$1(
       _class.reference.pointer,
@@ -795,7 +795,7 @@ extension type Environment._(jni$_.JObject _$this) implements jni$_.JObject {
           >();
 
   /// from: `static public boolean isExternalStorageLegacy(java.io.File file)`
-  static core$_.bool isExternalStorageLegacy$1(jni$_.JObject file) {
+  static core$_.bool isExternalStorageLegacy$1(file$_.File file) {
     final _$file = file.reference;
     return _isExternalStorageLegacy$1(
       _class.reference.pointer,
@@ -857,7 +857,7 @@ extension type Environment._(jni$_.JObject _$this) implements jni$_.JObject {
           >();
 
   /// from: `static public boolean isExternalStorageManager(java.io.File file)`
-  static core$_.bool isExternalStorageManager$1(jni$_.JObject file) {
+  static core$_.bool isExternalStorageManager$1(file$_.File file) {
     final _$file = file.reference;
     return _isExternalStorageManager$1(
       _class.reference.pointer,
@@ -919,7 +919,7 @@ extension type Environment._(jni$_.JObject _$this) implements jni$_.JObject {
           >();
 
   /// from: `static public boolean isExternalStorageRemovable(java.io.File file)`
-  static core$_.bool isExternalStorageRemovable$1(jni$_.JObject file) {
+  static core$_.bool isExternalStorageRemovable$1(file$_.File file) {
     final _$file = file.reference;
     return _isExternalStorageRemovable$1(
       _class.reference.pointer,

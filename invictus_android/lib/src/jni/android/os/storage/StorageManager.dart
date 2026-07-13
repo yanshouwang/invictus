@@ -36,6 +36,8 @@ import 'dart:core' show Object, String;
 import 'package:jni/_internal.dart' as jni$_;
 import 'package:jni/jni.dart' as jni$_;
 
+import '../../../java/io/File.dart' as file$_;
+
 import '../../../java/io/FileDescriptor.dart' as filedescriptor$_;
 
 import '../../../java/util/concurrent/Executor.dart' as executor$_;
@@ -566,7 +568,7 @@ extension StorageManager$$Methods on StorageManager {
 
   /// from: `public android.os.storage.StorageVolume getStorageVolume(java.io.File file)`
   /// The returned object must be released after use, by calling the [release] method.
-  storagevolume$_.StorageVolume? getStorageVolume$1(jni$_.JObject file) {
+  storagevolume$_.StorageVolume? getStorageVolume$1(file$_.File file) {
     final _$file = file.reference;
     return _getStorageVolume$1(
       reference.pointer,
@@ -663,7 +665,7 @@ extension StorageManager$$Methods on StorageManager {
 
   /// from: `public java.util.UUID getUuidForPath(java.io.File file)`
   /// The returned object must be released after use, by calling the [release] method.
-  jni$_.JObject getUuidForPath(jni$_.JObject file) {
+  jni$_.JObject getUuidForPath(file$_.File file) {
     final _$file = file.reference;
     return _getUuidForPath(
       reference.pointer,
@@ -730,7 +732,7 @@ extension StorageManager$$Methods on StorageManager {
           >();
 
   /// from: `public boolean isCacheBehaviorGroup(java.io.File file)`
-  core$_.bool isCacheBehaviorGroup(jni$_.JObject? file) {
+  core$_.bool isCacheBehaviorGroup(file$_.File? file) {
     final _$file = file?.reference ?? jni$_.jNullReference;
     return _isCacheBehaviorGroup(
       reference.pointer,
@@ -761,7 +763,7 @@ extension StorageManager$$Methods on StorageManager {
           >();
 
   /// from: `public boolean isCacheBehaviorTombstone(java.io.File file)`
-  core$_.bool isCacheBehaviorTombstone(jni$_.JObject? file) {
+  core$_.bool isCacheBehaviorTombstone(file$_.File? file) {
     final _$file = file?.reference ?? jni$_.jNullReference;
     return _isCacheBehaviorTombstone(
       reference.pointer,
@@ -821,7 +823,7 @@ extension StorageManager$$Methods on StorageManager {
           >();
 
   /// from: `public boolean isEncrypted(java.io.File file)`
-  core$_.bool isEncrypted(jni$_.JObject? file) {
+  core$_.bool isEncrypted(file$_.File? file) {
     final _$file = file?.reference ?? jni$_.jNullReference;
     return _isEncrypted(
       reference.pointer,
@@ -1029,7 +1031,7 @@ extension StorageManager$$Methods on StorageManager {
           >();
 
   /// from: `public void setCacheBehaviorGroup(java.io.File file, boolean z)`
-  void setCacheBehaviorGroup(jni$_.JObject? file, core$_.bool z) {
+  void setCacheBehaviorGroup(file$_.File? file, core$_.bool z) {
     final _$file = file?.reference ?? jni$_.jNullReference;
     _setCacheBehaviorGroup(
       reference.pointer,
@@ -1062,7 +1064,7 @@ extension StorageManager$$Methods on StorageManager {
           >();
 
   /// from: `public void setCacheBehaviorTombstone(java.io.File file, boolean z)`
-  void setCacheBehaviorTombstone(jni$_.JObject? file, core$_.bool z) {
+  void setCacheBehaviorTombstone(file$_.File? file, core$_.bool z) {
     final _$file = file?.reference ?? jni$_.jNullReference;
     _setCacheBehaviorTombstone(
       reference.pointer,

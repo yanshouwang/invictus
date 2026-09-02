@@ -105,8 +105,12 @@ void main() async {
       'dev.zeekr.invictus_android.net.util.NetworkUtils',
       'dev.zeekr.invictus_android.net.wifi.WifiConfigurationCompat',
       'dev.zeekr.invictus_android.net.wifi.JniWifiManager',
+      'dev.zeekr.invictus_android.os.BugreportManagerCompat',
+      'dev.zeekr.invictus_android.os.BugreportParams',
       'dev.zeekr.invictus_android.os.PowerManagerCompat',
       'dev.zeekr.invictus_android.os.SystemProperties',
+      'dev.zeekr.invictus_android.os.JniBugreportManager',
+      'dev.zeekr.invictus_android.os.JniBugreportManagerCompat',
       'dev.zeekr.invictus_android.os.storage.DiskInfo',
       'dev.zeekr.invictus_android.os.storage.StorageEventListener',
       'dev.zeekr.invictus_android.os.storage.StorageManagerCompat',
@@ -161,7 +165,7 @@ void main() async {
     ),
     nonNullAnnotations: ['android.annotation.NonNull'],
     nullableAnnotations: ['android.annotation.Nullable'],
-    logLevel: Level.WARNING,
+    logLevel: Level.ALL,
   );
   await generateJniBindings(config);
 }

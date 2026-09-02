@@ -6,17 +6,21 @@ import PackageDescription
 let package = Package(
     name: "invictus_darwin",
     platforms: [
-        .iOS("13.0"),
-        .macOS("10.15")
+        .iOS("15.0"),
+        .macOS("12.0")
     ],
     products: [
         .library(name: "invictus-darwin", targets: ["invictus_darwin"])
     ],
-    dependencies: [],
+    dependencies: [
+        .package(name: "FlutterFramework", path: "../FlutterFramework")
+    ],
     targets: [
         .target(
             name: "invictus_darwin",
-            dependencies: [],
+            dependencies: [
+                .product(name: "FlutterFramework", package: "FlutterFramework")
+            ],
             resources: [
                 // If your plugin requires a privacy manifest, for example if it uses any required
                 // reason APIs, update the PrivacyInfo.xcprivacy file to describe your plugin's

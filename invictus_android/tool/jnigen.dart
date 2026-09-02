@@ -163,8 +163,14 @@ void main() async {
       addGradleDeps: true,
       androidExample: '../invictus/example/',
     ),
-    nonNullAnnotations: ['android.annotation.NonNull'],
-    nullableAnnotations: ['android.annotation.Nullable'],
+    nonNullAnnotations: [
+      'android.annotation.NonNull',
+      'androidx.annotation.NonNull',
+    ],
+    nullableAnnotations: [
+      'android.annotation.Nullable',
+      'androidx.annotation.Nullable',
+    ],
     logLevel: Level.ALL,
   );
   await generateJniBindings(config);

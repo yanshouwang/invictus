@@ -10,7 +10,8 @@ export 'jni/android/app/_package.dart';
 export 'jni/android/content/_package.dart';
 export 'jni/android/hardware/usb/_package.dart';
 export 'jni/android/icu/util/_package.dart';
-export 'jni/android/net/_package.dart';
+export 'jni/android/net/_package.dart'
+    hide IpConfiguration, $IpConfiguration$Type$;
 export 'jni/android/net/wifi/_package.dart';
 export 'jni/android/net/wifi/aware/_package.dart';
 export 'jni/android/os/_package.dart';

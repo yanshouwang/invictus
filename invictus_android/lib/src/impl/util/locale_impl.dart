@@ -351,11 +351,11 @@ final class LocaleChannelImpl extends LocaleChannel {
     final localesApiOrNull = mode == null
         ? jni.Locale.filter(
             priorityList.map((e) => e.api).toJList(),
-            locales.map((e) => e.api).toJList() as jni.Collection<jni.Locale>,
+            locales.map((e) => e.api).toJList(),
           )
         : jni.Locale.filter$1(
             priorityList.map((e) => e.api).toJList(),
-            locales.map((e) => e.api).toJList() as jni.Collection<jni.Locale>,
+            locales.map((e) => e.api).toJList(),
             mode.api,
           );
     final localesApi = ArgumentError.checkNotNull(
@@ -374,11 +374,11 @@ final class LocaleChannelImpl extends LocaleChannel {
     final tagsApiOrNull = mode == null
         ? jni.Locale.filterTags(
             priorityList.map((e) => e.api).toJList(),
-            tags.map((e) => e.api).toJList() as jni.Collection<jni.JString>,
+            tags.map((e) => e.api).toJList(),
           )
         : jni.Locale.filterTags$1(
             priorityList.map((e) => e.api).toJList(),
-            tags.map((e) => e.api).toJList() as jni.Collection<jni.JString>,
+            tags.map((e) => e.api).toJList(),
             mode.api,
           );
     final tagsApi = ArgumentError.checkNotNull(tagsApiOrNull, 'tagsApi');
@@ -445,7 +445,7 @@ final class LocaleChannelImpl extends LocaleChannel {
     List<Locale> locales,
   ) => jni.Locale.lookup(
     priorityList.map((e) => e.api).toJList(),
-    locales.map((e) => e.api).toJList() as jni.Collection<jni.Locale>,
+    locales.map((e) => e.api).toJList(),
   )?.impl;
 
   @override
@@ -454,7 +454,7 @@ final class LocaleChannelImpl extends LocaleChannel {
     List<String> tags,
   ) => jni.Locale.lookupTag(
     priorityList.map((e) => e.api).toJList(),
-    tags.map((e) => e.api).toJList() as jni.Collection<jni.JString>,
+    tags.map((e) => e.api).toJList(),
   )?.impl;
 
   @override

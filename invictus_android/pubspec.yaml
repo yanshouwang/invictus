@@ -23,7 +23,7 @@ dev_dependencies:
     sdk: flutter
   flutter_lints: ^6.0.0
   # TODO: Update jnigen to support Kotlin 2.2.20
-  jnigen: ^0.17.0
+  jnigen: ^1.0.0
 
 flutter:
   plugin:

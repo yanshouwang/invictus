@@ -266,7 +266,7 @@ final class ConnectivityManagerChannelImpl extends ConnectivityManagerChannel {
   }
 }
 
-extension ConnectivityManagerTypeX on ConnectivityManager$Type {
+extension Invictus$ConnectivityManager$TypeX on ConnectivityManager$Type {
   int get api {
     switch (this) {
       case ConnectivityManager$Type.mobile:

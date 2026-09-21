@@ -33,7 +33,8 @@ abstract interface class Inet4AddressUtils {
   static Inet4Address getBroadcastAddress(
     Inet4Address addr,
     int prefixLength,
-  ) => Inet4AddressUtilsChannel.instance.getBroadcastAddress(addr, prefixLength);
+  ) =>
+      Inet4AddressUtilsChannel.instance.getBroadcastAddress(addr, prefixLength);
 
   static Inet4Address getPrefixMaskAsInet4Address(int prefixLength) =>
       Inet4AddressUtilsChannel.instance.getPrefixMaskAsInet4Address(

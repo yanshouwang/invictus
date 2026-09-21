@@ -85,9 +85,7 @@ final class TimeManagerChannelImpl extends TimeManagerChannel {
   }) {
     final api = jni.JniTimeManager$JniTimeZoneDetectorListenerImpl(
       jni.JniTimeManager$JniTimeZoneDetectorListener.implement(
-        jni.$JniTimeManager$JniTimeZoneDetectorListener(
-          onChange: onChanged,
-        ),
+        jni.$JniTimeManager$JniTimeZoneDetectorListener(onChange: onChanged),
       ),
     );
     return TimeManager$TimeZoneDetectorListenerImpl.internal(api);

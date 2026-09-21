@@ -55,6 +55,7 @@ void main() async {
         'android.net.wifi.WifiSsid',
         'android.net.wifi.aware.WifiAwareNetworkInfo',
         'android.os.Build',
+        'android.os.BugreportManager',
         'android.os.Environment',
         'android.os.Handler',
         'android.os.LocaleList',

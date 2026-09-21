@@ -335,7 +335,7 @@ final class $JniBugreportManager$JniBugreportCallback$Type$
 extension type JniBugreportManager$JniBugreportCallbackImpl._(
   jni$_.JObject _$this
 )
-    implements bugreportmanager$_.BugreportManager$$BugreportCallback {
+    implements bugreportmanager$_.BugreportManager$BugreportCallback {
   static final _class = jni$_.JClass.forName(
     r'dev/zeekr/invictus_android/os/JniBugreportManager$JniBugreportCallbackImpl',
   );

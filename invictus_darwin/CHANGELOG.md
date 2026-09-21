@@ -1,7 +1,7 @@
-## 1.0.0-dev.9
+## 1.0.0
 
-* Bump version.
+- Bump version.
 
 ## 0.0.1
 
-* Initial release.
+- Initial release.

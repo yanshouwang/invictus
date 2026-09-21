@@ -39,14 +39,21 @@ final class EnvironmentChannelImpl extends EnvironmentChannel {
   }
 
   @override
-  Environment$Media getExternalStorageState([String? path]) {
-    final stateApi = ArgumentError.checkNotNull(
-      path == null
-          ? jni.Environment.externalStorageState
-          : jni.Environment.getExternalStorageState(path.fileApi),
-      'stateApi',
-    );
-    return stateApi.environment$MediaImpl;
+  Environment$Media getExternalStorageState([String? filePath]) {
+    if (filePath == null) {
+      final stateApi = ArgumentError.checkNotNull(
+        jni.Environment.externalStorageState,
+        'stateApi',
+      );
+      return stateApi.environment$MediaImpl;
+    } else {
+      final fileApi = jni.File.new$1(filePath.api);
+      final stateApi = ArgumentError.checkNotNull(
+        jni.Environment.getExternalStorageState(fileApi),
+        'stateApi',
+      );
+      return stateApi.environment$MediaImpl;
+    }
   }
 
   @override
@@ -59,19 +66,34 @@ final class EnvironmentChannelImpl extends EnvironmentChannel {
   }
 
   @override
-  bool isExternalStorageEmulated([String? path]) => path == null
-      ? jni.Environment.isExternalStorageEmulated
-      : jni.Environment.isExternalStorageEmulated$1(path.fileApi);
+  bool isExternalStorageEmulated([String? filePath]) {
+    if (filePath == null) {
+      return jni.Environment.isExternalStorageEmulated;
+    } else {
+      final fileApi = jni.File.new$1(filePath.api);
+      return jni.Environment.isExternalStorageEmulated$1(fileApi);
+    }
+  }
 
   @override
-  bool isExternalStorageManager([String? path]) => path == null
-      ? jni.Environment.isExternalStorageManager
-      : jni.Environment.isExternalStorageManager$1(path.fileApi);
+  bool isExternalStorageManager([String? filePath]) {
+    if (filePath == null) {
+      return jni.Environment.isExternalStorageManager;
+    } else {
+      final fileApi = jni.File.new$1(filePath.api);
+      return jni.Environment.isExternalStorageManager$1(fileApi);
+    }
+  }
 
   @override
-  bool isExternalStorageRemovable([String? path]) => path == null
-      ? jni.Environment.isExternalStorageRemovable
-      : jni.Environment.isExternalStorageRemovable$1(path.fileApi);
+  bool isExternalStorageRemovable([String? filePath]) {
+    if (filePath == null) {
+      return jni.Environment.isExternalStorageRemovable;
+    } else {
+      final fileApi = jni.File.new$1(filePath.api);
+      return jni.Environment.isExternalStorageRemovable$1(fileApi);
+    }
+  }
 }
 
 extension Invictus$Environment$DirectoryX on Environment$Directory {

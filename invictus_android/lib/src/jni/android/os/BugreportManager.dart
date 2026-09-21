@@ -36,14 +36,248 @@ import 'dart:core' show Object, String;
 import 'package:jni/_internal.dart' as jni$_;
 import 'package:jni/jni.dart' as jni$_;
 
+import '../../java/util/concurrent/Executor.dart' as executor$_;
+
+import 'ParcelFileDescriptor.dart' as parcelfiledescriptor$_;
+
+/// from: `android.os.BugreportManager$BugreportCallback`
+extension type BugreportManager$BugreportCallback._(jni$_.JObject _$this)
+    implements jni$_.JObject {
+  static final _class = jni$_.JClass.forName(
+    r'android/os/BugreportManager$BugreportCallback',
+  );
+
+  /// The type which includes information such as the signature of this class.
+  static const jni$_.JType<BugreportManager$BugreportCallback> type =
+      $BugreportManager$BugreportCallback$Type$();
+
+  /// from: `static public final int BUGREPORT_ERROR_ANOTHER_REPORT_IN_PROGRESS`
+  static const BUGREPORT_ERROR_ANOTHER_REPORT_IN_PROGRESS = 5;
+
+  /// from: `static public final int BUGREPORT_ERROR_INVALID_INPUT`
+  static const BUGREPORT_ERROR_INVALID_INPUT = 1;
+
+  /// from: `static public final int BUGREPORT_ERROR_NO_BUGREPORT_TO_RETRIEVE`
+  static const BUGREPORT_ERROR_NO_BUGREPORT_TO_RETRIEVE = 6;
+
+  /// from: `static public final int BUGREPORT_ERROR_RUNTIME`
+  static const BUGREPORT_ERROR_RUNTIME = 2;
+
+  /// from: `static public final int BUGREPORT_ERROR_USER_CONSENT_TIMED_OUT`
+  static const BUGREPORT_ERROR_USER_CONSENT_TIMED_OUT = 4;
+
+  /// from: `static public final int BUGREPORT_ERROR_USER_DENIED_CONSENT`
+  static const BUGREPORT_ERROR_USER_DENIED_CONSENT = 3;
+}
+
+extension BugreportManager$BugreportCallback$$Methods
+    on BugreportManager$BugreportCallback {
+  static final _id_onEarlyReportFinished = BugreportManager$BugreportCallback
+      ._class
+      .instanceMethodId(r'onEarlyReportFinished', r'()V');
+
+  static final _onEarlyReportFinished =
+      jni$_.ProtectedJniExtensions.lookup<
+            jni$_.NativeFunction<
+              jni$_.JThrowablePtr Function(
+                jni$_.Pointer<jni$_.Void>,
+                jni$_.JMethodIDPtr,
+              )
+            >
+          >('globalEnv_CallVoidMethod')
+          .asFunction<
+            jni$_.JThrowablePtr Function(
+              jni$_.Pointer<jni$_.Void>,
+              jni$_.JMethodIDPtr,
+            )
+          >();
+
+  /// from: `public void onEarlyReportFinished()`
+  void onEarlyReportFinished() {
+    final _$$selfRef = reference;
+    _onEarlyReportFinished(
+      _$$selfRef.pointer,
+      _id_onEarlyReportFinished.pointer,
+    ).check();
+  }
+
+  static final _id_onError = BugreportManager$BugreportCallback._class
+      .instanceMethodId(r'onError', r'(I)V');
+
+  static final _onError =
+      jni$_.ProtectedJniExtensions.lookup<
+            jni$_.NativeFunction<
+              jni$_.JThrowablePtr Function(
+                jni$_.Pointer<jni$_.Void>,
+                jni$_.JMethodIDPtr,
+                jni$_.VarArgs<(jni$_.Int32,)>,
+              )
+            >
+          >('globalEnv_CallVoidMethod')
+          .asFunction<
+            jni$_.JThrowablePtr Function(
+              jni$_.Pointer<jni$_.Void>,
+              jni$_.JMethodIDPtr,
+              core$_.int,
+            )
+          >();
+
+  /// from: `public void onError(int i)`
+  void onError(core$_.int i) {
+    final _$$selfRef = reference;
+    _onError(_$$selfRef.pointer, _id_onError.pointer, i).check();
+  }
+
+  static final _id_onFinished = BugreportManager$BugreportCallback._class
+      .instanceMethodId(r'onFinished', r'()V');
+
+  static final _onFinished =
+      jni$_.ProtectedJniExtensions.lookup<
+            jni$_.NativeFunction<
+              jni$_.JThrowablePtr Function(
+                jni$_.Pointer<jni$_.Void>,
+                jni$_.JMethodIDPtr,
+              )
+            >
+          >('globalEnv_CallVoidMethod')
+          .asFunction<
+            jni$_.JThrowablePtr Function(
+              jni$_.Pointer<jni$_.Void>,
+              jni$_.JMethodIDPtr,
+            )
+          >();
+
+  /// from: `public void onFinished()`
+  void onFinished() {
+    final _$$selfRef = reference;
+    _onFinished(_$$selfRef.pointer, _id_onFinished.pointer).check();
+  }
+
+  static final _id_onProgress = BugreportManager$BugreportCallback._class
+      .instanceMethodId(r'onProgress', r'(F)V');
+
+  static final _onProgress =
+      jni$_.ProtectedJniExtensions.lookup<
+            jni$_.NativeFunction<
+              jni$_.JThrowablePtr Function(
+                jni$_.Pointer<jni$_.Void>,
+                jni$_.JMethodIDPtr,
+                jni$_.VarArgs<(jni$_.Double,)>,
+              )
+            >
+          >('globalEnv_CallVoidMethod')
+          .asFunction<
+            jni$_.JThrowablePtr Function(
+              jni$_.Pointer<jni$_.Void>,
+              jni$_.JMethodIDPtr,
+              core$_.double,
+            )
+          >();
+
+  /// from: `public void onProgress(float f)`
+  void onProgress(core$_.double f) {
+    final _$$selfRef = reference;
+    _onProgress(_$$selfRef.pointer, _id_onProgress.pointer, f).check();
+  }
+}
+
+final class $BugreportManager$BugreportCallback$Type$
+    extends jni$_.JType<BugreportManager$BugreportCallback> {
+  @jni$_.internal
+  const $BugreportManager$BugreportCallback$Type$();
+
+  @jni$_.internal
+  @core$_.override
+  String get signature => r'Landroid/os/BugreportManager$BugreportCallback;';
+}
+
 /// from: `android.os.BugreportManager`
-///
-/// WARNING: BugreportManager is a stub. To generate bindings for this class, include
-/// android.os.BugreportManager in your config's classes list.
-///
 extension type BugreportManager._(jni$_.JObject _$this)
     implements jni$_.JObject {
+  static final _class = jni$_.JClass.forName(r'android/os/BugreportManager');
+
+  /// The type which includes information such as the signature of this class.
   static const jni$_.JType<BugreportManager> type = $BugreportManager$Type$();
+}
+
+extension BugreportManager$$Methods on BugreportManager {
+  static final _id_cancelBugreport = BugreportManager._class.instanceMethodId(
+    r'cancelBugreport',
+    r'()V',
+  );
+
+  static final _cancelBugreport =
+      jni$_.ProtectedJniExtensions.lookup<
+            jni$_.NativeFunction<
+              jni$_.JThrowablePtr Function(
+                jni$_.Pointer<jni$_.Void>,
+                jni$_.JMethodIDPtr,
+              )
+            >
+          >('globalEnv_CallVoidMethod')
+          .asFunction<
+            jni$_.JThrowablePtr Function(
+              jni$_.Pointer<jni$_.Void>,
+              jni$_.JMethodIDPtr,
+            )
+          >();
+
+  /// from: `public void cancelBugreport()`
+  void cancelBugreport() {
+    final _$$selfRef = reference;
+    _cancelBugreport(_$$selfRef.pointer, _id_cancelBugreport.pointer).check();
+  }
+
+  static final _id_startConnectivityBugreport = BugreportManager._class
+      .instanceMethodId(
+        r'startConnectivityBugreport',
+        r'(Landroid/os/ParcelFileDescriptor;Ljava/util/concurrent/Executor;Landroid/os/BugreportManager$BugreportCallback;)V',
+      );
+
+  static final _startConnectivityBugreport =
+      jni$_.ProtectedJniExtensions.lookup<
+            jni$_.NativeFunction<
+              jni$_.JThrowablePtr Function(
+                jni$_.Pointer<jni$_.Void>,
+                jni$_.JMethodIDPtr,
+                jni$_.VarArgs<
+                  (
+                    jni$_.Pointer<jni$_.Void>,
+                    jni$_.Pointer<jni$_.Void>,
+                    jni$_.Pointer<jni$_.Void>,
+                  )
+                >,
+              )
+            >
+          >('globalEnv_CallVoidMethod')
+          .asFunction<
+            jni$_.JThrowablePtr Function(
+              jni$_.Pointer<jni$_.Void>,
+              jni$_.JMethodIDPtr,
+              jni$_.Pointer<jni$_.Void>,
+              jni$_.Pointer<jni$_.Void>,
+              jni$_.Pointer<jni$_.Void>,
+            )
+          >();
+
+  /// from: `public void startConnectivityBugreport(android.os.ParcelFileDescriptor parcelFileDescriptor, java.util.concurrent.Executor executor, android.os.BugreportManager$BugreportCallback bugreportCallback)`
+  void startConnectivityBugreport(
+    parcelfiledescriptor$_.ParcelFileDescriptor parcelFileDescriptor,
+    executor$_.Executor executor,
+    BugreportManager$BugreportCallback bugreportCallback,
+  ) {
+    final _$$selfRef = reference;
+    final _$parcelFileDescriptor = parcelFileDescriptor.reference;
+    final _$executor = executor.reference;
+    final _$bugreportCallback = bugreportCallback.reference;
+    _startConnectivityBugreport(
+      _$$selfRef.pointer,
+      _id_startConnectivityBugreport.pointer,
+      _$parcelFileDescriptor.pointer,
+      _$executor.pointer,
+      _$bugreportCallback.pointer,
+    ).check();
+  }
 }
 
 final class $BugreportManager$Type$ extends jni$_.JType<BugreportManager> {
@@ -53,25 +287,4 @@ final class $BugreportManager$Type$ extends jni$_.JType<BugreportManager> {
   @jni$_.internal
   @core$_.override
   String get signature => r'Landroid/os/BugreportManager;';
-}
-
-/// from: `android.os.BugreportManager$BugreportCallback`
-///
-/// WARNING: BugreportManager$$BugreportCallback is a stub. To generate bindings for this class, include
-/// android.os.BugreportManager$BugreportCallback in your config's classes list.
-///
-extension type BugreportManager$$BugreportCallback._(jni$_.JObject _$this)
-    implements jni$_.JObject {
-  static const jni$_.JType<BugreportManager$$BugreportCallback> type =
-      $BugreportManager$$BugreportCallback$Type$();
-}
-
-final class $BugreportManager$$BugreportCallback$Type$
-    extends jni$_.JType<BugreportManager$$BugreportCallback> {
-  @jni$_.internal
-  const $BugreportManager$$BugreportCallback$Type$();
-
-  @jni$_.internal
-  @core$_.override
-  String get signature => r'Landroid/os/BugreportManager$BugreportCallback;';
 }

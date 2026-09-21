@@ -32,7 +32,7 @@ final class PowerManagerChannelImpl extends PowerManagerChannel {
   }
 }
 
-extension PowerManager$RebootX on PowerManager$Reboot {
+extension Invictus$PowerManager$RebootX on PowerManager$Reboot {
   jni.JString get api {
     switch (this) {
       case PowerManager$Reboot.recovery:
@@ -51,7 +51,7 @@ extension PowerManager$RebootX on PowerManager$Reboot {
   }
 }
 
-extension PowerManager$ShutdownX on PowerManager$Shutdown {
+extension Invictus$PowerManager$ShutdownX on PowerManager$Shutdown {
   jni.JString get api {
     switch (this) {
       case PowerManager$Shutdown.userRequested:

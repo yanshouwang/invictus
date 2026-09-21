@@ -311,7 +311,8 @@ final class UsbManagerChannelImpl extends UsbManagerChannel {
   }
 }
 
-extension on UsbManager$UsbAccessoryListener {
+extension Invictus$UsbManager$UsbAccessoryListenerX
+    on UsbManager$UsbAccessoryListener {
   jni.BroadcastReceiver get api {
     final impl = this;
     if (impl is! UsbManager$UsbAccessoryListenerImpl) throw TypeError();
@@ -319,7 +320,8 @@ extension on UsbManager$UsbAccessoryListener {
   }
 }
 
-extension on UsbManager$UsbDeviceListener {
+extension Invictus$UsbManager$UsbDeviceListenerX
+    on UsbManager$UsbDeviceListener {
   jni.BroadcastReceiver get api {
     final impl = this;
     if (impl is! UsbManager$UsbDeviceListenerImpl) throw TypeError();

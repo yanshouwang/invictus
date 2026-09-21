@@ -1,5 +1,7 @@
 export 'os/storage.dart';
 
+export 'os/bugreport_manager.dart';
+export 'os/bugreport_params.dart';
 export 'os/build.dart';
 export 'os/environment.dart';
 export 'os/locale_list.dart';

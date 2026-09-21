@@ -11,3 +11,4 @@ export 'view_models/settings_view_model.dart';
 export 'view_models/time_view_model.dart';
 export 'view_models/storage_view_model.dart';
 export 'view_models/environment_view_model.dart';
+export 'view_models/bugreport_view_model.dart';

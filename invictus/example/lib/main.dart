@@ -146,6 +146,13 @@ class _MyAppState extends State<MyApp> {
                 viewModelBuilder: () => EnvironmentViewModel(),
               ),
             ),
+            GoRoute(
+              path: 'bugreport',
+              builder: (context, state) => ViewModelBinding(
+                viewBuilder: () => BugreportView(),
+                viewModelBuilder: () => BugreportViewModel(),
+              ),
+            ),
           ],
         ),
       ],

@@ -55,8 +55,8 @@ abstract interface class Environment {
       EnvironmentChannel.instance.getExternalStoragePublicDirectory(type);
 
   /// Returns the current state of the primary shared/external storage media.
-  static Environment$Media getExternalStorageState([String? path]) =>
-      EnvironmentChannel.instance.getExternalStorageState(path);
+  static Environment$Media getExternalStorageState([String? filePath]) =>
+      EnvironmentChannel.instance.getExternalStorageState(filePath);
 
   /// Return root of the "system" partition holding the core Android OS. Always present and mounted read-only.
   static String getRootDirectory() =>
@@ -66,19 +66,19 @@ abstract interface class Environment {
   // static String getStorageDirectory();
 
   /// Returns whether the primary shared/external storage media is emulated.
-  static bool isExternalStorageEmulated([String? path]) =>
-      EnvironmentChannel.instance.isExternalStorageEmulated(path);
+  static bool isExternalStorageEmulated([String? filePath]) =>
+      EnvironmentChannel.instance.isExternalStorageEmulated(filePath);
 
   /// Returns whether the shared/external storage media is a legacy view that includes files not owned by the app.
-  // static bool isExternalStorageLegacy([String? path]);
+  // static bool isExternalStorageLegacy([String? filePath]);
 
   /// Returns whether the calling app has All Files Access on the primary shared/external storage media.
-  static bool isExternalStorageManager([String? path]) =>
-      EnvironmentChannel.instance.isExternalStorageManager(path);
+  static bool isExternalStorageManager([String? filePath]) =>
+      EnvironmentChannel.instance.isExternalStorageManager(filePath);
 
   /// Returns whether the primary shared/external storage media is physically removable.
-  static bool isExternalStorageRemovable([String? path]) =>
-      EnvironmentChannel.instance.isExternalStorageRemovable(path);
+  static bool isExternalStorageRemovable([String? filePath]) =>
+      EnvironmentChannel.instance.isExternalStorageRemovable(filePath);
 }
 
 abstract base class EnvironmentChannel extends PlatformInterface {
@@ -105,11 +105,11 @@ abstract base class EnvironmentChannel extends PlatformInterface {
   String getDownloadCacheDirectory();
   String getExternalStorageDirectory();
   String getExternalStoragePublicDirectory(Environment$Directory type);
-  Environment$Media getExternalStorageState([String? path]);
+  Environment$Media getExternalStorageState([String? filePath]);
   String getRootDirectory();
   // String getStorageDirectory();
-  bool isExternalStorageEmulated([String? path]);
-  // bool isExternalStorageLegacy([String? path]);
-  bool isExternalStorageManager([String? path]);
-  bool isExternalStorageRemovable([String? path]);
+  bool isExternalStorageEmulated([String? filePath]);
+  // bool isExternalStorageLegacy([String? filePath]);
+  bool isExternalStorageManager([String? filePath]);
+  bool isExternalStorageRemovable([String? filePath]);
 }

@@ -52,6 +52,8 @@ final class InvictusAndroidPlugin {
     WifiManagerChannel.instance = WifiManagerChannelImpl();
     WifiSsidChannel.instance = WifiSsidChannelImpl();
     // os
+    BugreportManagerChannel.instance = BugreportManagerChannelImpl();
+    BugreportParamsChannel.instance = BugreportParamsChannelImpl();
     Build$PartitionChannel.instance = Build$PartitionChannelImpl();
     Build$VersionChannel.instance = Build$VersionChannelImpl();
     Build$VersionCodesChannel.instance = Build$VersionCodesChannelImpl();
@@ -60,6 +62,7 @@ final class InvictusAndroidPlugin {
     BuildChannel.instance = BuildChannelImpl();
     EnvironmentChannel.instance = EnvironmentChannelImpl();
     LocaleListChannel.instance = LocaleListChannelImpl();
+    ParcelFileDescriptorChannel.instance = ParcelFileDescriptorChannelImpl();
     PowerManagerChannel.instance = PowerManagerChannelImpl();
     SystemClockChannel.instance = SystemClockChannelImpl();
     SystemPropertiesChannel.instance = SystemPropertiesChannelImpl();

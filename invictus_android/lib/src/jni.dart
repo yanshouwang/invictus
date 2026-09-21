@@ -68,7 +68,6 @@ extension Invictus$JCharacterX on JCharacter {
 
 extension Invictus$StringX on String {
   JString get api => toJString();
-  File get fileApi => File.new$1(api);
 }
 
 extension Invictus$JStringX on JString {

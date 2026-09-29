@@ -18,8 +18,8 @@ final class LinkPropertiesImpl extends ObjectImpl implements LinkProperties {
   List<InetAddress> get dnsServers =>
       api.dnsServers.asDart().nonNulls.map((e) => e.impl).toList();
   @override
-  set dnsServers(List<InetAddress> value) => api.dnsServers$1 =
-      value.map((e) => e.api).toJList() as jni.Collection<jni.InetAddress>;
+  set dnsServers(List<InetAddress> value) =>
+      api.dnsServers$1 = value.map((e) => e.api).toJList();
 
   @override
   String? get domains => api.domains?.impl;
@@ -40,8 +40,8 @@ final class LinkPropertiesImpl extends ObjectImpl implements LinkProperties {
   List<LinkAddress> get linkAddresses =>
       api.linkAddresses.asDart().nonNulls.map((e) => e.impl).toList();
   @override
-  set linkAddresses(List<LinkAddress> value) => api.linkAddresses$1 =
-      value.map((e) => e.api).toJList() as jni.Collection<jni.LinkAddress>;
+  set linkAddresses(List<LinkAddress> value) =>
+      api.linkAddresses$1 = value.map((e) => e.api).toJList();
 
   @override
   int get mtu => api.mtu;

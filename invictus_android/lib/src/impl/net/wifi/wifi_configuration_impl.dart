@@ -10,35 +10,143 @@ final class WifiConfigurationImpl extends ObjectImpl
   WifiConfigurationImpl.internal(this.api);
 
   @override
-  String get bssid {
-    final bssidApiOrNull = api.BSSID;
-    final bssidApi = ArgumentError.checkNotNull(bssidApiOrNull, 'bssidApi');
-    return bssidApi.impl;
-  }
+  String get bssid => ArgumentError.checkNotNull(api.BSSID, 'bssidApi').impl;
+  @override
+  set bssid(String value) => api.BSSID = value.api;
 
   @override
-  String get fqdn {
-    final fqdnApiOrNull = api.FQDN;
-    final fqdnApi = ArgumentError.checkNotNull(fqdnApiOrNull, 'fqdnApi');
-    return fqdnApi.impl;
-  }
+  String get fqdn => ArgumentError.checkNotNull(api.FQDN, 'fqdnApi').impl;
+  @override
+  set fqdn(String value) => api.FQDN = value.api;
 
   @override
   bool get hiddenSSID => api.hiddenSSID;
+  @override
+  set hiddenSSID(bool value) => api.hiddenSSID = value;
 
   @override
   int get networkId => api.networkId;
+  @override
+  set networkId(int value) => api.networkId = value;
 
   @override
-  String get ssid {
-    final ssidApiOrNull = api.SSID;
-    final ssidApi = ArgumentError.checkNotNull(ssidApiOrNull, 'ssidApi');
-    return ssidApi.impl;
-  }
+  String get ssid => ArgumentError.checkNotNull(api.SSID, 'ssidApi').impl;
+  @override
+  set ssid(String value) => api.SSID = value.api;
 
   @override
   WifiConfiguration$Status get status =>
       api.status.wifiConfiguration$StatusImpl;
+  @override
+  set status(WifiConfiguration$Status value) => api.status = value.api;
+
+  @override
+  BitSet get allowedAuthAlgorithms => api.allowedAuthAlgorithms.impl;
+  @override
+  set allowedAuthAlgorithms(BitSet value) =>
+      api.allowedAuthAlgorithms = value.api;
+
+  @override
+  BitSet get allowedGroupCiphers => api.allowedGroupCiphers.impl;
+  @override
+  set allowedGroupCiphers(BitSet value) => api.allowedGroupCiphers = value.api;
+
+  @override
+  BitSet get allowedKeyManagement => api.allowedKeyManagement.impl;
+  @override
+  set allowedKeyManagement(BitSet value) =>
+      api.allowedKeyManagement = value.api;
+
+  @override
+  BitSet get allowedPairwiseCiphers => api.allowedPairwiseCiphers.impl;
+  @override
+  set allowedPairwiseCiphers(BitSet value) =>
+      api.allowedPairwiseCiphers = value.api;
+
+  @override
+  BitSet get allowedProtocols => api.allowedProtocols.impl;
+  @override
+  set allowedProtocols(BitSet value) => api.allowedProtocols = value.api;
+
+  @override
+  WifiEnterpriseConfig get enterpriseConfig =>
+      ArgumentError.checkNotNull(api.enterpriseConfig, 'enterpriseConfig').impl;
+  @override
+  set enterpriseConfig(WifiEnterpriseConfig value) =>
+      api.enterpriseConfig = value.api;
+
+  @override
+  bool get isPasspoint => api.isPasspoint;
+
+  @override
+  String get preSharedKey =>
+      ArgumentError.checkNotNull(api.preSharedKey, 'preSharedKey').impl;
+  @override
+  set preSharedKey(String value) => api.preSharedKey = value.api;
+
+  @override
+  int get priority => api.priority;
+  @override
+  set priority(int value) => api.priority = value;
+
+  @override
+  String get providerFriendlyName => ArgumentError.checkNotNull(
+    api.providerFriendlyName,
+    'providerFriendlyName',
+  ).impl;
+  @override
+  set providerFriendlyName(String value) =>
+      api.providerFriendlyName = value.api;
+
+  @override
+  List<int> get roamingConsortiumIds => ArgumentError.checkNotNull(
+    api.roamingConsortiumIds,
+    'roamingConsortiumIds',
+  ).asDart();
+  @override
+  set roamingConsortiumIds(List<int> value) =>
+      api.roamingConsortiumIds = value.longArrayApi;
+
+  @override
+  List<String> get wepKeys => ArgumentError.checkNotNull(
+    api.wepKeys,
+    'wepKeys',
+  ).asDart().nonNulls.map((e) => e.impl).toList();
+  @override
+  set wepKeys(List<String> value) => api.wepKeys = value.api;
+
+  @override
+  int get wepTxKeyIndex => api.wepTxKeyIndex;
+  @override
+  set wepTxKeyIndex(int value) => api.wepTxKeyIndex = value;
+
+  @override
+  ProxyInfo? get httpProxy => api.httpProxy?.impl;
+  @override
+  set httpProxy(ProxyInfo? value) => api.httpProxy = value?.api;
+
+  @override
+  IpConfiguration$IpAssignment get ipAssignment =>
+      jni.WifiConfigurationCompat.INSTANCE.getIpAssignment(api).impl;
+  @override
+  set ipAssignment(IpConfiguration$IpAssignment value) =>
+      jni.WifiConfigurationCompat.INSTANCE.setIpAssignment(api, value.api);
+
+  @override
+  IpConfiguration get ipConfiguration =>
+      jni.WifiConfigurationCompat.INSTANCE.getIpConfiguration(api).impl;
+  @override
+  set ipConfiguration(IpConfiguration? value) =>
+      jni.WifiConfigurationCompat.INSTANCE.setIpConfiguration(api, value?.api);
+
+  @override
+  StaticIpConfiguration? get staticIpConfiguration =>
+      jni.WifiConfigurationCompat.INSTANCE.getStaticIpConfiguration(api)?.impl;
+  @override
+  set staticIpConfiguration(StaticIpConfiguration? value) => jni
+      .WifiConfigurationCompat
+      .INSTANCE
+      .setStaticIpConfiguration(api, value?.api);
 }
 
 final class WifiConfigurationChannelImpl extends WifiConfigurationChannel {
@@ -49,10 +157,44 @@ final class WifiConfigurationChannelImpl extends WifiConfigurationChannel {
   }
 }
 
+final class WifiConfiguration$KeyMgmtChannelImpl
+    extends WifiConfiguration$KeyMgmtChannel {
+  @override
+  int get ieee8021x => jni.WifiConfiguration$KeyMgmt.IEEE8021X;
+  @override
+  int get none => jni.WifiConfiguration$KeyMgmt.NONE;
+  @override
+  List<String> get strings => ArgumentError.checkNotNull(
+    jni.WifiConfiguration$KeyMgmt.strings,
+    'strings',
+  ).asDart().nonNulls.map((e) => e.impl).toList();
+  @override
+  String get varName => ArgumentError.checkNotNull(
+    jni.WifiConfiguration$KeyMgmt.varName,
+    'varName',
+  ).impl;
+  @override
+  int get wpaEap => jni.WifiConfiguration$KeyMgmt.WPA_EAP;
+  @override
+  int get wpaPsk => jni.WifiConfiguration$KeyMgmt.WPA_PSK;
+}
+
+extension Invictus$WifiConfiguration$StatusX on WifiConfiguration$Status {
+  int get api {
+    switch (this) {
+      case .current:
+        return jni.WifiConfiguration$Status.CURRENT;
+      case .disabled:
+        return jni.WifiConfiguration$Status.DISABLED;
+      case .enabled:
+        return jni.WifiConfiguration$Status.ENABLED;
+    }
+  }
+}
+
 extension Invictus$JWifiConfiguration$intX on int {
   WifiConfiguration$Status get wifiConfiguration$StatusImpl {
-    final api = this;
-    switch (api) {
+    switch (this) {
       case jni.WifiConfiguration$Status.CURRENT:
         return WifiConfiguration$Status.current;
       case jni.WifiConfiguration$Status.DISABLED:
@@ -60,7 +202,7 @@ extension Invictus$JWifiConfiguration$intX on int {
       case jni.WifiConfiguration$Status.ENABLED:
         return WifiConfiguration$Status.enabled;
       default:
-        throw ArgumentError.value(api, 'api');
+        throw ArgumentError.value(this, 'wifiConfiguration\$Status');
     }
   }
 }

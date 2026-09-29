@@ -1,6 +1,7 @@
 package dev.zeekr.invictus_android.app.time
 
 import android.os.UserHandle
+import dev.zeekr.invictus_android.InvictusObject
 
 /**
  * Time zone-related capabilities for a user.
@@ -9,23 +10,19 @@ import android.os.UserHandle
  * {@link TimeManager#getTimeZoneCapabilitiesAndConfig()} and may be changed using {@link
  * TimeManager#updateTimeZoneConfiguration(TimeZoneConfiguration)} (if the user's capabilities
  * allow).
- *
- * @hide
  */
-class TimeZoneCapabilities(val obj: Any) {
+class TimeZoneCapabilities : InvictusObject {
     /**
      * A builder of {@link TimeZoneCapabilities} objects.
-     *
-     * @hide
      */
-    class Builder {
+    class Builder : InvictusObject {
         companion object {
-            val clazz: Class<*> get() = Class.forName("android.app.time.TimeZoneCapabilities\$Builder")
+            internal val clazz: Class<*> get() = Class.forName("android.app.time.TimeZoneCapabilities\$Builder")
         }
 
-        val obj: Any
+        override val obj: Any
 
-        constructor(obj: Any) {
+        internal constructor(obj: Any) {
             this.obj = obj
         }
 
@@ -34,8 +31,7 @@ class TimeZoneCapabilities(val obj: Any) {
         }
 
         constructor(capabilitiesToCopy: TimeZoneCapabilities) {
-            this.obj =
-                clazz.getConstructor(TimeZoneCapabilities.clazz).newInstance(capabilitiesToCopy.obj)
+            this.obj = clazz.getConstructor(clazz).newInstance(capabilitiesToCopy.obj)
         }
 
         /** Sets the value for the "configure automatic time zone detection enabled" capability. */
@@ -78,7 +74,13 @@ class TimeZoneCapabilities(val obj: Any) {
     }
 
     companion object {
-        val clazz: Class<*> get() = Class.forName("android.app.time.TimeZoneCapabilities")
+        internal val clazz: Class<*> get() = Class.forName("android.app.time.TimeZoneCapabilities")
+    }
+
+    override val obj: Any
+
+    internal constructor(obj: Any) {
+        this.obj = obj
     }
 
     /**
@@ -97,8 +99,6 @@ class TimeZoneCapabilities(val obj: Any) {
      *
      * Not part of the SDK API because it is intended for use by SettingsUI, which can display
      * text about needing it to be on for location-based time zone detection.
-     * @hide
-     *
      */
     val isUseLocationEnabled: Boolean
         get() = clazz.getMethod("isUseLocationEnabled").invoke(this.obj) as Boolean
@@ -121,17 +121,4 @@ class TimeZoneCapabilities(val obj: Any) {
      */
     val setManualTimeZoneCapability: Int
         get() = clazz.getMethod("getSetManualTimeZoneCapability").invoke(this.obj) as Int
-
-
-    override fun equals(other: Any?): Boolean {
-        return clazz.getMethod("equals", Any::class.java).invoke(this.obj, other) as Boolean
-    }
-
-    override fun hashCode(): Int {
-        return clazz.getMethod("hashCode").invoke(this.obj) as Int
-    }
-
-    override fun toString(): String {
-        return clazz.getMethod("toString").invoke(this.obj) as String
-    }
 }

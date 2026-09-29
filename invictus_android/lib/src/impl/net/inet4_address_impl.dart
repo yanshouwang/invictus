@@ -12,8 +12,7 @@ final class Inet4AddressImpl extends InetAddressImpl implements Inet4Address {
 final class Inet4AddressChannelImpl extends Inet4AddressChannel {
   @override
   Inet4Address create() {
-    final invictusApi = jni.InvictusInet4Address.new$1();
-    final api = invictusApi.obj;
+    final api = jni.Inet4AddressCompat.INSTANCE.create();
     return Inet4AddressImpl.internal(api);
   }
 }

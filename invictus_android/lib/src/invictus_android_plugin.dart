@@ -24,18 +24,6 @@ final class InvictusAndroidPlugin {
     LocalePickerChannel.instance = LocalePickerChannelImpl();
     // lang
     RunnableChannel.instance = RunnableChannelImpl();
-    // net.ethernet
-    EthernetManagerChannel.instance = EthernetManagerChannelImpl();
-    // net.util
-    Inet4AddressUtilChannel.instance = Inet4AddressUtilChannelImpl();
-    NetworkUtilChannel.instance = NetworkUtilChannelImpl();
-    // net.wifi
-    ScanResultChannel.instance = ScanResultChannelImpl();
-    SupplicantStateChannel.instance = SupplicantStateChannelImpl();
-    WifiConfigurationChannel.instance = WifiConfigurationChannelImpl();
-    WifiInfoChannel.instance = WifiInfoChannelImpl();
-    WifiManagerChannel.instance = WifiManagerChannelImpl();
-    WifiSsidChannel.instance = WifiSsidChannelImpl();
     // net
     ConnectivityManagerChannel.instance = ConnectivityManagerChannelImpl();
     DhcpInfoChannel.instance = DhcpInfoChannelImpl();
@@ -49,17 +37,40 @@ final class InvictusAndroidPlugin {
     NetworkRequestChannel.instance = NetworkRequestChannelImpl();
     NetworkChannel.instance = NetworkChannelImpl();
     StaticIpConfigurationChannel.instance = StaticIpConfigurationChannelImpl();
+    // net.ethernet
+    EthernetManagerChannel.instance = EthernetManagerChannelImpl();
+    // net.util
+    Inet4AddressUtilsChannel.instance = Inet4AddressUtilChannelsImpl();
+    NetworkUtilsChannel.instance = NetworkUtilChannelsImpl();
+    // net.wifi
+    ScanResultChannel.instance = ScanResultChannelImpl();
+    SupplicantStateChannel.instance = SupplicantStateChannelImpl();
+    WifiConfigurationChannel.instance = WifiConfigurationChannelImpl();
+    WifiConfiguration$KeyMgmtChannel.instance =
+        WifiConfiguration$KeyMgmtChannelImpl();
+    WifiInfoChannel.instance = WifiInfoChannelImpl();
+    WifiManagerChannel.instance = WifiManagerChannelImpl();
+    WifiSsidChannel.instance = WifiSsidChannelImpl();
     // os
+    BugreportManagerChannel.instance = BugreportManagerChannelImpl();
+    BugreportParamsChannel.instance = BugreportParamsChannelImpl();
     Build$PartitionChannel.instance = Build$PartitionChannelImpl();
     Build$VersionChannel.instance = Build$VersionChannelImpl();
     Build$VersionCodesChannel.instance = Build$VersionCodesChannelImpl();
     Build$VersionCodesFullChannel.instance =
         Build$VersionCodesFullChannelImpl();
     BuildChannel.instance = BuildChannelImpl();
+    EnvironmentChannel.instance = EnvironmentChannelImpl();
     LocaleListChannel.instance = LocaleListChannelImpl();
+    ParcelFileDescriptorChannel.instance = ParcelFileDescriptorChannelImpl();
     PowerManagerChannel.instance = PowerManagerChannelImpl();
     SystemClockChannel.instance = SystemClockChannelImpl();
     SystemPropertiesChannel.instance = SystemPropertiesChannelImpl();
+    // os.storage
+    OnObbStateChangeListenerChannel.instance =
+        OnObbStateChangeListenerChannelImpl();
+    StorageEventListenerChannel.instance = StorageEventListenerChannelImpl();
+    StorageManagerChannel.instance = StorageManagerChannelImpl();
     // provider
     SettingsChannel.instance = SettingsChannelImpl();
     Settings$NameValueTableChannel.instance =
@@ -68,6 +79,7 @@ final class InvictusAndroidPlugin {
     Settings$SecureChannel.instance = Settings$SecureChannelImpl();
     Settings$SystemChannel.instance = Settings$SystemChannelImpl();
     // util
+    BitSetChannel.instance = BitSetChannelImpl();
     Locale$LanguageRangeChannel.instance = Locale$LanguageRangeChannelImpl();
     LocaleChannel.instance = LocaleChannelImpl();
     TimeZoneChannel.instance = TimeZoneChannelImpl();

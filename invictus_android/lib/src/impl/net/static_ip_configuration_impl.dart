@@ -51,7 +51,8 @@ final class StaticIpConfigurationChannelImpl
     builder.setGateway(gateway?.api);
     if (dnsServers != null) {
       builder.setDnsServers(
-        dnsServers.map((e) => e.api).toJList() as jni.Iterable<jni.InetAddress>,
+        dnsServers.map((e) => e.api).toJList()
+            as jni.Iterable$1<jni.InetAddress>,
       );
     }
     builder.setDomains(domains?.api);

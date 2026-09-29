@@ -75,6 +75,21 @@ class HomeView extends StatelessWidget {
               icon: Icon(Symbols.edit_calendar),
               label: Text('Date & Time'),
             ),
+            NewGridTile(
+              onPressed: () => router.go('./storage'),
+              icon: Icon(Symbols.storage),
+              label: Text('Storage'),
+            ),
+            NewGridTile(
+              onPressed: () => router.go('./environment'),
+              icon: Icon(Symbols.source_environment),
+              label: Text('Environment'),
+            ),
+            NewGridTile(
+              onPressed: () => router.go('./bugreport'),
+              icon: Icon(Symbols.bug_report),
+              label: Text('Bugreport'),
+            ),
           ],
         ),
       ),

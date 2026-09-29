@@ -5,22 +5,20 @@ import 'package:invictus_api/invictus_api.dart';
 final class ActivityManagerImpl extends ObjectImpl implements ActivityManager {
   @override
   final jni.ActivityManager api;
-  final jni.InvictusActivityManager invictusApi;
 
-  ActivityManagerImpl.internal(this.api)
-    : invictusApi = jni.InvictusActivityManager(api);
+  ActivityManagerImpl.internal(this.api);
 
   @override
-  List<Locale> get supportedLocales =>
-      (invictusApi.supportedLocales as jni.JList<jni.Locale>)
-          .asDart()
-          .nonNulls
-          .map((e) => e.impl)
-          .toList();
+  List<Locale> get supportedLocales {
+    final supportedLocaleApis =
+        jni.ActivityManagerCompat.INSTANCE.getSupportedLocales(api)
+            as jni.JList<jni.Locale>;
+    return supportedLocaleApis.asDart().nonNulls.map((e) => e.impl).toList();
+  }
 
   @override
   set deviceLocales(LocaleList locales) =>
-      invictusApi.deviceLocales = locales.api;
+      jni.ActivityManagerCompat.INSTANCE.setDeviceLocales(api, locales.api);
 }
 
 final class ActivityManagerChannelImpl extends ActivityManagerChannel {

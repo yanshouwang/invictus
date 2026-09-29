@@ -34,11 +34,10 @@ final class LinkAddressChannelImpl extends LinkAddressChannel {
     InetAddress address,
     int prefixLength,
   ) {
-    final invictusApi = jni.InvictusLinkAddress.new$3(
+    final api = jni.LinkAddressCompat.INSTANCE.create$2(
       address.api,
       prefixLength,
     );
-    final api = invictusApi.obj;
     return LinkAddressImpl.internal(api);
   }
 
@@ -49,13 +48,12 @@ final class LinkAddressChannelImpl extends LinkAddressChannel {
     int flags,
     int scope,
   ) {
-    final invictusApi = jni.InvictusLinkAddress.new$1(
+    final api = jni.LinkAddressCompat.INSTANCE.create(
       address.api,
       prefixLength,
       flags,
       scope,
     );
-    final api = invictusApi.obj;
     return LinkAddressImpl.internal(api);
   }
 
@@ -69,7 +67,7 @@ final class LinkAddressChannelImpl extends LinkAddressChannel {
     int deprecationTime,
     int expirationTime,
   ) {
-    final invictusApi = jni.InvictusLinkAddress.new$2(
+    final api = jni.LinkAddressCompat.INSTANCE.create$1(
       address.api,
       prefixLength,
       flags,
@@ -77,32 +75,28 @@ final class LinkAddressChannelImpl extends LinkAddressChannel {
       deprecationTime,
       expirationTime,
     );
-    final api = invictusApi.obj;
     return LinkAddressImpl.internal(api);
   }
 
   @override
   LinkAddress createByAddress(String address) {
-    final invictusApi = jni.InvictusLinkAddress.new$5(address.api);
-    final api = invictusApi.obj;
+    final api = jni.LinkAddressCompat.INSTANCE.create$4(address.api);
     return LinkAddressImpl.internal(api);
   }
 
   @override
   LinkAddress createByAddressFlagsScope(String address, int flags, int scope) {
-    final invictusApi = jni.InvictusLinkAddress.new$6(
+    final api = jni.LinkAddressCompat.INSTANCE.create$5(
       address.api,
       flags,
       scope,
     );
-    final api = invictusApi.obj;
     return LinkAddressImpl.internal(api);
   }
 
   @override
   LinkAddress createByInterfaceAddress(InterfaceAddress address) {
-    final invictusApi = jni.InvictusLinkAddress.new$4(address.api);
-    final api = invictusApi.obj;
+    final api = jni.LinkAddressCompat.INSTANCE.create$3(address.api);
     return LinkAddressImpl.internal(api);
   }
 }

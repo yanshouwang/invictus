@@ -1,5 +1,7 @@
 package dev.zeekr.invictus_android.app.time
 
+import dev.zeekr.invictus_android.InvictusObject
+
 /**
  * User visible settings that control the behavior of the time detector / manual time entry.
  *
@@ -11,23 +13,19 @@ package dev.zeekr.invictus_android.app.time
  * TimeManager#updateTimeConfiguration(TimeConfiguration)} and those settings will not be
  * changed. Not all configuration settings can be modified by all users: see {@link
  * TimeManager#getTimeCapabilitiesAndConfig()} and {@link TimeCapabilities} for details.
- *
- * @hide
  */
-class TimeConfiguration(val obj: Any) {
+class TimeConfiguration : InvictusObject {
     /**
      * A builder for {@link TimeConfiguration} objects.
-     *
-     * @hide
      */
-    class Builder {
+    class Builder : InvictusObject {
         companion object {
-            val clazz: Class<*> get() = Class.forName("android.app.time.TimeConfiguration\$Builder")
+            internal val clazz: Class<*> get() = Class.forName("android.app.time.TimeConfiguration\$Builder")
         }
 
-        val obj: Any
+        override val obj: Any
 
-        constructor(obj: Any) {
+        internal constructor(obj: Any) {
             this.obj = obj
         }
 
@@ -39,7 +37,7 @@ class TimeConfiguration(val obj: Any) {
         }
 
         constructor(toCopy: TimeConfiguration) {
-            this.obj = clazz.getConstructor(TimeConfiguration.clazz).newInstance(toCopy.obj)
+            this.obj = clazz.getConstructor(clazz).newInstance(toCopy.obj)
         }
 
         /** Sets whether auto detection is enabled or not. */
@@ -57,7 +55,13 @@ class TimeConfiguration(val obj: Any) {
     }
 
     companion object {
-        val clazz: Class<*> get() = Class.forName("android.app.time.TimeConfiguration")
+        internal val clazz: Class<*> get() = Class.forName("android.app.time.TimeConfiguration")
+    }
+
+    override val obj: Any
+
+    internal constructor(obj: Any) {
+        this.obj = obj
     }
 
     /**
@@ -72,16 +76,4 @@ class TimeConfiguration(val obj: Any) {
      */
     val isAutoDetectionEnabled: Boolean
         get() = clazz.getMethod("isAutoDetectionEnabled").invoke(this.obj) as Boolean
-
-    override fun equals(other: Any?): Boolean {
-        return clazz.getMethod("equals", Any::class.java).invoke(this.obj, other) as Boolean
-    }
-
-    override fun hashCode(): Int {
-        return clazz.getMethod("hashCode").invoke(this.obj) as Int
-    }
-
-    override fun toString(): String {
-        return clazz.getMethod("toString").invoke(this.obj) as String
-    }
 }

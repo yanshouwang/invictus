@@ -1,6 +1,6 @@
 package dev.zeekr.invictus_android.app.time
 
-import android.os.SystemClock
+import dev.zeekr.invictus_android.InvictusObject
 
 /**
  * A Unix epoch time value with an associated reading from the elapsed realtime clock.
@@ -10,17 +10,13 @@ import android.os.SystemClock
  *
  * <p>The elapsed realtime clock can be obtained using methods like {@link
  * SystemClock#elapsedRealtime()} or {@link SystemClock#elapsedRealtimeClock()}.
- *
- * @hide
  */
-class UnixEpochTime {
+class UnixEpochTime : InvictusObject {
     companion object {
-        val clazz: Class<*> get() = Class.forName("android.app.time.UnixEpochTime")
+        internal val clazz: Class<*> get() = Class.forName("android.app.time.UnixEpochTime")
 
         /**
          * Returns the difference in milliseconds between two instance's elapsed realtimes.
-         *
-         * @hide
          */
         fun elapsedRealtimeDifference(one: UnixEpochTime, two: UnixEpochTime): Long {
             return clazz.getMethod("elapsedRealtimeDifference", clazz, clazz)
@@ -28,9 +24,9 @@ class UnixEpochTime {
         }
     }
 
-    val obj: Any
+    override val obj: Any
 
-    constructor(obj: Any) {
+    internal constructor(obj: Any) {
         this.obj = obj
     }
 
@@ -46,18 +42,6 @@ class UnixEpochTime {
     /** Returns the unix epoch time value. See {@link UnixEpochTime} for more information. */
     val unixEpochTimeMillis: Long
         get() = clazz.getMethod("getUnixEpochTimeMillis").invoke(this.obj) as Long
-
-    override fun equals(other: Any?): Boolean {
-        return clazz.getMethod("equals", Any::class.java).invoke(this.obj, other) as Boolean
-    }
-
-    override fun hashCode(): Int {
-        return clazz.getMethod("hashCode").invoke(this.obj) as Int
-    }
-
-    override fun toString(): String {
-        return clazz.getMethod("toString").invoke(this.obj) as String
-    }
 
     /**
      * Creates a new Unix epoch time value at {@code elapsedRealtimeTimeMillis} by adjusting this

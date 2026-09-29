@@ -10,10 +10,12 @@ export 'jni/android/app/_package.dart';
 export 'jni/android/content/_package.dart';
 export 'jni/android/hardware/usb/_package.dart';
 export 'jni/android/icu/util/_package.dart';
-export 'jni/android/net/_package.dart';
+export 'jni/android/net/_package.dart'
+    hide IpConfiguration, $IpConfiguration$Type$;
 export 'jni/android/net/wifi/_package.dart';
 export 'jni/android/net/wifi/aware/_package.dart';
 export 'jni/android/os/_package.dart';
+export 'jni/android/os/storage/_package.dart';
 export 'jni/android/provider/_package.dart';
 export 'jni/androidx/core/content/_package.dart';
 export 'jni/dev/zeekr/invictus_android/app/_package.dart';
@@ -21,10 +23,10 @@ export 'jni/dev/zeekr/invictus_android/app/time/_package.dart';
 export 'jni/dev/zeekr/invictus_android/content/_package.dart';
 export 'jni/dev/zeekr/invictus_android/internal/app/_package.dart';
 export 'jni/dev/zeekr/invictus_android/net/_package.dart';
-export 'jni/dev/zeekr/invictus_android/net/ethernet/_package.dart';
 export 'jni/dev/zeekr/invictus_android/net/util/_package.dart';
 export 'jni/dev/zeekr/invictus_android/net/wifi/_package.dart';
 export 'jni/dev/zeekr/invictus_android/os/_package.dart';
+export 'jni/dev/zeekr/invictus_android/os/storage/_package.dart';
 export 'jni/java/io/_package.dart';
 export 'jni/java/lang/_package.dart';
 export 'jni/java/net/_package.dart';
@@ -72,8 +74,12 @@ extension Invictus$JStringX on JString {
   String get impl => toDartString(releaseOriginal: true);
 }
 
-extension Invictus$ListX on List<String> {
+extension Invictus$StringListX on List<String> {
   JArray<JString> get api => JArray.of(JString.type, map((e) => e.api));
+}
+
+extension Invictus$IntListX on List<int> {
+  JLongArray get longArrayApi => JLongArray.of(this);
 }
 
 extension Invictus$Uint8ListX on Uint8List {
@@ -83,7 +89,10 @@ extension Invictus$Uint8ListX on Uint8List {
 }
 
 extension Invictus$JByteArrayX on JByteArray {
-  Uint8List get impl => JByteBuffer.wrap(this).impl;
+  Uint8List get impl {
+    final elements = asDart();
+    return Uint8List.fromList(elements);
+  }
 }
 
 extension Invictus$JByteBufferX on JByteBuffer {

@@ -1,4 +1,9 @@
+export 'os/storage.dart';
+
+export 'os/bugreport_manager_impl.dart';
+export 'os/bugreport_params_impl.dart';
 export 'os/build_impl.dart';
+export 'os/environment_impl.dart';
 export 'os/locale_list_impl.dart';
 export 'os/parcel_file_descriptor_impl.dart';
 export 'os/power_manager_impl.dart';

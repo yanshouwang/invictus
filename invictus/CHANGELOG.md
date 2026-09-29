@@ -1,26 +1,9 @@
-## 1.0.0-dev.3
+## 1.0.0
 
-* Add `TimeManager` Api.
-* Add `AlarmManager` Api.
-* Add `SystemClock` Api.
-
-## 1.0.0-dev.2
-
-* Update to flutter 3.38.10.
-* Add `NetworkInterface` Api.
-* Add `SystemProperties` Api.
-
-## 1.0.0-dev.1
-
-* Add locale Apis.
-
-## 1.0.0-dev.0
-
-* Android hardware Apis.
-* Android io Apis.
-* Android net Apis.
-* Android os Apis.
+- `Android` Add invictus Impls.
+- `Android` Updates the minimum supported SDK version to Flutter 3.44/Dart 3.12.
+- `Android` Migrates to built-in Kotlin.
 
 ## 0.0.1
 
-* Initial release.
+- Initial release.

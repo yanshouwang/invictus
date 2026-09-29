@@ -1,10 +1,10 @@
-export 'net/ethernet.dart';
 export 'net/util.dart';
 export 'net/wifi.dart';
 
 export 'net/connectivity_manager.dart';
 export 'net/datagram_socket.dart';
 export 'net/dhcp_info.dart';
+export 'net/ethernet_manager.dart';
 export 'net/inet_address.dart';
 export 'net/inet_addresses.dart';
 export 'net/inet_socket_address.dart';

@@ -132,6 +132,27 @@ class _MyAppState extends State<MyApp> {
                 viewModelBuilder: () => TimeViewModel(),
               ),
             ),
+            GoRoute(
+              path: 'storage',
+              builder: (context, state) => ViewModelBinding(
+                viewBuilder: () => StorageView(),
+                viewModelBuilder: () => StorageViewModel(),
+              ),
+            ),
+            GoRoute(
+              path: 'environment',
+              builder: (context, state) => ViewModelBinding(
+                viewBuilder: () => EnvironmentView(),
+                viewModelBuilder: () => EnvironmentViewModel(),
+              ),
+            ),
+            GoRoute(
+              path: 'bugreport',
+              builder: (context, state) => ViewModelBinding(
+                viewBuilder: () => BugreportView(),
+                viewModelBuilder: () => BugreportViewModel(),
+              ),
+            ),
           ],
         ),
       ],

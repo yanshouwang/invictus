@@ -30,9 +30,9 @@ final class LocalePickerChannelImpl extends LocalePickerChannel {
   LocalePicker$LocaleSelectionListener createLocaleSelectionListener({
     required void Function(Locale locale) onLocaleSelected,
   }) {
-    final api = jni.InvictusLocalePicker$InvictusLocaleSelectionListenerImpl(
-      jni.InvictusLocalePicker$InvictusLocaleSelectionListener.implement(
-        jni.$InvictusLocalePicker$InvictusLocaleSelectionListener(
+    final api = jni.JniLocalePicker$JniLocaleSelectionListenerImpl(
+      jni.JniLocalePicker$JniLocaleSelectionListener.implement(
+        jni.$JniLocalePicker$JniLocaleSelectionListener(
           onLocaleSelected: (e) => onLocaleSelected(e.impl),
         ),
       ),

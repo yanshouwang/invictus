@@ -10,10 +10,12 @@ final class TimeCapabilitiesAndConfigImpl extends ObjectImpl
   TimeCapabilitiesAndConfigImpl.internal(this.api);
 
   @override
-  TimeCapabilities get capabilities => api.capabilities.impl;
+  TimeCapabilities get capabilities =>
+      jni.TimeCapabilitiesAndConfigCompat.INSTANCE.getCapabilities(api).impl;
 
   @override
-  TimeConfiguration get configuration => api.configuration.impl;
+  TimeConfiguration get configuration =>
+      jni.TimeCapabilitiesAndConfigCompat.INSTANCE.getConfiguration(api).impl;
 }
 
 extension Invictus$JTimeCapabilitiesAndConfigX

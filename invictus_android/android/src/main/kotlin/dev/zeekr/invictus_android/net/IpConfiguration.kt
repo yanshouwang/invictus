@@ -1,14 +1,16 @@
 package dev.zeekr.invictus_android.net
 
-class IpConfiguration {
-    class Builder {
+import dev.zeekr.invictus_android.InvictusObject
+
+class IpConfiguration : InvictusObject {
+    class Builder : InvictusObject {
         companion object {
-            val clazz: Class<*> get() = Class.forName("android.net.IpConfiguration\$Builder")
+            internal val clazz: Class<*> get() = Class.forName("android.net.IpConfiguration\$Builder")
         }
 
-        val obj: Any
+        override val obj: Any
 
-        constructor(obj: Any) {
+        internal constructor(obj: Any) {
             this.obj = obj
         }
 
@@ -17,24 +19,24 @@ class IpConfiguration {
         }
 
         fun setStaticIpConfiguration(config: StaticIpConfiguration?): Builder {
-            val obj =
-                clazz.getMethod("setStaticIpConfiguration", StaticIpConfiguration.clazz).invoke(this.obj, config) as Any
+            val obj = clazz.getMethod("setStaticIpConfiguration", StaticIpConfiguration.clazz)
+                .invoke(this.obj, config) as Any
             return Builder(obj)
         }
 
         fun build(): IpConfiguration {
-            val configObj = clazz.getMethod("build").invoke(this.obj) as Any
-            return IpConfiguration(configObj)
+            val obj = clazz.getMethod("build").invoke(this.obj) as Any
+            return IpConfiguration(obj)
         }
     }
 
     companion object {
-        val clazz: Class<*> get() = Class.forName("android.net.IpConfiguration")
+        internal val clazz: Class<*> get() = Class.forName("android.net.IpConfiguration")
     }
 
-    val obj: Any
+    override val obj: Any
 
-    constructor(obj: Any) {
+    internal constructor(obj: Any) {
         this.obj = obj
     }
 
@@ -50,21 +52,21 @@ class IpConfiguration {
         STATIC, DHCP, UNASSIGNED;
 
         companion object {
-            val clazz: Class<*> get() = Class.forName("android.net.IpConfiguration\$IpAssignment")
+            internal val clazz: Class<*> get() = Class.forName("android.net.IpConfiguration\$IpAssignment")
 
-            fun of(obj: Any): IpAssignment {
+            internal fun of(obj: Any): IpAssignment {
                 val index = clazz.enumConstants!!.indexOf(obj)
                 return entries[index]
             }
         }
 
-        val obj: Any get() = clazz.enumConstants!![ordinal]
+        internal val obj: Any get() = clazz.enumConstants!![ordinal]
     }
 
     var ipAssignment: IpAssignment
         get() {
-            val ipAssignmentObj = clazz.getMethod("getIpAssignment").invoke(this.obj) as Any
-            return IpAssignment.of(ipAssignmentObj)
+            val obj = clazz.getMethod("getIpAssignment").invoke(this.obj) as Any
+            return IpAssignment.of(obj)
         }
         set(value) {
             clazz.getMethod("setIpAssignment", IpAssignment.clazz).invoke(this.obj, value.obj)
@@ -72,11 +74,12 @@ class IpConfiguration {
 
     var staticIpConfiguration: StaticIpConfiguration?
         get() {
-            val configObj = clazz.getMethod("getStaticIpConfiguration").invoke(this.obj)
-            return if (configObj == null) null
-            else StaticIpConfiguration(configObj)
+            val obj = clazz.getMethod("getStaticIpConfiguration").invoke(this.obj)
+            return if (obj == null) null
+            else StaticIpConfiguration(obj)
         }
         set(value) {
-            clazz.getMethod("setStaticIpConfiguration", StaticIpConfiguration.clazz).invoke(this.obj, value?.obj)
+            clazz.getMethod("setStaticIpConfiguration", StaticIpConfiguration.clazz)
+                .invoke(this.obj, value?.obj)
         }
 }

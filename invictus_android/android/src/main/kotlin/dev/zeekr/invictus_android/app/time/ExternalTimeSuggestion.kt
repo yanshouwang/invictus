@@ -1,5 +1,7 @@
 package dev.zeekr.invictus_android.app.time
 
+import dev.zeekr.invictus_android.InvictusObject
+
 /**
  * A time signal from an External source.
  *
@@ -35,17 +37,15 @@ package dev.zeekr.invictus_android.app.time
  * record why the suggestion exists and how it was entered. This information exists only to aid in
  * debugging and therefore is used by {@link #toString()}, but it is not for use in detection logic
  * and is not considered in {@link #hashCode()} or {@link #equals(Object)}.
- *
- * @hide
  */
-class ExternalTimeSuggestion {
+class ExternalTimeSuggestion : InvictusObject {
     companion object {
-        val clazz: Class<*> get() = Class.forName("android.app.time.ExternalTimeSuggestion")
+        internal val clazz: Class<*> get() = Class.forName("android.app.time.ExternalTimeSuggestion")
     }
 
-    val obj: Any
+    override val obj: Any
 
-    constructor(obj: Any) {
+    internal constructor(obj: Any) {
         this.obj = obj
     }
 
@@ -58,14 +58,10 @@ class ExternalTimeSuggestion {
      *                              Unix epoch
      */
     constructor(elapsedRealtimeMillis: Long, suggestionMillis: Long) {
-        this.obj = clazz.getConstructor(Long::class.java, Long::class.java).newInstance(
-            elapsedRealtimeMillis, suggestionMillis
-        )
+        this.obj = clazz.getConstructor(Long::class.java, Long::class.java)
+            .newInstance(elapsedRealtimeMillis, suggestionMillis)
     }
 
-    /**
-     * {@hide}
-     */
     val unixEpochTime: UnixEpochTime
         get() {
             val obj = clazz.getMethod("getUnixEpochTime").invoke(this.obj) as Any
@@ -89,17 +85,5 @@ class ExternalTimeSuggestion {
     fun addDebugInfo(vararg debugInfos: String) {
         clazz.getMethod("addDebugInfo", Array<String>::class.java)
             .invoke(this.obj, arrayOf(*debugInfos))
-    }
-
-    override fun equals(other: Any?): Boolean {
-        return clazz.getMethod("equals", Any::class.java).invoke(this.obj, other) as Boolean
-    }
-
-    override fun hashCode(): Int {
-        return clazz.getMethod("hashCode").invoke(this.obj) as Int
-    }
-
-    override fun toString(): String {
-        return clazz.getMethod("toString").invoke(this.obj) as String
     }
 }
